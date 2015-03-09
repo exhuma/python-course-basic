@@ -1,7 +1,30 @@
 Python
 ======
 
-.. TODO MySQL on Python 3
+..      ┌─ essential, basic, advanced
+..      │ ┌─ doc
+..      │ │ ┌─ code example
+..      │ │ │
+.. TODO e d c Falsy values
+.. TODO e d c ``in`` operator
+.. TODO e d c ``None``
+.. TODO e d c String literals and formatting
+.. TODO b d c Variable Unpacking
+.. TODO e d   imports
+.. TODO e d c line continuations and parens
+.. TODO e d   How to get help (repl: help(), pydoc, docs.python.org) -> Use ``help`` on any object.
+.. TODO e d c Docstrings
+.. TODO b d c    └─everything is an object (__doc__ of function)
+.. TODO e d c raising and catching exceptions
+.. TODO e   c Use // ** and % for numbers
+.. TODO b d c *args, *, **kwargs
+.. TODO a d c iterators and generators
+.. TODO a d c         └─decorators
+.. TODO a d c sys.path
+.. TODO b d c "magic" Variables and attributes
+.. TODO b d c logging
+.. TODO b d c MySQL on Python 3
+.. TODO b d   DBAPI2
 
 Birds-Eye View
 --------------
@@ -25,6 +48,16 @@ Implementations
  * IronPython (runs in dotNET CLR).
  * PyPy (fast).
  * Stackless (microthreads).
+
+
+Editors
+~~~~~~~
+
+* PyCharm -- *https://www.jetbrains.com/pycharm/*
+* IDLE
+* Komodo IDE -- *http://komodoide.com/*
+* Eclipse (with PyDev)
+* Netbeans (with Python plugin)
 
 
 Duck Typing
@@ -77,12 +110,37 @@ Windows
 Installation on Windows is as easy as downlading the installer and running it.
 
 
+
+The Python Shell (REPL)
+-----------------------
+
+::
+
+    >>> 1 + 1
+    2
+
+    >>> print("Hello World!")
+    Hello World!
+
+
 Syntax
 ------
 
  * Everything is an Object. Even functions.
  * Mutable vs. Immutable Objects
  * mutable Default arguments
+
+
+Common Data Types
+-----------------
+
+* Boolean
+* String & Bytes
+* Numbers (see also the ``numbers``, ``fractions`` and ``cmath`` modules)
+* Lists: can hold objects of any type, slicing, appending, inserting, popping.
+* Tuples: Immutable lists. Cannot be changed, but can be hashed.
+* Dictionaries (HashTable)
+* Sets (Bag)
 
 
 Standard Library
