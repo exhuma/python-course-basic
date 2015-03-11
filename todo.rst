@@ -33,3 +33,115 @@
 .. TODO **  d c unit tests
 .. TODO *** d c lambda
 
+
+Code Samples
+------------
+
+csv
+~~~
+
+A module to easily read and write CSV files.
+
+.. code::
+    :language: python
+
+    from csv import Reader
+    reader = Reader(open('filename'))
+    for row in reader:
+        print ' '.join(row)
+
+
+    writer = Writer(open('output.csv', 'w'))
+    data = [
+        ('a', 'b', 'c'),
+        (1, 1, 1),
+        (1, 2, 3)
+    ]
+    for row in data:
+        writer.writerow(data)
+
+cmd
+~~~
+
+A module to write interactive console applications.
+
+.. code::
+    :language: python
+
+    from cmd impot Cmd
+    class MyApp(Cmd):
+
+        DATA = [
+            'foo',
+            'bar',
+            'baz'
+        ]
+
+
+        def do_hello(self, line):
+            '''
+            Prints out "Hello World"
+            '''
+            print('Hello World')
+
+        def do_ls(self, line):
+            '''
+            Lists current data
+            '''
+            print('\n'.join(self.DATA))
+
+        def do_append(self, line):
+            '''
+            Adds a new element to the stored data.
+            '''
+            self.DATA.append(line)
+
+
+    if __name__ == '__main__':
+        app = MyApp()
+        MyApp.run()
+
+
+json
+~~~~
+
+Easily read and write JSON documents.
+
+.. code::
+    :language: python
+
+    from json import load, dump
+    data = load(open('myfile.json'))
+    newdata = {
+        "key": "value"
+    }
+
+    dump(newdata, open('filename', 'w'))
+
+
+
+collections
+~~~~~~~~~~~
+
+
+Extension Modules
+-----------------
+
+SQLAlchemy
+~~~~~~~~~~
+
+Flask
+~~~~~
+
+xlrd
+~~~~
+
+Requests
+~~~~~~~~
+
+Click
+~~~~~
+
+Alembic
+~~~~~~~
+
