@@ -1,30 +1,6 @@
 Python
 ======
 
-..      ┌─ essential, basic, advanced
-..      │ ┌─ doc
-..      │ │ ┌─ code example
-..      │ │ │
-.. TODO e d c Falsy values
-.. TODO e d c ``in`` operator
-.. TODO e d c ``None``
-.. TODO e d c String literals and formatting
-.. TODO b d c Variable Unpacking
-.. TODO e d   imports
-.. TODO e d c line continuations and parens
-.. TODO e d   How to get help (repl: help(), pydoc, docs.python.org) -> Use ``help`` on any object.
-.. TODO e d c Docstrings
-.. TODO b d c    └─everything is an object (__doc__ of function)
-.. TODO e d c raising and catching exceptions
-.. TODO e   c Use // ** and % for numbers
-.. TODO b d c *args, *, **kwargs
-.. TODO a d c iterators and generators
-.. TODO a d c         └─decorators
-.. TODO a d c sys.path
-.. TODO b d c "magic" Variables and attributes
-.. TODO b d c logging
-.. TODO b d c MySQL on Python 3
-.. TODO b d   DBAPI2
 
 Birds-Eye View
 --------------
@@ -46,7 +22,7 @@ Implementations
  * **CPython** (the default - *recommended*).
  * Jython (runs in Java VM).
  * IronPython (runs in dotNET CLR).
- * PyPy (fast).
+ * PyPy (faster).
  * Stackless (microthreads).
 
 
@@ -56,8 +32,8 @@ Editors
 * PyCharm -- *https://www.jetbrains.com/pycharm/*
 * IDLE
 * Komodo IDE -- *http://komodoide.com/*
-* Eclipse (with PyDev)
-* Netbeans (with Python plugin)
+* Eclipse (with PyDev) -- *https://eclipse.org*
+* Netbeans (with Python plugin) -- *https://netbeans.org*
 
 
 Duck Typing
@@ -88,6 +64,7 @@ Python 2 or 3
    (and enforces that control).
  * Python 3 is even slower than Python 2 (at the moment).
  * Legacy platforms may only support Python 2.
+ * Iterators
 
 
 Installation
@@ -96,13 +73,10 @@ Installation
 Linux
 ~~~~~
 
-Python is available by default on most Unix platforms. From distribution to
-distribution, the version packaged by default may either be Python 2 (Debian,
-Red-Hat), or Python 3 (Arch). But even on systems with Python 2 as default,
-Python 3 is usually available in the package repository.
-
-Python 2 and 3 can both happily live on the same system without interfering
-with each other.
+* Available by default on most Unix platforms.
+* Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
+* Python 2 and 3 can both happily live on the same system without interfering
+  with each other.
 
 Windows
 ~~~~~~~
@@ -128,14 +102,14 @@ Syntax
 
  * Everything is an Object. Even functions.
  * Mutable vs. Immutable Objects
- * mutable Default arguments
+ * mutable default arguments
 
 
 Common Data Types
 -----------------
 
 * Boolean
-* String & Bytes
+* String (unicode sequence) & Bytes (0-255 sequence)
 * Numbers (see also the ``numbers``, ``fractions`` and ``cmath`` modules)
 * Lists: can hold objects of any type, slicing, appending, inserting, popping.
 * Tuples: Immutable lists. Cannot be changed, but can be hashed.
@@ -155,10 +129,19 @@ A module to easily read and write CSV files.
     :language: python
 
     from csv import Reader
-    reader = Reader('filename')
+    reader = Reader(open('filename'))
     for row in reader:
         print ' '.join(row)
 
+
+    writer = Writer(open('output.csv', 'w'))
+    data = [
+        ('a', 'b', 'c'),
+        (1, 1, 1),
+        (1, 2, 3)
+    ]
+    for row in data:
+        writer.writerow(data)
 
 cmd
 ~~~
@@ -171,11 +154,31 @@ A module to write interactive console applications.
     from cmd impot Cmd
     class MyApp(Cmd):
 
-        def do_hello(line):
+        DATA = [
+            'foo',
+            'bar',
+            'baz'
+        ]
+
+
+        def do_hello(self, line):
             '''
             Prints out "Hello World"
             '''
             print('Hello World')
+
+        def do_ls(self, line):
+            '''
+            Lists current data
+            '''
+            print('\n'.join(self.DATA))
+
+        def do_append(self, line):
+            '''
+            Adds a new element to the stored data.
+            '''
+            self.DATA.append(line)
+
 
     if __name__ == '__main__':
         app = MyApp()
@@ -192,15 +195,17 @@ Easily read and write JSON documents.
 
     from json import load, dump
     data = load(open('myfile.json'))
-
-    dump('''{
+    newdata = {
         "key": "value"
-    }''', open('filename', 'w'))
+    }
+
+    dump(newdata, open('filename', 'w'))
 
 
 
 collections
 ~~~~~~~~~~~
+
 
 Extension Modules
 -----------------
