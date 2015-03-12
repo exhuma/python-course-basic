@@ -2,13 +2,13 @@
 ..      │   ┌─ doc
 ..      │   │ ┌─ code example
 ..      │   │ │
-.. TODO *   d c Falsy values
+.. TODO *     c Falsy values
 .. TODO *   d c ``in`` operator
 .. TODO *   d c ``None``
 .. TODO *   d c Slicing
-.. TODO *   d c data types -> Boolean, String, Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
+.. TODO *     c data types -> Boolean, String, Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
 .. TODO *   d c String literals and formatting
-.. TODO **  d c Variable Unpacking
+.. TODO **    c Variable Unpacking
 .. TODO *   d   imports
 .. TODO *   d c line continuations and parens
 .. TODO *   d   How to get help (repl: help(), pydoc, docs.python.org) -> Use ``help`` on any object.
@@ -32,6 +32,7 @@
 .. TODO *   d c sorting lists
 .. TODO **  d c unit tests
 .. TODO *** d c lambda
+.. TODO *   d c ReST & Pygments
 
 
 Code Samples
