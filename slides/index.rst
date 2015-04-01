@@ -1,6 +1,15 @@
 Python
 ======
 
+Intro
+-----
+
+* Your name
+* Your job function
+* Your experience
+* What do you expect from this course
+* Interest
+
 
 Birds-Eye View
 --------------
@@ -17,7 +26,7 @@ Birds-Eye View
 
 
 Implementations
-~~~~~~~~~~~~~~~
+---------------
 
 * **CPython** (the default - *recommended*).
 * Jython (runs in Java VM).
@@ -27,7 +36,7 @@ Implementations
 
 
 Editors
-~~~~~~~
+-------
 
 * PyCharm -- *https://www.jetbrains.com/pycharm/*
 * IDLE
@@ -37,12 +46,15 @@ Editors
 
 
 Duck Typing
-~~~~~~~~~~~
+-----------
 
     When I see a bird that walks like a duck and swims like a duck and quacks
     like a duck, I call that bird a duck.
 
-         *-- James Whitcomb Riley*
+    -- James Whitcomb Riley
+
+Duck Typing (ctd.)
+------------------
 
 +--------------------+--------------------+---------------------+
 |                    | **Strong Binding** | **Weak Binding**    |
@@ -68,10 +80,10 @@ Python 2 or 3
 
 
 Installation
-------------
+============
 
 Linux
-~~~~~
+-----
 
 * Available by default on most Unix platforms.
 * Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
@@ -79,7 +91,7 @@ Linux
   with each other.
 
 Windows
-~~~~~~~
+-------
 
 Installation on Windows is as easy as downlading the installer and running it.
 
@@ -104,19 +116,27 @@ Common Data Types
 * String (unicode sequence)
 * Bytes (0-255 sequence)
 * Numbers
-  * ``numbers``
-  * ``fractions``
-  * ``cmath``
+
+  - ``numbers``
+  - ``fractions``
+  - ``cmath``
+
+Common Data Types (ctd.)
+------------------------
+
 * Lists
-  * can hold objects of any type
-  * slicing
-  * appending
-  * inserting
-  * popping
+
+  - can hold objects of any type
+  - slicing
+  - appending, inserting
+  - popping
+
 * Tuples
-  * Immutable lists
-  * Cannot be changed,
-  * but can be hashed
+
+  - Immutable lists
+  - Cannot be changed,
+  - but can be hashed
+
 * Dictionaries (HashTable)
 * Sets (Bag)
 
@@ -124,8 +144,8 @@ Common Data Types
 Exercise
 --------
 
-.. include:: code/aa_helloworld/helloworld.py
-    :code: python
+.. include:: ../code/aa_helloworld/helloworld.py
+   :code: python
 
 
 Syntax & Features
@@ -136,7 +156,7 @@ Syntax & Features
 * mutable default arguments
 * Blocks defined by indentation
 * "Falsy" values
-* ``True == 1 && False == 0``
+* ``True == 1 and False == 0``
 * Variable unpacking
 * Automatic string concatenation::
 
