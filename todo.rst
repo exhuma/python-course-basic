@@ -21,6 +21,7 @@
 .. TODO **  d c comprehensions (list, set & dict), generator expressions
 .. TODO *** d c decorators
 .. TODO *** d c sys.path
+.. TODO **  d   Packaging & Virtualenv
 .. TODO **  d c "magic" Variables and attributes
 .. TODO **  d c logging
 .. TODO **  d c MySQL on Python 3
