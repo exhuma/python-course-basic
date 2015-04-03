@@ -2,10 +2,10 @@
 ..      │   ┌─ doc
 ..      │   │ ┌─ code example
 ..      │   │ │
-.. TODO *     c Falsy values
+.. TODO *   d c Falsy values
 .. TODO *   d c ``in`` operator
 .. TODO *   d c ``None``
-.. TODO *   d c Slicing
+.. TODO *     c Slicing
 .. TODO *     c data types -> Boolean, String, Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
 .. TODO *   d c String literals and formatting
 .. TODO **    c Variable Unpacking

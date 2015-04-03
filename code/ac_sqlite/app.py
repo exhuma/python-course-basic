@@ -7,6 +7,8 @@ DBFILE = '/tmp/db.sqlite'
 def create_database(connection):
     '''
     Creates the database.
+
+    :param connection: A database connection.
     '''
     if exists(DBFILE):
         return

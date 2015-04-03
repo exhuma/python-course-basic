@@ -1,11 +1,10 @@
 Python
 ======
 
-Intro
------
+About You
+---------
 
 * Your name
-* Your job function
 * Your experience
 * What do you expect from this course
 * Interest
@@ -126,12 +125,12 @@ Common Data Types (ctd.)
 
 * Lists
 
-  - can hold objects of any type
+  - can hold objects of any type, heterogenous
   - slicing
   - appending, inserting
   - popping
 
-* Tuples
+* Tuples, Namedtuples
 
   - Immutable lists
   - Cannot be changed,
