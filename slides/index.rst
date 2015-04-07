@@ -67,10 +67,11 @@ Duck Typing (ctd.)
 Use Python 3
 ------------
 
-* Python 3.3+. (current version is 3.4 with 3.5 on the horizon).
-* Improved Unicode support. (It puts the developer in control and enforces it).
+* Python 3.3+ (current version is 3.4 with 3.5 on the horizon).
+* Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
-* No new features are added to Python 2 (f.ex.: ``asyncio``).
+* No new features are added to Python 2 (f.ex.: ``asyncio``, but backports
+  exist).
 * Python 3 is slower than Python 2 though (at the moment).
 * Legacy platforms may only support Python 2.
 
@@ -84,12 +85,22 @@ Linux
 * Available by default on most Unix platforms.
 * Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
 * Python 2 and 3 can both happily live on the same system without interfering
-  with each other.
+  with each other (f.ex. the ``python`` and ``python3`` packages on debian and
+  derivates).
+
 
 Windows
 -------
 
 Installation on Windows is as easy as downlading the installer and running it.
+
+------------------------------------------------------------------------------
+
+.. attention::
+    Installing compiled extensions (f.ex. C/C++) in "virtual environments" is
+    more difficult on Windows as an appropriate compiler must be present.
+
+    More on "virtual environments" if time permits.
 
 
 
