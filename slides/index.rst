@@ -13,7 +13,6 @@ About You
 Birds-Eye View
 --------------
 
-* Slow
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
 * Large community. #8 on TIOBE Index (Java on #2, PHP on #7). Based on result
@@ -21,13 +20,13 @@ Birds-Eye View
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library
 * Global Interpreter Lock (the GIL)
-* PEP 8
+* Slow
 
 
 Implementations
 ---------------
 
-* **CPython** (the default - *recommended*).
+* **CPython** (the default - *recommended*, ≠ cython).
 * Jython (runs in Java VM).
 * IronPython (runs in dotNET CLR).
 * PyPy (faster).
@@ -65,17 +64,15 @@ Duck Typing (ctd.)
 
 
 
-Python 2 or 3
--------------
+Use Python 3
+------------
 
-* Starting from Python 3.3 it has become really usable (current version is 3.4
-  with 3.5 on the horizon).
+* Python 3.3+. (current version is 3.4 with 3.5 on the horizon).
+* Improved Unicode support. (It puts the developer in control and enforces it).
+* Iterators everywhere.
 * No new features are added to Python 2 (f.ex.: ``asyncio``).
-* Python 3 has much improved Unicode support. It puts the developer in control
-  (and enforces that control).
-* Python 3 is even slower than Python 2 (at the moment).
+* Python 3 is slower than Python 2 though (at the moment).
 * Legacy platforms may only support Python 2.
-* Iterators
 
 
 Installation
@@ -99,6 +96,15 @@ Installation on Windows is as easy as downlading the installer and running it.
 The Python Shell (REPL)
 -----------------------
 
+* read-eval-print loop.
+* Interactive shell.
+* Extremely helpful tool to test out ideas, play with code before implementing
+  it.
+
+Simply run ``python`` on the console to start it.
+
+By convention, lines with ``>>>`` represent a REPL prompt.
+
 .. code:: python
 
     >>> 1 + 1
@@ -108,13 +114,28 @@ The Python Shell (REPL)
     Hello World!
 
 
+Getting Help
+------------
+
+* On the web: http://docs.python.org
+* Type ``help()`` in the REPL. This can be used on any object::
+
+    >>> myvar = 1
+    >>> help(myvar)  # This will open the help for "ints"
+
+* Type ``pydoc`` in the shell.
+
+  * Use ``pydoc -p 8080`` to run a local web-server on port ``8080``
+  * … or ``pydoc -g`` to run a GUI (pretty much useless).
+
+
 Common Data Types
 -----------------
 
-* Boolean
-* String (unicode sequence)
-* Bytes (0-255 sequence)
-* Numbers
+* Boolean -- ``help(bool)``
+* String (unicode sequence) -- ``help(str)``
+* Bytes (0-255 sequence) -- ``help(bytes)``
+* Numbers -- ``help(int)``
 
   - ``numbers``
   - ``fractions``
@@ -123,40 +144,39 @@ Common Data Types
 Common Data Types (ctd.)
 ------------------------
 
-* Lists
+* Lists -- ``help(list)``
 
   - can hold objects of any type, heterogenous
   - slicing
   - appending, inserting
   - popping
 
-* Tuples, Namedtuples
+* Tuples, Namedtuples -- ``help(tuple)``
 
   - Immutable lists
   - Cannot be changed,
   - but can be hashed
 
-* Dictionaries (HashTable)
-* Sets (Bag)
+* Dictionaries (HashTable) -- ``help(dict)``
+* Sets (Bag) -- ``help(set)``
 
 
-Exercise
---------
+Python vs other Languages
+-------------------------
 
-.. include:: ../code/aa_helloworld/helloworld.py
-   :code: python
-
-
-Syntax & Features
------------------
-
+* PEP 8
 * Everything is an Object. Even functions.
-* Mutable vs. Immutable Objects
-* mutable default arguments
 * Blocks defined by indentation
-* "Falsy" values
+* "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
 * Variable unpacking
+
+
+Common Mistakes
+---------------
+
+* Mutable vs. Immutable Objects
+* mutable default arguments
 * Automatic string concatenation::
 
     $ python -m timeit "'aaa' 'bbb'"

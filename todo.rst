@@ -2,16 +2,15 @@
 ..      │   ┌─ doc
 ..      │   │ ┌─ code example
 ..      │   │ │
+.. TODO *     c data types -> Boolean, String (&literals), Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
 .. TODO *   d c Falsy values
 .. TODO *   d c ``in`` operator
 .. TODO *   d c ``None``
 .. TODO *     c Slicing
-.. TODO *     c data types -> Boolean, String, Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
-.. TODO *   d c String literals and formatting
+.. TODO *   d c String formatting
 .. TODO **    c Variable Unpacking
 .. TODO *   d   imports
 .. TODO *   d c line continuations and parens
-.. TODO *   d   How to get help (repl: help(), pydoc, docs.python.org) -> Use ``help`` on any object.
 .. TODO *   d c Docstrings
 .. TODO **  d c    └─everything is an object (__doc__ of function)
 .. TODO *   d c raising and catching exceptions
@@ -38,6 +37,9 @@
 
 Code Samples
 ------------
+
+argparse
+~~~~~~~~
 
 csv
 ~~~
