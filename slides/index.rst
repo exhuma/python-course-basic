@@ -140,6 +140,20 @@ Getting Help
   * … or ``pydoc -g`` to run a GUI (pretty much useless).
 
 
+Getting Ready
+=============
+
+* Install Python.
+* Install ``pip``.
+* Install ``virtualenv``.
+* Create a simple "Hello World" script::
+
+    print("Hello World")
+
+
+Diving in
+=========
+
 Common Data Types
 -----------------
 
@@ -148,9 +162,14 @@ Common Data Types
 * Bytes (0-255 sequence) -- ``help(bytes)``
 * Numbers -- ``help(int)``
 
-  - ``numbers``
-  - ``fractions``
-  - ``cmath``
+.. tip::
+
+    Useful standard modules when working with numbers:
+
+    - ``numbers``
+    - ``fractions``
+    - ``cmath``
+
 
 Common Data Types (ctd.)
 ------------------------
@@ -181,6 +200,58 @@ Python vs other Languages
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
 * Variable unpacking
+
+
+Exercise (collections)
+----------------------
+
+.. TODO item #1 code
+
+.. code:: python
+
+    # dictionary
+    mydict = {}
+    mydict['foo'] = 10
+    mydict['foo']
+    mydict['bar']
+    mydict.get('bar', 'mydefault')
+    help(mydict)
+
+    # list
+    mylist = [1, 2, 3]
+    mylist
+    mylist[1:3]
+    mylist[0]
+    mylist[10]
+    mylist[2] = 10
+    mylist.append(4)
+    help(mylist)
+
+
+Exercise (scalars)
+------------------
+
+.. TODO item #1 code
+
+.. code:: python
+
+    mytext = 'Hello World!'
+    mytext.split()
+    mytext[0:5]
+    mytext.find('o')
+    help(mytext)
+
+    mybytes = b'Hello World!'
+    help(mybytes)
+
+    myint = 10
+    help(myint)
+    int('101010', 2)
+
+    mybool = True
+    help(bool)
+    bool('hello')
+    bool('')
 
 
 Common Mistakes

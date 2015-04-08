@@ -1,38 +1,38 @@
-..      ┌─ (*) essential, (**) basic, (***) advanced
-..      │   ┌─ doc
-..      │   │ ┌─ code example
-..      │   │ │
-.. TODO *     c data types -> Boolean, String (&literals), Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
-.. TODO *   d c Falsy values
-.. TODO *   d c ``in`` operator
-.. TODO *   d c ``None``
-.. TODO *     c Slicing
-.. TODO *   d c String formatting
-.. TODO **    c Variable Unpacking
-.. TODO *   d   imports
-.. TODO *   d c line continuations and parens
-.. TODO *   d c Docstrings
-.. TODO **  d c    └─everything is an object (__doc__ of function)
-.. TODO *   d c raising and catching exceptions
-.. TODO *   d c Use // ** and % for numbers
-.. TODO **  d c *args, *, **kwargs
-.. TODO *** d c iterators and generators
-.. TODO **  d c comprehensions (list, set & dict), generator expressions
-.. TODO *** d c decorators
-.. TODO *** d c sys.path
-.. TODO **  d   Packaging & Virtualenv
-.. TODO **  d c "magic" Variables and attributes
-.. TODO **  d c logging
-.. TODO **  d c MySQL on Python 3
-.. TODO **  d   DBAPI2
-.. TODO **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
-.. TODO *   d   PEPs
-.. TODO *   d c REs
-.. TODO *   d c with statement (context managers)
-.. TODO *   d c sorting lists
-.. TODO **  d c unit tests
-.. TODO *** d c lambda
-.. TODO *   d c ReST & Pygments
+..          ┌─ (*) essential, (**) basic, (***) advanced
+..          │   ┌─ doc
+..          │   │ ┌─ code example
+..          │   │ │
+.. TODO   1 *       data types -> Boolean, String (&literals), Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
+.. TODO   2 *     c Falsy values
+.. TODO   3 *   d c ``in`` operator
+.. TODO   4 *   d c ``None``
+.. TODO   5 *     c Slicing
+.. TODO   6 *   d c String formatting
+.. TODO   7 **    c Variable Unpacking
+.. TODO   8 *   d   imports
+.. TODO   9 *   d c line continuations and parens
+.. TODO  10 *   d c Docstrings
+.. TODO  11 **  d c    └─everything is an object (__doc__ of function)
+.. TODO  12 *   d c raising and catching exceptions
+.. TODO  13 *   d c Use // ** and % for numbers
+.. TODO  14 **  d c *args, *, **kwargs
+.. TODO  15 *** d c iterators and generators
+.. TODO  16 **  d c comprehensions (list, set & dict), generator expressions
+.. TODO  17 *** d c decorators
+.. TODO  18 *** d c sys.path
+.. TODO  19 **  d   Packaging & Virtualenv
+.. TODO  20 **  d c "magic" Variables and attributes
+.. TODO  21 **  d c logging
+.. TODO  22 **  d c MySQL on Python 3
+.. TODO  23 **  d   DBAPI2
+.. TODO  24 **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
+.. TODO  25 *   d   PEPs
+.. TODO  26 *   d c REs
+.. TODO  27 *   d c with statement (context managers)
+.. TODO  28 *   d c sorting lists
+.. TODO  29 **  d c unit tests
+.. TODO  30 *** d c lambda
+.. TODO  31 *   d c ReST & Pygments
 
 
 Code Samples
