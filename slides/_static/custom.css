@@ -43,6 +43,7 @@ H1 {
 
 .sidebar + DIV {
     float: left;
+    min-width: 50%;
 }
 
 .sidebar {
