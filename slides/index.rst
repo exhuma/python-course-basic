@@ -36,11 +36,11 @@ Implementations
 Editors
 -------
 
-* PyCharm -- *https://www.jetbrains.com/pycharm/*
+* PyCharm — *https://www.jetbrains.com/pycharm/*
 * IDLE
-* Komodo IDE -- *http://komodoide.com/*
-* Eclipse (with PyDev) -- *https://eclipse.org*
-* Netbeans (with Python plugin) -- *https://netbeans.org*
+* Komodo IDE — *http://komodoide.com/*
+* Eclipse (with PyDev) — *https://eclipse.org*
+* Netbeans (with Python plugin) — *https://netbeans.org*
 
 
 Duck Typing
@@ -67,6 +67,11 @@ Duck Typing (ctd.)
 Use Python 3
 ------------
 
+.. sidebar:: Python 3.4
+
+    This course is based on **Python 3.4** as it comes bundled with ``pip`` and
+    ``venv``.
+
 * Python 3.3+ (current version is 3.4 with 3.5 on the horizon).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
@@ -81,6 +86,16 @@ Installation
 
 Linux
 -----
+
+.. sidebar:: Custom install on Linux
+    :subtitle: ~5min
+
+    ::
+
+        ./configure --prefix=/opt/python3.4
+        make
+        sudo make install
+
 
 * Available by default on most Unix platforms.
 * Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
@@ -142,8 +157,6 @@ Getting Ready
 =============
 
 * Install Python.
-* Install ``pip``.
-* Install ``virtualenv``.
 * Create a simple "Hello World" script::
 
     >>> print("Hello World")
@@ -155,32 +168,47 @@ Diving in
 Common Data Types
 -----------------
 
-* None (like ``null``) -- ``help(None)``
-* Boolean -- ``help(bool)``
-* String (unicode sequence) -- ``help(str)``
-* Bytes (0-255 sequence) -- ``help(bytes)``
-* Numbers -- ``help(int)``
+.. sidebar:: Explore
+
+    * ``help(None)``
+    * ``help(bool)``
+    * ``help(str)``
+    * ``help(bytes)``
+    * ``help(int)``
+
+* None (like ``null``)
+* Boolean
+* String (unicode sequence)
+* Bytes (0-255 sequence)
+* Numbers
 
 .. tip::
 
     Useful standard modules when working with numbers:
 
-    - ``numbers``
     - ``fractions``
+    - ``math``
     - ``cmath``
+    - ``statistics`` (new in 3.4)
 
 
 Common Data Types (ctd.)
 ------------------------
 
-* Lists -- ``help(list)``
+.. sidebar:: Explore
+
+    * ``help(list)``, ``help([])``
+    * ``help(tuple)``
+
+
+* Lists
 
   - can hold objects of any type, heterogenous
   - slicing
   - appending, inserting
   - popping
 
-* Tuples, Namedtuples -- ``help(tuple)``
+* Tuples, Namedtuples
 
   - Immutable lists
   - Cannot be changed,
@@ -189,13 +217,18 @@ Common Data Types (ctd.)
 Common Data Types (ctd.)
 ------------------------
 
-* Dictionaries -- ``help(dict)``
+.. sidebar:: Explore
+
+    * ``help(dict)``, ``help({})``
+    * ``help(set)``
+
+* Dictionaries
 
   - a.k.a. a HashTable
   - keys can be anything that can be hashed.
   - values can be anything.
 
-* Sets -- ``help(set)``
+* Sets
 
   - a.k.a. a Bag
   - values must be hashable.
@@ -218,23 +251,26 @@ Exercise: scalars
 
 .. TODO item #1 code
 
+.. sidebar:: Explore
+
+    * Run ``help`` on your variables (f.ex.: ``help(mytext)``)
+    * Difference between ``mytext.find`` and ``mytext.index``?
+    * Difference between ``mytext`` and ``mybytes``?
+
+
 .. code:: python
 
     >>> mytext = 'Hello World!'
     >>> mytext.split()
     >>> mytext[0:5]
     >>> mytext.find('o')
-    >>> help(mytext)
 
     >>> mybytes = b'Hello World!'
-    >>> help(mybytes)
 
     >>> myint = 10
-    >>> help(myint)
     >>> int('101010', 2)
 
     >>> mybool = True
-    >>> help(bool)
     >>> bool('hello')
     >>> bool('')
 
@@ -292,24 +328,24 @@ Exercise: "Falsy" Values
 
 .. code:: python
 
-    >>> def falsyness(value):
+    >>> def trueish(value):
     >>>     if value:
-    >>>         print('value is true')
+    >>>         print('yes.')
     >>>     else:
-    >>>         print('value is false')
+    >>>         print('no.')
 
-    # Text
-    >>> falsyness('')
-    >>> falsyness('hello world')
+    >>> # Text
+    >>> trueish('')
+    >>> trueish('hello world')
 
-    # Numbers
-    >>> falsyness(123)
-    >>> falsyness(0)
-    >>> falsyness(-100)
+    >>> # Numbers
+    >>> trueish(123)
+    >>> trueish(0)
+    >>> trueish(-100)
 
-    # Lists
-    >>> falsyness([])
-    >>> falsyness([1, 2, 3])
+    >>> # Lists
+    >>> trueish([])
+    >>> trueish([1, 2, 3])
 
 
 Common Mistakes
