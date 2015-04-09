@@ -3,7 +3,8 @@
 ..          │   │ ┌─ code example
 ..          │   │ │
 .. TODO   1 *       data types -> Boolean, String (&literals), Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
-.. TODO   2 *     c Falsy values
+.. TODO   2 *       Falsy values
+.. TODO  32 *   d   defining functions
 .. TODO   3 *   d c ``in`` operator
 .. TODO   4 *   d c ``None``
 .. TODO   5 *     c Slicing

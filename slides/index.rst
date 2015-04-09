@@ -155,6 +155,7 @@ Diving in
 Common Data Types
 -----------------
 
+* None (like ``null``) -- ``help(None)``
 * Boolean -- ``help(bool)``
 * String (unicode sequence) -- ``help(str)``
 * Bytes (0-255 sequence) -- ``help(bytes)``
@@ -212,8 +213,8 @@ Python vs other Languages
 * PEP 8
 
 
-Exercise (scalars)
-------------------
+Exercise: scalars
+-----------------
 
 .. TODO item #1 code
 
@@ -238,10 +239,18 @@ Exercise (scalars)
     >>> bool('')
 
 
-Exercise (collections)
-----------------------
+Exercise: collections
+---------------------
 
 .. TODO item #1 code
+
+.. sidebar:: Explore
+
+    * Try other types of values (``int``, ``list``, ``tuple``, ...) as keys for
+      the ``dict``.
+    * Try the ``list`` example with a ``tuple``.
+    * Run ``help`` on both ``mylist`` and ``mydict``.
+
 
 .. code:: python
 
@@ -251,7 +260,6 @@ Exercise (collections)
     >>> mydict['foo']
     >>> mydict['bar']
     >>> mydict.get('bar', 'mydefault')
-    >>> help(mydict)
 
     >>> # list
     >>> mylist = [1, 2, 3]
@@ -261,7 +269,47 @@ Exercise (collections)
     >>> mylist[10]
     >>> mylist[2] = 10
     >>> mylist.append(4)
-    >>> help(mylist)
+
+
+Functions
+---------
+
+* Defined using the ``def`` keyword.
+* Always return a value. If no value is specified, it will return ``None``
+* In Python they are "First-Class Functions" (i.e.: funtions are objects too).
+* Function definition is executed *at runtime* (usually during ``import``)!
+
+Example::
+
+    def say_hello(name):
+        print('Hello ' + name)
+
+
+Exercise: "Falsy" Values
+------------------------
+
+.. TODO item #2, #32 code
+
+.. code:: python
+
+    >>> def falsyness(value):
+    >>>     if value:
+    >>>         print('value is true')
+    >>>     else:
+    >>>         print('value is false')
+
+    # Text
+    >>> falsyness('')
+    >>> falsyness('hello world')
+
+    # Numbers
+    >>> falsyness(123)
+    >>> falsyness(0)
+    >>> falsyness(-100)
+
+    # Lists
+    >>> falsyness([])
+    >>> falsyness([1, 2, 3])
 
 
 Common Mistakes
