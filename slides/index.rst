@@ -18,7 +18,7 @@ Birds-Eye View
 * Large community. #8 on TIOBE Index (Java on #2, PHP on #7). Based on result
   of March 2015
 * Strict Syntax (indentation matters)!
-* *Large* Standard Library
+* *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
 * Slow
 
@@ -100,8 +100,6 @@ Installation on Windows is as easy as downlading the installer and running it.
     Installing compiled extensions (f.ex. C/C++) in "virtual environments" is
     more difficult on Windows as an appropriate compiler must be present.
 
-    More on "virtual environments" if time permits.
-
 
 
 The Python Shell (REPL)
@@ -148,7 +146,7 @@ Getting Ready
 * Install ``virtualenv``.
 * Create a simple "Hello World" script::
 
-    print("Hello World")
+    >>> print("Hello World")
 
 
 Diving in
@@ -187,45 +185,31 @@ Common Data Types (ctd.)
   - Cannot be changed,
   - but can be hashed
 
-* Dictionaries (HashTable) -- ``help(dict)``
-* Sets (Bag) -- ``help(set)``
+Common Data Types (ctd.)
+------------------------
+
+* Dictionaries -- ``help(dict)``
+
+  - a.k.a. a HashTable
+  - keys can be anything that can be hashed.
+  - values can be anything.
+
+* Sets -- ``help(set)``
+
+  - a.k.a. a Bag
+  - values must be hashable.
+  - only the *first* element is kept. Adding new identical items has no effect.
 
 
 Python vs other Languages
 -------------------------
 
-* PEP 8
 * Everything is an Object. Even functions.
 * Blocks defined by indentation
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
 * Variable unpacking
-
-
-Exercise (collections)
-----------------------
-
-.. TODO item #1 code
-
-.. code:: python
-
-    # dictionary
-    mydict = {}
-    mydict['foo'] = 10
-    mydict['foo']
-    mydict['bar']
-    mydict.get('bar', 'mydefault')
-    help(mydict)
-
-    # list
-    mylist = [1, 2, 3]
-    mylist
-    mylist[1:3]
-    mylist[0]
-    mylist[10]
-    mylist[2] = 10
-    mylist.append(4)
-    help(mylist)
+* PEP 8
 
 
 Exercise (scalars)
@@ -235,23 +219,49 @@ Exercise (scalars)
 
 .. code:: python
 
-    mytext = 'Hello World!'
-    mytext.split()
-    mytext[0:5]
-    mytext.find('o')
-    help(mytext)
+    >>> mytext = 'Hello World!'
+    >>> mytext.split()
+    >>> mytext[0:5]
+    >>> mytext.find('o')
+    >>> help(mytext)
 
-    mybytes = b'Hello World!'
-    help(mybytes)
+    >>> mybytes = b'Hello World!'
+    >>> help(mybytes)
 
-    myint = 10
-    help(myint)
-    int('101010', 2)
+    >>> myint = 10
+    >>> help(myint)
+    >>> int('101010', 2)
 
-    mybool = True
-    help(bool)
-    bool('hello')
-    bool('')
+    >>> mybool = True
+    >>> help(bool)
+    >>> bool('hello')
+    >>> bool('')
+
+
+Exercise (collections)
+----------------------
+
+.. TODO item #1 code
+
+.. code:: python
+
+    >>> # dictionary
+    >>> mydict = {}
+    >>> mydict['foo'] = 10
+    >>> mydict['foo']
+    >>> mydict['bar']
+    >>> mydict.get('bar', 'mydefault')
+    >>> help(mydict)
+
+    >>> # list
+    >>> mylist = [1, 2, 3]
+    >>> mylist
+    >>> mylist[1:3]
+    >>> mylist[0]
+    >>> mylist[10]
+    >>> mylist[2] = 10
+    >>> mylist.append(4)
+    >>> help(mylist)
 
 
 Common Mistakes
