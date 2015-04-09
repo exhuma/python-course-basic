@@ -38,4 +38,26 @@ H1 {
     background: hsla(240, 100%, 60%, 0.5);
     border: 1px solid hsl(240, 100%, 60%);
     color: black;
+    line-height: 150%;
+}
+
+.sidebar + DIV {
+    float: left;
+}
+
+.sidebar {
+    margin-top: 40px !important;
+    font-size: 60% !important;
+    line-height: 1.5 !important;
+    padding: 0.5em 0.8em !important;
+}
+
+Q {
+    font-size: 130%;
+    line-height: 1.5em;
+    margin-left: 2em;
+}
+
+Q::before, Q::after {
+    font-size: 150%;
 }
