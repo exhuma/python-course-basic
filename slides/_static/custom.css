@@ -53,6 +53,10 @@ H1 {
     padding: 0.5em 0.8em !important;
 }
 
+.sidebar UL {
+    margin-top: 1em;
+}
+
 Q {
     font-size: 130%;
     line-height: 1.5em;
