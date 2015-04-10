@@ -4,7 +4,8 @@
 ..          │   │ │
 .. TODO   1 *       data types -> Boolean, String (&literals), Bytes, Numbers, Lists, Tuples, Dictionaries, Sets
 .. TODO   2 *       Falsy values
-.. TODO  32 *   d   defining functions
+.. TODO  32 *       defining functions
+.. TODO  33 *       defining classes
 .. TODO   3 *   d c ``in`` operator
 .. TODO   4 *   d c ``None``
 .. TODO   5 *     c Slicing
@@ -34,6 +35,8 @@
 .. TODO  29 **  d c unit tests
 .. TODO  30 *** d c lambda
 .. TODO  31 *   d c ReST & Pygments
+.. TODO  34 **  d c ABCs
+.. TODO  35 **  d c Class Customisation
 
 
 Code Samples

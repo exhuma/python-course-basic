@@ -249,7 +249,7 @@ Python vs other Languages
 Exercise: scalars
 -----------------
 
-.. TODO item #1 code
+.. to-do item #1 code
 
 .. sidebar:: Explore
 
@@ -278,7 +278,7 @@ Exercise: scalars
 Exercise: collections
 ---------------------
 
-.. TODO item #1 code
+.. to-do item #1 code
 
 .. sidebar:: Explore
 
@@ -324,7 +324,7 @@ Example::
 Exercise: "Falsy" Values
 ------------------------
 
-.. TODO item #2, #32 code
+.. to-do item #2, #32 code
 
 .. code:: python
 
@@ -346,6 +346,69 @@ Exercise: "Falsy" Values
     >>> # Lists
     >>> trueish([])
     >>> trueish([1, 2, 3])
+
+
+Saving your code
+----------------
+
+.. sidebar:: Linux, MacOS
+
+    On \*nix systems, you can make the file executable with a shebang.
+
+
+* File extension: ``.py``
+* Python files are called *modules*.
+* Folders can be used to organise your code into *packages*.
+* Folders with modules should contain a file with the name ``__init__.py``.
+  This special file marks a folder as *package*.
+* Execute files with::
+
+    $ python filename.py
+
+
+
+Classes – Basics
+----------------
+
+.. to-do item #33
+
+* Definition happens at runtime (like with functions).
+* Supports multiple inheritance.
+* No interfaces (Duck Typing).
+* **Instance methods get the instance as first parameter.** Conventional name: ``self``.
+* **Class methods get the class as first parameter.** Conventional name: ``cls``
+* Static methods are merely syntactic sugar.
+
+
+Exercise – A Wiki Page
+----------------------
+
+.. code:: python
+
+    # Filename: model.py
+    class WikiPage:
+
+        def __init__(self, title, content):
+            self.title = title
+            self.content = content
+
+        def teaser(self):
+            return self.content
+
+Usage:
+
+.. sidebar:: Explore
+
+    * Run ``help`` on your created instance.
+    * Execute the function ``dir`` on your created instance.
+    * Try assigning a value to ``page.content``
+
+
+.. code:: python
+
+    >>> import model
+    >>> page = model.WikiPage(
+    ...    'index', 'Hello World!')
 
 
 Common Mistakes
