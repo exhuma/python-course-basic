@@ -7,8 +7,8 @@
 .. TODO  32 *       defining functions
 .. TODO  33 *       defining classes
 .. TODO   3 *   d c ``in`` operator
-.. TODO   4 *   d c ``None``
-.. TODO   5 *     c Slicing
+.. TODO   4 *   x x ``None``
+.. TODO   5 *       Slicing
 .. TODO   6 *   d c String formatting
 .. TODO   7 **    c Variable Unpacking
 .. TODO   8 *   d   imports

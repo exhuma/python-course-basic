@@ -382,7 +382,7 @@ Exercise – A Wiki Page
 
 .. code:: python
 
-    # Filename: model.py
+    # Filename: wiki/model.py
     class WikiPage:
 
         def __init__(self, title, content):
@@ -406,6 +406,76 @@ Usage:
     >>> import model
     >>> page = model.WikiPage(
     ...    'index', 'Hello World!')
+
+
+Wiki Functionality
+------------------
+
+* Save a page (create or update)
+* Load a page
+* Display a page
+* List pages
+
+
+Storing files on Disk
+---------------------
+
+.. note:: Assumptions
+
+    * JSON as format.
+    * No checks for FS injections.
+    * Page titles are valid filenames.
+
+.. code:: python
+
+    # Filename: wiki/storage/disk.py
+    from os import listdir
+    from os.path import join, exists
+    import json
+
+    from wiki.model import WikiPage
+
+
+    class DiskStorage:
+
+        def __init__(self, root):
+            self.root = root
+
+        def save(self, document):
+            filename = join(self.root, document.title) + '.json'
+            with open(filename, 'w') as file_handle:
+                json.dump({
+                    'title': document.title,
+                    'content': document.content
+                }, file_handle)
+
+
+
+Storing files on disk (ctd)
+---------------------------
+
+.. code:: python
+
+    class DiskStorage:  # continuation
+
+        def load(self, title):
+            filename = join(self.root, title) + '.json'
+            if not exists(filename):
+                return None
+
+            with open(filename, 'r') as file_handle:
+                document = json.load(file_handle)
+
+            return WikiPage(document['title'],
+                            document['content'])
+
+        def list(self):
+            titles = []
+            for filename in listdir(self.root):
+                title, _ = filename.rsplit('.', 1)
+                titles.append(title)
+            return titles
+
 
 
 Common Mistakes
