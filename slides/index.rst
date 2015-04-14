@@ -376,9 +376,9 @@ Classes – Basics
 .. to-do item #33
 
 * Definition happens at runtime (like with functions).
-* Supports multiple inheritance.
+* Support multiple inheritance.
 * No interfaces (Duck Typing).
-* **Instance methods get the instance as first parameter.** Conventional name: ``self``.
+* **Instance methods get the instance as first parameter.** Conventional name: ``self``
 * **Class methods get the class as first parameter.** Conventional name: ``cls``
 * Static methods are merely syntactic sugar.
 
