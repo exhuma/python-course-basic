@@ -70,7 +70,7 @@ Use Python 3
 .. sidebar:: Python 3.4
 
     This course is based on **Python 3.4** as it comes bundled with ``pip`` and
-    ``venv``.
+    ``pyvenv``.
 
 * Python 3.3+ (current version is 3.4 with 3.5 on the horizon).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
@@ -112,8 +112,9 @@ Installation on Windows is as easy as downlading the installer and running it.
 ------------------------------------------------------------------------------
 
 .. attention::
-    Installing compiled extensions (f.ex. C/C++) in "virtual environments" is
-    more difficult on Windows as an appropriate compiler must be present.
+    Installing compiled extensions (f.ex. C/C++) is more difficult on Windows
+    as an appropriate compiler must be present. This is out of scope of this
+    presentation.
 
 
 
@@ -149,7 +150,9 @@ Getting Help
 
 * Type ``pydoc`` in the shell.
 
-  * Use ``pydoc -p 8080`` to run a local web-server on port ``8080``
+  * Same as ``help()`` in the REPL.
+  * Use ``pydoc -p 8080`` to run a local web-server on port ``8080``. This is
+    useful if you have no internet connection.
   * … or ``pydoc -g`` to run a GUI (pretty much useless).
 
 
@@ -171,10 +174,10 @@ Common Data Types
 .. sidebar:: Explore
 
     * ``help(None)``
-    * ``help(bool)``
-    * ``help(str)``
-    * ``help(bytes)``
-    * ``help(int)``
+    * ``help(bool)``, ``help(True)``
+    * ``help(str)``, ``help('')``
+    * ``help(bytes)``, ``help(b'')``
+    * ``help(int)``, ``help(123)``
 
 * None (like ``null``)
 * Boolean
@@ -198,7 +201,7 @@ Common Data Types (ctd.)
 .. sidebar:: Explore
 
     * ``help(list)``, ``help([])``
-    * ``help(tuple)``
+    * ``help(tuple)``, ``help((1,2))``
 
 
 * Lists
