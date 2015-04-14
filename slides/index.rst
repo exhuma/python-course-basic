@@ -10,6 +10,45 @@ About You
 * Interest
 
 
+Installation
+============
+
+Linux
+-----
+
+.. sidebar:: Custom install on Linux
+    :subtitle: ~5min
+
+    ::
+
+        ./configure --prefix=/opt/python3.4
+        make
+        sudo make install
+
+
+* Available by default on most Unix platforms.
+* Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
+* Python 2 and 3 can both happily live on the same system without interfering
+  with each other (f.ex. the ``python`` and ``python3`` packages on debian and
+  derivates).
+
+
+Windows
+-------
+
+Installation on Windows is as easy as downlading the installer and running it.
+
+------------------------------------------------------------------------------
+
+.. attention::
+    Installing compiled extensions (f.ex. C/C++) is more difficult on Windows
+    as an appropriate compiler must be present. This is out of scope of this
+    presentation.
+
+
+Introduction
+============
+
 Birds-Eye View
 --------------
 
@@ -31,6 +70,7 @@ Implementations
 * IronPython (runs in dotNET CLR).
 * PyPy (faster).
 * Stackless (microthreads).
+* ...
 
 
 Editors
@@ -81,43 +121,6 @@ Use Python 3
 * Legacy platforms may only support Python 2.
 
 
-Installation
-============
-
-Linux
------
-
-.. sidebar:: Custom install on Linux
-    :subtitle: ~5min
-
-    ::
-
-        ./configure --prefix=/opt/python3.4
-        make
-        sudo make install
-
-
-* Available by default on most Unix platforms.
-* Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
-* Python 2 and 3 can both happily live on the same system without interfering
-  with each other (f.ex. the ``python`` and ``python3`` packages on debian and
-  derivates).
-
-
-Windows
--------
-
-Installation on Windows is as easy as downlading the installer and running it.
-
-------------------------------------------------------------------------------
-
-.. attention::
-    Installing compiled extensions (f.ex. C/C++) is more difficult on Windows
-    as an appropriate compiler must be present. This is out of scope of this
-    presentation.
-
-
-
 The Python Shell (REPL)
 -----------------------
 
@@ -154,15 +157,6 @@ Getting Help
   * Use ``pydoc -p 8080`` to run a local web-server on port ``8080``. This is
     useful if you have no internet connection.
   * … or ``pydoc -g`` to run a GUI (pretty much useless).
-
-
-Getting Ready
-=============
-
-* Install Python.
-* Create a simple "Hello World" script::
-
-    >>> print("Hello World")
 
 
 Diving in
