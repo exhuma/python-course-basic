@@ -493,6 +493,43 @@ Storing files on disk (ctd)
             return titles
 
 
+Imports
+-------
+
+* Partial imports are possible (``from foo import bar``)
+* *Never* write ``from foo import *`` (Why?).
+* Can be wrapped in a ``try … except`` block (more on this later). This allows
+  for graceful degradation.
+* They do not have to be at the beginning of the file.
+* They are cached. File lookup, and actual loading only happens the first
+  time.
+
+.. warning:: Import Side-Effects
+
+    Modules (``.py``) files should never execute active code on it's root! This
+    code will be executed on import and is very hard to test with unit-tests!
+
+
+The "``in``" Operator
+---------------------
+
+* Loops
+* Tests for membership
+
+**Examples:**
+
+.. code:: python
+
+    >>> for element in [1, 2, 3]:
+    >>>     print(element)
+
+    >>> 2 in [1, 2, 3]
+
+    >>> 'foo' in {'foo': 10, 'bar': 20}
+
+    >>> 'foo' in {'foo', 'bar'}
+
+
 
 Common Mistakes
 ---------------

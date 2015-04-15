@@ -6,12 +6,12 @@
 .. TODO   2 *       Falsy values
 .. TODO  32 *       defining functions
 .. TODO  33 *       defining classes
-.. TODO   3 *   d c ``in`` operator
+.. TODO   3 *       ``in`` operator
 .. TODO   4 *   x x ``None``
 .. TODO   5 *       Slicing
 .. TODO   6 *   d c String formatting
 .. TODO   7 **    c Variable Unpacking
-.. TODO   8 *   d   imports
+.. TODO   8 *       imports
 .. TODO   9 *   d c line continuations and parens
 .. TODO  10 *   d c Docstrings
 .. TODO  11 **  d c    └─everything is an object (__doc__ of function)
