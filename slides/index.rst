@@ -426,6 +426,15 @@ Storing files on Disk
     * No checks for FS injections.
     * Page titles are valid filenames.
 
+.. sidebar:: Takeaways
+    :class: overlapping
+
+    * Imports
+    * Defining classes
+    * Opening files
+    * Indentation
+    * ``with`` statement
+
 .. code:: python
 
     # Filename: wiki/storage/disk.py
@@ -454,12 +463,19 @@ Storing files on Disk
 Storing files on disk (ctd)
 ---------------------------
 
+.. sidebar:: Takeaways
+    :class: overlapping
+
+    * ``for … in …``  loop
+    * Variable unpacking
+
 .. code:: python
 
     class DiskStorage:  # continuation
 
         def load(self, title):
-            filename = join(self.root, title) + '.json'
+            filename = join(self.root,
+                title) + '.json'
             if not exists(filename):
                 return None
 
