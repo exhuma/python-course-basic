@@ -30,7 +30,7 @@
 .. TODO  24 **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
 .. TODO  25 *   d   PEPs
 .. TODO  26 *   d c REs
-.. TODO  27 *   d c with statement (context managers)
+.. TODO  27 *       with statement (context managers)
 .. TODO  28 *   d c sorting lists
 .. TODO  29 **  d c unit tests
 .. TODO  30 *** d c lambda

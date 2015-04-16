@@ -530,6 +530,19 @@ The "``in``" Operator
     >>> 'foo' in {'foo', 'bar'}
 
 
+The "``with``" Statement
+------------------------
+
+* Also called "Context Manager"
+* Used for code which needs a clean "finalisation" step (closing an open file,
+  a DB connection, …).
+* The ``with`` block does **not** create a new variable scope. Variables
+  created in that block are accessible outside!
+* Ensures that finalisation step is taken. Even on unexpected exit.
+* Can be created by implementing the magic ``__enter__`` and ``__exit__``
+  methods in a class.
+
+
 
 Common Mistakes
 ---------------
