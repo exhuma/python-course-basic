@@ -10,7 +10,7 @@
 .. TODO   4 *   x x ``None``
 .. TODO   5 *       Slicing
 .. TODO   6 *   d c String formatting
-.. TODO   7 **  d   Variable Unpacking
+.. TODO   7 **      Variable Unpacking
 .. TODO   8 *       imports
 .. TODO   9 *   d c line continuations and parens
 .. TODO  10 *   d c Docstrings

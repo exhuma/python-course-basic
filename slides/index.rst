@@ -577,6 +577,37 @@ The "``with``" Statement
   methods in a class.
 
 
+Variable Unpacking
+------------------
+
+.. sidebar:: Throwaway Variable
+
+    The underscore "``_``" is a perfectly valid identifier in Python. By
+    *convention* it is used whenever you must store a value but don't need it.
+
+    This is most commonly used with variable unpacking.
+
+    Using the conventional ``_``, communicates to any future reader that the
+    variable is intentionally unused.
+
+* Assign multiple values at once, "extracting" them from an iterable.
+* Use ``_`` for "throwaway" variables.
+
+**Example**
+
+.. code:: python
+
+    >>> a, _, b = [1, 2, 3]
+    >>> print(a)
+
+    >>> # What could possibly go wrong?
+    >>> a, b = {'a': 1, 'b': 2}
+
+    >>> # Is this safe?
+    >>> a, b = {1, 2}
+
+
+
 Common Mistakes
 ---------------
 
