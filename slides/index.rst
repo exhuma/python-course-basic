@@ -513,6 +513,11 @@ Imports
 The "``in``" Operator
 ---------------------
 
+.. sidebar:: Warning
+
+    A ``for`` loop does not create a new scope, and variables from that block
+    will leak to the outside!
+
 * Loops
 * Tests for membership
 
@@ -522,12 +527,41 @@ The "``in``" Operator
 
     >>> for element in [1, 2, 3]:
     >>>     print(element)
+    >>>
+    >>> print(element)  # Caution! Keep this in mind!
 
     >>> 2 in [1, 2, 3]
 
     >>> 'foo' in {'foo': 10, 'bar': 20}
 
     >>> 'foo' in {'foo', 'bar'}
+
+
+``for … in … else``
+-------------------
+
+.. sidebar:: Explore
+
+    * ``$ pydoc for``
+
+
+* For loops have an optional ``else`` clause: ``for … in … else …``.
+* The ``else`` block is executed when the ``for`` block reaches it's end
+  *normally* (no ``break``).
+
+**Example**
+
+.. code:: python
+
+    with open('names.txt') as file_handle:
+        names = file_handle.read().splitlines()
+
+    for name in names:
+        if name == 'foo':
+            print('foo was found!')
+            break
+    else:
+        print('foo was not found in the file!')
 
 
 The "``with``" Statement
@@ -541,7 +575,6 @@ The "``with``" Statement
 * Ensures that finalisation step is taken. Even on unexpected exit.
 * Can be created by implementing the magic ``__enter__`` and ``__exit__``
   methods in a class.
-
 
 
 Common Mistakes
