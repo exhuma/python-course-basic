@@ -31,7 +31,7 @@ import shlex
 # ones.
 extensions = [
     'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
+    # 'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.pngmath',
@@ -311,4 +311,4 @@ slide_theme_options = {
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+# intersphinx_mapping = {'https://docs.python.org/': None}
