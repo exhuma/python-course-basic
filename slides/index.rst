@@ -407,7 +407,7 @@ Usage:
 
 .. code:: python
 
-    >>> import model
+    >>> import wiki.model as model
     >>> page = model.WikiPage(
     ...    'index', 'Hello World!')
 
@@ -496,10 +496,43 @@ Storing files on disk (ctd)
             return titles
 
 
+Using the DiskStorage Class
+---------------------------
+
+.. sidebar:: Remember
+    :class: overlapping
+
+    Remember that packages must have a ``__init__.py`` file!
+
+.. code:: python
+
+    # filename: runner.py
+
+    from wiki.model import WikiPage
+    from wiki.storage.disk import (
+        DiskStorage
+    )
+
+    storage = DiskStorage('wiki_pages')
+    for page in storage.list():
+        print(page)
+
+    mypage = WikiPage('HelloWorld', 'This is an example!')
+    storage.save(mypage)
+
+    for page in storage.list():
+        print(page)
+
+    loaded_page = storage.load('HelloWorld')
+    print(mypage == loaded_page)
+
+
+
 Imports
 -------
 
 * Partial imports are possible (``from foo import bar``)
+* Aliasing imports: ``from foo import bar as qux``
 * *Never* write ``from foo import *`` (Why?).
 * Can be wrapped in a ``try … except`` block (more on this later). This allows
   for graceful degradation.
@@ -570,14 +603,14 @@ The "``in``" Operator
 The "``with``" Statement
 ------------------------
 
-* Also called "Context Manager"
+* Used with a so called "Context Manager".
 * Used for code which needs a clean "finalisation" step (closing an open file,
   a DB connection, …).
 * The ``with`` block does **not** create a new variable scope. Variables
   created in that block are accessible outside!
 * Ensures that finalisation step is taken. Even on unexpected exit.
-* Can be created by implementing the magic ``__enter__`` and ``__exit__``
-  methods in a class.
+* Context managers can be created by implementing the magic ``__enter__`` and
+  ``__exit__`` methods in a class.
 
 
 Variable Unpacking
@@ -590,15 +623,14 @@ Variable Unpacking
 
     This is most commonly used with variable unpacking.
 
-    Using the conventional ``_``, communicates to any future reader that the
-    variable is intentionally unused.
-
 * Assign multiple values at once, "extracting" them from an iterable.
 * Use ``_`` for "throwaway" variables.
 
 **Example**
 
 .. code:: python
+
+    >>> title, _ = filename.rsplit('.', 1)
 
     >>> a, _, b = [1, 2, 3]
     >>> print(a)
