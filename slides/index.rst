@@ -323,10 +323,14 @@ Exercise: "Falsy" Values
 
 .. to-do item #2, #32 code
 
+.. sidebar:: Takeaways
+
+    * Blocks identified by indentation
+
 .. code:: python
 
-    >>> def trueish(value):
-    >>>     if value:
+    >>> def trueish(true_enough):
+    >>>     if true_enough:
     >>>         print('yes.')
     >>>     else:
     >>>         print('no.')
@@ -432,7 +436,6 @@ Storing files on Disk
     * Imports
     * Defining classes
     * Opening files
-    * Indentation
     * ``with`` statement
 
 .. code:: python
@@ -605,7 +608,6 @@ Variable Unpacking
 
     >>> # Is this safe?
     >>> a, b = {1, 2}
-
 
 
 Common Mistakes

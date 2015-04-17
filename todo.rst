@@ -12,11 +12,9 @@
 .. TODO   6 *   d c String formatting
 .. TODO   7 **      Variable Unpacking
 .. TODO   8 *       imports
-.. TODO   9 *   d c line continuations and parens
 .. TODO  10 *   d c Docstrings
 .. TODO  11 **  d c    └─everything is an object (__doc__ of function)
 .. TODO  12 *   d c raising and catching exceptions
-.. TODO  13 *   d c Use // ** and % for numbers
 .. TODO  14 **  d c *args, *, **kwargs
 .. TODO  15 *** d c iterators and generators
 .. TODO  16 **  d c comprehensions (list, set & dict), generator expressions
@@ -37,6 +35,9 @@
 .. TODO  31 *   d c ReST & Pygments
 .. TODO  34 **  d c ABCs
 .. TODO  35 **  d c Class Customisation
+
+.. TODO PEP8
+.. TODO   9 *   d c line continuations and parens
 
 
 Code Samples
