@@ -6,6 +6,9 @@
 
    <br clear="both" />
 
+.. role:: strike
+    :class: strike
+
 
 Python
 ======
@@ -324,7 +327,34 @@ Functions
 Example::
 
     def say_hello(name):
+        '''
+        Prints "Hello <name>" to stdout.
+        '''
         print('Hello ' + name)
+
+
+Documenting Code
+----------------
+
+* The first ``string`` inside a module/class/function are their so called
+  "docstrings".
+* No standard formatting.
+* Sphinx (http://www.sphinx-doc.org)
+* Accessible via the special variable ``__doc__``.
+
+.. sidebar:: Takeaways
+
+    * Everything is an object. Functions too!
+
+.. code-block:: python
+
+    >>> def noop():
+    ...     '''
+    ...     Does nothing
+    ...     '''
+    ...     pass
+
+    >>> print(noop.__doc__)
 
 
 Exercise: "Falsy" Values
@@ -363,8 +393,10 @@ Saving your code
 
 .. sidebar:: Linux, MacOS
 
-    On \*nix systems, you can make the file executable with a shebang.
+    On \*nix systems, you can make the file executable with a shebang. For
+    example::
 
+        #!/usr/bin/python
 
 * File extension: ``.py``
 * Python files are called *modules*.
@@ -396,7 +428,7 @@ Exercise – A Wiki Page
 ----------------------
 
 .. code-block:: python
-    :caption: wiki / model.py
+    :caption: **Filename:** wiki / model.py
 
     class WikiPage:
 
@@ -426,10 +458,10 @@ Usage:
 Wiki Functionality
 ------------------
 
-* Save a page (create or update)
-* Load a page
-* Display a page
-* List pages
+* List pages.
+* Load & display a page.
+* Save a page (create or update).
+* Replace WikiWords with links.
 
 
 Storing files on Disk
@@ -450,7 +482,7 @@ Storing files on Disk
     * ``with`` statement
 
 .. code-block:: python
-    :caption: wiki / storage / disk.py
+    :caption: **Filename:** wiki / storage / disk.py
 
     from os import listdir
     from os.path import join, exists
@@ -516,7 +548,7 @@ Using the DiskStorage Class
     Remember that packages must have a ``__init__.py`` file!
 
 .. code-block:: python
-    :caption: runner.py
+    :caption: **Filename:** runner.py
 
     from wiki.model import WikiPage
     from wiki.storage.disk import (
@@ -650,6 +682,264 @@ Variable Unpacking
 
     >>> # Is this safe?
     >>> a, b = {1, 2}
+
+
+Third Party Modules & virtualenv
+--------------------------------
+
+* Official Index (The "Cheese Shop"): http://pypi.python.org
+* Third Party modules can be installed using ``pip``.
+* Virtual Environments isolate packages from the system.
+* Virtual Environments can be created using ``pyvenv`` (as of Python 3.4) or
+  ``virtualenv`` .
+
+.. sidebar:: Alternative use
+
+    * ``$ source env/bin/activate``
+    * ``virtualenvwrapper``
+
+.. code-block:: bash
+
+    $ /opt/python3.4/bin/pyvenv env
+    $ ./env/bin/pip install flask
+
+
+Packaging our application
+-------------------------
+
+A minimal setup script:
+
+.. code-block:: python
+    :caption: **Filename:** setup.py
+
+    from setuptools import setup, find_packages
+
+    setup(name='wiki',
+          packages=find_packages())
+
+
+Linking the package for development:
+
+.. code-block:: bash
+
+    $ ./env/bin/pip install -e .
+
+
+Our first Web Page
+------------------
+
+.. sidebar:: Takeaways
+    :class: overlapping
+
+    * Module level variables are all-caps (PEP8).
+    * Naming variables in function call.
+    * There are no "constants" in Python.
+    * ``__name__`` is the module's name.
+    * Avoiding "import side-effects" using |br| ``if __name__ == '__main__':``
+
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+
+    from flask import Flask
+
+    APP = Flask(__name__)
+
+
+    @APP.route('/')
+    def index():
+        return 'Hello World'
+
+
+    if __name__ == '__main__':
+        APP.run(debug=True, host='0.0.0.0', port=5000)
+
+|clear|
+
+.. code-block:: bash
+
+    $ ./env/bin/python wiki/webui.py
+
+
+Using our DiskStorage class
+---------------------------
+
+Imports:
+
+.. code-block:: python
+    :emphasize-lines: 1
+
+    from flask import Flask, g
+    from wiki.storage.disk import DiskStorage
+
+Making storage available:
+
+.. code-block:: python
+
+    @APP.before_request
+    def before_request():
+        g.db = DiskStorage('wiki_pages')
+
+Prividing a page listing:
+
+.. sidebar:: Takeaways
+
+    * Joining lists
+
+.. code-block:: python
+    :emphasize-lines: 4
+
+    @APP.route('/list')
+    def list():
+        pages = g.db.list()
+        return '\n'.join(pages)
+
+
+HTML Output (via templating) in Flask
+-------------------------------------
+
+.. code-block:: python
+    :emphasize-lines: 1, 8
+    :caption: **Filename:** wiki / webui.py
+
+    from flask import Flask, g, render_template
+
+    ...
+
+    @APP.route('/list')
+    def list():
+        pages = g.db.list()
+        return render_template('pagelist.html', pages=pages)
+
+
+.. slide::
+
+    .. image:: _static/brace_for_html.jpg
+        :align: center
+
+
+HTML Output (ctd.)
+------------------
+
+* Jinja Templating Engine (http://jinja.pocoo.org)
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / pagelist.html
+
+    <html>
+    <body>
+        <ul>
+        {% for page in pages %}
+            <li>{{page}}</li>
+        {% endfor %}
+        </ul>
+    </body>
+    </html>
+
+
+Wiki Functionality
+------------------
+
+* :strike:`List pages`
+* Load & display a page
+* Save a page (create or update)
+* Replace WikiWords with links.
+
+
+Loading and Displaying a Page
+-----------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+    :emphasize-lines: 3
+
+    ...
+
+    @APP.route('/<name>')
+    def display(name):
+        page = g.db.load(name)
+        return render_template('page.html', page=page)
+
+    ...
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / page.html
+
+    <html>
+    <body>
+        {{page.content|safe}}
+    </body>
+    </html>
+
+
+Wiki Functionality
+------------------
+
+* :strike:`List pages`
+* :strike:`Load & display a page`
+* Save a page (create or update)
+* Replace WikiWords with links.
+
+
+Creating Pages
+--------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+    :emphasize-lines: 1-2, 9-10, 13-18
+
+    from flask import ..., redirect, url_for
+    from wiki.model import WikiPage
+
+    ...
+
+    @APP.route('/<name>')
+    def display(name):
+        page = g.db.load(name)
+        if not page:
+            return render_template('edit_page.html', name=name)
+        return render_template('page.html', page=page)
+
+    @APP.route('/', methods=['POST'])
+    def save_page():
+        page = WikiPage(request.form['title'],
+                        request.form['content'])
+        g.db.save(page)
+        return redirect(url_for('display', name=page.title))
+
+    ...
+
+
+Creating Pages (ctd.)
+---------------------
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / edit_page.html
+
+    <html>
+    <body>
+    <form action="{{url_for('index')}}" method="POST">
+        Title: <input type="text"
+                      name="title"
+                      value="{{name}}" /><br />
+        Content<br />
+        <textarea name="content" rows="10" cols="80">
+          {{content|safe}}
+        </textarea>
+        <br />
+        <input type="submit" />
+    </form>
+    </body>
+    </html>
+
+
+Wiki Functionality
+------------------
+
+* :strike:`List pages`
+* :strike:`Load & display a page`
+* :strike:`Save a page (create or update)`
+* Replace WikiWords with links.
 
 
 Common Mistakes

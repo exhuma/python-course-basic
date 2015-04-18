@@ -12,18 +12,17 @@
 .. TODO   6 *   d c String formatting
 .. TODO   7 **      Variable Unpacking
 .. TODO   8 *       imports
-.. TODO  10 *   d c Docstrings
-.. TODO  11 **  d c    └─everything is an object (__doc__ of function)
+.. TODO  10 *       Docstrings
+.. TODO  11 **         └─everything is an object (__doc__ of function)
 .. TODO  12 *   d c raising and catching exceptions
 .. TODO  14 **  d c *args, *, **kwargs
 .. TODO  15 *** d c iterators and generators
 .. TODO  16 **  d c comprehensions (list, set & dict), generator expressions
 .. TODO  17 *** d c decorators
 .. TODO  18 *** d c sys.path
-.. TODO  19 **  d   Packaging & Virtualenv
+.. TODO  19 **      Packaging
 .. TODO  20 **  d c "magic" Variables and attributes
 .. TODO  21 **  d c logging
-.. TODO  22 **  d c MySQL on Python 3
 .. TODO  23 **  d   DBAPI2
 .. TODO  24 **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
 .. TODO  25 *   d   PEPs
