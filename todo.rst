@@ -9,7 +9,7 @@
 .. TODO   3 *       ``in`` operator
 .. TODO   4 *   x x ``None``
 .. TODO   5 *       Slicing
-.. TODO   6 *   d c String formatting
+.. TODO   6 *       String formatting
 .. TODO   7 **      Variable Unpacking
 .. TODO   8 *       imports
 .. TODO  10 *       Docstrings
@@ -26,7 +26,7 @@
 .. TODO  23 **  d   DBAPI2
 .. TODO  24 **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
 .. TODO  25 *   d   PEPs
-.. TODO  26 *   d c REs
+.. TODO  26 *       REs
 .. TODO  27 *       with statement (context managers)
 .. TODO  28 *   d c sorting lists
 .. TODO  29 **  d c unit tests

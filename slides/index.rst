@@ -808,8 +808,8 @@ HTML Output (via templating) in Flask
 
     @APP.route('/list')
     def list():
-        pages = g.db.list()
-        return render_template('pagelist.html', pages=pages)
+        page_names = g.db.list()
+        return render_template('pagelist.html', page_names=page_names)
 
 
 .. slide::
@@ -829,8 +829,8 @@ HTML Output (ctd.)
     <html>
     <body>
         <ul>
-        {% for page in pages %}
-            <li>{{page}}</li>
+        {% for name in page_names %}
+            <li>{{name}}</li>
         {% endfor %}
         </ul>
     </body>
@@ -940,6 +940,141 @@ Wiki Functionality
 * :strike:`Load & display a page`
 * :strike:`Save a page (create or update)`
 * Replace WikiWords with links.
+
+
+Page Listing Revisited
+----------------------
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / pagelist.html
+    :emphasize-lines: 5-6
+
+    <html>
+    <body>
+    <ul>
+    {% for name in page_names %}
+        <li><a href="{{url_for('display',
+            name=name.title())}}">{{name}}</a></li>
+    {% endfor %}
+    </ul>
+    </body>
+    </html>
+
+
+Creating an Index Page
+----------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+    :emphasize-lines: 5
+
+    ...
+
+    @APP.route('/')
+    def index():
+        return redirect('/Index')
+
+    ...
+
+
+Replacing WikiWords
+-------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+
+    import re
+
+    P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+
+    def make_page_url(match):
+        groups = match.groups()
+        title = groups[0]
+        return '<a href="{url}">{title}</a>'.format(
+            url=url_for('display', name=title),
+            title=title)
+
+    @APP.template_filter('wikify')
+    def wikify(text):
+        return P_WIKIWORD.sub(make_page_url, text)
+
+
+.. slide::
+
+    .. image:: _static/shock.jpg
+        :align: center
+
+
+Let's pick this apart
+---------------------
+
+.. sidebar:: "Raw" Strings
+    :class: overlapping
+
+    A string prefixed with an `r` is a raw string. This means that no escaping
+    is done. For example, ``\n`` will not be replaced by a newline.
+
+.. code-block:: python
+
+    import re  # Import the regex module
+
+    # pre-compile the regular expression
+    P_WIKIWORD = re.compile(
+        r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+
+    # Assigns a new filter. Filters can be used in the template to "modify"
+    # values (see also the ``safe`` filter we used earlier.
+    @APP.template_filter('wikify')
+    def wikify(text):
+        # This takes the value from the template and returns a modified text.
+        return P_WIKIWORD.sub(make_page_url, text)
+
+``re.sub`` replaces all occurrences in a string with something else. In this
+case we give a *function* as replacement. This function will be called for each
+match.
+
+
+Let's pick this apart (ctd)
+---------------------------
+
+The following function is created to be used in ``re.sub``. It takes a
+``match`` object, and returns a replacement string.
+
+This is needed so we can use ``url_for`` to generate the correct URLs.
+
+Python string formatting can be done using C-Style ``%`` escapes, *or* using a
+mini templating language.
+
+.. code-block:: python
+
+    def make_page_url(match):
+        groups = match.groups()
+        title = groups[0]
+        return '<a href="{url}">{title}</a>'.format(
+            url=url_for('display', name=title),
+            title=title)
+
+
+String Formatting
+-----------------
+
+.. code-block:: python
+
+    >>> fname = 'John'
+    >>> lname = 'Doe'
+    >>> print('|{fname:<20}|{lname:^20}|'.format(
+    ...     fname=fname, lname=lname))
+    >>> print('|%-20s|%20s|' % (fname, lname))
+
+
+================ =========================
+ C-Style           Mini-Language
+================ =========================
+ faster            slower
+ less readable     more readable
+ less verbose      more verbose
+ less powerful     more powerful
+================ =========================
 
 
 Common Mistakes
