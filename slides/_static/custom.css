@@ -81,3 +81,25 @@ Q::before, Q::after {
     top: 5em;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, .4);
 }
+
+
+div.code-block-caption {
+    border-radius: 2px;
+    line-height: 1.4;
+    letter-spacing: 0.1em !important;
+    background: rgba(255, 255, 230, 0.7);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    text-shadow: 0;
+}
+
+.hll {
+    background-color: #ffffcc !important;
+    display: block !important;
+    margin-left: -1em !important;
+    padding-left: 1em !important;
+    margin-right: -1em !important;
+    padding-right: 1em !important;
+}

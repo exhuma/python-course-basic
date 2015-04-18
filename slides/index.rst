@@ -1,3 +1,12 @@
+.. |br| raw:: html
+
+   <br />
+
+.. |clear| raw:: html
+
+   <br clear="both" />
+
+
 Python
 ======
 
@@ -133,7 +142,7 @@ Simply run ``python`` on the console to start it.
 
 By convention, lines with ``>>>`` represent a REPL prompt.
 
-.. code:: python
+.. code-block:: python
 
     >>> 1 + 1
     2
@@ -255,7 +264,7 @@ Exercise: scalars
     * Difference between ``mytext`` and ``mybytes``?
 
 
-.. code:: python
+.. code-block:: python
 
     >>> mytext = 'Hello World!'
     >>> mytext.split()
@@ -285,7 +294,7 @@ Exercise: collections
     * Run ``help`` on both ``mylist`` and ``mydict``.
 
 
-.. code:: python
+.. code-block:: python
 
     >>> # dictionary
     >>> mydict = {}
@@ -327,7 +336,7 @@ Exercise: "Falsy" Values
 
     * Blocks identified by indentation
 
-.. code:: python
+.. code-block:: python
 
     >>> def trueish(true_enough):
     >>>     if true_enough:
@@ -362,7 +371,9 @@ Saving your code
 * Folders can be used to organise your code into *packages*.
 * Folders with modules should contain a file with the name ``__init__.py``.
   This special file marks a folder as *package*.
-* Execute files with::
+* Execute files with
+
+.. code-block:: bash
 
     $ python filename.py
 
@@ -384,9 +395,9 @@ Classes – Basics
 Exercise – A Wiki Page
 ----------------------
 
-.. code:: python
+.. code-block:: python
+    :caption: wiki / model.py
 
-    # Filename: wiki/model.py
     class WikiPage:
 
         def __init__(self, title, content):
@@ -405,7 +416,7 @@ Usage:
     * Try assigning a value to ``page.content``
 
 
-.. code:: python
+.. code-block:: python
 
     >>> import wiki.model as model
     >>> page = model.WikiPage(
@@ -438,9 +449,9 @@ Storing files on Disk
     * Opening files
     * ``with`` statement
 
-.. code:: python
+.. code-block:: python
+    :caption: wiki / storage / disk.py
 
-    # Filename: wiki/storage/disk.py
     from os import listdir
     from os.path import join, exists
     import json
@@ -472,7 +483,7 @@ Storing files on disk (ctd)
     * ``for … in …``  loop
     * Variable unpacking
 
-.. code:: python
+.. code-block:: python
 
     class DiskStorage:  # continuation
 
@@ -504,9 +515,8 @@ Using the DiskStorage Class
 
     Remember that packages must have a ``__init__.py`` file!
 
-.. code:: python
-
-    # filename: runner.py
+.. code-block:: python
+    :caption: runner.py
 
     from wiki.model import WikiPage
     from wiki.storage.disk import (
@@ -559,7 +569,7 @@ The "``in``" Operator
 
 **Examples:**
 
-.. code:: python
+.. code-block:: python
 
     >>> for element in [1, 2, 3]:
     >>>     print(element)
@@ -587,7 +597,7 @@ The "``in``" Operator
 
 **Example**
 
-.. code:: python
+.. code-block:: python
 
     with open('names.txt') as file_handle:
         names = file_handle.read().splitlines()
@@ -628,7 +638,7 @@ Variable Unpacking
 
 **Example**
 
-.. code:: python
+.. code-block:: python
 
     >>> title, _ = filename.rsplit('.', 1)
 
@@ -647,7 +657,9 @@ Common Mistakes
 
 * Mutable vs. Immutable Objects
 * mutable default arguments
-* Automatic string concatenation::
+* Automatic string concatenation
+
+.. code-block:: bash
 
     $ python -m timeit "'aaa' 'bbb'"
     $ python -m timeit "'aaa' + 'bbb'"
