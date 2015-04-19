@@ -828,11 +828,11 @@ HTML Output (ctd.)
 
     <html>
     <body>
-        <ul>
-        {% for name in page_names %}
-            <li>{{name}}</li>
-        {% endfor %}
-        </ul>
+      <ul>
+      {% for name in page_names %}
+        <li>{{name}}</li>
+      {% endfor %}
+      </ul>
     </body>
     </html>
 
@@ -867,7 +867,10 @@ Loading and Displaying a Page
 
     <html>
     <body>
-        {{page.content|safe}}
+      {{page.content|safe}}
+      <hr />
+      <a href="{{url_for('display', name=page.title, edit=True)}}">
+        Edit</a>
     </body>
     </html>
 
@@ -886,18 +889,19 @@ Creating Pages
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
-    :emphasize-lines: 1-2, 9-10, 13-18
+    :emphasize-lines: 1-2, 7-11, 15-20
 
     from flask import ..., redirect, url_for
     from wiki.model import WikiPage
-
-    ...
 
     @APP.route('/<name>')
     def display(name):
         page = g.db.load(name)
         if not page:
             return render_template('edit_page.html', name=name)
+        if 'edit' in request.args:
+            return render_template('edit_page.html', name=name,
+                                   content=page.content)
         return render_template('page.html', page=page)
 
     @APP.route('/', methods=['POST'])
@@ -906,8 +910,6 @@ Creating Pages
                         request.form['content'])
         g.db.save(page)
         return redirect(url_for('display', name=page.title))
-
-    ...
 
 
 Creating Pages (ctd.)
@@ -919,15 +921,14 @@ Creating Pages (ctd.)
     <html>
     <body>
     <form action="{{url_for('index')}}" method="POST">
-        Title: <input type="text"
-                      name="title"
-                      value="{{name}}" /><br />
-        Content<br />
-        <textarea name="content" rows="10" cols="80">
-          {{content|safe}}
-        </textarea>
-        <br />
-        <input type="submit" />
+      Title: <input type="text"
+                    name="title"
+                    value="{{name}}" /><br />
+      Content<br />
+      <textarea name="content" rows="10"
+                cols="80">{{content|safe}}</textarea>
+      <br />
+      <input type="submit" />
     </form>
     </body>
     </html>
@@ -945,6 +946,8 @@ Wiki Functionality
 Page Listing Revisited
 ----------------------
 
+Let's add links to our page listing:
+
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / pagelist.html
     :emphasize-lines: 5-6
@@ -953,8 +956,8 @@ Page Listing Revisited
     <body>
     <ul>
     {% for name in page_names %}
-        <li><a href="{{url_for('display',
-            name=name.title())}}">{{name}}</a></li>
+      <li><a href="{{url_for('display',
+        name=name.title())}}">{{name}}</a></li>
     {% endfor %}
     </ul>
     </body>
@@ -963,6 +966,9 @@ Page Listing Revisited
 
 Creating an Index Page
 ----------------------
+
+… and let's replace the hard-coded "Hello World" index page with a default wiki
+page.
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
@@ -996,6 +1002,7 @@ Replacing WikiWords
 
     @APP.template_filter('wikify')
     def wikify(text):
+        # NOTE: We could do much more here!
         return P_WIKIWORD.sub(make_page_url, text)
 
 
@@ -1054,6 +1061,45 @@ mini templating language.
             url=url_for('display', name=title),
             title=title)
 
+That *thing* again
+------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+
+    import re
+
+    P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+
+    def make_page_url(match):
+        groups = match.groups()
+        title = groups[0]
+        return '<a href="{url}">{title}</a>'.format(
+            url=url_for('display', name=title),
+            title=title)
+
+    @APP.template_filter('wikify')
+    def wikify(text):
+        # NOTE: We could do much more here!
+        return P_WIKIWORD.sub(make_page_url, text)
+
+
+Using this filter in the template
+---------------------------------
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / page.html
+    :emphasize-lines: 3
+
+    <html>
+    <body>
+      {{page.content|wikify|safe}}
+      <hr />
+      <a href="{{url_for('display', name=page.title, edit=True)}}">
+        Edit</a>
+    </body>
+    </html>
+
 
 String Formatting
 -----------------
@@ -1062,8 +1108,12 @@ String Formatting
 
     >>> fname = 'John'
     >>> lname = 'Doe'
+    >>>
+    >>> # Mini-Language
     >>> print('|{fname:<20}|{lname:^20}|'.format(
     ...     fname=fname, lname=lname))
+    >>>
+    >>> # C-Style
     >>> print('|%-20s|%20s|' % (fname, lname))
 
 
@@ -1075,6 +1125,34 @@ String Formatting
  less verbose      more verbose
  less powerful     more powerful
 ================ =========================
+
+
+Page Layout
+-----------
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / master.html
+
+    <html>
+    <body>
+      <nav>
+        <a href="{{url_for('list')}}">Page List</a>
+      </nav>
+      <hr />
+      <div id="content">{% block content %}{% endblock %}</div>
+    </body>
+    </html>
+
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / page.html
+
+    {% extends "master.html" %}
+    {% block content %}
+    {{page.content|wikify|safe}}
+    <hr />
+    <a href="{{url_for('display', name=page.title, edit=True)}}">
+      Edit</a>
+    {% endblock %}
 
 
 Common Mistakes
