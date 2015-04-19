@@ -25,11 +25,18 @@ About You
 Installation
 ============
 
+* Linux
+* Windows
+* MacOS
+
+
 Linux
 -----
 
 .. sidebar:: Custom install on Linux
     :subtitle: ~5min
+
+    For this course, we need ``libsqlite3-dev``!
 
     ::
 
@@ -60,6 +67,12 @@ Installation on Windows is as easy as downlading the installer and running it.
 
 Introduction
 ============
+
+* High-level overview of the language.
+* Implementations
+* Editors
+* Language features
+
 
 Birds-Eye View
 --------------
@@ -173,6 +186,11 @@ Getting Help
 
 Diving in
 =========
+
+* Language data types and primitives.
+* Functions and classes.
+* Saving and running the code.
+
 
 Common Data Types
 -----------------
@@ -424,6 +442,12 @@ Classes – Basics
 * Static methods are merely syntactic sugar.
 
 
+Demo Project
+============
+
+A very simple wiki page.
+
+
 Exercise – A Wiki Page
 ----------------------
 
@@ -478,8 +502,6 @@ Storing files on Disk
 
     * Imports
     * Defining classes
-    * Opening files
-    * ``with`` statement
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / disk.py
@@ -496,15 +518,45 @@ Storing files on Disk
         def __init__(self, root):
             self.root = root
 
-        def save(self, document):
-            filename = join(self.root, document.title) + '.json'
-            with open(filename, 'w') as file_handle:
-                json.dump({
-                    'title': document.title,
-                    'content': document.content
-                }, file_handle)
+        def init(self):
+            pass
+
+        def close(self):
+            pass
 
 
+Storing files on disk (ctd)
+---------------------------
+
+.. sidebar:: Takeaways
+    :class: overlapping
+
+    * Opening files
+    * ``with`` statement
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / disk.py
+
+    def save(self, document):
+        filename = join(self.root,
+            document.title) + '.json'
+        with open(filename, 'w') as file_hndl:
+            json.dump({
+                'title': document.title,
+                'content': document.content
+            }, file_hndl)
+
+    def load(self, title):
+        filename = join(self.root,
+            title) + '.json'
+        if not exists(filename):
+            return None
+
+        with open(filename, 'r') as file_handle:
+            document = json.load(file_handle)
+
+        return WikiPage(document['title'],
+                        document['content'])
 
 Storing files on disk (ctd)
 ---------------------------
@@ -516,27 +568,14 @@ Storing files on disk (ctd)
     * Variable unpacking
 
 .. code-block:: python
+    :caption: **Filename:** wiki / storage / disk.py
 
-    class DiskStorage:  # continuation
-
-        def load(self, title):
-            filename = join(self.root,
-                title) + '.json'
-            if not exists(filename):
-                return None
-
-            with open(filename, 'r') as file_handle:
-                document = json.load(file_handle)
-
-            return WikiPage(document['title'],
-                            document['content'])
-
-        def list(self):
-            titles = []
-            for filename in listdir(self.root):
-                title, _ = filename.rsplit('.', 1)
-                titles.append(title)
-            return titles
+    def list(self):
+        titles = []
+        for filename in listdir(self.root):
+            title, _ = filename.rsplit('.', 1)
+            titles.append(title)
+        return titles
 
 
 Using the DiskStorage Class
@@ -731,7 +770,7 @@ Our first Web Page
 .. sidebar:: Takeaways
     :class: overlapping
 
-    * Module level variables are all-caps (PEP8).
+    * Module level variables are all-caps (PEP 8).
     * Naming variables in function call.
     * There are no "constants" in Python.
     * ``__name__`` is the module's name.
@@ -752,7 +791,8 @@ Our first Web Page
 
 
     if __name__ == '__main__':
-        APP.run(debug=True, host='0.0.0.0', port=5000)
+        APP.run(debug=True, host='0.0.0.0',
+                port=5000)
 
 |clear|
 
@@ -1153,6 +1193,277 @@ Page Layout
     <a href="{{url_for('display', name=page.title, edit=True)}}">
       Edit</a>
     {% endblock %}
+
+
+Wiki Functionality
+------------------
+
+* :strike:`List pages`
+* :strike:`Load & display a page`
+* :strike:`Save a page (create or update)`
+* :strike:`Replace WikiWords with links.`
+
+
+Packaging — Revisited
+----------------------
+
+.. code-block:: python
+    :caption: **Filename:** setup.py
+
+    from setuptools import setup, find_packages
+    from pkg_resources import resource_string
+    setup(
+        name='wiki',
+        description="Replacemend for Wikipedia",
+        url="http://www.newwp-project.com",
+        license="BSD",
+        author="Michel Albert",
+        author_email="michel@albert.lu",
+        version='1.0',
+        packages=find_packages(),
+        install_requires=[
+            'Flask',
+        ],
+    )
+
+Creating distributions
+----------------------
+
+.. code-block:: bash
+    :caption: Creating a source distribution
+
+    $ python setup.py sdist
+
+
+.. code-block:: bash
+    :caption: Creating a binary distribution
+
+    $ python setup.py bdist_wheel
+
+
+.. code-block:: bash
+    :caption: Uploading / Publishing
+
+    $ python setup.py register
+    $ twine upload dist/*
+
+See: https://packaging.python.org
+
+
+Deploying
+---------
+
+* WSGI (PEP 333 and PEP 3333) — Commonly pronounced "Whisky"
+* Web Server Gateway Interface.
+* Supported by all major web servers (Apache httpd, nginx, Tornado, …)
+
+.. image:: _static/whisky.jpg
+    :align: center
+
+
+Apache httpd
+------------
+
+.. code-block:: python
+    :caption: / var / www / mywiki / wsgi / myall.wsgi
+
+    from wiki.webui import APP as application
+
+.. code-block:: apache
+    :caption: / etc / apache2 / site-available / mywiki.conf
+
+    <VirtualHost 1.2.3.4:80>
+        ServerName mywiki.example.com
+
+        WSGIDaemonProcess yourapplication user=user1 group=group1 \
+            threads=5
+        WSGIScriptAlias / /var/www/mywiki/wsgi/myall.wsgi
+
+        <Directory /var/www/mywiki>
+            WSGIProcessGroup yourapplication
+            WSGIApplicationGroup %{GLOBAL}
+            Order deny,allow
+            Allow from all
+        </Directory>
+    </VirtualHost>
+
+
+
+Database Connectivity
+=====================
+
+* DBAPI2 (PEP 249)
+* SQLAlchemy
+* sqlite3
+
+
+Our own Storage API
+-------------------
+
+* Remember ``wiki/storage/disk.py``
+
+.. code-block:: python
+    :caption: Storage API
+
+    def save(self, document: WikiPage) -> None:
+        pass
+
+    def load(self, title: str) -> Optional[WikiPage]:
+        pass
+
+    def list(self) -> List[str]:
+        pass
+
+* Type hints will be *provisional* in Python 3.5 (See PEP 484)
+* Syntax is valid back to Python 3.2 (PEP 3107)
+
+
+SQLite and DPAPI 2
+------------------
+
+SQLite3 is included in the Python standard library (since Python 2.5). It is
+compliant to DBAPI2 (PEP 249).
+
+DBAPI compliant code looks like this:
+
+.. code-block:: python
+
+    connection = driver.connect(driver_parameters)
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM mytable")
+    for row in cursor:
+        print(row)
+    connection.close()
+
+.. warning::
+
+    If you compile Python manually, the sqlite development headers
+    (``libsqlite3-dev`` on debian and derivates) must be available. If not, the
+    extension will not be included!
+
+
+A new Storage class
+-------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / sqlite.py
+
+    import sqlite3
+
+    from wiki.model import WikiPage
+
+
+    class SQLiteStorage:
+
+        def __init__(self, dsn):
+            self.connection = sqlite3.connect(dsn)
+
+A new Storage class (ctd.)
+--------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / sqlite.py
+
+        def init(self):
+            cursor = self.connection.cursor()
+            cursor.execute(
+                '''
+                CREATE TABLE wikipage (
+                    title TEXT NOT NULL PRIMARY KEY,
+                    content TEXT);
+                ''')
+
+            cursor.close()
+            self.connection.commit()
+
+        def close(self):
+            self.connection.close()
+
+A new Storage class (ctd.)
+--------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / sqlite.py
+
+        def save(self, document):
+            cursor = self.connection.cursor()
+            cursor.execute('SELECT COUNT(*) FROM wikipage '
+                           'WHERE title=?',
+                           [document.title])
+            existing = cursor.fetchone()
+            if existing[0] > 0:
+                cursor.execute('UPDATE wikipage SET content=? '
+                               'WHERE title=?',
+                               [document.content, document.title])
+            else:
+                cursor.execute('INSERT INTO wikipage '
+                               '(title, content) VALUES (?, ?)',
+                               [document.title, document.content])
+            cursor.close()
+            self.connection.commit()
+
+A new Storage class (ctd.)
+--------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / sqlite.py
+
+        def load(self, title):
+            cursor = self.connection.cursor()
+            cursor.execute('SELECT title, content FROM wikipage '
+                           'WHERE title=?',
+                           [title])
+            row = cursor.fetchone()
+            cursor.close()
+            if not row:
+                return None
+            else:
+                title, content = row
+                return WikiPage(title, content)
+
+A new Storage class (ctd.)
+--------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / storage / sqlite.py
+
+        def list(self):
+            cursor = self.connection.cursor()
+            cursor.execute('SELECT title FROM wikipage')
+
+            titles = []
+            for row in cursor:
+                titles.append(row[0])
+            cursor.close()
+            return titles
+
+
+Out with the old, in with the new
+---------------------------------
+
+.. code-block:: python
+    :caption: **Filename:** wiki / webui.py
+
+    from wiki.storage.sqlite import SQLiteStorage
+
+    @APP.before_first_request
+    def init_storage():
+        try:
+            db = SQLiteStorage('wikipages.sqlite')
+            db.init()
+        except Exception as exc:
+            print(exc)
+        finally:
+            db.close()
+
+    @APP.before_request
+    def before_request():
+        g.db = SQLiteStorage('wikipages.sqlite')
+
+    @APP.teardown_request
+    def teardown_request(request):
+        g.db.close()
+        return request
 
 
 Common Mistakes
