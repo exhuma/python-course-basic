@@ -1441,6 +1441,11 @@ A new Storage class (ctd.)
 Out with the old, in with the new
 ---------------------------------
 
+.. sidebar:: Takeaways
+    :class: overlapping
+
+    * Exception Handling
+
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
 
@@ -1466,6 +1471,38 @@ Out with the old, in with the new
         return request
 
 
+Essential Modules
+-----------------
+
+* sys
+* os
+* os.path
+* logging
+* datetime, time
+* unittest
+* pprint
+* io
+* functools
+* collections
+
+
+Other Interesting Modules
+-------------------------
+
+================== ==================
+ Modulename         Modulename
+================== ==================
+ argparse           multiprocessing
+ configparser       profile
+ csv                pstats
+ enum               random
+ getpass            shutil
+ hashlib            signal
+ html               subprocess
+ http               tempfile
+================== ==================
+
+
 Common Mistakes
 ---------------
 
@@ -1477,3 +1514,9 @@ Common Mistakes
 
     $ python -m timeit "'aaa' 'bbb'"
     $ python -m timeit "'aaa' + 'bbb'"
+
+
+Advanced Python
+===============
+
+TODO

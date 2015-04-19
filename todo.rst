@@ -14,7 +14,8 @@
 .. TODO   8 *       imports
 .. TODO  10 *       Docstrings
 .. TODO  11 **         └─everything is an object (__doc__ of function)
-.. TODO  12 *   d c raising and catching exceptions
+.. TODO  12 *       raising and catching exceptions
+.. TODO  24 **      Essential modules: os, sys, ... (sys.stderr, out, in)
 .. TODO  14 **  d c *args, *, **kwargs
 .. TODO  15 *** d c iterators and generators
 .. TODO  16 **  d c comprehensions (list, set & dict), generator expressions
@@ -23,9 +24,8 @@
 .. TODO  19 **      Packaging
 .. TODO  20 **  d c "magic" Variables and attributes
 .. TODO  21 **  d c logging
-.. TODO  23 **  d   DBAPI2
-.. TODO  24 **  d c Essential modules: os, sys, ... (sys.stderr, out, in)
-.. TODO  25 *   d   PEPs
+.. TODO  23 **      DBAPI2
+.. TODO  25 *       PEPs
 .. TODO  26 *       REs
 .. TODO  27 *       with statement (context managers)
 .. TODO  28 *   d c sorting lists
@@ -41,32 +41,6 @@
 
 Code Samples
 ------------
-
-argparse
-~~~~~~~~
-
-csv
-~~~
-
-A module to easily read and write CSV files.
-
-.. code::
-    :language: python
-
-    from csv import Reader
-    reader = Reader(open('filename'))
-    for row in reader:
-        print ' '.join(row)
-
-
-    writer = Writer(open('output.csv', 'w'))
-    data = [
-        ('a', 'b', 'c'),
-        (1, 1, 1),
-        (1, 2, 3)
-    ]
-    for row in data:
-        writer.writerow(data)
 
 cmd
 ~~~
@@ -110,36 +84,11 @@ A module to write interactive console applications.
         MyApp.run()
 
 
-json
-~~~~
-
-Easily read and write JSON documents.
-
-.. code::
-    :language: python
-
-    from json import load, dump
-    data = load(open('myfile.json'))
-    newdata = {
-        "key": "value"
-    }
-
-    dump(newdata, open('filename', 'w'))
-
-
-
-collections
-~~~~~~~~~~~
-
-
 Extension Modules
 -----------------
 
 SQLAlchemy
 ~~~~~~~~~~
-
-Flask
-~~~~~
 
 xlrd
 ~~~~
