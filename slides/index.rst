@@ -632,8 +632,8 @@ The "``in``" Operator
 
 .. sidebar:: Warning
 
-    A ``for`` loop does not create a new scope, and variables from that block
-    will leak to the outside!
+    The iterated variable is bound in the *same* scope as the ``for``
+    loop resides. The loop effectively shadows this value!
 
 * Loops
 * Tests for membership
@@ -642,6 +642,7 @@ The "``in``" Operator
 
 .. code-block:: python
 
+    >>> element = 'Whoops'
     >>> for element in [1, 2, 3]:
     >>>     print(element)
     >>>
@@ -831,8 +832,8 @@ Prividing a page listing:
 
     @APP.route('/list')
     def list():
-        pages = g.db.list()
-        return '\n'.join(pages)
+        page_names = g.db.list()
+        return '\n'.join(page_names)
 
 
 HTML Output (via templating) in Flask
@@ -929,9 +930,9 @@ Creating Pages
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
-    :emphasize-lines: 1-2, 7-11, 15-20
+    :emphasize-lines: 1-2, 7-11, 14-20
 
-    from flask import ..., redirect, url_for
+    from flask import ..., redirect, url_for, request
     from wiki.model import WikiPage
 
     @APP.route('/<name>')
@@ -1323,7 +1324,7 @@ Our own Storage API
 * Syntax is valid back to Python 3.2 (PEP 3107)
 
 
-SQLite and DPAPI 2
+SQLite and DBAPI 2
 ------------------
 
 SQLite3 is included in the Python standard library (since Python 2.5). It is
