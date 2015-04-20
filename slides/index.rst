@@ -1026,6 +1026,28 @@ page.
 Replacing WikiWords
 -------------------
 
+.. code-block:: html+jinja
+    :caption: **Filename:** wiki / templates / page.html
+    :emphasize-lines: 3
+
+    <html>
+    <body>
+      {{page.content|wikify|safe}}
+      <hr />
+      <a href="{{url_for('display', name=page.title, edit=True)}}">
+        Edit</a>
+    </body>
+    </html>
+
+
+Flask allows us to *easily* create "modifier" functions for values. Turning an
+existing document into HTML is essentially a modification of the raw content.
+So we will create a filter.
+
+
+Custom Template Filter
+----------------------
+
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
 
@@ -1122,23 +1144,6 @@ That *thing* again
     def wikify(text):
         # NOTE: We could do much more here!
         return P_WIKIWORD.sub(make_page_url, text)
-
-
-Using this filter in the template
----------------------------------
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / page.html
-    :emphasize-lines: 3
-
-    <html>
-    <body>
-      {{page.content|wikify|safe}}
-      <hr />
-      <a href="{{url_for('display', name=page.title, edit=True)}}">
-        Edit</a>
-    </body>
-    </html>
 
 
 String Formatting
