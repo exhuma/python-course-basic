@@ -1046,6 +1046,23 @@ existing document into HTML is essentially a modification of the raw content.
 So we will create a filter.
 
 
+Planning the Filter
+-------------------
+
+
+.. code-block:: python
+
+    @APP.template_filter('wikify')
+    def wikify(text):
+        return text.upper()
+
+* Filters are functions that take a string and return a modified string.
+* Input: ``'Foo HelloWorld bar'`` |br|
+  Output: ``'Foo <a href="http://localhost:5000/HelloWorld"> HelloWorld</a> bar'``
+* **Challenge:** Use ``url_for`` to create proper URLs.
+* *How?*
+
+
 Custom Template Filter
 ----------------------
 
