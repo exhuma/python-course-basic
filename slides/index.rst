@@ -16,6 +16,31 @@
 Python
 ======
 
+
+About This Course
+-----------------
+
+* Introduction to Python
+* HelloWorld
+* Wiki
+    * List pages.
+    * Load & display a page.
+    * Save a page (create or update).
+    * Replace WikiWords with links.
+* Packaging
+* *Advanced Python?*
+
+
+About Me
+--------
+
+* Professional Software Developer since 1998.
+* GFA-Basic → Delphi → PHP → Java → Python
+* Degree in Computing Science.
+* Semantics Nerd
+* Geek
+
+
 About You
 ---------
 
@@ -31,6 +56,7 @@ Installation
 * Linux
 * Windows
 * MacOS
+* Go to https://www.python.org/downloads
 
 
 Linux
@@ -48,6 +74,7 @@ Linux
         sudo make install
 
 
+* Download the ``Python-3.4.3.tgz`` file and install.
 * Available by default on most Unix platforms.
 * Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
 * Python 2 and 3 can both happily live on the same system without interfering
@@ -58,7 +85,7 @@ Linux
 Windows
 -------
 
-Installation on Windows is as easy as downlading the installer and running it.
+* Download the ``python-3.4.x.msi`` file and install.
 
 ------------------------------------------------------------------------------
 
@@ -66,6 +93,18 @@ Installation on Windows is as easy as downlading the installer and running it.
     Installing compiled extensions (f.ex. C/C++) is more difficult on Windows
     as an appropriate compiler must be present. This is out of scope of this
     presentation.
+
+
+Mac OS X
+--------
+
+* Download the ``pkg`` file and install.
+
+.. tip::
+
+    By default, Python 2.7 is installed. Installing from the official package
+    will *not* overwrite the existing installation. They will live
+    side-by-side.
 
 
 Introduction
@@ -109,6 +148,12 @@ Editors
 * Komodo IDE — *http://komodoide.com/*
 * Eclipse (with PyDev) — *https://eclipse.org*
 * Netbeans (with Python plugin) — *https://netbeans.org*
+* Any text-editor
+    * vim
+    * emacs
+    * notepad++
+    * sublime
+    * …
 
 
 Duck Typing
@@ -119,16 +164,22 @@ Duck Typing
 
     -- James Whitcomb Riley
 
-Duck Typing (ctd.)
-------------------
 
-+--------------------+--------------------+---------------------+
-|                    | **Strong Binding** | **Weak Binding**    |
-+--------------------+--------------------+---------------------+
-| **Static Typing**  | Java, C#           | ?                   |
-+--------------------+--------------------+---------------------+
-| **Dynamic Typing** | Python, Ruby       | PHP, C              |
-+--------------------+--------------------+---------------------+
+Typing Comparison
+-----------------
+
+=========== ========= ============
+Language     Typing    Coercion
+=========== ========= ============
+Java         Static    No
+C#           Static    No
+C++          Static    No
+Python       Dynamic   No
+Ruby         Dynamic   No
+PHP          Dynamic   Yes
+C            Dynamic   Yes
+JavaScript   Dynamic   Yes
+=========== ========= ============
 
 
 
@@ -875,9 +926,27 @@ HTML Output (via templating) in Flask
     </html>
 
 
+HTML Output (ctd.)
+------------------
+
+.. code-block:: python
+    :emphasize-lines: 1, 8
+    :caption: **Filename:** wiki / webui.py
+
+    from flask import Flask, g, render_template
+
+    ...
+
+    @APP.route('/list')
+    def list():
+        page_names = g.db.list()
+        return render_template('pagelist.html',
+                               page_names=page_names)
+
+
 .. slide::
 
-    :keyterm:`http://localhost:5000/BingoBongo`
+    :keyterm:`http://localhost:5000/list`
 
 
 Wiki Functionality
@@ -918,27 +987,9 @@ Loading and Displaying a Page
     </html>
 
 
-HTML Output (ctd.)
-------------------
-
-.. code-block:: python
-    :emphasize-lines: 1, 8
-    :caption: **Filename:** wiki / webui.py
-
-    from flask import Flask, g, render_template
-
-    ...
-
-    @APP.route('/list')
-    def list():
-        page_names = g.db.list()
-        return render_template('pagelist.html',
-                               page_names=page_names)
-
-
 .. slide::
 
-    :keyterm:`http://localhost:5000/list`
+    :keyterm:`http://localhost:5000/BingoBongo`
 
 
 Wiki Functionality
