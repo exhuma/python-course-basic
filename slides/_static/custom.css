@@ -109,3 +109,14 @@ div.code-block-caption {
 .strike {
     text-decoration: line-through;
 }
+
+.keyterm {
+    display: block;
+    margin-top: 5em;
+    font-size: 150%;
+    text-align: center;
+    padding: 0.5em 1em;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 2px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
+}

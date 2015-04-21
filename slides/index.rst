@@ -6,6 +6,9 @@
 
    <br clear="both" />
 
+.. role:: keyterm
+    :class: keyterm
+
 .. role:: strike
     :class: strike
 
@@ -802,6 +805,12 @@ Our first Web Page
     $ ./env/bin/python wiki/webui.py
 
 
+.. slide::
+
+    :keyterm:`http://localhost:5000`
+
+
+
 Using our DiskStorage class
 ---------------------------
 
@@ -836,21 +845,9 @@ Prividing a page listing:
         return '\n'.join(page_names)
 
 
-HTML Output (via templating) in Flask
--------------------------------------
+.. slide::
 
-.. code-block:: python
-    :emphasize-lines: 1, 8
-    :caption: **Filename:** wiki / webui.py
-
-    from flask import Flask, g, render_template
-
-    ...
-
-    @APP.route('/list')
-    def list():
-        page_names = g.db.list()
-        return render_template('pagelist.html', page_names=page_names)
+    :keyterm:`http://localhost:5000/list`
 
 
 .. slide::
@@ -859,8 +856,8 @@ HTML Output (via templating) in Flask
         :align: center
 
 
-HTML Output (ctd.)
-------------------
+HTML Output (via templating) in Flask
+-------------------------------------
 
 * Jinja Templating Engine (http://jinja.pocoo.org)
 
@@ -876,6 +873,11 @@ HTML Output (ctd.)
       </ul>
     </body>
     </html>
+
+
+.. slide::
+
+    :keyterm:`http://localhost:5000/BingoBongo`
 
 
 Wiki Functionality
@@ -914,6 +916,29 @@ Loading and Displaying a Page
         Edit</a>
     </body>
     </html>
+
+
+HTML Output (ctd.)
+------------------
+
+.. code-block:: python
+    :emphasize-lines: 1, 8
+    :caption: **Filename:** wiki / webui.py
+
+    from flask import Flask, g, render_template
+
+    ...
+
+    @APP.route('/list')
+    def list():
+        page_names = g.db.list()
+        return render_template('pagelist.html',
+                               page_names=page_names)
+
+
+.. slide::
+
+    :keyterm:`http://localhost:5000/list`
 
 
 Wiki Functionality
@@ -973,6 +998,11 @@ Creating Pages (ctd.)
     </form>
     </body>
     </html>
+
+
+.. slide::
+
+    :keyterm:`http://localhost:5000/BingoBongo`
 
 
 Wiki Functionality
@@ -1057,8 +1087,8 @@ Planning the Filter
         return text.upper()
 
 * Filters are functions that take a string and return a modified string.
-* Input: ``'Foo HelloWorld bar'`` |br|
-  Output: ``'Foo <a href="http://localhost:5000/HelloWorld"> HelloWorld</a> bar'``
+* **Input:** ``'Foo HelloWorld bar'`` |br|
+  **Output:** ``'Foo <a href="http://localhost:5000/HelloWorld"> HelloWorld</a> bar'``
 * **Challenge:** Use ``url_for`` to create proper URLs.
 * *How?*
 
