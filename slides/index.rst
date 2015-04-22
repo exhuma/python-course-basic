@@ -16,6 +16,11 @@
 Python
 ======
 
+.. code-block:: python
+
+    print("Hello World")
+
+
 
 About This Course
 -----------------
@@ -1397,7 +1402,6 @@ Database Connectivity
 =====================
 
 * DBAPI2 (PEP 249)
-* SQLAlchemy
 * sqlite3
 
 
