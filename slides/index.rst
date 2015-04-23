@@ -39,11 +39,12 @@ About This Course
 About Me
 --------
 
+* First program written in 1989.
 * Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python
-* Degree in Computing Science.
-* Semantics Nerd
-* Geek
+* GFA-Basic → Delphi → PHP → Java → Python → Ha…?
+* Degree in Computer Science (BSc CS AI).
+* Lead Software Developer in Post BackBone-OSS.
+* Semantics Nerd, Gamer, Geek.
 
 
 About You
@@ -87,19 +88,6 @@ Linux
   derivates).
 
 
-Windows
--------
-
-* Download the ``python-3.4.x.msi`` file and install.
-
-------------------------------------------------------------------------------
-
-.. attention::
-    Installing compiled extensions (f.ex. C/C++) is more difficult on Windows
-    as an appropriate compiler must be present. This is out of scope of this
-    presentation.
-
-
 Mac OS X
 --------
 
@@ -110,6 +98,12 @@ Mac OS X
     By default, Python 2.7 is installed. Installing from the official package
     will *not* overwrite the existing installation. They will live
     side-by-side.
+
+
+Windows
+-------
+
+* Download the ``python-3.4.x.msi`` file and install.
 
 
 Introduction
@@ -243,10 +237,15 @@ Getting Help
   * … or ``pydoc -g`` to run a GUI (pretty much useless).
 
 
+.. slide::
+
+    :keyterm:`$ pydoc collections.OrderedDict`
+
+
 Diving in
 =========
 
-* Language data types and primitives.
+* Data types and primitives.
 * Functions and classes.
 * Saving and running the code.
 
@@ -258,7 +257,7 @@ Common Data Types
 
     * ``help(None)``
     * ``help(bool)``, ``help(True)``
-    * ``help(str)``, ``help('')``
+    * ``help(str)``,
     * ``help(bytes)``, ``help(b'')``
     * ``help(int)``, ``help(123)``
 
@@ -278,6 +277,31 @@ Common Data Types
     - ``statistics`` (new in 3.4)
 
 
+Python 2 vs. Python 3
+---------------------
+
+====================  ==========  ==========
+ Literal               Py2 Type    Py3 Type
+====================  ==========  ==========
+ ``'Hello World'``     bytes       unicode
+ ``u'Hello World'``    unicode     unicode
+ ``b'Hello World'``    bytes       bytes
+====================  ==========  ==========
+
+.. warning::
+
+    * *Always* prefix text with ``u`` in Python 2. *Unless* you know *exactly*
+      that you want bytes!
+    * *Never* use ``encode`` on bytes.
+    * *Never* use ``decode`` on strings.
+
+.. note::
+
+    Technically, the type of ``''`` is ``str`` in Python2. However, in Python2,
+    ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
+    and ``id(bytes)`` in both Python2 and Python3.
+
+
 Common Data Types (ctd.)
 ------------------------
 
@@ -286,18 +310,22 @@ Common Data Types (ctd.)
     * ``help(list)``, ``help([])``
     * ``help(tuple)``, ``help((1,2))``
 
+    **Note**:
+
+    Tuple of one element: ``(1,)``
+
 
 * Lists
 
   - can hold objects of any type, heterogenous
   - slicing
   - appending, inserting
-  - popping
+  - popping (queue, stack)
 
 * Tuples, Namedtuples
 
   - Immutable lists
-  - Cannot be changed,
+  - Cannot be changed
   - but can be hashed
 
 Common Data Types (ctd.)
@@ -501,6 +529,30 @@ Classes – Basics
 * Static methods are merely syntactic sugar.
 
 
+Classes – Basic Example
+-----------------------
+
+.. code-block:: python
+
+    class MyClass(AParentClass, AMixinClass):
+
+        def __init__(self, a, b):
+            super()
+            self.a = a
+            self.b = b
+
+        @staticmethod
+        def mystaticmethod(arg1, arg2):
+            print(arg1, arg2)
+
+        @classmethod
+        def myclassmethod(cls, arg1, arg2):
+            print(cls, arg1, arg2)
+
+        def myinstancemethod(self, arg1, arg2):
+            print(self, arg1, arg2)
+
+
 Demo Project
 ============
 
@@ -671,11 +723,11 @@ Using the DiskStorage Class
 Imports
 -------
 
-* Partial imports are possible (``from foo import bar``)
+* Partial imports are possible: ``from foo import bar``
 * Aliasing imports: ``from foo import bar as qux``
 * *Never* write ``from foo import *`` (Why?).
-* Can be wrapped in a ``try … except`` block (more on this later). This allows
-  for graceful degradation.
+* Can be wrapped in a ``try … except`` block. This allows for graceful
+  degradation.
 * They do not have to be at the beginning of the file.
 * They are cached. File lookup, and actual loading only happens the first
   time.
@@ -791,6 +843,10 @@ Third Party Modules & virtualenv
 * Virtual Environments isolate packages from the system.
 * Virtual Environments can be created using ``pyvenv`` (as of Python 3.4) or
   ``virtualenv`` .
+
+.. attention::
+    Installing compiled extensions (f.ex. C/C++) requires the appropriate
+    compiler (and headers) on the system!
 
 .. sidebar:: Alternative use
 
