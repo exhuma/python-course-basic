@@ -29,6 +29,8 @@ Python
 
     print("Hello World")
 
+|home| http://michel.albert.lu/shelf/python2015
+
 
 
 About This Course
@@ -153,7 +155,7 @@ Implementations
 * IronPython (runs in dotNET CLR).
 * PyPy (faster).
 * Stackless (microthreads).
-* ...
+* …
 
 
 Editors
@@ -422,7 +424,7 @@ Exercise: collections
 
 .. sidebar:: Explore
 
-    * Try other types of values (``int``, ``list``, ``tuple``, ...) as keys for
+    * Try other types of values (``int``, ``list``, ``tuple``, …) as keys for
       the ``dict``.
     * Try the ``list`` example with a ``tuple``.
     * Run ``help`` on both ``mylist`` and ``mydict``.
@@ -1020,7 +1022,7 @@ HTML Output (via templating) in Flask
 
     from flask import Flask, g, render_template
 
-    ...
+    …
 
     @APP.route('/list')
     def list():
@@ -1050,14 +1052,14 @@ Loading and Displaying a Page
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 3
 
-    ...
+    …
 
     @APP.route('/<name>')
     def display(name):
         page = g.db.load(name)
         return render_template('page.html', page=page)
 
-    ...
+    …
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / page.html
@@ -1093,7 +1095,7 @@ Creating Pages
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 1-2, 7-11, 14-20
 
-    from flask import ..., redirect, url_for, request
+    from flask import …, redirect, url_for, request
     from wiki.model import WikiPage
 
     @APP.route('/<name>')
@@ -1180,13 +1182,13 @@ page.
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 5
 
-    ...
+    …
 
     @APP.route('/')
     def index():
         return redirect('/Index')
 
-    ...
+    …
 
 
 Replacing WikiWords
@@ -1306,27 +1308,27 @@ mini templating language.
             url=url_for('display', name=title),
             title=title)
 
-That *thing* again
-------------------
+.. slide:: That *thing* again
+    :level: 2
 
-.. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    .. code-block:: python
+        :caption: **Filename:** wiki / webui.py
 
-    import re
+        import re
 
-    P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+        P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
 
-    def make_page_url(match):
-        groups = match.groups()
-        title = groups[0]
-        return '<a href="{url}">{title}</a>'.format(
-            url=url_for('display', name=title),
-            title=title)
+        def make_page_url(match):
+            groups = match.groups()
+            title = groups[0]
+            return '<a href="{url}">{title}</a>'.format(
+                url=url_for('display', name=title),
+                title=title)
 
-    @APP.template_filter('wikify')
-    def wikify(text):
-        # NOTE: We could do much more here!
-        return P_WIKIWORD.sub(make_page_url, text)
+        @APP.template_filter('wikify')
+        def wikify(text):
+            # NOTE: We could do much more here!
+            return P_WIKIWORD.sub(make_page_url, text)
 
 
 String Formatting
