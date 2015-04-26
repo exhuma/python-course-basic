@@ -131,3 +131,17 @@ CODE {
     font-size: 80%;
     background: rgba(0,0,0, 0.1);
 }
+
+IMG.avatar {
+    border-radius: 50%;
+    width: 30%;
+    margin-top: 1em;
+}
+
+DIV.centered {
+    text-align: center;
+}
+
+IMG.midline {
+    vertical-align: middle;
+}

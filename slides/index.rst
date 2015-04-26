@@ -12,6 +12,15 @@
 .. role:: strike
     :class: strike
 
+.. |home| image:: _static/icons/home.png
+    :class: midline
+
+.. |github| image:: _static/icons/github-circle.png
+    :class: midline
+
+.. |gplus| image:: _static/icons/google-plus.png
+    :class: midline
+
 
 Python
 ======
@@ -1684,3 +1693,21 @@ Advanced Python
 ===============
 
 TODO
+
+.. slide::
+    :level: 2
+
+    .. container:: centered
+
+        Thank You!
+
+        .. image:: _static/avatar.jpg
+            :align: center
+            :class: avatar
+
+        Questions?
+
+    * |home| http://michel.albert.lu
+    * |github| exhuma
+    * |gplus| MichelAlbert
+
