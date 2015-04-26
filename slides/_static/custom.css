@@ -27,6 +27,7 @@ H1 {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
     border-radius: 2px;
     border: 5px solid hsla(0, 0%, 0%, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     color: hsla(0, 0%, 0%, 0.8);
 }
 
