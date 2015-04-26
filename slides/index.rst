@@ -179,15 +179,23 @@ Typing Comparison
 =========== ========= ============
 Language     Typing    Coercion
 =========== ========= ============
-Java         Static    No
-C#           Static    No
-C++          Static    No
-Python       Dynamic   No
-Ruby         Dynamic   No
-PHP          Dynamic   Yes
-C            Dynamic   Yes
-JavaScript   Dynamic   Yes
+Java         Static    safe
+C#           Static    safe
+C++          Static    safe
+Python       Dynamic   safe
+Ruby         Dynamic   safe
+PHP          Dynamic   unsafe
+C            Dynamic   unsafe
+JavaScript   Dynamic   unsafe
 =========== ========= ============
+
+
+.. admonition:: Definition
+
+    Coercion
+        Implicit Type Conversion.
+
+    ``20 + "22" -> ?``
 
 
 
