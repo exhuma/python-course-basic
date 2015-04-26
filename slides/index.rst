@@ -184,18 +184,18 @@ Duck Typing
 Typing Comparison
 -----------------
 
-=========== ========= ============
-Language     Typing    Coercion
-=========== ========= ============
-Java         Static    safe
-C#           Static    safe
-C++          Static    safe
-Python       Dynamic   safe
-Ruby         Dynamic   safe
-PHP          Dynamic   unsafe
-C            Dynamic   unsafe
-JavaScript   Dynamic   unsafe
-=========== ========= ============
+=========== ========= =====================
+Language     Typing    Coercion Strictness
+=========== ========= =====================
+Java         Static    10 - Very Strict
+C#           Static    10
+C++          Static    8
+Python       Dynamic   8
+Ruby         Dynamic   8
+C            Dynamic   4
+PHP          Dynamic   1
+JavaScript   Dynamic   1 - Not Strict
+=========== ========= =====================
 
 
 .. admonition:: Definition
