@@ -44,6 +44,14 @@ About This Course
 * Packaging
 * *Advanced Python?*
 
+.. ifnotslides::
+
+    .. note::
+        Some code-blocks from one file have been split so they fit well on
+        slides.  Unfortunately, I could not find a way to "glue" them back
+        togehter in HTML output. The "Filename" caption should give enough
+        context.
+
 
 About Me
 --------
@@ -294,8 +302,10 @@ Common Data Types
     - ``statistics`` (new in 3.4)
 
 
-Python 2 vs. Python 3
----------------------
+.. nextslide::
+    :increment:
+
+**Python 2 vs. Python 3**
 
 ====================  ==========  ==========
  Literal               Py2 Type    Py3 Type
@@ -318,9 +328,8 @@ Python 2 vs. Python 3
     ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
     and ``id(bytes)`` in both Python2 and Python3.
 
-
-Common Data Types (ctd.)
-------------------------
+.. nextslide::
+    :increment:
 
 .. sidebar:: Explore
 
@@ -345,8 +354,8 @@ Common Data Types (ctd.)
   - Cannot be changed
   - but can be hashed
 
-Common Data Types (ctd.)
-------------------------
+.. nextslide::
+    :increment:
 
 .. sidebar:: Explore
 
@@ -652,9 +661,8 @@ Storing files on Disk
         def close(self):
             pass
 
-
-Storing files on disk (ctd)
----------------------------
+.. nextslide::
+    :increment:
 
 .. sidebar:: Takeaways
     :class: overlapping
@@ -686,8 +694,8 @@ Storing files on disk (ctd)
         return WikiPage(document['title'],
                         document['content'])
 
-Storing files on disk (ctd)
----------------------------
+.. nextslide::
+    :increment:
 
 .. sidebar:: Takeaways
     :class: overlapping
@@ -1003,9 +1011,8 @@ HTML Output (via templating) in Flask
     </body>
     </html>
 
-
-HTML Output (ctd.)
-------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: python
     :emphasize-lines: 1, 8
@@ -1106,9 +1113,8 @@ Creating Pages
         g.db.save(page)
         return redirect(url_for('display', name=page.title))
 
-
-Creating Pages (ctd.)
----------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / edit_page.html
@@ -1280,8 +1286,8 @@ case we give a *function* as replacement. This function will be called for each
 match.
 
 
-Let's pick this apart (ctd)
----------------------------
+.. nextslide::
+    :increment:
 
 The following function is created to be used in ``re.sub``. It takes a
 ``match`` object, and returns a replacement string.
@@ -1539,8 +1545,8 @@ A new Storage class
         def __init__(self, dsn):
             self.connection = sqlite3.connect(dsn)
 
-A new Storage class (ctd.)
---------------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
@@ -1560,8 +1566,8 @@ A new Storage class (ctd.)
         def close(self):
             self.connection.close()
 
-A new Storage class (ctd.)
---------------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
@@ -1583,8 +1589,8 @@ A new Storage class (ctd.)
             cursor.close()
             self.connection.commit()
 
-A new Storage class (ctd.)
---------------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
@@ -1602,8 +1608,8 @@ A new Storage class (ctd.)
                 title, content = row
                 return WikiPage(title, content)
 
-A new Storage class (ctd.)
---------------------------
+.. nextslide::
+    :increment:
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
