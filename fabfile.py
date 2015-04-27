@@ -22,6 +22,22 @@ def clean():
 
 
 @fab.task
+def serve_slides():
+    fab.execute(clean)
+    fab.execute(build_slides)
+    with fab.lcd('slides/_build/slides'):
+        fab.local('python3 -m http.server')
+
+
+@fab.task
+def serve_html():
+    fab.execute(clean)
+    fab.execute(build_html)
+    with fab.lcd('slides/_build/html'):
+        fab.local('python3 -m http.server')
+
+
+@fab.task
 @fab.roles('www')
 def publish():
     fab.execute(build_html)
@@ -30,3 +46,4 @@ def publish():
             '/var/www/albert.lu/michel/shelf/python2015')
     fab.put('slides/_build/slides',
             '/var/www/albert.lu/michel/shelf/python2015')
+
