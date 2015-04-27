@@ -1,6 +1,6 @@
 article {
     background-color: #000;
-    background: url('/_static/backdrop.png') no-repeat bottom right;
+    background: url('backdrop.png') no-repeat bottom right;
     background-size: 75%;
 }
 
