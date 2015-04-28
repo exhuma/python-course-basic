@@ -126,11 +126,12 @@ div.code-block-caption {
 }
 
 CODE {
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 2px;
-    padding: 0.2em 0.3em;
+    padding: 0.1em 0.3em;
     font-size: 80%;
-    background: rgba(0,0,0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    color: #444;
 }
 
 IMG.avatar {
