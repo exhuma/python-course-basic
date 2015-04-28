@@ -54,7 +54,6 @@ About This Course
         togehter in HTML output. The "Filename" caption should give enough
         context.
 
-
 About Me
 --------
 
@@ -87,24 +86,29 @@ Installation
 Linux
 -----
 
-.. sidebar:: Custom install on Linux
-    :subtitle: ~5min
-
-    For this course, we need ``libsqlite3-dev``!
-
-    ::
-
-        ./configure --prefix=/opt/python3.4
-        make
-        sudo make install
-
-
-* Download the ``Python-3.4.3.tgz`` file and install.
 * Available by default on most Unix platforms.
 * Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
 * Python 2 and 3 can both happily live on the same system without interfering
   with each other (f.ex. the ``python`` and ``python3`` packages on debian and
   derivates).
+
+.. note::
+
+    For this course we will use ``Python-3.4.3.tgz``.
+
+    In order to successfully compile with all features for this course, you
+    need the required libraries and system packages. For debian derivates these
+    packages are:
+
+    * ``build-essential``
+    * ``libsqlite3-dev``
+
+    Once the requirements are available run::
+
+        ./configure --prefix=/opt/python3.4
+        make
+        sudo make install
+
 
 
 Mac OS X
@@ -206,7 +210,6 @@ JavaScript   Dynamic   1 - Not Strict
         Implicit Type Conversion.
 
     ``20 + "22" -> ?``
-
 
 
 Use Python 3
