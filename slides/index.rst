@@ -204,6 +204,13 @@ JavaScript   Dynamic   Not strict
 =========== ========= =====================
 
 
+.. note:: Explore
+
+    Go to http://repl.it/ and try to execute ``20 + "22"`` in some languages.
+    What are the results? What does this tell you?
+
+    Make sure to test Python, PHP and JavaScript.
+
 .. admonition:: Definition
 
     Coercion
