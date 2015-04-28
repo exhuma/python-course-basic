@@ -193,14 +193,14 @@ Typing Comparison
 =========== ========= =====================
 Language     Typing    Coercion Strictness
 =========== ========= =====================
-Java         Static    10 - Very Strict
-C#           Static    10
-C++          Static    8
-Python       Dynamic   8
-Ruby         Dynamic   8
-C            Dynamic   4
-PHP          Dynamic   1
-JavaScript   Dynamic   1 - Not Strict
+Java         Static    Very strict
+C#           Static    Very strict
+C++          Static    Fairly strict
+Python       Dynamic   Fairly strict
+Ruby         Dynamic   Fairly strict
+C            Dynamic   Less strict
+PHP          Dynamic   Not strict
+JavaScript   Dynamic   Not strict
 =========== ========= =====================
 
 
