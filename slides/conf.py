@@ -306,6 +306,9 @@ slide_theme_options = {
 #     'custom_js': 'custom.js',
 }
 
+slide_link_to_html = True
+slide_link_html_to_slides = True
+
 # ----------------------------------------------
 
 
