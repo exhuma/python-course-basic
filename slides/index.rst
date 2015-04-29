@@ -212,7 +212,8 @@ JavaScript   Dynamic   Not strict
     Go to http://repl.it/ and try to execute ``20 + "22"`` in some languages.
     What are the results? What does this tell you?
 
-    Make sure to test Python, PHP and JavaScript.
+    Make sure to test Python, PHP and JavaScript. They have a very simple REPL
+    and show a good example of coercion problems that may arise.
 
 .. admonition:: Definition
 
@@ -396,6 +397,12 @@ Python vs other Languages
 * Blocks defined by indentation
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
+
+  * Historically, ``True`` and ``False`` did not exist in Python. Instead ``1``
+    and ``0`` were used. Those literals were introduced in Python 2.2.1. The
+    boolean type was introduced in 2.3. The values are *constant* for backwards
+    compatibility with older versions.
+
 * Variable unpacking
 * PEP 8
 
@@ -887,16 +894,28 @@ Third Party Modules & virtualenv
     Installing compiled extensions (f.ex. C/C++) requires the appropriate
     compiler (and headers) on the system!
 
-.. sidebar:: Alternative use
+.. nextslide::
+    :increment:
 
-    * ``$ source env/bin/activate``
-    * ``virtualenvwrapper``
+**Installing our requirement**
 
 .. code-block:: bash
 
     $ /opt/python3.4/bin/pyvenv env
     $ ./env/bin/pip install flask
 
+
+**Alternatives**
+
+.. code-block:: bash
+
+    $ source env/bin/activate
+    (env)$ pip install flask
+
+.. code-block:: bash
+
+    $ mkvirtualenv tutorial  # With "virtualenvwrapper"
+    (tutorial)$ pip install flask
 
 Packaging our application
 -------------------------
@@ -1530,8 +1549,10 @@ Our own Storage API
     def list(self) -> List[str]:
         pass
 
-* Type hints will be *provisional* in Python 3.5 (See PEP 484)
-* Syntax is valid back to Python 3.2 (PEP 3107)
+.. note::
+
+    * Type hints will be *provisional* in Python 3.5 (See :pep:`484`)
+    * Syntax is valid back to Python 3.2 (PEP 3107)
 
 
 SQLite and DBAPI 2
@@ -1753,4 +1774,3 @@ TODO
     * |home| http://michel.albert.lu
     * |github| exhuma
     * |gplus| MichelAlbert
-
