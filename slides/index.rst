@@ -308,7 +308,7 @@ Common Data Types
 * Bytes (0-255 sequence)
 * Numbers
 
-.. tip::
+.. note::
 
     Useful standard modules when working with numbers:
 
@@ -354,6 +354,34 @@ Common Data Types
     **Note**:
 
     Tuple of one element: ``(1,)``
+
+.. note::
+
+    In python, using ``(1)`` is the same as simply writing ``1``. The following
+    two statements are equivalent::
+
+        >>> x = (1)
+        >>> x = 1
+
+    Parens can be used to group multiple statements, and to split long lines.
+
+    But tuples use parens to write tuples too. So writing a tuple of one
+    element introduces an ambiguity in syntax: When writing ``(1)``, do you
+    mean the tuple with one element, or do you mean the integer value ``1``?
+
+    In order to remove this ambiguity, a 1-element tuple must be written with a
+    trailing comma: ``(1, )``
+
+    Additionally, in the same way that ``1`` === ``(1)``, there is also: ``(1,
+    )`` === ``1,`` (as long as it is syntaxtically correct)!.
+
+    As such, the following lines are also equivalent (similar to the first
+    paragraph)::
+
+        >>> x = 1,
+        >>> x = (1, )
+
+    This can lead to subtle bugs when not careful.
 
 
 * Lists
@@ -764,6 +792,65 @@ Using the DiskStorage Class
     loaded_page = storage.load('HelloWorld')
     print(mypage == loaded_page)
 
+
+.. note:: Complete source
+
+    .. code-block:: python
+        :caption: wiki/storage/disk.py
+
+        from os import listdir
+        from os.path import join, exists
+        import json
+
+        from wiki.model import WikiPage
+
+
+        class DiskStorage:
+
+            def __init__(self, root):
+                self.root = root
+
+            def init(self):
+                pass
+
+            def close(self):
+                pass
+
+            def save(self, document):
+                filename = join(self.root,
+                    document.title) + '.json'
+                with open(filename, 'w') as file_hndl:
+                    json.dump({
+                        'title': document.title,
+                        'content': document.content
+                    }, file_hndl)
+
+            def load(self, title):
+                filename = join(self.root,
+                    title) + '.json'
+                if not exists(filename):
+                    return None
+
+                with open(filename, 'r') as file_handle:
+                    document = json.load(file_handle)
+
+                return WikiPage(document['title'],
+                                document['content'])
+
+            def list(self):
+                titles = []
+                for filename in listdir(self.root):
+                    title, _ = filename.rsplit('.', 1)
+                    titles.append(title)
+                return titles
+
+
+.. slide::
+
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`$ ./env/bin/python runner.py`
 
 
 Imports
@@ -1572,7 +1659,7 @@ DBAPI compliant code looks like this:
         print(row)
     connection.close()
 
-.. warning::
+.. note::
 
     If you compile Python manually, the sqlite development headers
     (``libsqlite3-dev`` on debian and derivates) must be available. If not, the
