@@ -311,11 +311,10 @@ Common Data Types
 
     Useful standard modules when working with numbers:
 
-    - ``fractions``
-    - ``math``
-    - ``cmath``
-    - ``statistics`` (new in 3.4)
-
+    - :py:mod:`fractions`
+    - :py:mod:`math`
+    - :py:mod:`cmath`
+    - :py:mod:`statistics` (new in 3.4)
 
 .. nextslide::
     :increment:
