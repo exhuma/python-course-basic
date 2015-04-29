@@ -1146,7 +1146,7 @@ HTML Output (via templating) in Flask
 
     from flask import Flask, g, render_template
 
-    …
+    ...
 
     @APP.route('/list')
     def list():
@@ -1179,14 +1179,14 @@ Loading and Displaying a Page
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 3
 
-    …
+    ...
 
     @APP.route('/<name>')
     def display(name):
         page = g.db.load(name)
         return render_template('page.html', page=page)
 
-    …
+    ...
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / page.html
@@ -1225,7 +1225,7 @@ Creating Pages
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 1-2, 7-11, 14-20
 
-    from flask import …, redirect, url_for, request
+    from flask import ..., redirect, url_for, request
     from wiki.model import WikiPage
 
     @APP.route('/<name>')
@@ -1315,13 +1315,13 @@ page.
     :caption: **Filename:** wiki / webui.py
     :emphasize-lines: 5
 
-    …
+    ...
 
     @APP.route('/')
     def index():
         return redirect('/Index')
 
-    …
+    ...
 
 
 Replacing WikiWords
