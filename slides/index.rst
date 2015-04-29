@@ -234,8 +234,8 @@ Use Python 3
 * Python 3.3+ (current version is 3.4 with 3.5 on the horizon).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
-* No new features are added to Python 2 (f.ex.: ``asyncio``, but backports
-  exist).
+* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
+  backports exist).
 * Python 3 is slower than Python 2 though (at the moment).
 * Legacy platforms may only support Python 2.
 
@@ -1607,9 +1607,9 @@ Let's pick this apart
         # This takes the value from the template and returns a modified text.
         return P_WIKIWORD.sub(make_page_url, text)
 
-``re.sub`` replaces all occurrences in a string with something else. In this
-case we give a *function* as replacement. This function will be called for each
-match.
+:py:func:`re.sub` replaces all occurrences in a string with something else. In
+this case we give a *function* as replacement. This function will be called for
+each match.
 
 
 .. nextslide::
@@ -1825,7 +1825,7 @@ Database Connectivity
 =====================
 
 * DBAPI2 (:pep:`249`)
-* sqlite3
+* :py:mod:`sqlite3`
 
 
 Our own Storage API
@@ -2174,33 +2174,33 @@ Out with the old, in with the new
 Essential Modules
 -----------------
 
-* sys
-* os
-* os.path
-* logging
-* datetime, time
-* unittest
-* pprint
-* io
-* functools
-* collections
+* :py:mod:`sys`
+* :py:mod:`os`
+* :py:mod:`os.path`
+* :py:mod:`logging`
+* :py:mod:`datetime`, :py:mod:`time`
+* :py:mod:`unittest`
+* :py:mod:`pprint`
+* :py:mod:`io`
+* :py:mod:`functools`
+* :py:mod:`collections`
 
 
 Other Interesting Modules
 -------------------------
 
-================== ==================
- Modulename         Modulename
-================== ==================
- argparse           multiprocessing
- configparser       profile
- csv                pstats
- enum               random
- getpass            shutil
- hashlib            signal
- html               subprocess
- http               tempfile
-================== ==================
+============================ ===========================
+ Modulename                   Modulename
+============================ ===========================
+ :py:mod:`argparse`           :py:mod:`multiprocessing`
+ :py:mod:`configparser`       :py:mod:`profile`
+ :py:mod:`csv`                :py:mod:`pstats`
+ :py:mod:`enum`               :py:mod:`random`
+ :py:mod:`getpass`            :py:mod:`shutil`
+ :py:mod:`hashlib`            :py:mod:`signal`
+ :py:mod:`html`               :py:mod:`subprocess`
+ :py:mod:`http`               :py:mod:`tempfile`
+============================ ===========================
 
 
 Common Mistakes
