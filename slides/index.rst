@@ -959,7 +959,10 @@ Our first Web Page
 
 .. slide::
 
-    :keyterm:`http://localhost:5000`
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000`
 
 
 
@@ -999,7 +1002,10 @@ Prividing a page listing:
 
 .. slide::
 
-    :keyterm:`http://localhost:5000/list`
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000/list`
 
 
 .. slide::
@@ -1046,7 +1052,10 @@ HTML Output (via templating) in Flask
 
 .. slide::
 
-    :keyterm:`http://localhost:5000/list`
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000/list`
 
 
 Wiki Functionality
@@ -1089,7 +1098,10 @@ Loading and Displaying a Page
 
 .. slide::
 
-    :keyterm:`http://localhost:5000/BingoBongo`
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000/BingoBongo`
 
 
 Wiki Functionality
@@ -1152,7 +1164,10 @@ Creating Pages
 
 .. slide::
 
-    :keyterm:`http://localhost:5000/BingoBongo`
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000/BingoBongo`
 
 
 Wiki Functionality
