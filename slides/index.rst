@@ -432,7 +432,7 @@ Python vs other Languages
     compatibility with older versions.
 
 * Variable unpacking
-* PEP 8
+* :pep:`8`
 
 
 Exercise: scalars
@@ -1031,7 +1031,7 @@ Our first Web Page
 .. sidebar:: Takeaways
     :class: overlapping
 
-    * Module level variables are all-caps (PEP 8).
+    * Module level variables are all-caps (:pep:`8`).
     * Naming variables in function call.
     * There are no "constants" in Python.
     * ``__name__`` is the module's name.
@@ -1785,7 +1785,7 @@ See: https://packaging.python.org
 Deploying
 ---------
 
-* WSGI (PEP 333 and PEP 3333) — Commonly pronounced "Whisky"
+* WSGI (:pep:`333` and :pep:`3333`) — Commonly pronounced "Whisky"
 * Web Server Gateway Interface.
 * Supported by all major web servers (Apache httpd, nginx, Tornado, …)
 
@@ -1824,7 +1824,7 @@ Apache httpd
 Database Connectivity
 =====================
 
-* DBAPI2 (PEP 249)
+* DBAPI2 (:pep:`249`)
 * sqlite3
 
 
@@ -1848,14 +1848,14 @@ Our own Storage API
 .. note::
 
     * Type hints will be *provisional* in Python 3.5 (See :pep:`484`)
-    * Syntax is valid back to Python 3.2 (PEP 3107)
+    * Syntax is valid back to Python 3.2 (:pep:`3107`)
 
 
 SQLite and DBAPI 2
 ------------------
 
 SQLite3 is included in the Python standard library (since Python 2.5). It is
-compliant to DBAPI2 (PEP 249).
+compliant to DBAPI2 (:pep:`249`).
 
 DBAPI compliant code looks like this:
 
