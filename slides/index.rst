@@ -1418,7 +1418,7 @@ Let's add links to our page listing:
     <ul>
     {% for name in page_names %}
       <li><a href="{{url_for('display',
-        name=name.title())}}">{{name}}</a></li>
+        name=name)}}">{{name}}</a></li>
     {% endfor %}
     </ul>
     </body>
