@@ -2216,10 +2216,14 @@ Common Mistakes
     $ python -m timeit "'aaa' + 'bbb'"
 
 
-Advanced Python
+References
 ===============
 
-TODO
+* http://www.python.org
+* http://www.sphix-doc.org
+* https://virtualenvwrapper.readthedocs.org
+* https://packaging.python.org
+* http://www.sqlalchemy.org
 
 .. slide::
     :level: 2
