@@ -2216,15 +2216,6 @@ Common Mistakes
     $ python -m timeit "'aaa' + 'bbb'"
 
 
-References
-===============
-
-* http://www.python.org
-* http://www.sphix-doc.org
-* https://virtualenvwrapper.readthedocs.org
-* https://packaging.python.org
-* http://www.sqlalchemy.org
-
 .. slide::
     :level: 2
 
@@ -2241,3 +2232,15 @@ References
     * |home| http://michel.albert.lu
     * |github| exhuma
     * |gplus| MichelAlbert
+
+References
+----------
+
+* http://www.python.org
+* http://www.sphix-doc.org
+* https://virtualenvwrapper.readthedocs.org
+* https://packaging.python.org
+* http://www.sqlalchemy.org
+* http://pypi.python.org
+* http://jinja.pocoo.org
+
