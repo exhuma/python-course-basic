@@ -6,6 +6,9 @@
 
    <br clear="both" />
 
+.. role:: checkpoint
+    :class: checkpoint
+
 .. role:: keyterm
     :class: keyterm
 
@@ -591,8 +594,8 @@ Classes – Basic Example
             print(self, arg1, arg2)
 
 
-Demo Project
-============
+Our Project
+===========
 
 A very simple wiki page.
 
@@ -637,8 +640,8 @@ Wiki Functionality
 * Replace WikiWords with links.
 
 
-Storing files on Disk
----------------------
+Storing documents on Disk
+-------------------------
 
 .. note:: Assumptions
 
@@ -732,7 +735,7 @@ Using the DiskStorage Class
 .. sidebar:: Remember
     :class: overlapping
 
-    Remember that packages must have a ``__init__.py`` file!
+    Packages must have a ``__init__.py`` file!
 
 .. code-block:: python
     :caption: **Filename:** runner.py
@@ -1414,7 +1417,7 @@ Packaging — Revisited
     from pkg_resources import resource_string
     setup(
         name='wiki',
-        description="Replacemend for Wikipedia",
+        description="Replacement for Wikipedia",
         url="http://www.newwp-project.com",
         license="BSD",
         author="Michel Albert",
