@@ -793,7 +793,7 @@ Using the DiskStorage Class
     print(mypage == loaded_page)
 
 
-.. note:: Complete source
+.. note:: Complete Source
 
     .. code-block:: python
         :caption: wiki/storage/disk.py
@@ -1074,7 +1074,7 @@ Our first Web Page
 Using our DiskStorage class
 ---------------------------
 
-.. note:: Complete source-code
+.. note:: Complete Source
 
     .. code-block:: python
         :caption: wiki/webui.py
@@ -1155,10 +1155,10 @@ Prividing a page listing:
 HTML Output (via templating) in Flask
 -------------------------------------
 
-.. note:: Complete source code
+.. note:: Complete Source
 
     .. code-block:: python
-        :caption: Filename: wiki/webui.py
+        :caption: wiki/webui.py
 
         from flask import Flask, g, render_template
         from wiki.storage.disk import DiskStorage
@@ -1291,7 +1291,7 @@ Creating Pages
 .. note:: Complete Source
 
     .. code-block:: python
-        :caption: **Filename** wiki/webui.py
+        :caption: wiki/webui.py
 
         from flask import Flask, g, render_template, redirect, url_for, request
         from wiki.model import WikiPage
@@ -1489,7 +1489,7 @@ Custom Template Filter
 .. note:: Complete Source
 
     .. code-block:: python
-        :caption: **Filename** wiki/webui.py
+        :caption: wiki/webui.py
 
         import re
 
@@ -1881,7 +1881,7 @@ A new Storage class
 .. note:: Complete Source
 
     .. code-block:: python
-        :caption: **Filename**: wiki/storage/sqlite.py
+        :caption: wiki/storage/sqlite.py
 
         import sqlite3
 
@@ -2047,7 +2047,7 @@ Out with the old, in with the new
 .. note:: Complete Source
 
     .. code-block:: python
-        :caption: **Filename** wiki/webui.py
+        :caption: wiki/webui.py
 
         import re
 
