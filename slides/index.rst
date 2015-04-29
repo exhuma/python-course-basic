@@ -1074,10 +1074,43 @@ Our first Web Page
 Using our DiskStorage class
 ---------------------------
 
+.. note:: Complete source-code
+
+    .. code-block:: python
+        :caption: wiki/webui.py
+
+        from flask import Flask, g
+        from wiki.storage.disk import DiskStorage
+
+
+        APP = Flask(__name__)
+
+
+        @APP.before_request
+        def before_request():
+            g.db = DiskStorage('wiki_pages')
+
+
+        @APP.route('/')
+        def index():
+            return 'Hello World'
+
+
+        @APP.route('/list')
+        def list():
+            page_names = g.db.list()
+            return '\n'.join(page_names)
+
+
+        if __name__ == '__main__':
+            APP.run(debug=True, host='0.0.0.0',
+                    port=5000)
+
 Imports:
 
 .. code-block:: python
     :emphasize-lines: 1
+    :caption: wiki / webui.py
 
     from flask import Flask, g
     from wiki.storage.disk import DiskStorage
@@ -1121,6 +1154,40 @@ Prividing a page listing:
 
 HTML Output (via templating) in Flask
 -------------------------------------
+
+.. note:: Complete source code
+
+    .. code-block:: python
+        :caption: Filename: wiki/webui.py
+
+        from flask import Flask, g, render_template
+        from wiki.storage.disk import DiskStorage
+
+
+        APP = Flask(__name__)
+
+
+        @APP.before_request
+        def before_request():
+            g.db = DiskStorage('wiki_pages')
+
+
+        @APP.route('/')
+        def index():
+            return 'Hello World'
+
+
+        @APP.route('/list')
+        def list():
+            page_names = g.db.list()
+            return render_template('pagelist.html',
+                                page_names=page_names)
+
+
+        if __name__ == '__main__':
+            APP.run(debug=True, host='0.0.0.0',
+                    port=5000)
+
 
 * Jinja Templating Engine (http://jinja.pocoo.org)
 
@@ -1220,6 +1287,59 @@ Wiki Functionality
 
 Creating Pages
 --------------
+
+.. note:: Complete Source
+
+    .. code-block:: python
+        :caption: **Filename** wiki/webui.py
+
+        from flask import Flask, g, render_template, redirect, url_for, request
+        from wiki.model import WikiPage
+        from wiki.storage.disk import DiskStorage
+
+
+        APP = Flask(__name__)
+
+
+        @APP.before_request
+        def before_request():
+            g.db = DiskStorage('wiki_pages')
+
+
+        @APP.route('/')
+        def index():
+            return 'Hello World'
+
+
+        @APP.route('/list')
+        def list():
+            page_names = g.db.list()
+            return render_template('pagelist.html',
+                                page_names=page_names)
+
+
+        @APP.route('/<name>')
+        def display(name):
+            page = g.db.load(name)
+            if not page:
+                return render_template('edit_page.html', name=name)
+            if 'edit' in request.args:
+                return render_template('edit_page.html', name=name,
+                                    content=page.content)
+            return render_template('page.html', page=page)
+
+
+        @APP.route('/', methods=['POST'])
+        def save_page():
+            page = WikiPage(request.form['title'],
+                            request.form['content'])
+            g.db.save(page)
+            return redirect(url_for('display', name=page.title))
+
+
+        if __name__ == '__main__':
+            APP.run(debug=True, host='0.0.0.0',
+                    port=5000)
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
@@ -1366,6 +1486,77 @@ Planning the Filter
 Custom Template Filter
 ----------------------
 
+.. note:: Complete Source
+
+    .. code-block:: python
+        :caption: **Filename** wiki/webui.py
+
+        import re
+
+        from flask import Flask, g, render_template, redirect, url_for, request
+
+        from wiki.model import WikiPage
+        from wiki.storage.disk import DiskStorage
+
+
+        APP = Flask(__name__)
+        P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+
+
+        def make_page_url(match):
+            groups = match.groups()
+            title = groups[0]
+            return '<a href="{url}">{title}</a>'.format(
+                url=url_for('display', name=title),
+                title=title)
+
+
+        @APP.template_filter('wikify')
+        def wikify(text):
+            # NOTE: We could do much more here!
+            return P_WIKIWORD.sub(make_page_url, text)
+
+
+        @APP.before_request
+        def before_request():
+            g.db = DiskStorage('wiki_pages')
+
+
+        @APP.route('/')
+        def index():
+            return 'Hello World'
+
+
+        @APP.route('/list')
+        def list():
+            page_names = g.db.list()
+            return render_template('pagelist.html',
+                                page_names=page_names)
+
+
+        @APP.route('/<name>')
+        def display(name):
+            page = g.db.load(name)
+            if not page:
+                return render_template('edit_page.html', name=name)
+            if 'edit' in request.args:
+                return render_template('edit_page.html', name=name,
+                                    content=page.content)
+            return render_template('page.html', page=page)
+
+
+        @APP.route('/', methods=['POST'])
+        def save_page():
+            page = WikiPage(request.form['title'],
+                            request.form['content'])
+            g.db.save(page)
+            return redirect(url_for('display', name=page.title))
+
+
+        if __name__ == '__main__':
+            APP.run(debug=True, host='0.0.0.0',
+                    port=5000)
+
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
 
@@ -1464,6 +1655,14 @@ mini templating language.
             return P_WIKIWORD.sub(make_page_url, text)
 
 
+.. slide::
+
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000/list`
+
+
 String Formatting
 -----------------
 
@@ -1548,6 +1747,16 @@ Packaging — Revisited
             'Flask',
         ],
     )
+
+.. nextslide::
+    :increment:
+
+
+.. code-block:: txt
+    :caption: **Filename:** MANIFEST.in
+
+    recursive-include wiki/templates *.html
+
 
 Creating distributions
 ----------------------
@@ -1669,6 +1878,76 @@ DBAPI compliant code looks like this:
 A new Storage class
 -------------------
 
+.. note:: Complete Source
+
+    .. code-block:: python
+        :caption: **Filename**: wiki/storage/sqlite.py
+
+        import sqlite3
+
+        from wiki.model import WikiPage
+
+
+        class SQLiteStorage:
+
+            def __init__(self, dsn):
+                self.connection = sqlite3.connect(dsn)
+
+            def init(self):
+                cursor = self.connection.cursor()
+                cursor.execute(
+                    '''
+                    CREATE TABLE wikipage (
+                        title TEXT NOT NULL PRIMARY KEY,
+                        content TEXT);
+                    ''')
+
+                cursor.close()
+                self.connection.commit()
+
+            def close(self):
+                self.connection.close()
+
+            def save(self, document):
+                cursor = self.connection.cursor()
+                cursor.execute('SELECT COUNT(*) FROM wikipage '
+                            'WHERE title=?',
+                            [document.title])
+                existing = cursor.fetchone()
+                if existing[0] > 0:
+                    cursor.execute('UPDATE wikipage SET content=? '
+                                'WHERE title=?',
+                                [document.content, document.title])
+                else:
+                    cursor.execute('INSERT INTO wikipage '
+                                '(title, content) VALUES (?, ?)',
+                                [document.title, document.content])
+                cursor.close()
+                self.connection.commit()
+
+            def load(self, title):
+                cursor = self.connection.cursor()
+                cursor.execute('SELECT title, content FROM wikipage '
+                            'WHERE title=?',
+                            [title])
+                row = cursor.fetchone()
+                cursor.close()
+                if not row:
+                    return None
+                else:
+                    title, content = row
+                    return WikiPage(title, content)
+
+            def list(self):
+                cursor = self.connection.cursor()
+                cursor.execute('SELECT title FROM wikipage')
+
+                titles = []
+                for row in cursor:
+                    titles.append(row[0])
+                cursor.close()
+                return titles
+
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
 
@@ -1765,6 +2044,94 @@ A new Storage class
 Out with the old, in with the new
 ---------------------------------
 
+.. note:: Complete Source
+
+    .. code-block:: python
+        :caption: **Filename** wiki/webui.py
+
+        import re
+
+        from flask import Flask, g, render_template, redirect, url_for, request
+
+        from wiki.model import WikiPage
+        from wiki.storage.sqlite import SQLiteStorage
+
+
+        APP = Flask(__name__)
+        P_WIKIWORD = re.compile(r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+
+
+        def make_page_url(match):
+            groups = match.groups()
+            title = groups[0]
+            return '<a href="{url}">{title}</a>'.format(
+                url=url_for('display', name=title),
+                title=title)
+
+
+        @APP.template_filter('wikify')
+        def wikify(text):
+            # NOTE: We could do much more here!
+            return P_WIKIWORD.sub(make_page_url, text)
+
+
+        @APP.before_first_request
+        def init_storage():
+            try:
+                db = SQLiteStorage('wikipages.sqlite')
+                db.init()
+            except Exception as exc:
+                print(exc)
+            finally:
+                db.close()
+
+
+        @APP.before_request
+        def before_request():
+            g.db = SQLiteStorage('wikipages.sqlite')
+
+
+        @APP.teardown_request
+        def teardown_request(request):
+            g.db.close()
+            return request
+
+
+        @APP.route('/')
+        def index():
+            return 'Hello World'
+
+
+        @APP.route('/list')
+        def list():
+            page_names = g.db.list()
+            return render_template('pagelist.html',
+                                page_names=page_names)
+
+
+        @APP.route('/<name>')
+        def display(name):
+            page = g.db.load(name)
+            if not page:
+                return render_template('edit_page.html', name=name)
+            if 'edit' in request.args:
+                return render_template('edit_page.html', name=name,
+                                    content=page.content)
+            return render_template('page.html', page=page)
+
+
+        @APP.route('/', methods=['POST'])
+        def save_page():
+            page = WikiPage(request.form['title'],
+                            request.form['content'])
+            g.db.save(page)
+            return redirect(url_for('display', name=page.title))
+
+
+        if __name__ == '__main__':
+            APP.run(debug=True, host='0.0.0.0',
+                    port=5000)
+
 .. sidebar:: Takeaways
     :class: overlapping
 
@@ -1793,6 +2160,15 @@ Out with the old, in with the new
     def teardown_request(request):
         g.db.close()
         return request
+
+
+.. slide::
+
+    .. figure:: _static/checkpoint.jpg
+        :class: fill
+
+    :checkpoint:`http://localhost:5000`
+
 
 
 Essential Modules
