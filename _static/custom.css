@@ -167,3 +167,7 @@ H1:hover .headerlink,
 H2:hover .headerlink {
     color: #88f !important;
 }
+
+DT {
+    font-weight: bold;
+}
