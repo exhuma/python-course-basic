@@ -171,3 +171,13 @@ H2:hover .headerlink {
 DT {
     font-weight: bold;
 }
+
+H2 + IMG,
+H3 + IMG {
+    margin-top: 3em;
+}
+
+H3 + .image-reference {
+    display: block;
+    margin-top: 3em;
+}
