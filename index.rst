@@ -29,14 +29,17 @@
 .. }}}
 
 .. {{{ Introduction
+
 git
 ===
 * |home| http://michel.albert.lu/shelf/git2015
 * http://git-scm.com
 * Images licensed under CC BY-NC-SA 3.0 by Scott Chacon
+
 .. }}}
 
 .. {{{ Outline of Version Control
+
 What is Version Control
 -----------------------
 
@@ -93,7 +96,7 @@ Distributed
     * Access control works like a "Web of Trust".
     * No connection to server required (working off-line).
     * Can support very complex workflows (f.ex.: code-review, "tenured"
-    repositories, …).
+      repositories, …).
 
 
 Git
@@ -137,9 +140,11 @@ Installing
 
   * Official client: http://git-scm.com/download/win
   * Github for Windows: http://windows.github.com
+
 .. }}}
 
 .. {{{ Key terms
+
 Key Terms
 ---------
 
@@ -158,9 +163,11 @@ commit
 repository
     This is where all the history (commits) and related metadata (tags,
     branches, …) are stored.
+
 .. }}}
 
 .. {{{ repo setups
+
 Repository Setups
 =================
 
@@ -220,6 +227,7 @@ Beneveloent Dictator Model
 .. }}}
 
 .. {{{ Workflow
+
 Example Workflow
 ----------------
 
@@ -327,9 +335,11 @@ Essential Commands (remote)
 
 ``git push``
     Sends changes **to** a remote repository (f.ex. the server).
+
 .. }}}
 
 .. {{{ intermediate git commands
+
 Intermediate Commands
 ---------------------
 
@@ -358,9 +368,11 @@ Example Remotte Interaction
 .. image:: _static/images/small-team-flow.png
     :align: center
     :height: 500px
+
 .. }}}
 
 .. {{{ Branching
+
 Branching
 =========
 
@@ -417,9 +429,11 @@ process for you to fix the conflict. You can inspect the paused situation using
 * Fix the conflicted files (manual or with ``git mergetool``)
 * Add the files to the index.
 * Run ``git commit``
+
 .. }}}
 
 .. {{{ Configuration
+
 Configuration
 -------------
 
@@ -469,9 +483,11 @@ diff.tool
 
 core.autocrlf
     How to handle CRLF issues (should be set to "true" on Windows).
+
 .. }}}
 
 .. {{{ hooks
+
 Hooks (client-side)
 -------------------
 .. see page 402
@@ -492,9 +508,11 @@ Hooks (server-side)
 * ``update``
 * git finalizes the push
 * ``post-receive`` (Cannot about push!)
+
 .. }}}
 
 .. {{{ Best practices
+
 General Best Practices
 ----------------------
 
@@ -506,6 +524,7 @@ General Best Practices
 * Use the index to prepare coherent commits (``git add -p`` is your friend).
 * Commit often. Avoid working for a week and commit all that work in one go.
   This avoids hairy conflicts.
+
 .. }}}
 
 .. protocols http, https, git, ssh
