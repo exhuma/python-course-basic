@@ -11,6 +11,9 @@
 .. role:: checkpoint
     :class: checkpoint
 
+.. role:: small
+    :class: small
+
 .. role:: keyterm
     :class: keyterm
 
@@ -43,11 +46,13 @@ git
 What is Version Control
 -----------------------
 
-* Like "track changes" in office products. But on steroids.
+* Like "track changes" in office products… on steroids.
 * Primarily for plain-text files (f.ex.: source code).
+* Binary files (f.ex. Word documents) are supported, but many features will
+  not work.
 * Visualising changes in files (diffing).
 * Undo those changes easily.
-* Branching, branching, branching.
+* **Branching**
 * Conflict handling/resolution.
 
 Version Control Models
@@ -168,8 +173,8 @@ repository
 
 .. {{{ repo setups
 
-Repository Setups
-=================
+Collaboration
+=============
 
 One Reference Repo
 ------------------
@@ -228,26 +233,14 @@ Beneveloent Dictator Model
 
 .. {{{ Workflow
 
-Example Workflow
-----------------
+Example Commit Workflow
+-----------------------
 
 .. figure:: _static/images/nvie-workflow.png
     :width: 400
     :align: center
 
     See: http://nvie.com/posts/a-successful-git-branching-model/
-
-Version Numbers
----------------
-
-* Semantic versioning (http://www.semver.org)
-* Very good for application interfaces.
-* More difficult for user interfaces.
-* major, minor, patch
-
-  * **major** backwards *incompatible* changes.
-  * **minor** backwards compatible changes.
-  * **patch** bugfixes.
 
 Workflow Branches
 -----------------
@@ -265,172 +258,24 @@ hotfix/*
     Bugfixes
 
 feature/*
-    Work on one specific feature.
+    Work for one specific feature.
+
+Version Numbers
+---------------
+
+* Semantic versioning (http://www.semver.org)
+* Very good for application interfaces.
+* More difficult for user interfaces.
+* major, minor, patch
+
+  * **major** backwards *incompatible* changes.
+  * **minor** backwards compatible changes.
+  * **patch** bugfixes.
 
 .. }}}
 
-Usage
-=====
-
-Help
-----
-
-.. code-block:: bash
-
-    $ git help <verb>
-    $ git <verb> --help
-    $ man git-verb
-
-git Areas
----------
-
-.. image:: _static/images/areas.png
-    :align: center
-
-.. {{{ essential commands
-
-Essential Commands (local)
---------------------------
-
-``git init``
-    Create an empty git repository or reinitialize an existing one
-
-``git add``
-    Add file contents to the index
-
-``git status``
-    Show the working tree status
-
-``git commit``
-    Creates a new snapshot from the index.
-
-``git log``
-    Shows the timeline of changes.
-
-.. nextslide::
-    :increment:
-
-``git checkout``
-    Gets a branch or path/file into the working directory.
-
-``git gitk``
-    Launches a graphical history browser.
-
-``git show``
-    Displays the content of any git object (commit, branch, tag, tree, …)
-
-``git reset``
-    Moves the ``HEAD`` pointer. Can be used (among other things) to drop all
-    pending (non-committed) changes.
-
-Essential Commands (remote)
----------------------------
-
-``git clone``
-    Clone a repository into a new directory. This is *not* the same as
-    ``checkout`` in SVN!
-
-``git pull``
-    Fetches changes **from** a remote repository (f.ex. the server).
-
-``git push``
-    Sends changes **to** a remote repository (f.ex. the server).
-
-.. }}}
-
-.. {{{ intermediate git commands
-
-Intermediate Commands
----------------------
-
-``git merge``
-    Integrates someone elses work or branch into your current working copy.
-
-``git rebase``
-    Attaches a branch to another commit (rewriting each commit!).
-
-``git bisect``
-    Runs a binary search to find a commit which introduced a bug
-
-``git log -S<pattern>`` (pickaxe)
-    Searches for commits which introduced a specific change.
-
-.. nextslide::
-    :increment:
-
-``git cherry-pick``
-    Takes a single commit (from any branch) and applies it to the current
-    branch. The old commit still remains.
-
-Example Remotte Interaction
----------------------------
-
-.. image:: _static/images/small-team-flow.png
-    :align: center
-    :height: 500px
-
-.. }}}
-
-.. {{{ Branching
-
-Branching
-=========
-
-Creating a new branch
----------------------
-
-You can create branches in two ways:
-
-* ``git branch <branch-name>``
-  This will create the new branch without switching to it. It will have the
-  current ``HEAD`` as parent.
-* ``git checkout -b <branch-name>``
-  This will create a new branch with the current ``HEAD`` as parent **and**
-  switch to it.
-
-The all branch operations are available under the ``git branch`` command. It
-can also delete (``-d``) and rename (``-m``) branches.
-
-Merging
--------
-
-.. sidebar:: Fast-Forwards
-
-    When the latest commit on a branch is the sole descendant of the
-    branch-point, git does a so-called "fast-forward". In this case no new
-    "merge-commit" object is created. Instead git simply moves the target
-    branch pointer forwards.
-
-When finished with a branch, you can simply switch to the target branch, and
-merge your branch::
-
-    git checkout master
-    git merge feature-1
-
-
-Conflicts
----------
-
-.. sidebar:: Conflict Markers
-
-    Conflicts in git are created similarly to other VCSs by inserting "markers"
-    into the source code. For example::
-
-        <<<<<<<
-        This is your code
-        =======
-        This is someone elses code
-        >>>>>>>
-
-When the merged branches both contain changes to the same line, git pauses the
-process for you to fix the conflict. You can inspect the paused situation using
-``git status``. In this case you need to:
-
-* Fix the conflicted files (manual or with ``git mergetool``)
-* Add the files to the index.
-* Run ``git commit``
-
-.. }}}
+Hand-on git
+===========
 
 .. {{{ Configuration
 
@@ -486,6 +331,407 @@ core.autocrlf
 
 .. }}}
 
+Help
+----
+
+.. code-block:: bash
+
+    $ git help <verb>
+    $ git <verb> --help
+    $ man git-verb
+
+git Areas
+---------
+
+.. image:: _static/images/areas.png
+    :align: center
+
+.. {{{ essential commands
+
+Essential Commands (local)
+--------------------------
+
+``git init``
+    Create an empty git repository or reinitialize an existing one
+
+``git add``
+    Add file contents to the index
+
+``git status``
+    Show the working tree status
+
+``git commit``
+    Creates a new snapshot from the index.
+
+``git log``
+    Shows the timeline of changes.
+
+.. nextslide::
+    :increment:
+
+``git checkout``
+    Gets a branch or path/file into the working directory. This is *not* the
+    same as ``checkout`` in SVN!
+
+``git stash``
+    Sets local changes aside and resets the working copy.
+
+``git show``
+    Displays the content of any git object (commit, branch, tag, tree, …)
+
+``git reset``
+    Moves the ``HEAD`` pointer. Can be used (among other things) to drop all
+    pending (non-committed) changes.
+
+``gitk``
+    Launches a graphical history browser.
+
+
+Exercise 1 -- Day-to-day
+------------------------
+
+Covered commands:
+
+* ``git init``
+* ``git add``
+* ``git commit``
+* ``git log``
+* ``git status``
+* ``git show``
+* ``gitk``
+
+.. nextslide::
+    :increment:
+
+Create a new project:
+
+.. code-block:: bash
+
+    $ mkdir project
+    $ cd project
+    $ git init                  # Create the repository
+
+Day-to-day essentials:
+
+.. code-block:: bash
+
+    $ vim ingredients.txt       # Create a simpe file
+    $ git status                # What does git see?
+    $ git add ingredients.txt   # Stage the file for commit
+    $ git status                # How is the status now?
+    $ git commit                # Finalize the commit
+    $ git status                # How is the status now?
+    $ git log                   # Show the history.
+
+.. nextslide::
+    :increment:
+
+Making changes:
+
+.. code-block:: bash
+
+    $ vim ingredients.txt
+    $ git status
+    $ git add
+    $ git status
+    $ git commit
+    $ git status
+    $ git log
+
+Also try:
+
+.. code-block:: bash
+
+    $ git show HEAD
+    $ gitk
+
+
+Exercise 2 -- Undoing
+---------------------
+
+New commands:
+
+* ``git diff``
+* ``git checkout``
+* ``git reset``
+
+.. nextslide::
+    :increment:
+
+* Open ``ingredients.txt`` and make some changes.
+* Run ``git status``, inspect the output.
+* Run ``git diff``, inspect the output.
+* Run ``git checkout ingredients.txt``.
+* Run ``git status`` again.
+
+Alternative command::
+
+    git reset --hard
+
+.. }}}
+
+.. {{{ intermediate git commands
+
+Intermediate Commands
+---------------------
+
+``git merge``
+    Integrates someone elses work or branch into your current working copy.
+
+``git rebase``
+    Attaches a branch to another commit (rewriting each commit!).
+
+``git bisect``
+    Runs a binary search to find a commit which introduced a bug
+
+``git log -S<pattern>`` (pickaxe)
+    Searches for commits which introduced a specific change.
+
+.. nextslide::
+    :increment:
+
+``git cherry-pick``
+    Takes a single commit (from any branch) and applies it to the current
+    branch. The old commit still remains.
+
+.. }}}
+.. {{{ Branching
+
+Branching
+=========
+
+Creating a new branch
+---------------------
+
+You can create branches in two ways:
+
+* ``git branch <branch-name>``
+  This will create the new branch without switching to it. It will have the
+  current ``HEAD`` as parent.
+* ``git checkout -b <branch-name>``
+  This will create a new branch with the current ``HEAD`` as parent **and**
+  switch to it.
+
+All branch operations are available under the ``git branch`` command. It can
+also delete (``-d``) and rename (``-m``) branches.
+
+Exercise -- Branching
+---------------------
+
+New commands:
+
+* ``git checkout`` :small:`(new usage)`
+* ``git branch``
+
+.. nextslide::
+    :increment:
+
+.. code-block:: bash
+
+    $ git branch myvariant
+    $ git branch
+    $ git checkout myvariant
+    $ git branch
+
+Now make some changes as before, and commit them. To switch between branches,
+use ``git checkout``.
+
+.. code-block:: bash
+
+    $ git checkout master
+    $ cat ingredients.txt
+    $ git checkout myvariant
+    $ cat ingredients.txt
+
+Merging
+-------
+
+.. sidebar:: Fast-Forwards
+
+    When the latest commit on a branch is the sole descendant of the
+    branch-point, git does a so-called "fast-forward". In this case no new
+    "merge-commit" object is created. Instead git simply moves the target
+    branch pointer forwards.
+
+When finished with a branch, you can simply switch to the target branch, and
+merge your branch::
+
+    git checkout master
+    git merge myvariant
+    git branch -d myvariant
+
+
+Fast-Forward Merge
+------------------
+
+.. image:: _static/images/ff-merge.png
+
+
+Merge Commit
+------------
+
+.. image:: _static/images/nonff-merge.png
+
+
+Conflicts
+---------
+
+.. sidebar:: Conflict Markers
+
+    Conflicts in git are created similarly to other VCSs by inserting "markers"
+    into the source code. For example::
+
+        <<<<<<<
+        This is your code
+        =======
+        This is someone elses code
+        >>>>>>>
+
+When the merged branches both contain changes to the same line, git pauses the
+process for you to fix the conflict. You can inspect the paused situation using
+``git status``. In this case you need to:
+
+* Fix the conflicted files (manual or with ``git mergetool``)
+* Add the files to the index.
+* Run ``git commit``
+
+Exercise -- Conflict
+--------------------
+
+.. code-block:: bash
+
+    $ git checkout -b othervariant # same as "git branch x; git checkout x"
+    $ vim ingredients.txt
+    $ git commit -a
+    $ git checkout master
+    $ vim ingredients.txt
+    $ git commit -a
+    $ git merge othervariant
+
+Resolve the conflict by editing ``ingredients.txt`` and running:
+
+.. code-block:: bash
+
+    $ git add ingredients.txt
+    $ git commit
+
+.. }}}
+
+.. {{{ remotes
+
+Remotes
+=======
+
+Remote Commands
+---------------
+
+``git clone``
+    Clone a repository into a new directory. This is *not* the same as
+    ``checkout`` in SVN!
+
+``git fetch``
+    Download the latest work (objects and "refs") from the named remote. This
+    does *not* merge any changes!
+
+``git push``
+    Sends changes **to** a remote repository (f.ex. the server). Does *not*
+    include tags automatically.
+
+``git pull``
+    Fetches changes **from** a remote repository (f.ex. the server). Runs ``git
+    fetch`` and ``git merge``.
+
+.. nextslide::
+    :increment:
+
+``git remote``
+    Adds (``git remote add``), removes (``git remote rm``) or lists (``git
+    remote -v``) remotes.
+
+``git push --tags``
+    Sends tags to the remote.
+
+``git branch -avv``
+    List all branches (including remotes), including "refs" and their latest
+    commit.
+
+``git push <remote> --delete <branch>``
+    Deletes a branch on a remote.
+
+``git push <remote> <localbranch>:<remotebranch>``
+    Pushes a branch to the remote, using a different name.
+
+Example Remote Interaction
+--------------------------
+
+.. image:: _static/images/small-team-flow.png
+    :align: center
+    :height: 500px
+
+
+Supported Protocols
+-------------------
+
+* smart http(s) :small:`— git ≥ 1.6.6`
+* dumb http(s) :small:`— git < 1.6.6`
+* ssh
+* local
+* git
+
+Working with remotes
+--------------------
+
+.. sidebar:: Tracking Branches
+
+    A "tracking" branch is a branch that has an entry in ``.git/config`` such
+    that pulling and pushing does not require any arguments.
+
+* Remote branches are *NOT* writable!
+* First, create a new *local* "tracking" branch using ``git checkout -b
+  <branch> <remote>/<branch>``
+* Pull syntax: ``git pull . <remote>/<branch>``
+* Alternative: ``git fetch && git merge <remote>/<branch>``
+* Push syntax: ``git push [-u] <remote> <branch>``
+
+
+Bare repositores
+----------------
+
+.. note::
+    In git, repositories with an existing working copy are not writable. Only a
+    so called "bare" repository is writable.  So, in order get a writable
+    repository onto a shared location (server, nfs, local fs), you first need a
+    "bare" repository. This is essentially the contents of your ``.git``
+    folder. In other words: The project *without working copy*.
+
+* Have no working copy.
+* Are writable (as opposed to normal repositories).
+* Can be shared (server, NFS, local file-system).
+* Created using ``git clone``
+
+.. code-block:: bash
+
+    $ git clone --bare <url>
+
+Some server application for this for you (f.ex.: gitlab_, gitolite_, github_,
+bitbucket_).
+
+.. _gitlab: http://www.gitlab.com
+.. _gitolite: http://www.gitolite.com
+.. _github: http://www.github.com
+.. _bitbucket: http://www.bitbucket.org
+
+If you have write access to a remote bare repository, you can sync your work
+with it using ``git pull`` and ``git push``.
+
+.. TODO
+.. .gitignore
+.. tag        Create, list, delete or verify a tag object signed with GPG
+..      Remote tracking branches
+..      push origin --delete <targetbranch>
+
+.. }}}
+
 .. {{{ hooks
 
 Hooks (client-side)
@@ -515,6 +761,7 @@ Hooks (server-side)
 
 General Best Practices
 ----------------------
+.. TODO   !!! Never add derived files (binary, minified, ...)
 
 * Avoid publishing broken commits.
 * Avoid changing the published history (``git commit --amend``, ``git rebase``,
@@ -527,21 +774,10 @@ General Best Practices
 
 .. }}}
 
-.. protocols http, https, git, ssh
 .. (un)tracked, unmodified, modified, staged
-.. hands-on -> Create a new file, view status, add it to repo
-..    !!! Never add derived files (binary, minified, ...)
-.. hands-on -> modify exsting file, view status, add it to repo
-.. hands-on -> modify the same file again, view status, add it to repo <-- listed as staged and modified
-.. hands-on -> git status --short/-s
-.. .gitignore
 .. diff       Show changes between commits, commit and working tree, etc
 ..    --staged/--cached
 ..    --difftool
-.. commit     Record changes to the repository
-..    -v
-..    -a
-..    $EDITOR / core.editor
 .. rm         Remove files from the working tree and from the index
 ..    --cached
 .. mv         Move or rename a file, a directory, or a symlink
@@ -559,24 +795,6 @@ General Best Practices
 .. reset
 .. commit --amend
 .. checkout -- <filename>
-.. == REMOTES ==
-.. remote
-..      -v
-..      add <shortname> <url>
-..      show <shortname>
-.. fetch <shortname>     Download objects and refs from another repository
-.. push/fetch/merge(basic)/pull
-.. tag        Create, list, delete or verify a tag object signed with GPG
-..      pushing tags
-.. == WORKING WITH REMOTES ==
-..      topic/feature branches
-..      Everything is local! No server communication, no sharing!
-..      Remote tracking branches
-..      git fetch
-..      git push (no branches created by default)!
-..          <localname>:<remotename> (can be used for deleting)
-..      git branch -vv
-..      push origin --delete <targetbranch>
 .. == REWRITING HISTORY ==
 ..      rebase     Forward-port local commits to the updated upstream head
 ..          -i

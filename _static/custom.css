@@ -181,3 +181,9 @@ H3 + .image-reference {
     display: block;
     margin-top: 3em;
 }
+
+.small {
+    font-size: 60%;
+    color: #AAA;
+    vertical-align: middle;
+}
