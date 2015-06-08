@@ -1,24 +1,7 @@
 .. {{{  RST definitions
 
-.. |br| raw:: html
-
-   <br />
-
-.. |clear| raw:: html
-
-   <br clear="both" />
-
-.. role:: checkpoint
-    :class: checkpoint
-
 .. role:: small
     :class: small
-
-.. role:: keyterm
-    :class: keyterm
-
-.. role:: strike
-    :class: strike
 
 .. |home| image:: _static/icons/home.png
     :class: midline
@@ -103,6 +86,9 @@ Distributed
     * Can support very complex workflows (f.ex.: code-review, "tenured"
       repositories, …).
 
+.. }}}
+
+.. {{{ git
 
 Git
 ---
@@ -171,7 +157,7 @@ repository
 
 .. }}}
 
-.. {{{ repo setups
+.. {{{ collaboration / repo setups
 
 Collaboration
 =============
@@ -274,6 +260,8 @@ Version Numbers
 
 .. }}}
 
+.. {{{ hands-on
+
 Hand-on git
 ===========
 
@@ -331,6 +319,8 @@ core.autocrlf
 
 .. }}}
 
+.. {{{ help
+
 Help
 ----
 
@@ -340,11 +330,17 @@ Help
     $ git <verb> --help
     $ man git-verb
 
+.. }}}
+
+.. {{{ areas
+
 git Areas
 ---------
 
 .. image:: _static/images/areas.png
     :align: center
+
+.. }}}
 
 .. {{{ essential commands
 
@@ -386,6 +382,9 @@ Essential Commands (local)
 ``gitk``
     Launches a graphical history browser.
 
+.. }}}
+
+.. {{{ exercise 1
 
 Exercise 1 -- Day-to-day
 ------------------------
@@ -445,6 +444,9 @@ Also try:
     $ git show HEAD
     $ gitk
 
+.. }}}
+
+.. {{{ exercise 2
 
 Exercise 2 -- Undoing
 ---------------------
@@ -495,6 +497,7 @@ Intermediate Commands
     branch. The old commit still remains.
 
 .. }}}
+
 .. {{{ Branching
 
 Branching
@@ -514,6 +517,8 @@ You can create branches in two ways:
 
 All branch operations are available under the ``git branch`` command. It can
 also delete (``-d``) and rename (``-m``) branches.
+
+.. {{{ exercise 3
 
 Exercise -- Branching
 ---------------------
@@ -542,6 +547,10 @@ use ``git checkout``.
     $ cat document.txt
     $ git checkout myvariant
     $ cat document.txt
+
+.. }}}
+
+.. {{{ merging
 
 Merging
 -------
@@ -595,6 +604,10 @@ process for you to fix the conflict. You can inspect the paused situation using
 * Add the files to the index.
 * Run ``git commit``
 
+.. }}}
+
+.. {{{ exercise
+
 Exercise -- Conflict
 --------------------
 
@@ -621,6 +634,8 @@ Resolve the conflict by editing ``document.txt`` and running:
 
 Remotes
 =======
+
+.. {{{ commands
 
 Remote Commands
 ---------------
@@ -660,6 +675,8 @@ Remote Commands
 
 ``git push <remote> <localbranch>:<remotebranch>``
     Pushes a branch to the remote, using a different name.
+
+.. }}}
 
 Example Remote Interaction
 --------------------------
@@ -775,6 +792,10 @@ General Best Practices
 
 .. }}}
 
+.. }}}
+
+.. }}}
+
 .. (un)tracked, unmodified, modified, staged
 .. diff       Show changes between commits, commit and working tree, etc
 ..    --staged/--cached
@@ -821,6 +842,7 @@ General Best Practices
 
 
 .. {{{ --- FIN ----------------------------------------------------------------
+
 .. slide::
     :level: 2
 
@@ -837,6 +859,7 @@ General Best Practices
     * |home| http://michel.albert.lu
     * |github| exhuma
     * |gplus| MichelAlbert
+
 .. }}}
 
 .. vim: set foldmethod=marker :
