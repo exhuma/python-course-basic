@@ -415,13 +415,13 @@ Day-to-day essentials:
 
 .. code-block:: bash
 
-    $ vim ingredients.txt       # Create a simpe file
-    $ git status                # What does git see?
-    $ git add ingredients.txt   # Stage the file for commit
-    $ git status                # How is the status now?
-    $ git commit                # Finalize the commit
-    $ git status                # How is the status now?
-    $ git log                   # Show the history.
+    $ vim document.txt       # Create a simpe file
+    $ git status             # What does git see?
+    $ git add document.txt   # Stage the file for commit
+    $ git status             # How is the status now?
+    $ git commit             # Finalize the commit
+    $ git status             # How is the status now?
+    $ git log                # Show the history.
 
 .. nextslide::
     :increment:
@@ -430,7 +430,7 @@ Making changes:
 
 .. code-block:: bash
 
-    $ vim ingredients.txt
+    $ vim document.txt
     $ git status
     $ git add
     $ git status
@@ -458,10 +458,10 @@ New commands:
 .. nextslide::
     :increment:
 
-* Open ``ingredients.txt`` and make some changes.
+* Open ``document.txt`` and make some changes.
 * Run ``git status``, inspect the output.
 * Run ``git diff``, inspect the output.
-* Run ``git checkout ingredients.txt``.
+* Run ``git checkout document.txt``.
 * Run ``git status`` again.
 
 Alternative command::
@@ -539,9 +539,9 @@ use ``git checkout``.
 .. code-block:: bash
 
     $ git checkout master
-    $ cat ingredients.txt
+    $ cat document.txt
     $ git checkout myvariant
-    $ cat ingredients.txt
+    $ cat document.txt
 
 Merging
 -------
@@ -601,18 +601,18 @@ Exercise -- Conflict
 .. code-block:: bash
 
     $ git checkout -b othervariant # same as "git branch x; git checkout x"
-    $ vim ingredients.txt
+    $ vim document.txt
     $ git commit -a
     $ git checkout master
-    $ vim ingredients.txt
+    $ vim document.txt
     $ git commit -a
     $ git merge othervariant
 
-Resolve the conflict by editing ``ingredients.txt`` and running:
+Resolve the conflict by editing ``document.txt`` and running:
 
 .. code-block:: bash
 
-    $ git add ingredients.txt
+    $ git add document.txt
     $ git commit
 
 .. }}}
