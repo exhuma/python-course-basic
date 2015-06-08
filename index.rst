@@ -684,11 +684,12 @@ Working with remotes
 .. sidebar:: Tracking Branches
 
     A "tracking" branch is a branch that has an entry in ``.git/config`` such
-    that pulling and pushing does not require any arguments.
+    that pulling and pushing does not require any arguments. Created using
+    ``checkout -t`` or ``push -u``.
 
 * Remote branches are *NOT* writable!
-* First, create a new *local* "tracking" branch using ``git checkout -b
-  <branch> <remote>/<branch>``
+* First, create a new *local* "tracking" branch using ``git checkout -t
+  <remote>/<branch>``
 * Pull syntax: ``git pull . <remote>/<branch>``
 * Alternative: ``git fetch && git merge <remote>/<branch>``
 * Push syntax: ``git push [-u] <remote> <branch>``
