@@ -750,11 +750,16 @@ with it using ``git pull`` and ``git push``.
 
 .. }}}
 
+.. }}}
+
 .. {{{ hooks
 
 Hooks (client-side)
 -------------------
-.. see page 402
+
+.. note::
+
+    This list omits hooks used in an e-mail workflow as we rarely use them.
 
 * User runs ``git commit``
 * ``pre-commit``
@@ -775,6 +780,53 @@ Hooks (server-side)
 
 .. }}}
 
+.. {{{ git hosting
+
+git hosting
+===========
+
+github
+------
+
+https://www.github.com
+
+* Free if you don't need private repositories (everything is public).
+* Everyone is on there. Linux_, Google_, Microsoft_, Apache_, NASA_, ESA_, …
+* Pull requests and merges can be executed on the web.
+* Files editable on the web.
+
+.. _Linux: https://github.com/torvalds/linux
+.. _Google: https://github.com/google
+.. _Microsoft: https://github.com/Microsoft
+.. _NASA: https://github.com/nasa
+.. _ESA: https://github.com/esa
+.. _Apache: https://github.com/apache
+
+
+bitbucket
+---------
+
+https://www.bitbucket.org
+
+* Free for 5 users.
+* Started of as mercurial solution, now also supports git.
+* Free private repositories.
+* Developed by Atlassian_.
+* Integrates well with other Atrlassian products (Confluence, Jira, …).
+
+.. _Atlassian: https://www.atlassian.com
+
+gitlab
+------
+
+https://www.gitlab.com
+
+* Free
+* Self hosted solution
+* Similar to github
+
+.. }}}
+
 .. {{{ Best practices
 
 General Best Practices
@@ -782,15 +834,13 @@ General Best Practices
 .. TODO   !!! Never add derived files (binary, minified, ...)
 
 * Avoid publishing broken commits.
-* Avoid changing the published history (``git commit --amend``, ``git rebase``,
-  ``git reset``, …).
+* Avoid changing the **published** history (``git commit --amend``, ``git
+  rebase``, ``git reset``, …).
 * Avoid pushing too often. As long as you have not pushed, it is okay to change
   history (see the previous point).
 * Use the index to prepare coherent commits (``git add -p`` is your friend).
 * Commit often. Avoid working for a week and commit all that work in one go.
   This avoids hairy conflicts.
-
-.. }}}
 
 .. }}}
 
