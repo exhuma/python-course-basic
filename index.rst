@@ -18,9 +18,28 @@
 
 git
 ===
-* |home| http://michel.albert.lu/shelf/git2015
-* http://git-scm.com
+* |home| http://git-scm.com
+* Slides: http://michel.albert.lu/shelf/git2015
 * Images licensed under CC BY-NC-SA 3.0 by Scott Chacon
+
+About Me
+--------
+
+* First program written in 1989.
+* Professional Software Developer since 1998.
+* GFA-Basic → Delphi → PHP → Java → Python → Ha…?
+* Degree in Computer Science (BSc CS AI).
+* Lead Software Developer in Post BackBone-OSS.
+* Semantics Nerd, Gamer, Geek.
+
+
+About You
+---------
+
+* Your name
+* Your experience
+* What do you expect from this course
+
 
 .. }}}
 

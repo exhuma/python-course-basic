@@ -51,6 +51,7 @@ def serve_linked():
 @fab.roles('www')
 def publish():
     fab.execute(build_linked)
+    fab.run('mkdir -p /var/www/albert.lu/michel/shelf/git2015')
     fab.put('_build/html',
             '/var/www/albert.lu/michel/shelf/git2015')
     fab.put('_build/slides',
