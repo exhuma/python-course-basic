@@ -1733,7 +1733,6 @@ Packaging — Revisited
     :caption: **Filename:** setup.py
 
     from setuptools import setup, find_packages
-    from pkg_resources import resource_string
     setup(
         name='wiki',
         description="Replacement for Wikipedia",
@@ -1797,7 +1796,7 @@ Apache httpd
 ------------
 
 .. code-block:: python
-    :caption: / var / www / mywiki / wsgi / myall.wsgi
+    :caption: / var / www / mywiki / wsgi / myapp.wsgi
 
     from wiki.webui import APP as application
 
@@ -1809,7 +1808,7 @@ Apache httpd
 
         WSGIDaemonProcess yourapplication user=user1 group=group1 \
             threads=5
-        WSGIScriptAlias / /var/www/mywiki/wsgi/myall.wsgi
+        WSGIScriptAlias / /var/www/mywiki/wsgi/myapp.wsgi
 
         <Directory /var/www/mywiki>
             WSGIProcessGroup yourapplication
@@ -2237,7 +2236,7 @@ References
 ----------
 
 * http://www.python.org
-* http://www.sphix-doc.org
+* http://www.sphinx-doc.org
 * https://virtualenvwrapper.readthedocs.org
 * https://packaging.python.org
 * http://www.sqlalchemy.org
