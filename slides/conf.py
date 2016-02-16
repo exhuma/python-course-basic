@@ -304,6 +304,7 @@ slide_levels = 3
 slide_theme_options = {
     'custom_css': 'custom.css',
 #     'custom_js': 'custom.js',
+    'google_analytics': 'UA-54507261-1',
 }
 
 slide_link_to_html = True
