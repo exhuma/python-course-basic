@@ -2098,7 +2098,7 @@ Out with the old, in with the new
 
         @APP.route('/')
         def index():
-            return 'Hello World'
+            return redirect('/Index')
 
 
         @APP.route('/list')
