@@ -194,18 +194,25 @@ Duck Typing
 Typing Comparison
 -----------------
 
-=========== ========= =====================
-Language     Typing    Coercion Strictness
-=========== ========= =====================
-Java         Static    Very strict
-C#           Static    Very strict
-C++          Static    Fairly strict
-Python       Dynamic   Fairly strict
-Ruby         Dynamic   Fairly strict
-C            Dynamic   Less strict
-PHP          Dynamic   Not strict
-JavaScript   Dynamic   Not strict
-=========== ========= =====================
++--------------+-----------+---------------------+
+| Language     | Typing    | Coercion Strictness |
++==============+===========+=====================+
+| Java         | Static    | Very strict         |
++--------------+           +                     +
+| C#           |           |                     |
++--------------+           +---------------------+
+| C++          |           | Fairly strict       |
++--------------+-----------+                     +
+| Python       | Dynamic   |                     |
++--------------+           +                     +
+| Ruby         |           |                     |
++--------------+           +---------------------+
+| C            |           | Less strict         |
++--------------+           +---------------------+
+| PHP          |           | Not strict          |
++--------------+           +                     +
+| JavaScript   |           |                     |
++--------------+-----------+---------------------+
 
 
 .. note:: Explore
