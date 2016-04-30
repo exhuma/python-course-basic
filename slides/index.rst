@@ -1853,7 +1853,7 @@ Packaging — Revisited
     :increment:
 
 
-.. code-block:: txt
+.. code-block:: text
     :caption: **Filename:** MANIFEST.in
 
     recursive-include wiki/templates *.html
