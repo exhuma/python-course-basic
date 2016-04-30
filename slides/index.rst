@@ -62,7 +62,7 @@ About Me
 
 * First program written in 1989.
 * Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python → Ha…?
+* GFA-Basic → Delphi → PHP → Java → Python → ?
 * Degree in Computer Science (BSc CS AI).
 * Lead Software Developer in Post BackBone-OSS.
 * Semantics Nerd, Gamer, Geek.
@@ -256,7 +256,7 @@ The Python Shell (REPL)
 * Extremely helpful tool to test out ideas, play with code before implementing
   it.
 
-Simply run ``python`` on the console to start it.
+Simply run ``python3`` on the console to start it.
 
 By convention, lines with ``>>>`` represent a REPL prompt.
 
@@ -293,6 +293,10 @@ Getting Help
 
 Diving in
 =========
+
+.. sidebar:: Explore
+
+    "Explore" blocks show a few simple things for you to try out yourself.
 
 * Data types and primitives.
 * Functions and classes.
@@ -340,8 +344,8 @@ Common Data Types
 
 .. warning::
 
-    * *Always* prefix text with ``u`` in Python 2. *Unless* you know *exactly*
-      that you want bytes!
+    * *Always* prefix text with ``u`` in **Python 2**. *Unless* you know
+      *exactly* that you want bytes!
     * *Never* use ``encode`` on bytes.
     * *Never* use ``decode`` on strings.
 
@@ -433,14 +437,16 @@ Python vs other Languages
 * Blocks defined by indentation
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
+* Variable unpacking (f.ex.: ``a, b = 1, 2``).
+* :pep:`8`
 
-  * Historically, ``True`` and ``False`` did not exist in Python. Instead ``1``
+.. note::
+
+    Historically, ``True`` and ``False`` did not exist in Python. Instead ``1``
     and ``0`` were used. Those literals were introduced in Python 2.2.1. The
     boolean type was introduced in 2.3. The values are *constant* for backwards
     compatibility with older versions.
 
-* Variable unpacking
-* :pep:`8`
 
 
 Exercise: scalars
@@ -555,6 +561,7 @@ Exercise: "Falsy" Values
     * Blocks identified by indentation
 
 .. code-block:: python
+    :emphasize-lines: 2
 
     >>> def trueish(true_enough):
     >>>     if true_enough:
@@ -944,13 +951,15 @@ The "``with``" Statement
 ------------------------
 
 * Used with a so called "Context Manager".
-* Used for code which needs a clean "finalisation" step (closing an open file,
+* Used for code which needs an "entry" and guaranteed "exit" step (a open file,
   a DB connection, …).
 * The ``with`` block does **not** create a new variable scope. Variables
   created in that block are accessible outside!
 * Ensures that finalisation step is taken. Even on unexpected exit.
-* Context managers can be created by implementing the magic ``__enter__`` and
-  ``__exit__`` methods in a class.
+* Context managers can be created manuall by implementing the magic
+  ``__enter__`` and ``__exit__`` methods in a class, or
+  :py:func:`contextlib.contextmanager`.
+
 
 
 Variable Unpacking
