@@ -39,6 +39,15 @@ Python
 About This Course
 -----------------
 
+.. ifnotslides::
+
+    .. note::
+        This document has been generated from the original slide sources. Some
+        sections may seem so to be kept extensively short. This was necessary
+        to make the slides readable. The same goes for code samples that have
+        been cut into pieces. In that case, each block has a "filename" caption
+        to give some context.
+
 * Introduction to Python
 * HelloWorld
 * Wiki
@@ -48,14 +57,6 @@ About This Course
     * Replace WikiWords with links.
 * Packaging
 * *Advanced Python?*
-
-.. ifnotslides::
-
-    .. note::
-        Some code-blocks from one file have been split so they fit well on
-        slides.  Unfortunately, I could not find a way to "glue" them back
-        togehter in HTML output. The "Filename" caption should give enough
-        context.
 
 About Me
 --------
