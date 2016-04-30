@@ -692,6 +692,7 @@ Storing documents on Disk
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / disk.py
+    :name: diskstorage1
 
     from os import listdir
     from os.path import join, exists
@@ -722,6 +723,7 @@ Storing documents on Disk
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / disk.py
+    :name: diskstorage2
 
     def save(self, document):
         filename = join(self.root,
@@ -755,6 +757,7 @@ Storing documents on Disk
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / disk.py
+    :name: diskstorage3
 
     def list(self):
         titles = []
@@ -798,6 +801,7 @@ Using the DiskStorage Class
 
     .. code-block:: python
         :caption: wiki/storage/disk.py
+        :name: complete_diskstorage
 
         from os import listdir
         from os.path import join, exists
@@ -1012,6 +1016,7 @@ A minimal setup script:
 
 .. code-block:: python
     :caption: **Filename:** setup.py
+    :name: basic_setup_script
 
     from setuptools import setup, find_packages
 
@@ -1041,6 +1046,7 @@ Our first Web Page
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui1
 
     from flask import Flask
 
@@ -1079,6 +1085,7 @@ Using our DiskStorage class
 
     .. code-block:: python
         :caption: wiki/webui.py
+        :name: complete_webui
 
         from flask import Flask, g
         from wiki.storage.disk import DiskStorage
@@ -1112,6 +1119,7 @@ Imports:
 .. code-block:: python
     :emphasize-lines: 1
     :caption: wiki / webui.py
+    :name: webui2
 
     from flask import Flask, g
     from wiki.storage.disk import DiskStorage
@@ -1160,6 +1168,7 @@ HTML Output (via templating) in Flask
 
     .. code-block:: python
         :caption: wiki/webui.py
+        :name: webui3
 
         from flask import Flask, g, render_template
         from wiki.storage.disk import DiskStorage
@@ -1194,6 +1203,7 @@ HTML Output (via templating) in Flask
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / pagelist.html
+    :name: pagelist1
 
     <html>
     <body>
@@ -1211,6 +1221,7 @@ HTML Output (via templating) in Flask
 .. code-block:: python
     :emphasize-lines: 1, 8
     :caption: **Filename:** wiki / webui.py
+    :name: webui4
 
     from flask import Flask, g, render_template
 
@@ -1245,6 +1256,7 @@ Loading and Displaying a Page
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui5
     :emphasize-lines: 3
 
     ...
@@ -1258,6 +1270,7 @@ Loading and Displaying a Page
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / page.html
+    :name: page2
 
     <html>
     <body>
@@ -1293,6 +1306,7 @@ Creating Pages
 
     .. code-block:: python
         :caption: wiki/webui.py
+        :name: webui6
 
         from flask import Flask, g, render_template, redirect, url_for, request
         from wiki.model import WikiPage
@@ -1344,6 +1358,7 @@ Creating Pages
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui7
     :emphasize-lines: 1-2, 7-11, 14-20
 
     from flask import ..., redirect, url_for, request
@@ -1412,6 +1427,7 @@ Let's add links to our page listing:
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / pagelist.html
+    :name: pagelist2
     :emphasize-lines: 5-6
 
     <html>
@@ -1434,6 +1450,7 @@ page.
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui8
     :emphasize-lines: 5
 
     ...
@@ -1491,6 +1508,7 @@ Custom Template Filter
 
     .. code-block:: python
         :caption: wiki/webui.py
+        :name: webui9
 
         import re
 
@@ -1560,6 +1578,7 @@ Custom Template Filter
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui10
 
     import re
 
@@ -1638,6 +1657,7 @@ mini templating language.
 
     .. code-block:: python
         :caption: **Filename:** wiki / webui.py
+        :name: webui11
 
         import re
 
@@ -1708,6 +1728,7 @@ Page Layout
 
 .. code-block:: html+jinja
     :caption: **Filename:** wiki / templates / page.html
+    :name: page1
 
     {% extends "master.html" %}
     {% block content %}
@@ -1732,6 +1753,7 @@ Packaging — Revisited
 
 .. code-block:: python
     :caption: **Filename:** setup.py
+    :name: extended_setup_script
 
     from setuptools import setup, find_packages
     setup(
@@ -1882,6 +1904,7 @@ A new Storage class
 
     .. code-block:: python
         :caption: wiki/storage/sqlite.py
+        :name: sqlitestorage1
 
         import sqlite3
 
@@ -1950,6 +1973,7 @@ A new Storage class
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
+    :name: sqlitestorage2
 
     import sqlite3
 
@@ -1966,6 +1990,7 @@ A new Storage class
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
+    :name: sqlitestorage3
 
         def init(self):
             cursor = self.connection.cursor()
@@ -1987,6 +2012,7 @@ A new Storage class
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
+    :name: sqlitestorage4
 
         def save(self, document):
             cursor = self.connection.cursor()
@@ -2010,6 +2036,7 @@ A new Storage class
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
+    :name: sqlitestorage5
 
         def load(self, title):
             cursor = self.connection.cursor()
@@ -2029,6 +2056,7 @@ A new Storage class
 
 .. code-block:: python
     :caption: **Filename:** wiki / storage / sqlite.py
+    :name: sqlitestorage6
 
         def list(self):
             cursor = self.connection.cursor()
@@ -2048,6 +2076,7 @@ Out with the old, in with the new
 
     .. code-block:: python
         :caption: wiki/webui.py
+        :name: complete_webui2
 
         import re
 
@@ -2139,6 +2168,7 @@ Out with the old, in with the new
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
+    :name: webui12
 
     from wiki.storage.sqlite import SQLiteStorage
 
