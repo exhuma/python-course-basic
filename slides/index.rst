@@ -438,6 +438,7 @@ Python vs other Languages
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
 * ``True == 1 and False == 0``
 * Variable unpacking (f.ex.: ``a, b = 1, 2``).
+* "lambda" expressions.
 * :pep:`8`
 
 .. note::
