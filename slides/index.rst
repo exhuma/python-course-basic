@@ -49,14 +49,13 @@ About This Course
         to give some context.
 
 * Introduction to Python
-* HelloWorld
+* Playing with the REPL and Python basics.
 * Wiki
     * List pages.
     * Load & display a page.
     * Save a page (create or update).
     * Replace WikiWords with links.
 * Packaging
-* *Advanced Python?*
 
 About Me
 --------
