@@ -374,8 +374,8 @@ Common Data Types
     In order to remove this ambiguity, a 1-element tuple must be written with a
     trailing comma: ``(1, )``
 
-    Additionally, in the same way that ``1`` === ``(1)``, there is also: ``(1,
-    )`` === ``1,`` (as long as it is syntaxtically correct)!.
+    Additionally, in the same way that ``1`` ≡ ``(1)``, there is also: ``(1,)``
+    ≡ ``1,`` (as long as it is syntactically correct)!.
 
     As such, the following lines are also equivalent (similar to the first
     paragraph)::
