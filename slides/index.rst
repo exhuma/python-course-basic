@@ -90,14 +90,15 @@ Linux
 -----
 
 * Available by default on most Unix platforms.
-* Packaged default may either be Python 2 (Debian, Red-Hat), or Python 3 (Arch).
+* Packaged default may either be Python 2 (Debian, Red-Hat, Ubuntu < 16.06), or
+  Python 3 (Arch, Ubuntu ≥ 16.04).
 * Python 2 and 3 can both happily live on the same system without interfering
   with each other (f.ex. the ``python`` and ``python3`` packages on debian and
   derivates).
 
 .. note::
 
-    For this course we will use ``Python-3.4.3.tgz``.
+    For this course we will use ``Python-3.5.1.tgz``.
 
     In order to successfully compile with all features for this course, you
     need the required libraries and system packages. For debian derivates these
@@ -108,7 +109,7 @@ Linux
 
     Once the requirements are available run::
 
-        ./configure --prefix=/opt/python3.4
+        ./configure --prefix=/opt/python3.5
         make
         sudo make install
 
@@ -129,7 +130,7 @@ Mac OS X
 Windows
 -------
 
-* Download the ``python-3.4.x.msi`` file and install.
+* Download the ``python-3.5.x.msi`` file and install.
 
 
 Introduction
@@ -226,12 +227,12 @@ JavaScript   Dynamic   Not strict
 Use Python 3
 ------------
 
-.. sidebar:: Python 3.4
+.. sidebar:: Python 3.5
 
-    This course is based on **Python 3.4** as it comes bundled with ``pip`` and
+    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
     ``pyvenv``.
 
-* Python 3.3+ (current version is 3.4 with 3.5 on the horizon).
+* Python 3.3+ (current version is 3.5).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
 * No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
@@ -988,7 +989,7 @@ Third Party Modules & virtualenv
 
 .. code-block:: bash
 
-    $ /opt/python3.4/bin/pyvenv env
+    $ /opt/python3.5/bin/pyvenv env
     $ ./env/bin/pip install flask
 
 
@@ -1846,7 +1847,7 @@ Our own Storage API
 
 .. note::
 
-    * Type hints will be *provisional* in Python 3.5 (See :pep:`484`)
+    * Type hints are *provisional* in Python 3.5 (See :pep:`484`)
     * Syntax is valid back to Python 3.2 (:pep:`3107`)
 
 
