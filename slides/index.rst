@@ -775,6 +775,8 @@ Using the DiskStorage Class
 
     Packages must have a ``__init__.py`` file!
 
+    `source code (step 1) <_static/wiki-0.1.tar.gz>`_
+
 .. code-block:: python
     :caption: **Filename:** runner.py
 
@@ -1233,6 +1235,10 @@ HTML Output (via templating) in Flask
         return render_template('pagelist.html',
                                page_names=page_names)
 
+.. sidebar:: Source Code
+
+    `source code (step 2) <_static/wiki-0.2.tar.gz>`_
+
 
 .. slide::
 
@@ -1280,6 +1286,11 @@ Loading and Displaying a Page
         Edit</a>
     </body>
     </html>
+
+.. sidebar:: Source Code
+    :class: overlapping
+
+    `source code (step 3) <_static/wiki-0.3.tar.gz>`_
 
 
 .. slide::
@@ -1389,7 +1400,8 @@ Creating Pages
 
     <html>
     <body>
-    <form action="{{url_for('index')}}" method="POST">
+    <form action="{{url_for('index')}}"
+          method="POST">
       Title: <input type="text"
                     name="title"
                     value="{{name}}" /><br />
@@ -1401,6 +1413,12 @@ Creating Pages
     </form>
     </body>
     </html>
+
+
+.. sidebar:: Source Code
+    :class: overlapping
+
+    `source code (step 4) <_static/wiki-0.4.tar.gz>`_
 
 
 .. slide::
@@ -1678,6 +1696,10 @@ mini templating language.
 
 .. slide::
 
+    `source code (step 5) <_static/wiki-0.5.tar.gz>`_
+
+.. slide::
+
     .. figure:: _static/checkpoint.jpg
         :class: fill
 
@@ -1759,11 +1781,11 @@ Packaging — Revisited
     setup(
         name='wiki',
         description="Replacement for Wikipedia",
-        url="http://www.newwp-project.com",
+        url="http://www.newp-project.com",
         license="BSD",
         author="Michel Albert",
         author_email="michel@albert.lu",
-        version='1.0',
+        version='0.6',
         packages=find_packages(),
         include_package_data=True,
         install_requires=[
@@ -1803,6 +1825,11 @@ Creating distributions
     $ twine upload dist/*
 
 See: https://packaging.python.org
+
+.. sidebar:: Source Code
+    :class: overlapping
+
+    `source code (step 6) <_static/wiki-0.6.tar.gz>`_
 
 
 Deploying
@@ -2167,6 +2194,8 @@ Out with the old, in with the new
 
     * Exception Handling
 
+    `source code (step 7) <_static/wiki-0.7.tar.gz>`_
+
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
     :name: webui12
@@ -2266,6 +2295,9 @@ Common Mistakes
 
 References
 ----------
+
+Full source code to the above wiki can be :download:`downloaded here <_static/wiki-0.6.tar.gz>`.
+
 
 * http://www.python.org
 * http://www.sphinx-doc.org
