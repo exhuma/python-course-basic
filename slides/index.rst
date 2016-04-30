@@ -449,9 +449,48 @@ Python vs other Languages
     compatibility with older versions.
 
 
+Exceptions
+----------
 
-Exercise: scalars
------------------
+An example exception:
+
+.. code-block:: python
+
+    >>> from example_exception import foo
+    >>> foo()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/path/example_exception.py", line 3, in foo
+        return a['z']
+    KeyError: 'z'
+
+
+.. note::
+
+    From bottom to top:
+
+    **KeyError**
+        The kind of the exception which was thrown.
+
+    ``return a['z']``
+        The line which caused the error.
+
+    **File "..."**
+        The finlename that caused the error.
+
+    **line 3**
+        The line in the file.
+
+    **in foo**
+        The function-name in which the error was thrown.
+
+    Moving up the "stack", the lines have the same format. The further you move
+    "up", the closer you get to the entry-point of the application.
+
+
+
+Exercise: primitives
+--------------------
 
 .. to-do item #1 code
 
