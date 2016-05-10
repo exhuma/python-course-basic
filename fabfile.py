@@ -54,8 +54,8 @@ def serve_linked():
 @fab.task
 @fab.roles('www')
 def publish():
+    remote_folder = '/var/www/albert.lu/michel/shelf/python-basic'
     fab.execute(build_linked)
-    fab.put('slides/_build/html',
-            '/var/www/albert.lu/michel/shelf/python2015')
-    fab.put('slides/_build/slides',
-            '/var/www/albert.lu/michel/shelf/python2015')
+    fab.run('mkdir -p %s' % remote_folder)
+    fab.put('slides/_build/html', remote_folder)
+    fab.put('slides/_build/slides', remote_folder)

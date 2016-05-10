@@ -2352,7 +2352,7 @@ Common Mistakes
 References
 ----------
 
-Full source code to the above wiki can be :download:`downloaded here <_static/wiki-0.6.tar.gz>`.
+Full source code to the above wiki can be :download:`downloaded here <_static/wiki-0.7.tar.gz>`.
 
 
 * http://www.python.org
