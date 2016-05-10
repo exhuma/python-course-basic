@@ -9,7 +9,7 @@ Reference: `Basic Customisation`_
 * ``__str__``, ``__unicode__`` (Python 2 only), ``__bytes__`` (Python 3 Only)
 * ``__repr__``
 * ``__eq__``, ``__hash__``, ``__lt__``, ``__gt__`` |ell|
-* ``_getattr__``, ``__getattribute__``, ``__setattr__``, ``__getitem__``,
+* ``__getattr__``, ``__getattribute__``, ``__setattr__``, ``__getitem__``,
   ``__contains__`` |ell|
 
 .. _Basic Customisation: https://docs.python.org/3/reference/datamodel.html#basic-customization
@@ -18,7 +18,7 @@ Magic Methods Example
 ---------------------
 
 .. code-block:: python
-    :emphasize-lines: 5-7, 17-20
+    :emphasize-lines: 5-7, 9-11
 
     class MagicTestA:
         def __init__(self, foo):
@@ -28,6 +28,10 @@ Magic Methods Example
             print('__str__ called')
             return self.foo
 
+        def __repr__(self):
+            print('__repr__ called')
+            return 'MagicTestA(foo=%r)' % self.foo
+
         def __unicode__(self):
             print('__unicode__ called')
             return self.foo
@@ -36,15 +40,11 @@ Magic Methods Example
             print('__bytes__ called')
             return self.foo.encode('utf8')
 
-        def __repr__(self):
-            print('__repr__ called')
-            return 'MagicTestA(foo=%r)' % self.foo
-
 .. nextslide::
     :increment:
 
 .. code-block:: python
-    :emphasize-lines: 5-7
+    :emphasize-lines: 5-7, 9-11, 13-15
 
     class MagicTestB:
         def __init__(self, foo):

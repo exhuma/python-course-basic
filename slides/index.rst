@@ -6,11 +6,15 @@ Python - Advanced
 Topics
 ------
 
-* Python Object Model and Customisation
-* SQLAlchemy
-* PLY (3rd Party Module)
-* Debugging
+.. toctree::
+    :maxdepth: 1
 
+    object_model
+    sqlalchemy
+    unittesting
+    debugging
+    parsing
+    references
 
 .. include:: object_model.rst
 .. include:: sqlalchemy.rst
