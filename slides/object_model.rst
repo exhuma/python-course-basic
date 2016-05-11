@@ -14,6 +14,23 @@ Reference: `Basic Customisation`_
 
 .. _Basic Customisation: https://docs.python.org/3/reference/datamodel.html#basic-customization
 
+.. nextslide::
+    :increment:
+
+.. warning::
+
+    The following rules are *not* enforced by Python. They don't need to be!
+
+    But you can save yourself from some difficult to find bugs by following
+    them:
+
+    * If you define ``__hash__`` you **must** also define ``__eq__``.
+    * ... but you can have ``__eq__`` without ``__hash__``.
+    * Values used to compute the ``__hash__`` **must** be immutable!
+
+    For more details, see the `official docs
+    <https://docs.python.org/3/reference/datamodel.html#object.__hash__>`_.
+
 Magic Methods Example
 ---------------------
 
@@ -106,8 +123,21 @@ Wiki Page Customisation
 
         ...
 
-.. nextslide::
-    :increment:
+.. warning::
+
+    For **Python2** you should implement both ``__str__`` and
+    ``__unicode__``!
+
+
+.. sidebar:: Almost always useful
+    :class: overlapping
+
+    * ``__repr__``
+    * ``__str__``
+
+
+Testing Page Customisation
+--------------------------
 
 .. code-block:: python
     :caption: Before Adding __str__ and __repr__
@@ -122,8 +152,8 @@ Wiki Page Customisation
     <wiki.model.WikiPage object at 0x7f34a465d518>
     >>> str(a)
     '<wiki.model.WikiPage object at 0x7f34a465d518>'
-    >>> id(page)
-    139864073164056
+    >>> hex(id(page))
+    '0x7f34a465d518'
     >>> page.__class__
     <class 'wiki.model.WikiPage'>
 
@@ -140,7 +170,7 @@ Wiki Page Customisation
     >>> print(page)
     Hello World!
     >>> id(page)
-    139864073164056
+    '0x7f34a465d518'
     >>> page.__class__
     <class 'wiki.model.WikiPage'>
 

@@ -9,6 +9,9 @@ pre {
     box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 2px;
+    max-height: 30em;
+    overflow: auto;
+    font-size: 0.6em;
 }
 
 DIV.highlight {
@@ -171,10 +174,3 @@ H2:hover .headerlink {
 H2 {
     margin-top: 1em;
 }
-
-/* ..code-block directive  {{{ */
-DIV.highlight PRE {
-    max-height: 25em;
-    overflow: auto;
-}
-/* }}} */
