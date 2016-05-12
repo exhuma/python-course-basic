@@ -32,8 +32,6 @@ Python
 
     print("Hello World")
 
-|home| http://michel.albert.lu/shelf/python2015
-
 
 
 About This Course
