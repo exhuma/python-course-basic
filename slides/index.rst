@@ -492,7 +492,7 @@ Exercise: primitives
 
 .. sidebar:: Explore
 
-    * Run ``help`` on your variables (f.ex.: ``help(mytext)``)
+    * Run ``help`` on your variables (f.ex.: ``help(str)``)
     * Difference between ``mytext.find`` and ``mytext.index``?
     * Difference between ``mytext`` and ``mybytes``?
 
