@@ -292,6 +292,8 @@ Getting Help
 Diving in
 =========
 
+:download:`Starter Pack <_static/wiki-skeleton.tar.gz>` (:download:`zip <_static/wiki-skeleton.zip>`)
+
 .. sidebar:: Explore
 
     "Explore" blocks show a few simple things for you to try out yourself.
