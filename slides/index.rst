@@ -820,7 +820,7 @@ Using the DiskStorage Class
 
     Packages must have a ``__init__.py`` file!
 
-    `source code (step 1) <_static/wiki-0.1.tar.gz>`_
+    `source code (step 1) <_static/wiki-0.1.tar.gz>`_ (`zip <_static/wiki-0.1.zip>`_)
 
 .. code-block:: python
     :caption: **Filename:** runner.py
@@ -1284,7 +1284,7 @@ HTML Output (via templating) in Flask
 
 .. sidebar:: Source Code
 
-    `source code (step 2) <_static/wiki-0.2.tar.gz>`_
+    `source code (step 2) <_static/wiki-0.2.tar.gz>`_ (`zip <_static/wiki-0.2.zip>`_)
 
 
 .. slide::
@@ -1337,7 +1337,7 @@ Loading and Displaying a Page
 .. sidebar:: Source Code
     :class: overlapping
 
-    `source code (step 3) <_static/wiki-0.3.tar.gz>`_
+    `source code (step 3) <_static/wiki-0.3.tar.gz>`_ (`zip <_static/wiki-0.3.zip>`_)
 
 
 .. slide::
@@ -1465,7 +1465,7 @@ Creating Pages
 .. sidebar:: Source Code
     :class: overlapping
 
-    `source code (step 4) <_static/wiki-0.4.tar.gz>`_
+    `source code (step 4) <_static/wiki-0.4.tar.gz>`_ (`zip <_static/wiki-0.4.zip>`_)
 
 
 .. slide::
@@ -1743,7 +1743,7 @@ mini templating language.
 
 .. slide::
 
-    `source code (step 5) <_static/wiki-0.5.tar.gz>`_
+    `source code (step 5) <_static/wiki-0.5.tar.gz>`_ (`zip <_static/wiki-0.5.zip>`_)
 
 .. slide::
 
@@ -1876,7 +1876,7 @@ See: https://packaging.python.org
 .. sidebar:: Source Code
     :class: overlapping
 
-    `source code (step 6) <_static/wiki-0.6.tar.gz>`_
+    `source code (step 6) <_static/wiki-0.6.tar.gz>`_ (`zip <_static/wiki-0.6.zip>`_)
 
 
 Deploying
@@ -2241,7 +2241,7 @@ Out with the old, in with the new
 
     * Exception Handling
 
-    `source code (step 7) <_static/wiki-0.7.tar.gz>`_
+    `source code (step 7) <_static/wiki-0.7.tar.gz>`_ (`zip <_static/wiki-0.7.zip>`_)
 
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
@@ -2343,7 +2343,7 @@ Common Mistakes
 References
 ----------
 
-Full source code to the above wiki can be :download:`downloaded here <_static/wiki-0.7.tar.gz>`.
+Full source code to the above wiki can be :download:`downloaded here <_static/wiki-0.7.tar.gz>` (:download:`zip <_static/wiki-0.7.zip>`).
 
 
 * http://www.python.org
