@@ -518,6 +518,7 @@ Exercise: collections
 ---------------------
 
 .. sidebar:: Explore
+    :class: overlapping
 
     * Try other types of values (``int``, ``list``, ``tuple``, …) as keys for
       the ``dict``.
