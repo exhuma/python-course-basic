@@ -543,7 +543,7 @@ Exercise: collections
     >>> # list
     >>> mylist = [1, 2, 3]
     >>> mylist
-    >>> mylist[1:3]
+    >>> mylist[1:3]  # 1=included, 3=excluded
     >>> mylist[0]
     >>> mylist[10]
     >>> mylist[2] = 10
@@ -911,7 +911,7 @@ Using the DiskStorage Class
     .. figure:: _static/checkpoint.jpg
         :class: fill
 
-    :checkpoint:`$ ./env/bin/python runner.py`
+    :checkpoint:`$ python3 runner.py`
 
 
 Imports
@@ -1456,7 +1456,7 @@ Creating Pages
 
     <html>
     <body>
-    <form action="{{url_for('index')}}"
+    <form action="{{url_for('save_page')}}"
           method="POST">
       Title: <input type="text"
                     name="title"
