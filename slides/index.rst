@@ -492,8 +492,6 @@ An example exception:
 Exercise: primitives
 --------------------
 
-.. to-do item #1 code
-
 .. sidebar:: Explore
 
     * Run ``help`` on your variables (f.ex.: ``help(mytext)``)
@@ -520,8 +518,6 @@ Exercise: primitives
 
 Exercise: collections
 ---------------------
-
-.. to-do item #1 code
 
 .. sidebar:: Explore
 
@@ -594,8 +590,6 @@ Documenting Code
 Exercise: "Falsy" Values
 ------------------------
 
-.. to-do item #2, #32 code
-
 .. sidebar:: Takeaways
 
     * Blocks identified by indentation
@@ -648,8 +642,6 @@ Saving your code
 
 Classes – Basics
 ----------------
-
-.. to-do item #33
 
 * Definition happens at runtime (like with functions).
 * Support multiple inheritance.
