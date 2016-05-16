@@ -71,8 +71,7 @@ About You
 
 * Your name
 * Your experience
-* What do you expect from this course
-* Interest
+* *What do you expect from this course*
 
 
 Installation
@@ -88,7 +87,7 @@ Linux
 -----
 
 * Available by default on most Unix platforms.
-* Packaged default may either be Python 2 (Debian, Red-Hat, Ubuntu < 16.06), or
+* Packaged default may either be Python 2 (Debian, Red-Hat, Ubuntu < 16.04), or
   Python 3 (Arch, Ubuntu ≥ 16.04).
 * Python 2 and 3 can both happily live on the same system without interfering
   with each other (f.ex. the ``python`` and ``python3`` packages on debian and
@@ -140,6 +139,19 @@ Introduction
 * Language features
 
 
+Code examples in these slides
+-----------------------------
+
+There are 3 ways, this course shows code examples:
+
+* Examples from the Python REPL. These are marked with leading ``>>>``
+  characters which is the default REPL promp.
+* Blocks with filename header. These are meant to be in the filename seen in
+  the header. The filename is always relative to the project folder.
+* Blocks without filename header. These are "throwaway" examples which can be
+  saved anywhere. Or run directly in the REPL.
+
+
 Birds-Eye View
 --------------
 
@@ -162,6 +174,53 @@ Implementations
 * PyPy (faster).
 * Stackless (microthreads).
 * …
+
+
+Strings & Bytes in Python 2 & 3
+-------------------------------
+
+====================  ==========  ==========
+ Literal               Py2 Type    Py3 Type
+====================  ==========  ==========
+ ``'Hello World'``     bytes       unicode
+ ``u'Hello World'``    unicode     unicode
+ ``b'Hello World'``    bytes       bytes
+====================  ==========  ==========
+
+.. warning::
+
+    * *Always* prefix text with ``u`` in **Python 2**. *Unless* you know
+      *exactly* that you want bytes!
+    * *Never* use ``encode`` on bytes.
+    * *Never* use ``decode`` on strings.
+
+.. note::
+
+    Technically, the type of ``''`` is ``str`` in Python2. However, in Python2,
+    ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
+    and ``id(bytes)`` in both Python2 and Python3.
+
+
+Python 2 vs Python 3
+--------------------
+
+.. sidebar:: Python 3.5
+
+    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
+    ``pyvenv``.
+
+* Start at Python 3.3+ (current version is 3.5).
+* Improved Unicode support. (bytes ≠ text, developer in full control).
+* Iterators everywhere.
+* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
+  backports exist).
+* Python 3 is slower than Python 2 though (at the moment).
+* *BUT:* Legacy platforms may only support Python 2.
+
+
+.. note::
+    Python 3.3 reintroduced unicode strings (strings with a ``u`` prefix). This
+    prefix was removed in 3.0 and made porting very difficult.
 
 
 Editors
@@ -229,23 +288,6 @@ Typing Comparison
     ``20 + "22" -> ?``
 
 
-Use Python 3
-------------
-
-.. sidebar:: Python 3.5
-
-    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
-    ``pyvenv``.
-
-* Python 3.3+ (current version is 3.5).
-* Improved Unicode support. (bytes ≠ text, developer in full control).
-* Iterators everywhere.
-* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
-  backports exist).
-* Python 3 is slower than Python 2 though (at the moment).
-* Legacy platforms may only support Python 2.
-
-
 The Python Shell (REPL)
 -----------------------
 
@@ -279,28 +321,44 @@ Getting Help
 * Type ``pydoc`` in the shell.
 
   * Same as ``help()`` in the REPL.
-  * Use ``pydoc -p 8080`` to run a local web-server on port ``8080``. This is
-    useful if you have no internet connection.
-  * … or ``pydoc -g`` to run a GUI (pretty much useless).
-
-
-.. slide::
-
-    :keyterm:`$ pydoc collections.OrderedDict`
+  * Use ``pydoc -b`` (``python -m pydoc -b`` on Windows) to run a local
+    web-server on a random port. This is useful if you have no internet
+    connection.
 
 
 Diving in
 =========
 
-:download:`Starter Pack <_static/wiki-skeleton.tar.gz>` (:download:`zip <_static/wiki-skeleton.zip>`)
-
 .. sidebar:: Explore
 
     "Explore" blocks show a few simple things for you to try out yourself.
 
+* Saving and running the code.
 * Data types and primitives.
 * Functions and classes.
-* Saving and running the code.
+
+
+Saving your code
+----------------
+
+.. sidebar:: Linux, MacOS
+
+    On \*nix systems, you can make the file executable with a shebang. For
+    example::
+
+        #!/usr/bin/python
+
+* File extension: ``.py``
+* Python files are called *modules*.
+* Folders can be used to organise your code into *packages*.
+* Folders with modules should contain a file with the name ``__init__.py``.
+  This special file marks a folder as *package*.
+* Execute files with
+
+.. code-block:: bash
+
+    $ python filename.py
+
 
 
 Common Data Types
@@ -308,11 +366,12 @@ Common Data Types
 
 .. sidebar:: Explore
 
+    * ``help(str)`` (skip special methods named  ``__<word>__``)
+    * ``help(int)``, ``help(123)``
+    * ``help(bytes)``, ``help(b'')``
+    * ``type(123)``
     * ``help(None)``
     * ``help(bool)``, ``help(True)``
-    * ``help(str)``,
-    * ``help(bytes)``, ``help(b'')``
-    * ``help(int)``, ``help(123)``
 
 * None (like ``null``)
 * Boolean
@@ -332,28 +391,19 @@ Common Data Types
 .. nextslide::
     :increment:
 
-**Python 2 vs. Python 3**
+.. code-block:: python
 
-====================  ==========  ==========
- Literal               Py2 Type    Py3 Type
-====================  ==========  ==========
- ``'Hello World'``     bytes       unicode
- ``u'Hello World'``    unicode     unicode
- ``b'Hello World'``    bytes       bytes
-====================  ==========  ==========
+    mybool = False
+    nothing = None
+    mystring = 'hello world'
+    mystring2 = "hello w\u00f0rld"  # Python2 needs "u" prefix
+    mystring3 = '''John's "world"'''
+    mystring4 = """
+        Mary's "world"
+    """
+    mybytes = b'H\xc3\xa9llo World!'
+    myint = 123
 
-.. warning::
-
-    * *Always* prefix text with ``u`` in **Python 2**. *Unless* you know
-      *exactly* that you want bytes!
-    * *Never* use ``encode`` on bytes.
-    * *Never* use ``decode`` on strings.
-
-.. note::
-
-    Technically, the type of ``''`` is ``str`` in Python2. However, in Python2,
-    ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
-    and ``id(bytes)`` in both Python2 and Python3.
 
 .. nextslide::
     :increment:
@@ -395,7 +445,6 @@ Common Data Types
 
     This can lead to subtle bugs when not careful.
 
-
 * Lists
 
   - can hold objects of any type, heterogenous
@@ -403,11 +452,32 @@ Common Data Types
   - appending, inserting
   - popping (queue, stack)
 
-* Tuples, Namedtuples
+* Tuples (see also: :py:func:`~collections.namedtuple`)
 
   - Immutable lists
   - Cannot be changed
   - but can be hashed
+
+.. nextslide::
+    :increment:
+
+.. code-block:: python
+
+    mylist = [1, 2, 3]
+    mylist_2 = [
+        1,
+        'foo',
+        int,
+        mylist,
+    ]
+
+    mytuple = (1, 2, 3)
+    mytuple_2 = (
+        1,
+        'foo',
+        int,
+        mylist,
+    )
 
 .. nextslide::
     :increment:
@@ -430,13 +500,32 @@ Common Data Types
   - only the *first* element is kept. Adding new identical items has no effect.
 
 
+.. nextslide::
+    :increment:
+
+.. code-block:: python
+
+    mydict = {
+        'hello': 'world',
+        42: 'everything',
+    }
+    mydict2 = dict(
+        foo='world',
+        bar='hello',
+    )
+
+    myset = {"hello", "hello", "world"}
+    myset2 = set(["hello", "hello", "world"])
+
 Python vs other Languages
 -------------------------
 
 * Everything is an Object. Even functions.
 * Blocks defined by indentation
-* "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, …)
-* ``True == 1 and False == 0``
+* "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, ``None``,
+  …)
+* ``True`` ≡ ``1``
+* ``False`` ≡ ``0``
 * Variable unpacking (f.ex.: ``a, b = 1, 2``).
 * "lambda" expressions.
 * :pep:`8`
@@ -564,6 +653,29 @@ Example::
         print('Hello ' + name)
 
 
+Functions as Objects
+--------------------
+
+Because functions are objects, they can be assigned to variables. For example
+as values in a dictionary::
+
+    def case_1():
+        print("Hello 1")
+
+    def case_2():
+        print("Hello 2")
+
+    cases = {
+        1: case_1,
+        2: case_2,
+    }
+
+    user_selection = int(input('Type a number: '))
+
+    function = cases.get(user_selection, lambda: print("unknown case"))
+    function()
+
+
 Documenting Code
 ----------------
 
@@ -618,29 +730,6 @@ Exercise: "Falsy" Values
     >>> trueish([1, 2, 3])
 
 
-Saving your code
-----------------
-
-.. sidebar:: Linux, MacOS
-
-    On \*nix systems, you can make the file executable with a shebang. For
-    example::
-
-        #!/usr/bin/python
-
-* File extension: ``.py``
-* Python files are called *modules*.
-* Folders can be used to organise your code into *packages*.
-* Folders with modules should contain a file with the name ``__init__.py``.
-  This special file marks a folder as *package*.
-* Execute files with
-
-.. code-block:: bash
-
-    $ python filename.py
-
-
-
 Classes – Basics
 ----------------
 
@@ -678,6 +767,8 @@ Classes – Basic Example
 
 Our Project
 ===========
+
+:download:`Starter Pack <_static/wiki-skeleton.tar.gz>` (:download:`zip <_static/wiki-skeleton.zip>`)
 
 A very simple wiki page.
 
@@ -1052,13 +1143,14 @@ Third Party Modules & virtualenv
 
 .. code-block:: bash
 
-    $ source env/bin/activate
-    (env)$ pip install flask
+    # Creating an environment on Windows
+    > python3 -m venv env
 
 .. code-block:: bash
 
-    $ mkvirtualenv tutorial  # With "virtualenvwrapper"
-    (tutorial)$ pip install flask
+    $ source env/bin/activate
+    (env)$ pip install flask
+
 
 Packaging our application
 -------------------------
@@ -1206,68 +1298,8 @@ Prividing a page listing:
     :checkpoint:`http://localhost:5000/list`
 
 
-.. slide::
-
-    .. image:: _static/brace_for_html.jpg
-        :align: center
-
-
 HTML Output (via templating) in Flask
 -------------------------------------
-
-.. note:: Complete Source
-
-    .. code-block:: python
-        :caption: wiki/webui.py
-        :name: webui3
-
-        from flask import Flask, g, render_template
-        from wiki.storage.disk import DiskStorage
-
-
-        APP = Flask(__name__)
-
-
-        @APP.before_request
-        def before_request():
-            g.db = DiskStorage('wiki_pages')
-
-
-        @APP.route('/')
-        def index():
-            return 'Hello World'
-
-
-        @APP.route('/list')
-        def list():
-            page_names = g.db.list()
-            return render_template('pagelist.html',
-                                page_names=page_names)
-
-
-        if __name__ == '__main__':
-            APP.run(debug=True, host='0.0.0.0',
-                    port=5000)
-
-
-* Jinja Templating Engine (http://jinja.pocoo.org)
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / pagelist.html
-    :name: pagelist1
-
-    <html>
-    <body>
-      <ul>
-      {% for name in page_names %}
-        <li>{{name}}</li>
-      {% endfor %}
-      </ul>
-    </body>
-    </html>
-
-.. nextslide::
-    :increment:
 
 .. code-block:: python
     :emphasize-lines: 1, 8
@@ -1323,19 +1355,6 @@ Loading and Displaying a Page
 
     ...
 
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / page.html
-    :name: page2
-
-    <html>
-    <body>
-      {{page.content|safe}}
-      <hr />
-      <a href="{{url_for('display', name=page.title, edit=True)}}">
-        Edit</a>
-    </body>
-    </html>
-
 .. sidebar:: Source Code
     :class: overlapping
 
@@ -1362,60 +1381,6 @@ Wiki Functionality
 Creating Pages
 --------------
 
-.. note:: Complete Source
-
-    .. code-block:: python
-        :caption: wiki/webui.py
-        :name: webui6
-
-        from flask import Flask, g, render_template, redirect, url_for, request
-        from wiki.model import WikiPage
-        from wiki.storage.disk import DiskStorage
-
-
-        APP = Flask(__name__)
-
-
-        @APP.before_request
-        def before_request():
-            g.db = DiskStorage('wiki_pages')
-
-
-        @APP.route('/')
-        def index():
-            return 'Hello World'
-
-
-        @APP.route('/list')
-        def list():
-            page_names = g.db.list()
-            return render_template('pagelist.html',
-                                page_names=page_names)
-
-
-        @APP.route('/<name>')
-        def display(name):
-            page = g.db.load(name)
-            if not page:
-                return render_template('edit_page.html', name=name)
-            if 'edit' in request.args:
-                return render_template('edit_page.html', name=name,
-                                    content=page.content)
-            return render_template('page.html', page=page)
-
-
-        @APP.route('/', methods=['POST'])
-        def save_page():
-            page = WikiPage(request.form['title'],
-                            request.form['content'])
-            g.db.save(page)
-            return redirect(url_for('display', name=page.title))
-
-
-        if __name__ == '__main__':
-            APP.run(debug=True, host='0.0.0.0',
-                    port=5000)
-
 .. code-block:: python
     :caption: **Filename:** wiki / webui.py
     :name: webui7
@@ -1441,28 +1406,6 @@ Creating Pages
         g.db.save(page)
         return redirect(url_for('display', name=page.title))
 
-.. nextslide::
-    :increment:
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / edit_page.html
-
-    <html>
-    <body>
-    <form action="{{url_for('save_page')}}"
-          method="POST">
-      Title: <input type="text"
-                    name="title"
-                    value="{{name}}" /><br />
-      Content<br />
-      <textarea name="content" rows="10"
-                cols="80">{{content|safe}}</textarea>
-      <br />
-      <input type="submit" />
-    </form>
-    </body>
-    </html>
-
 
 .. sidebar:: Source Code
     :class: overlapping
@@ -1487,28 +1430,6 @@ Wiki Functionality
 * Replace WikiWords with links.
 
 
-Page Listing Revisited
-----------------------
-
-Let's add links to our page listing:
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / pagelist.html
-    :name: pagelist2
-    :emphasize-lines: 5-6
-
-    <html>
-    <body>
-    <ul>
-    {% for name in page_names %}
-      <li><a href="{{url_for('display',
-        name=name)}}">{{name}}</a></li>
-    {% endfor %}
-    </ul>
-    </body>
-    </html>
-
-
 Creating an Index Page
 ----------------------
 
@@ -1531,20 +1452,6 @@ page.
 
 Replacing WikiWords
 -------------------
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / page.html
-    :emphasize-lines: 3
-
-    <html>
-    <body>
-      {{page.content|wikify|safe}}
-      <hr />
-      <a href="{{url_for('display', name=page.title, edit=True)}}">
-        Edit</a>
-    </body>
-    </html>
-
 
 Flask allows us to *easily* create "modifier" functions for values. Turning an
 existing document into HTML is essentially a modification of the raw content.
@@ -1779,35 +1686,6 @@ String Formatting
  less verbose      more verbose
  less powerful     more powerful
 ================ =========================
-
-
-Page Layout
------------
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / master.html
-
-    <html>
-    <body>
-      <nav>
-        <a href="{{url_for('list')}}">Page List</a>
-      </nav>
-      <hr />
-      <div id="content">{% block content %}{% endblock %}</div>
-    </body>
-    </html>
-
-.. code-block:: html+jinja
-    :caption: **Filename:** wiki / templates / page.html
-    :name: page1
-
-    {% extends "master.html" %}
-    {% block content %}
-    {{page.content|wikify|safe}}
-    <hr />
-    <a href="{{url_for('display', name=page.title, edit=True)}}">
-      Edit</a>
-    {% endblock %}
 
 
 Wiki Functionality
