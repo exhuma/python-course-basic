@@ -157,8 +157,8 @@ Birds-Eye View
 
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
-* Large community. #8 on TIOBE Index (Java on #2, PHP on #7). Based on result
-  of March 2015
+* Large community. #5 on TIOBE Index (Java on #1, PHP on #6). Based on result
+  of May 2016
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
