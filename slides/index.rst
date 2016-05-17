@@ -653,6 +653,25 @@ Example::
         print('Hello ' + name)
 
 
+Advanced Example
+~~~~~~~~~~~~~~~~
+
+* Default arguments.
+* ``*args`` and ``**kwargs`` allow for variable arguments.
+
+.. code-block:: python
+
+    def say_hello(name, n=10, *args, **kwargs):
+        from pprint import pprint
+        pprint(locals())
+
+
+.. tip::
+
+    ``args`` and ``kwargs`` are only conventional names. Sometimes it may be
+    useful to use other names.
+
+
 Functions as Objects
 --------------------
 
