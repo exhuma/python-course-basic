@@ -1,6 +1,53 @@
 Python Object Model & Customisation
 ===================================
 
+MRO and Multiple Inheritance
+----------------------------
+
+* Python guarantees a monotonic MRO for multiple inheritance.
+* It relies on the order in which classes are *defined*: ``Foo(A, B)`` ≠
+  ``Foo(B, A)``!
+* It uses the `C3 linearisation Algorithm
+  <https://en.wikipedia.org/wiki/C3_linearization>`_.
+* `Python implementation of C3
+  <https://www.python.org/download/releases/2.3/mro/>`_.
+
+.. nextslide::
+    :increment:
+
+.. digraph:: inheritance
+
+    A -> B [dir=back];
+    A -> C [dir=back];
+    B -> D [dir=back];
+    C -> D [dir=back];
+
+.. code-block:: python
+    :class: rightcode
+
+    class A:
+        pass
+
+    class B(A):
+        pass
+
+    class C(A):
+        pass
+
+    class D(B, C):
+        pass
+
+|clear|
+
+.. sidebar:: Try changing parents of ``D``
+
+    Note that the MRO depends on your source-code!
+
+.. code-block:: python
+
+    >>> print(D.mro())
+
+
 Magic Methods
 -------------
 
@@ -11,25 +58,9 @@ Reference: `Basic Customisation`_
 * ``__eq__``, ``__hash__``, ``__lt__``, ``__gt__`` |ell|
 * ``__getattr__``, ``__getattribute__``, ``__setattr__``, ``__getitem__``,
   ``__contains__`` |ell|
+* ``__slots__``
 
 .. _Basic Customisation: https://docs.python.org/3/reference/datamodel.html#basic-customization
-
-.. nextslide::
-    :increment:
-
-.. warning::
-
-    The following rules are *not* enforced by Python. They don't need to be!
-
-    But you can save yourself from some difficult to find bugs by following
-    them:
-
-    * If you define ``__hash__`` you **must** also define ``__eq__``.
-    * ... but you can have ``__eq__`` without ``__hash__``.
-    * Values used to compute the ``__hash__`` **must** be immutable!
-
-    For more details, see the `official docs
-    <https://docs.python.org/3/reference/datamodel.html#object.__hash__>`_.
 
 Magic Methods Example
 ---------------------
@@ -57,8 +88,81 @@ Magic Methods Example
             print('__bytes__ called')
             return self.foo.encode('utf8')
 
+.. sidebar:: Almost always useful
+    :class: overlapping
+
+    * ``__repr__``
+    * ``__str__``
+
+
+Wiki Page Customisation
+-----------------------
+
+.. code-block:: python
+
+    class WikiPage:
+
+        ...
+
+        def __repr__(self):
+            return 'WikiPage(%r, %r)' % (self.title, self.content)
+
+        def __str__(self):
+            return self.content
+
+        ...
+
+.. warning::
+
+    For **Python2** you should implement both ``__str__`` and
+    ``__unicode__``!
+
+
+Testing Page Customisation
+--------------------------
+
+.. code-block:: python
+    :caption: Before Adding __str__ and __repr__
+
+    >>> from wiki.model import WikiPage
+    >>> page = WikiPage('hello', 'Hello World!')
+    >>> page
+    <wiki.model.WikiPage object at 0x7f34a465d518>
+    >>> repr(a)
+    '<wiki.model.WikiPage object at 0x7f34a465d518>'
+    >>> print(page)
+    <wiki.model.WikiPage object at 0x7f34a465d518>
+    >>> str(a)
+    '<wiki.model.WikiPage object at 0x7f34a465d518>'
+    >>> hex(id(page))
+    '0x7f34a465d518'
+    >>> page.__class__
+    <class 'wiki.model.WikiPage'>
+
 .. nextslide::
     :increment:
+
+.. code-block:: python
+    :caption: After Adding __str__ and __repr__
+
+    >>> from wiki.model import WikiPage
+    >>> page = WikiPage('hello', 'Hello World!')
+    >>> page
+    WikiPage('hello', 'Hello World!')
+    >>> print(page)
+    Hello World!
+    >>> id(page)
+    '0x7f34a465d518'
+    >>> page.__class__
+    <class 'wiki.model.WikiPage'>
+
+.. note::
+    When converting the return value of ``id`` to base 16, you will get the
+    same value as shown in the default ``repr`` return value.
+
+
+Magic Methods Example (ctd)
+---------------------------
 
 .. code-block:: python
     :emphasize-lines: 5-7, 9-11, 13-15
@@ -106,76 +210,134 @@ Magic Methods Example
             print('__contains__ called')
 
 
-Wiki Page Customisation
------------------------
+Hashable Classes
+----------------
 
-.. code-block:: python
+The two most common reasons to implement ``__hash__`` are if you want instances
+of your class to be |ell|
 
-    class WikiPage:
+    * |ell| used as keys in dictionaries,
+    * |ell| used as items in sets
 
-        ...
-
-        def __repr__(self):
-            return 'WikiPage(%r, %r)' % (self.title, self.content)
-
-        def __str__(self):
-            return self.content
-
-        ...
-
-.. warning::
-
-    For **Python2** you should implement both ``__str__`` and
-    ``__unicode__``!
-
-
-.. sidebar:: Almost always useful
-    :class: overlapping
-
-    * ``__repr__``
-    * ``__str__``
-
-
-Testing Page Customisation
---------------------------
-
-.. code-block:: python
-    :caption: Before Adding __str__ and __repr__
-
-    >>> from wiki.model import WikiPage
-    >>> page = WikiPage('hello', 'Hello World!')
-    >>> page
-    <wiki.model.WikiPage object at 0x7f34a465d518>
-    >>> repr(a)
-    '<wiki.model.WikiPage object at 0x7f34a465d518>'
-    >>> print(page)
-    <wiki.model.WikiPage object at 0x7f34a465d518>
-    >>> str(a)
-    '<wiki.model.WikiPage object at 0x7f34a465d518>'
-    >>> hex(id(page))
-    '0x7f34a465d518'
-    >>> page.__class__
-    <class 'wiki.model.WikiPage'>
+All classes are hasheable by default, **unless** you define an ``__eq__``
+method!
 
 .. nextslide::
     :increment:
 
+If Python needs to hash an instance of your custom class and it does *not*
+implement ``__hash__`` you will see the following error:
+
 .. code-block:: python
-    :caption: After Adding __str__ and __repr__
+    :emphasize-lines: 8-10
 
-    >>> from wiki.model import WikiPage
-    >>> page = WikiPage('hello', 'Hello World!')
-    >>> page
-    WikiPage('hello', 'Hello World!')
-    >>> print(page)
-    Hello World!
-    >>> id(page)
-    '0x7f34a465d518'
-    >>> page.__class__
-    <class 'wiki.model.WikiPage'>
+    >>> class Foo:
+    ...   def __eq__(self, other):
+    ...     return True
+    ...
+    >>> x = Foo()
+    >>> y = Foo()
+    >>> {x, y}
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: unhashable type: 'Foo'
 
-.. note::
-    When converting the return value of ``id`` to base 16, you will get the
-    same value as shown in the default ``repr`` return value.
+.. nextslide::
+    :increment:
+
+.. warning::
+
+    The following rules are *not* enforced by Python. They don't need to be!
+
+    But you can save yourself from some difficult to find bugs by following
+    them:
+
+    * If you define ``__hash__`` you **must** also define ``__eq__``.
+    * |ell| but you can have ``__eq__`` without ``__hash__``.
+    * Values used to compute the ``__hash__`` **must** be immutable!
+
+    For more details, see the `official docs
+    <https://docs.python.org/3/reference/datamodel.html#object.__hash__>`_.
 
 
+Slots
+-----
+
+* By default Python allocates a new dictionary in each instance for attribute
+  storage.
+* This is wasteful if you have a *large* number of instances.
+* ``__slots__`` reserves *just enough* space for selected attributes.
+
+.. code-block:: python
+
+    class Foo:
+        __slots__ = 'a', 'b'
+
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+Descriptors
+-----------
+
+Descriptors allow you to modify the behaviour of Python when instance members
+are accessed, modified and/or deleted. Practical example (logging)::
+
+    class LoggingDescriptor:
+
+        def __init__(self, value, name):
+            self.value = value
+            self.name = name
+
+        def __get__(self, obj, type=None):
+            LOG.debug('Accessing %s', self.name)
+            return self.value
+
+        def __set__(self, obj, value):
+            LOG.debug('Setting %s to %r', self.name, value)
+            self.value = value
+
+.. nextslide::
+    :increment:
+
+Using the descriptor from the previous slide:
+
+.. code-block:: python
+
+
+    class A:
+        foo = LoggingDescriptor(234, 'foo')
+        bar = LoggingDescriptor(111, 'bar')
+
+
+    inst = A()
+    print(inst.foo)
+    print(inst.bar)
+    inst.bar = 100
+
+
+Metaclasses
+-----------
+
+Metaclasses allow you to modify *how* a class is created.
+
+.. code-block:: python
+
+    class LoggingMeta(type):
+        def __new__(cls, name, parents, dict_):
+            new_cls = super(LoggingMeta, cls).__new__(
+                cls, name, parents, dict_)
+            for key, value in vars(new_cls).items():
+                if key.startswith('_'):
+                    continue
+                setattr(new_cls, key, LoggingDescriptor(value, key))
+            return new_cls
+
+
+    class A(metaclass=LoggingMeta):
+        foo = 234
+        bar = 111
+
+
+.. vim: set spelllang=en_gb :

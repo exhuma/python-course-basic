@@ -174,3 +174,14 @@ H2:hover .headerlink {
 H2 {
     margin-top: 1em;
 }
+
+.rightcode {
+    float: right;
+    min-width: 45%;
+    max-width: 48%;
+}
+
+/* For graphviz images */
+H2 + IMG {
+    margin-top: 40px;
+}

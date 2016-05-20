@@ -17,6 +17,7 @@ Topics
     references
 
 .. include:: object_model.rst
+.. include:: higher_order.rst
 .. include:: sqlalchemy.rst
 .. include:: unittesting.rst
 .. include:: debugging.rst
