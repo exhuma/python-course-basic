@@ -694,6 +694,14 @@ as values in a dictionary::
     function = cases.get(user_selection, lambda: print("unknown case"))
     function()
 
+.. note::
+
+    Python has no ``case`` or ``switch`` statement. Using functions as values
+    in dictionaries, lets you have a very similar code structure. As a
+    side-effect, this will give you functions for each switched case, which
+    makes unit-testing easier.
+
+
 
 Documenting Code
 ----------------
