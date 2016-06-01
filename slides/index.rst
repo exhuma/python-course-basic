@@ -653,11 +653,11 @@ Example::
         print('Hello ' + name)
 
 
-Advanced Example
-~~~~~~~~~~~~~~~~
+Variadic Functions and Default Arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Default arguments.
-* ``*args`` and ``**kwargs`` allow for variable arguments.
+* ``*args`` and ``**kwargs`` allow for variadic functions.
 
 .. code-block:: python
 
