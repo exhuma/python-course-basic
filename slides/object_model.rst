@@ -1,6 +1,11 @@
 Python Object Model & Customisation
 ===================================
 
+This section explains how Python sees and works with your own objects. It also
+explains how you can add special behaviour to your objects by implementing
+"magic" methods.
+
+
 MRO and Multiple Inheritance
 ----------------------------
 
@@ -41,7 +46,7 @@ MRO and Multiple Inheritance
 
 .. sidebar:: Try changing parents of ``D``
 
-    Note that the MRO depends on your source-code!
+    Note that the MRO depends on your class definition!
 
 .. code-block:: python
 
@@ -94,23 +99,7 @@ Magic Methods Example
     * ``__repr__``
     * ``__str__``
 
-
-Wiki Page Customisation
------------------------
-
-.. code-block:: python
-
-    class WikiPage:
-
-        ...
-
-        def __repr__(self):
-            return 'WikiPage(%r, %r)' % (self.title, self.content)
-
-        def __str__(self):
-            return self.content
-
-        ...
+.. nextslide::
 
 .. warning::
 
@@ -118,54 +107,54 @@ Wiki Page Customisation
     ``__unicode__``!
 
 
-Testing Page Customisation
---------------------------
+Testing Class Customisation
+---------------------------
 
 .. code-block:: python
     :caption: Before Adding __str__ and __repr__
 
-    >>> from wiki.model import WikiPage
-    >>> page = WikiPage('hello', 'Hello World!')
-    >>> page
-    <wiki.model.WikiPage object at 0x7f34a465d518>
+    >>> instance = MagicTest('hello')
+    >>> instance
+    <__main__.MagicTest object at 0x7f34a465d518>
     >>> repr(a)
-    '<wiki.model.WikiPage object at 0x7f34a465d518>'
-    >>> print(page)
-    <wiki.model.WikiPage object at 0x7f34a465d518>
+    '<__main__.MagicTest object at 0x7f34a465d518>'
+    >>> print(instance)
+    <__main__.MagicTest object at 0x7f34a465d518>
     >>> str(a)
-    '<wiki.model.WikiPage object at 0x7f34a465d518>'
-    >>> hex(id(page))
+    '<__main__.MagicTest object at 0x7f34a465d518>'
+    >>> hex(id(instance))
     '0x7f34a465d518'
-    >>> page.__class__
-    <class 'wiki.model.WikiPage'>
+    >>> instance.__class__
+    <class '__main__.MagicTest'>
 
 .. nextslide::
     :increment:
 
 .. code-block:: python
-    :caption: After Adding __str__ and __repr__
+    :caption: After adding magic methods
 
-    >>> from wiki.model import WikiPage
-    >>> page = WikiPage('hello', 'Hello World!')
-    >>> page
-    WikiPage('hello', 'Hello World!')
-    >>> print(page)
+    >>> instance = MagicTest('hello')
+    >>> instance
+    __repr__ called
+    MagicTest(foo='hello')
+    >>> print(instance)
+    __str__ called
     Hello World!
-    >>> id(page)
+    >>> hex(id(instance))
     '0x7f34a465d518'
-    >>> page.__class__
-    <class 'wiki.model.WikiPage'>
+    >>> instance.__class__
+    <class '__main__.MagicTest'>
 
 .. note::
     When converting the return value of ``id`` to base 16, you will get the
-    same value as shown in the default ``repr`` return value.
+    same value as shown in the default ``repr`` return value. The simplest way
+    of doing this is using the builtin :py:func:`hex`.
 
 
 Magic Methods Example (ctd)
 ---------------------------
 
 .. code-block:: python
-    :emphasize-lines: 5-7, 9-11, 13-15
 
     class MagicTestB:
         def __init__(self, foo):
@@ -284,7 +273,7 @@ Descriptors
 Descriptors allow you to modify the behaviour of Python when instance members
 are accessed, modified and/or deleted. Practical example (logging)::
 
-    class LoggingDescriptor:
+    class LoggedValue:
 
         def __init__(self, value, name):
             self.value = value
@@ -307,8 +296,8 @@ Using the descriptor from the previous slide:
 
 
     class A:
-        foo = LoggingDescriptor(234, 'foo')
-        bar = LoggingDescriptor(111, 'bar')
+        foo = LoggedValue(234, 'foo')
+        bar = LoggedValue(111, 'bar')
 
 
     inst = A()
@@ -331,7 +320,7 @@ Metaclasses allow you to modify *how* a class is created.
             for key, value in vars(new_cls).items():
                 if key.startswith('_'):
                     continue
-                setattr(new_cls, key, LoggingDescriptor(value, key))
+                setattr(new_cls, key, LoggedValue(value, key))
             return new_cls
 
 
