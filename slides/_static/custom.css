@@ -181,6 +181,14 @@ H2 {
     max-width: 48%;
 }
 
+.smaller {
+    font-size: smaller;
+}
+
+DIV.smaller PRE {
+    max-height: none;
+}
+
 /* For graphviz images */
 H2 + IMG {
     margin-top: 40px;
