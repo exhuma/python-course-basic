@@ -5,7 +5,7 @@
 
         Thank You!
 
-        .. image:: _static/avatar.jpg
+        .. image:: ../../common/_static/avatar.jpg
             :align: center
             :class: avatar
 
