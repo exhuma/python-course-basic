@@ -1,45 +1,14 @@
-.. {{{  RST definitions
-
-.. role:: small
-    :class: small
-
-.. |home| image:: _static/icons/home.png
-    :class: midline
-
-.. |github| image:: _static/icons/github-circle.png
-    :class: midline
-
-.. |gplus| image:: _static/icons/google-plus.png
-    :class: midline
-
-.. }}}
+.. include:: ../../common/rst_defs.rst
 
 .. {{{ Introduction
 
 git
 ===
+
 * |home| http://git-scm.com
-* Slides: http://michel.albert.lu/shelf/git2015
 * Images licensed under CC BY-NC-SA 3.0 by Scott Chacon
 
-About Me
---------
-
-* First program written in 1989.
-* Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python → Ha…?
-* Degree in Computer Science (BSc CS AI).
-* Lead Software Developer in Post BackBone-OSS.
-* Semantics Nerd, Gamer, Geek.
-
-
-About You
----------
-
-* Your name
-* Your experience
-* What do you expect from this course
-
+.. include:: ../../common/introduction.rst
 
 .. }}}
 
@@ -87,7 +56,8 @@ Centralised (Client/Server)
 .. sidebar:: Summary
 
     * One place to apply access rights.
-    * Single point of failure
+    * Single point of failure.
+    * Network access required.
 
 
 Distributed
@@ -910,25 +880,6 @@ General Best Practices
 .. bisect     Find by binary search the change that introduced a bug
 
 
-.. {{{ --- FIN ----------------------------------------------------------------
-
-.. slide::
-    :level: 2
-
-    .. container:: centered
-
-        Thank You!
-
-        .. image:: _static/avatar.jpg
-            :align: center
-            :class: avatar
-
-        Questions?
-
-    * |home| http://michel.albert.lu
-    * |github| exhuma
-    * |gplus| MichelAlbert
-
-.. }}}
+.. include:: ../../common/finish.rst
 
 .. vim: set foldmethod=marker :
