@@ -773,7 +773,7 @@ Hooks (server-side)
 * ``pre-receive``
 * ``update``
 * git finalizes the push
-* ``post-receive`` (Cannot about push!)
+* ``post-receive`` (Cannot abort push!)
 
 .. }}}
 
