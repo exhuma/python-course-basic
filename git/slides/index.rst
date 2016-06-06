@@ -85,10 +85,18 @@ Git
 * Fully distributed
 * Stream of snapshots instead of history of deltas.
 
-  * Latest snapshot is kept in full, backwards deltas (after packing).
+  * Latest snapshot is kept in full. After packing, a similar approach to
+    deltas is used (using packfiles).
 
 * Nearly all operations executed locally (no network overhead).
 * Strong integrity (SHA1 hashes of snapshot content).
+
+
+.. note::
+
+    See
+    http://stackoverflow.com/questions/5176225/are-gits-pack-files-deltas-rather-than-snapshots
+    for more details on how git stores changes.
 
 
 History of Deltas
