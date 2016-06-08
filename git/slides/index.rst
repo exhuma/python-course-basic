@@ -730,6 +730,12 @@ Supported Protocols
 * local
 * git
 
+.. note::
+
+    See https://git-scm.com/book/en/v2/Git-Internals-Transfer-Protocols for a
+    detailed difference between the "dumb" and "smart" protocol.
+
+
 Working with remotes
 --------------------
 
