@@ -849,6 +849,9 @@ Hooks (server-side)
 * git finalizes the push
 * ``post-receive`` (Cannot abort push!)
 
+
+.. }}}
+
 .. }}}
 
 .. (un)tracked, unmodified, modified, staged
