@@ -141,8 +141,7 @@ working copy
     of the source-code.
 
 index
-    A "staging area" to prepare the next commit. As far as I know, unique to
-    git.
+    A "staging area" to prepare the next commit.
 
 commit
     A snapshot of the source code. These are points in time you can come back
