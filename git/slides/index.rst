@@ -441,6 +441,44 @@ Also try:
     $ git show HEAD
     $ gitk
 
+
+The Index
+---------
+
+.. digraph:: example
+
+    rankdir="LR";
+    node [shape="circle"];
+    {
+        rank="same";
+        d [style="dotted"];
+        index [shape="plaintext"];
+    }
+
+    {
+        rank="same";
+        c;
+        HEAD [shape="cds"];
+    }
+
+    {
+        rank="same";
+        e [shape="plaintext"];
+        "Working Copy" [shape="plaintext"];
+    }
+
+    history [label="...", shape="plaintext"];
+    history -> a -> b -> c -> d -> e[dir="back"];
+    index -> d;
+    HEAD -> c;
+    "Working Copy" -> e [arrowhead="empty"];
+
+* The Index is a "staging" area.
+* Can be used to prepare a commit by only adding select diffs.
+* Changes are staged using ``git add [-p] [filename]``
+* |ell| and unstaged using ``git reset [filename]``
+
+
 .. }}}
 
 .. {{{ exercise 2
