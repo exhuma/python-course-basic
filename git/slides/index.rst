@@ -808,7 +808,7 @@ Hooks (client-side)
 * User edits and saves the commit message
 * ``commit-msg``
 * Commit is finalized.
-* ``post-commit``
+* ``post-commit`` (Cannot abort commit).
 
 
 Example client-side hook
