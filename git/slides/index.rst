@@ -810,6 +810,36 @@ Hooks (client-side)
 * Commit is finalized.
 * ``post-commit``
 
+
+Example client-side hook
+------------------------
+
+
+.. code-block:: bash
+    :class: smaller
+    :caption: pre-commit
+
+    #!/bin/bash
+
+    # Check if this is the first commit, or a regular commit.
+    if git rev-parse --verify HEAD >/dev/null 2>&1
+    then
+    	# Regular commit
+    	against=HEAD
+    else
+    	# Initial commit: diff against an empty tree object
+    	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+    fi
+
+    OUT=$(git diff --cached $against | grep "^+.*# XXX")
+
+    if [[ "$OUT" != "" ]]; then
+        echo "This commit would introduce an XXX marker!"
+        echo $OUT
+        exit 1
+    fi
+
+
 Hooks (server-side)
 -------------------
 * User runs ``git push``
