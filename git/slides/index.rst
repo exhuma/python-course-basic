@@ -428,7 +428,7 @@ Making changes:
 
     $ vim document.txt
     $ git status
-    $ git add
+    $ git add document.txt
     $ git status
     $ git commit
     $ git status
