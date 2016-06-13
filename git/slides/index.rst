@@ -17,9 +17,9 @@ git
 What is Version Control
 -----------------------
 
-* Like "track changes" in office products… on steroids.
+* Like "track changes" in MS-Office™ products… on steroids.
 * Primarily for plain-text files (f.ex.: source code).
-* Binary files (f.ex. Word documents) are supported, but many features will
+* Binary files (f.ex. MS-Word™ documents) are supported, but many features will
   not work.
 * Visualising changes in files (diffing).
 * Undo those changes easily.
