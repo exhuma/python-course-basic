@@ -478,6 +478,24 @@ The Index
 * |ell| and unstaged using ``git reset [filename]``
 
 
+Fixing the last commit
+----------------------
+
+Forgot to add a file in the last commit? Or realised you have a typo? Maybe you
+want to change the commit-message?
+
+::
+
+    git commit --amend
+
+This "unwinds" the last commit, merges your changes with those changes and
+re-applies the commit.
+
+.. warning::
+
+    Don't do this after pushing! This **changes history**
+
+
 Partial (patch) committing
 --------------------------
 
