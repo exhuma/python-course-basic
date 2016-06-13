@@ -753,7 +753,9 @@ Working with remotes
 * First, create a new *local* "tracking" branch using ``git checkout -t
   <remote>/<branch>``
 * Pull syntax: ``git pull . <remote>/<branch>``
-* Alternative: ``git fetch && git merge <remote>/<branch>``
+
+    * Alternative to pull: ``git fetch && git merge <remote>/<branch>``
+
 * Push syntax: ``git push [-u] <remote> <branch>``
 
 
