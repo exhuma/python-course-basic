@@ -744,6 +744,11 @@ Working with remotes
     that pulling and pushing does not require any arguments. Created using
     ``checkout -t`` or ``push -u``.
 
+.. note::
+
+    In recent versions of git, checking out a remote branch automatically adds
+    entries to ``.git/config`` to track it.
+
 * Remote branches are *NOT* writable!
 * First, create a new *local* "tracking" branch using ``git checkout -t
   <remote>/<branch>``
