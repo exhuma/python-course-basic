@@ -909,6 +909,36 @@ Hooks (server-side)
 git hosting
 ===========
 
+gitolite
+--------
+
+http://www.gitolite.com
+
+* Very simple SSH based management tool.
+* Only requirement is a SSH server.
+* Management is handled directly via git.
+* Easy to set up.
+* Very low maintainance.
+* Self-Hosted
+
+
+gitlab
+------
+
+https://www.gitlab.com
+
+* Free
+* Self hosted
+* Similar to github
+* Contains other useful feautures on top of simple git management.
+
+  * CI
+  * Automated Tasks
+  * Issue Tracker
+
+* Can be deployed via ``docker`` (and ``docker-compose``).
+
+
 github
 ------
 
@@ -939,15 +969,6 @@ https://www.bitbucket.org
 * Integrates well with other Atrlassian products (Confluence, Jira, …).
 
 .. _Atlassian: https://www.atlassian.com
-
-gitlab
-------
-
-https://www.gitlab.com
-
-* Free
-* Self hosted solution
-* Similar to github
 
 .. }}}
 
