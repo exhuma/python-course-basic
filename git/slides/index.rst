@@ -829,11 +829,10 @@ Working with remotes
 .. note::
 
     In recent versions of git, checking out a remote branch automatically adds
-    entries to ``.git/config`` to track it.
+    entries to ``.git/config`` to track it. Even without specifying ``-t``
 
 * Remote branches are *NOT* writable!
-* First, create a new *local* "tracking" branch using ``git checkout -t
-  <remote>/<branch>``
+* First, create a new *local* "tracking" branch using ``git checkout <branch>``.
 * Pull syntax: ``git pull . <remote>/<branch>``
 
     * Alternative to pull: ``git fetch && git merge <remote>/<branch>``
