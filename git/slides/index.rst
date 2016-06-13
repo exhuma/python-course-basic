@@ -860,49 +860,49 @@ Hooks (server-side)
 
 .. }}}
 
-.. (un)tracked, unmodified, modified, staged
-.. diff       Show changes between commits, commit and working tree, etc
-..    --staged/--cached
-..    --difftool
-.. rm         Remove files from the working tree and from the index
-..    --cached
-.. mv         Move or rename a file, a directory, or a symlink
-..    equivalent to remove -> add
-.. log        Show commit logs
-..    >> git clone https://github.com/schacon/simplegit-progit
-..    Author vs. Committer
-..    --since/--after, --until/--before
-..    --author
-..    --grep (--all-match)
-..    -S
-..    -L
-..    <from>..<to>
-.. == UNDOING ==
-.. reset
-.. commit --amend
-.. checkout -- <filename>
-.. == REWRITING HISTORY ==
-..      rebase     Forward-port local commits to the updated upstream head
-..          -i
-.. == ON THE SERVER ==
-..      bare repositories
-..      protocols
-..          local
-..          http(s), smart (1.6.6+)/dumb
-..          ssh
-..          git
-..      git-shell in /etc/passwd
-.. == WORKFLOWS ==
-..      email-based
-.. stash
-.. == ADVANCED STUFF ==
-..      manual merging
+.. TODO (un)tracked, unmodified, modified, staged
+.. TODO diff       Show changes between commits, commit and working tree, etc
+.. TODO    --staged/--cached
+.. TODO    --difftool
+.. TODO rm         Remove files from the working tree and from the index
+.. TODO    --cached
+.. TODO mv         Move or rename a file, a directory, or a symlink
+.. TODO    equivalent to remove -> add
+.. TODO log        Show commit logs
+.. TODO    >> git clone https://github.com/schacon/simplegit-progit
+.. TODO    Author vs. Committer
+.. TODO    --since/--after, --until/--before
+.. TODO    --author
+.. TODO    --grep (--all-match)
+.. TODO    -S
+.. TODO    -L
+.. TODO    <from>..<to>
+.. TODO == UNDOING ==
+.. TODO reset
+.. TODO commit --amend
+.. TODO checkout -- <filename>
+.. TODO == REWRITING HISTORY ==
+.. TODO      rebase     Forward-port local commits to the updated upstream head
+.. TODO          -i
+.. TODO == ON THE SERVER ==
+.. TODO      bare repositories
+.. TODO      protocols
+.. TODO          local
+.. TODO          http(s), smart (1.6.6+)/dumb
+.. TODO          ssh
+.. TODO          git
+.. TODO      git-shell in /etc/passwd
+.. TODO == WORKFLOWS ==
+.. TODO      email-based
+.. TODO stash
+.. TODO == ADVANCED STUFF ==
+.. TODO      manual merging
 
 
 
-.. grep       Print lines matching a pattern
-.. show       Show various types of objects
-.. bisect     Find by binary search the change that introduced a bug
+.. TODO grep       Print lines matching a pattern
+.. TODO show       Show various types of objects
+.. TODO bisect     Find by binary search the change that introduced a bug
 
 .. {{{ git hosting
 
