@@ -187,3 +187,16 @@ H3 + .image-reference {
     color: #AAA;
     vertical-align: middle;
 }
+
+DIV.figure {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
+    background: hsla(0, 0%, 100%, 0.5);
+}
+
+DIV.figure P.caption {
+    position: relative;
+    border-top: 1px solid #ccc;
+    padding: 0.3em 1em 0 1em;
+    line-height: 0.9em;
+}
