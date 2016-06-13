@@ -778,8 +778,8 @@ Bare repositores
 
     $ git clone --bare <url>
 
-Some server application for this for you (f.ex.: gitlab_, gitolite_, github_,
-bitbucket_).
+Some server application handle this for you (f.ex.: gitlab_, gitolite_,
+github_, bitbucket_).
 
 .. _gitlab: http://www.gitlab.com
 .. _gitolite: http://www.gitolite.com
