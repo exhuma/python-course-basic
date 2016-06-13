@@ -478,6 +478,19 @@ The Index
 * |ell| and unstaged using ``git reset [filename]``
 
 
+Partial (patch) committing
+--------------------------
+
+* Git allows you to add changes piece by piece to the index before committing
+  (``git add -p``).
+* Use it if your current changes contain more than one logical modification.
+* Type ``?`` to get help. It is *really* well written!
+* Also works for:
+
+    * ``git stash save -p``
+    * ``git checkout -p <revision> -- <filename>``
+    * ``git commit -p``
+
 .. }}}
 
 .. {{{ exercise 2
