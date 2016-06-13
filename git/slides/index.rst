@@ -531,9 +531,60 @@ New commands:
 * Run ``git checkout document.txt``.
 * Run ``git status`` again.
 
-Alternative command::
+Undoing changes in the *whole tree*::
 
     git reset --hard
+
+.. }}}
+
+.. {{{ Advanced Undoing
+
+Advanced Undoing
+----------------
+
+* The most common commands for undoing are:
+
+    * ``git reset`` moves the ``HEAD`` pointer around in history. Using
+      ``--hard`` **will discard all local changes**!
+    * ``git checkout`` can retrieve a file from a specific point in time, into
+      the current working-folder. **Any uncommitted modifications are lost!**
+    * ``git revert`` will take an existing commit object and apply it *in
+      reverse* to the current working folder. This will pause on conflicts as
+      usual.
+
+.. nextslide::
+    :increment:
+
+If you messed up the last *n* commits, and you want to completely wipe them,
+use::
+
+    git reset --hard <revision>
+
+.. hint::
+    Omit ``--hard`` if you want to see what's happening first.
+
+.. warning::
+    This changes history! Don't do this after other people have based work off
+    of yours (f. ex.: after pushing).
+
+.. nextslide::
+    :increment:
+
+If you want to retrieve a specific file from history, use::
+
+    git checkout <revision> -- <filename>
+
+.. hint::
+    This is a "harmless" modification and can be used after pushing. It will
+    only get the file contents of the given revision. You still have to commit
+    the new change, so it will appear in the history.
+
+.. nextslide::
+    :increment:
+
+If an older commit (f. ex.: ``c0ffee``) introduced a bug, revert it using::
+
+    git revert c0ffee
 
 .. }}}
 
@@ -908,10 +959,6 @@ Hooks (server-side)
 .. TODO    -S
 .. TODO    -L
 .. TODO    <from>..<to>
-.. TODO == UNDOING ==
-.. TODO reset
-.. TODO commit --amend
-.. TODO checkout -- <filename>
 .. TODO == REWRITING HISTORY ==
 .. TODO      rebase     Forward-port local commits to the updated upstream head
 .. TODO          -i
