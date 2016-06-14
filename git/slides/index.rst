@@ -588,6 +588,25 @@ If an older commit (f. ex.: ``c0ffee``) introduced a bug, revert it using::
 
 .. }}}
 
+... {{{ specifying commits
+
+Specifying Commits
+------------------
+
+* Your current location: ``HEAD``
+* The direct parent of the last commit: ``HEAD^``
+* The second parent of the last commit: ``HEAD^2`` (only makes sense for merge-commits).
+* *n* items back in history: ``HEAD~n``
+* Any named reference (branch-names, tags)
+
+.. hint::
+
+    You can use ``git rev-parse <symbol>`` to convert a symbolic name to a
+    SHA-1.
+
+
+.. }}}
+
 .. {{{ intermediate git commands
 
 Intermediate Commands
