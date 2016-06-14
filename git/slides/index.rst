@@ -641,17 +641,26 @@ Branching
 Creating a new branch
 ---------------------
 
-You can create branches in two ways:
+To create a branch, run::
 
-* ``git branch <branch-name>``
-  This will create the new branch without switching to it. It will have the
-  current ``HEAD`` as parent.
-* ``git checkout -b <branch-name>``
-  This will create a new branch with the current ``HEAD`` as parent **and**
-  switch to it.
+    git checkout -b <branch-name>
+
+This will create a new branch with the current ``HEAD`` as parent **and**
+switch to it.
 
 All branch operations are available under the ``git branch`` command. It can
 also delete (``-d``) and rename (``-m``) branches.
+
+.. nextslide::
+    :increment:
+
+.. hint::
+    An alternative command is::
+
+        git branch <branch-name>
+
+    This will create the new branch *without* switching to it. It will have the
+    current ``HEAD`` as parent.
 
 .. {{{ exercise 3
 
