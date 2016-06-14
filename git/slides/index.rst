@@ -495,6 +495,11 @@ re-applies the commit.
 
     Don't do this after pushing! This **changes history**
 
+.. hint::
+
+    Advanced history fixing can be done using ``git reset`` and ``git rebase
+    -i``.
+
 
 Partial (patch) committing
 --------------------------
