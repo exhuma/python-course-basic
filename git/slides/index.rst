@@ -6,7 +6,6 @@ git
 ===
 
 * |home| http://git-scm.com
-* Images licensed under CC BY-NC-SA 3.0 by Scott Chacon
 
 .. include:: ../../common/introduction.rst
 
@@ -49,9 +48,11 @@ Distributed vs. Client/Server
 Centralised (Client/Server)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: _static/images/centralized.png
+.. figure:: _static/images/centralized.png
     :align: left
-    :width: 380px
+    :width: 340px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. sidebar:: Summary
 
@@ -63,9 +64,11 @@ Centralised (Client/Server)
 Distributed
 ~~~~~~~~~~~
 
-.. image:: _static/images/distributed.png
+.. figure:: _static/images/distributed.png
     :align: left
-    :width: 380px
+    :width: 340px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. sidebar:: Summary
 
@@ -105,13 +108,17 @@ Git
 History of Deltas
 -----------------
 
-.. image:: _static/images/deltas.png
+.. figure:: _static/images/deltas.png
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Snapshots
 ---------
 
-.. image:: _static/images/snapshots.png
+.. figure:: _static/images/snapshots.png
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Installing
@@ -164,8 +171,10 @@ Collaboration
 One Reference Repo
 ------------------
 
-.. image:: _static/images/centralized_workflow.png
+.. figure:: _static/images/centralized_workflow.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -187,8 +196,10 @@ One Reference Repo
 Integration Manager
 -------------------
 
-.. image:: _static/images/integration-manager.png
+.. figure:: _static/images/integration-manager.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -202,8 +213,10 @@ Integration Manager
 Beneveloent Dictator Model
 --------------------------
 
-.. image:: _static/images/benevolent-dictator.png
+.. figure:: _static/images/benevolent-dictator.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -336,8 +349,10 @@ Help
 git Areas
 ---------
 
-.. image:: _static/images/areas.png
+.. figure:: _static/images/areas.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. }}}
 
@@ -833,9 +848,11 @@ Remote Commands
 Example Remote Interaction
 --------------------------
 
-.. image:: _static/images/small-team-flow.png
+.. figure:: _static/images/small-team-flow.png
     :align: center
     :height: 500px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Supported Protocols
