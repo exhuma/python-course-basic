@@ -641,14 +641,17 @@ Intermediate Commands
 ``git rebase``
     Attaches a branch to another commit (rewriting each commit!).
 
+``git rebase -i <commit>``
+    Allows you to modify the history from the given commit up to ``HEAD``
+
 ``git bisect``
     Runs a binary search to find a commit which introduced a bug
 
-``git log -S<pattern>`` (pickaxe)
-    Searches for commits which introduced a specific change.
-
 .. nextslide::
     :increment:
+
+``git log -S<pattern>`` (pickaxe)
+    Searches for commits which introduced a specific change.
 
 ``git cherry-pick``
     Takes a single commit (from any branch) and applies it to the current
