@@ -235,7 +235,7 @@ Example Commit Workflow
 -----------------------
 
 .. figure:: _static/images/nvie-workflow.png
-    :width: 400
+    :width: 350
     :align: center
 
     See: http://nvie.com/posts/a-successful-git-branching-model/
