@@ -88,8 +88,11 @@ Git
   * Latest snapshot is kept in full. After packing, a similar approach to
     deltas is used (using packfiles).
 
-* Nearly all operations executed locally (no network overhead).
+* Nearly all operations executed locally.
 * Strong integrity (SHA1 hashes of snapshot content).
+* Possibility to modify any aspect of a commit even after it's made.
+* Distinguishes between "author" and "committer".
+* Possibility to digitally sign commits.
 
 
 .. note::
