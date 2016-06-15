@@ -611,7 +611,7 @@ If an older commit (f. ex.: ``c0ffee``) introduced a bug, revert it using::
 
 .. }}}
 
-... {{{ specifying commits
+.. {{{ specifying commits
 
 Specifying Commits
 ------------------
