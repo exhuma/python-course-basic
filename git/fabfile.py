@@ -64,3 +64,10 @@ def publish():
     with fab.settings(warn_only=True):
         fab.run('test -h {0} && rm {0}'.format(latest_folder))
     fab.run('ln -s %s %s' % (remote_folder, latest_folder))
+
+
+@fab.task
+def run_gitlab():
+    with fab.lcd('gitlab'):
+        fab.local('GITLAB_SECRETS_DB_KEY_BASE=fo43287r4y398fhuo4837fy3894f '
+                  'docker-compose up')
