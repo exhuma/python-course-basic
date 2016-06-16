@@ -1,45 +1,13 @@
-.. {{{  RST definitions
-
-.. role:: small
-    :class: small
-
-.. |home| image:: _static/icons/home.png
-    :class: midline
-
-.. |github| image:: _static/icons/github-circle.png
-    :class: midline
-
-.. |gplus| image:: _static/icons/google-plus.png
-    :class: midline
-
-.. }}}
+.. include:: ../../common/rst_defs.rst
 
 .. {{{ Introduction
 
 git
 ===
+
 * |home| http://git-scm.com
-* Slides: http://michel.albert.lu/shelf/git2015
-* Images licensed under CC BY-NC-SA 3.0 by Scott Chacon
 
-About Me
---------
-
-* First program written in 1989.
-* Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python → Ha…?
-* Degree in Computer Science (BSc CS AI).
-* Lead Software Developer in Post BackBone-OSS.
-* Semantics Nerd, Gamer, Geek.
-
-
-About You
----------
-
-* Your name
-* Your experience
-* What do you expect from this course
-
+.. include:: ../../common/introduction.rst
 
 .. }}}
 
@@ -48,9 +16,9 @@ About You
 What is Version Control
 -----------------------
 
-* Like "track changes" in office products… on steroids.
+* Like "track changes" in MS-Office™ products… on steroids.
 * Primarily for plain-text files (f.ex.: source code).
-* Binary files (f.ex. Word documents) are supported, but many features will
+* Binary files (f.ex. MS-Word™ documents) are supported, but many features will
   not work.
 * Visualising changes in files (diffing).
 * Undo those changes easily.
@@ -80,22 +48,27 @@ Distributed vs. Client/Server
 Centralised (Client/Server)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: _static/images/centralized.png
+.. figure:: _static/images/centralized.png
     :align: left
-    :width: 380px
+    :width: 340px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. sidebar:: Summary
 
     * One place to apply access rights.
-    * Single point of failure
+    * Single point of failure.
+    * Network access required.
 
 
 Distributed
 ~~~~~~~~~~~
 
-.. image:: _static/images/distributed.png
+.. figure:: _static/images/distributed.png
     :align: left
-    :width: 380px
+    :width: 340px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. sidebar:: Summary
 
@@ -115,22 +88,37 @@ Git
 * Fully distributed
 * Stream of snapshots instead of history of deltas.
 
-  * Latest snapshot is kept in full, backwards deltas (after packing).
+  * Latest snapshot is kept in full. After packing, a similar approach to
+    deltas is used (using packfiles).
 
-* Nearly all operations executed locally (no network overhead).
+* Nearly all operations executed locally.
 * Strong integrity (SHA1 hashes of snapshot content).
+* Possibility to modify any aspect of a commit even after it's made.
+* Distinguishes between "author" and "committer".
+* Possibility to digitally sign commits.
+
+
+.. note::
+
+    See
+    http://stackoverflow.com/questions/5176225/are-gits-pack-files-deltas-rather-than-snapshots
+    for more details on how git stores changes.
 
 
 History of Deltas
 -----------------
 
-.. image:: _static/images/deltas.png
+.. figure:: _static/images/deltas.png
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Snapshots
 ---------
 
-.. image:: _static/images/snapshots.png
+.. figure:: _static/images/snapshots.png
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Installing
@@ -163,8 +151,7 @@ working copy
     of the source-code.
 
 index
-    A "staging area" to prepare the next commit. As far as I know, unique to
-    git.
+    A "staging area" to prepare the next commit.
 
 commit
     A snapshot of the source code. These are points in time you can come back
@@ -184,8 +171,10 @@ Collaboration
 One Reference Repo
 ------------------
 
-.. image:: _static/images/centralized_workflow.png
+.. figure:: _static/images/centralized_workflow.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -207,8 +196,10 @@ One Reference Repo
 Integration Manager
 -------------------
 
-.. image:: _static/images/integration-manager.png
+.. figure:: _static/images/integration-manager.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -222,8 +213,10 @@ Integration Manager
 Beneveloent Dictator Model
 --------------------------
 
-.. image:: _static/images/benevolent-dictator.png
+.. figure:: _static/images/benevolent-dictator.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. nextslide::
     :increment:
@@ -242,7 +235,7 @@ Example Commit Workflow
 -----------------------
 
 .. figure:: _static/images/nvie-workflow.png
-    :width: 400
+    :width: 350
     :align: center
 
     See: http://nvie.com/posts/a-successful-git-branching-model/
@@ -356,8 +349,10 @@ Help
 git Areas
 ---------
 
-.. image:: _static/images/areas.png
+.. figure:: _static/images/areas.png
     :align: center
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 .. }}}
 
@@ -450,7 +445,7 @@ Making changes:
 
     $ vim document.txt
     $ git status
-    $ git add
+    $ git add document.txt
     $ git status
     $ git commit
     $ git status
@@ -462,6 +457,80 @@ Also try:
 
     $ git show HEAD
     $ gitk
+
+
+The Index
+---------
+
+.. digraph:: example
+
+    rankdir="LR";
+    node [shape="circle"];
+    {
+        rank="same";
+        d [style="dotted"];
+        index [shape="plaintext"];
+    }
+
+    {
+        rank="same";
+        c;
+        HEAD [shape="cds"];
+    }
+
+    {
+        rank="same";
+        e [shape="plaintext"];
+        "Working Copy" [shape="plaintext"];
+    }
+
+    history [label="...", shape="plaintext"];
+    history -> a -> b -> c -> d -> e[dir="back"];
+    index -> d;
+    HEAD -> c;
+    "Working Copy" -> e [arrowhead="empty"];
+
+* The Index is a "staging" area.
+* Can be used to prepare a commit by only adding select diffs.
+* Changes are staged using ``git add [-p] [filename]``
+* |ell| and unstaged using ``git reset [filename]``
+
+
+Fixing the last commit
+----------------------
+
+Forgot to add a file in the last commit? Or realised you have a typo? Maybe you
+want to change the commit-message?
+
+::
+
+    git commit --amend
+
+This "unwinds" the last commit, merges your changes with those changes and
+re-applies the commit.
+
+.. warning::
+
+    Don't do this after pushing! This **changes history**
+
+.. hint::
+
+    Advanced history fixing can be done using ``git reset`` and ``git rebase
+    -i``.
+
+
+Partial (patch) committing
+--------------------------
+
+* Git allows you to add changes piece by piece to the index before committing
+  (``git add -p``).
+* Use it if your current changes contain more than one logical modification.
+* Type ``?`` to get help. It is *really* well written!
+* Also works for:
+
+    * ``git stash save -p``
+    * ``git checkout -p <revision> -- <filename>``
+    * ``git commit -p``
 
 .. }}}
 
@@ -485,9 +554,79 @@ New commands:
 * Run ``git checkout document.txt``.
 * Run ``git status`` again.
 
-Alternative command::
+Undoing changes in the *whole tree*::
 
     git reset --hard
+
+.. }}}
+
+.. {{{ Advanced Undoing
+
+Advanced Undoing
+----------------
+
+* The most common commands for undoing are:
+
+    * ``git reset`` moves the ``HEAD`` pointer around in history. Using
+      ``--hard`` **will discard all local changes**!
+    * ``git checkout`` can retrieve a file from a specific point in time, into
+      the current working-folder. **Any uncommitted modifications are lost!**
+    * ``git revert`` will take an existing commit object and apply it *in
+      reverse* to the current working folder. This will pause on conflicts as
+      usual.
+
+.. nextslide::
+    :increment:
+
+If you messed up the last *n* commits, and you want to completely wipe them,
+use::
+
+    git reset --hard <revision>
+
+.. hint::
+    Omit ``--hard`` if you want to see what's happening first.
+
+.. warning::
+    This changes history! Don't do this after other people have based work off
+    of yours (f. ex.: after pushing).
+
+.. nextslide::
+    :increment:
+
+If you want to retrieve a specific file from history, use::
+
+    git checkout <revision> -- <filename>
+
+.. hint::
+    This is a "harmless" modification and can be used after pushing. It will
+    only get the file contents of the given revision. You still have to commit
+    the new change, so it will appear in the history.
+
+.. nextslide::
+    :increment:
+
+If an older commit (f. ex.: ``c0ffee``) introduced a bug, revert it using::
+
+    git revert c0ffee
+
+.. }}}
+
+.. {{{ specifying commits
+
+Specifying Commits
+------------------
+
+* Your current location: ``HEAD``
+* The direct parent of the last commit: ``HEAD^``
+* The second parent of the last commit: ``HEAD^2`` (only makes sense for merge-commits).
+* *n* items back in history: ``HEAD~n``
+* Any named reference (branch-names, tags)
+
+.. hint::
+
+    You can use ``git rev-parse <symbol>`` to convert a symbolic name to a
+    SHA-1.
+
 
 .. }}}
 
@@ -502,14 +641,17 @@ Intermediate Commands
 ``git rebase``
     Attaches a branch to another commit (rewriting each commit!).
 
+``git rebase -i <commit>``
+    Allows you to modify the history from the given commit up to ``HEAD``
+
 ``git bisect``
     Runs a binary search to find a commit which introduced a bug
 
-``git log -S<pattern>`` (pickaxe)
-    Searches for commits which introduced a specific change.
-
 .. nextslide::
     :increment:
+
+``git log -S<pattern>`` (pickaxe)
+    Searches for commits which introduced a specific change.
 
 ``git cherry-pick``
     Takes a single commit (from any branch) and applies it to the current
@@ -525,17 +667,26 @@ Branching
 Creating a new branch
 ---------------------
 
-You can create branches in two ways:
+To create a branch, run::
 
-* ``git branch <branch-name>``
-  This will create the new branch without switching to it. It will have the
-  current ``HEAD`` as parent.
-* ``git checkout -b <branch-name>``
-  This will create a new branch with the current ``HEAD`` as parent **and**
-  switch to it.
+    git checkout -b <branch-name>
+
+This will create a new branch with the current ``HEAD`` as parent **and**
+switch to it.
 
 All branch operations are available under the ``git branch`` command. It can
 also delete (``-d``) and rename (``-m``) branches.
+
+.. nextslide::
+    :increment:
+
+.. hint::
+    An alternative command is::
+
+        git branch <branch-name>
+
+    This will create the new branch *without* switching to it. It will have the
+    current ``HEAD`` as parent.
 
 .. {{{ exercise 3
 
@@ -700,9 +851,11 @@ Remote Commands
 Example Remote Interaction
 --------------------------
 
-.. image:: _static/images/small-team-flow.png
+.. figure:: _static/images/small-team-flow.png
     :align: center
     :height: 500px
+
+    CC BY-NC-SA 3.0 by Scott Chacon
 
 
 Supported Protocols
@@ -714,6 +867,12 @@ Supported Protocols
 * local
 * git
 
+.. note::
+
+    See https://git-scm.com/book/en/v2/Git-Internals-Transfer-Protocols for a
+    detailed difference between the "dumb" and "smart" protocol.
+
+
 Working with remotes
 --------------------
 
@@ -723,11 +882,17 @@ Working with remotes
     that pulling and pushing does not require any arguments. Created using
     ``checkout -t`` or ``push -u``.
 
+.. note::
+
+    In recent versions of git, checking out a remote branch automatically adds
+    entries to ``.git/config`` to track it. Even without specifying ``-t``
+
 * Remote branches are *NOT* writable!
-* First, create a new *local* "tracking" branch using ``git checkout -t
-  <remote>/<branch>``
+* First, create a new *local* "tracking" branch using ``git checkout <branch>``.
 * Pull syntax: ``git pull . <remote>/<branch>``
-* Alternative: ``git fetch && git merge <remote>/<branch>``
+
+    * Alternative to pull: ``git fetch && git merge <remote>/<branch>``
+
 * Push syntax: ``git push [-u] <remote> <branch>``
 
 
@@ -750,8 +915,8 @@ Bare repositores
 
     $ git clone --bare <url>
 
-Some server application for this for you (f.ex.: gitlab_, gitolite_, github_,
-bitbucket_).
+Some server application handle this for you (f.ex.: gitlab_, gitolite_,
+github_, bitbucket_).
 
 .. _gitlab: http://www.gitlab.com
 .. _gitolite: http://www.gitolite.com
@@ -786,7 +951,37 @@ Hooks (client-side)
 * User edits and saves the commit message
 * ``commit-msg``
 * Commit is finalized.
-* ``post-commit``
+* ``post-commit`` (Cannot abort commit).
+
+
+Example client-side hook
+------------------------
+
+
+.. code-block:: bash
+    :class: smaller
+    :caption: pre-commit
+
+    #!/bin/bash
+
+    # Check if this is the first commit, or a regular commit.
+    if git rev-parse --verify HEAD >/dev/null 2>&1
+    then
+    	# Regular commit
+    	against=HEAD
+    else
+    	# Initial commit: diff against an empty tree object
+    	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+    fi
+
+    OUT=$(git diff --cached $against | grep "^+.*# XXX")
+
+    if [[ "$OUT" != "" ]]; then
+        echo "This commit would introduce an XXX marker!"
+        echo $OUT
+        exit 1
+    fi
+
 
 Hooks (server-side)
 -------------------
@@ -795,14 +990,87 @@ Hooks (server-side)
 * ``pre-receive``
 * ``update``
 * git finalizes the push
-* ``post-receive`` (Cannot about push!)
+* ``post-receive`` (Cannot abort push!)
+
 
 .. }}}
+
+.. }}}
+
+.. TODO (un)tracked, unmodified, modified, staged
+.. TODO diff       Show changes between commits, commit and working tree, etc
+.. TODO    --staged/--cached
+.. TODO    --difftool
+.. TODO rm         Remove files from the working tree and from the index
+.. TODO    --cached
+.. TODO mv         Move or rename a file, a directory, or a symlink
+.. TODO    equivalent to remove -> add
+.. TODO log        Show commit logs
+.. TODO    >> git clone https://github.com/schacon/simplegit-progit
+.. TODO    Author vs. Committer
+.. TODO    --since/--after, --until/--before
+.. TODO    --author
+.. TODO    --grep (--all-match)
+.. TODO    -S
+.. TODO    -L
+.. TODO    <from>..<to>
+.. TODO == REWRITING HISTORY ==
+.. TODO      rebase     Forward-port local commits to the updated upstream head
+.. TODO          -i
+.. TODO == ON THE SERVER ==
+.. TODO      bare repositories
+.. TODO      protocols
+.. TODO          local
+.. TODO          http(s), smart (1.6.6+)/dumb
+.. TODO          ssh
+.. TODO          git
+.. TODO      git-shell in /etc/passwd
+.. TODO == WORKFLOWS ==
+.. TODO      email-based
+.. TODO stash
+.. TODO == ADVANCED STUFF ==
+.. TODO      manual merging
+
+
+
+.. TODO grep       Print lines matching a pattern
+.. TODO show       Show various types of objects
+.. TODO bisect     Find by binary search the change that introduced a bug
 
 .. {{{ git hosting
 
 git hosting
 ===========
+
+gitolite
+--------
+
+http://www.gitolite.com
+
+* Very simple SSH based management tool.
+* Only requirement is a SSH server.
+* Management is handled directly via git.
+* Easy to set up.
+* Very low maintainance.
+* Self-Hosted
+
+
+gitlab
+------
+
+https://www.gitlab.com
+
+* Free
+* Self hosted
+* Similar to github
+* Contains other useful feautures on top of simple git management.
+
+  * CI
+  * Automated Tasks
+  * Issue Tracker
+
+* Can be deployed via ``docker`` (and ``docker-compose``).
+
 
 github
 ------
@@ -835,15 +1103,6 @@ https://www.bitbucket.org
 
 .. _Atlassian: https://www.atlassian.com
 
-gitlab
-------
-
-https://www.gitlab.com
-
-* Free
-* Self hosted solution
-* Similar to github
-
 .. }}}
 
 .. {{{ Best practices
@@ -863,72 +1122,6 @@ General Best Practices
 
 .. }}}
 
-.. }}}
-
-.. (un)tracked, unmodified, modified, staged
-.. diff       Show changes between commits, commit and working tree, etc
-..    --staged/--cached
-..    --difftool
-.. rm         Remove files from the working tree and from the index
-..    --cached
-.. mv         Move or rename a file, a directory, or a symlink
-..    equivalent to remove -> add
-.. log        Show commit logs
-..    >> git clone https://github.com/schacon/simplegit-progit
-..    Author vs. Committer
-..    --since/--after, --until/--before
-..    --author
-..    --grep (--all-match)
-..    -S
-..    -L
-..    <from>..<to>
-.. == UNDOING ==
-.. reset
-.. commit --amend
-.. checkout -- <filename>
-.. == REWRITING HISTORY ==
-..      rebase     Forward-port local commits to the updated upstream head
-..          -i
-.. == ON THE SERVER ==
-..      bare repositories
-..      protocols
-..          local
-..          http(s), smart (1.6.6+)/dumb
-..          ssh
-..          git
-..      git-shell in /etc/passwd
-.. == WORKFLOWS ==
-..      email-based
-.. stash
-.. == ADVANCED STUFF ==
-..      manual merging
-
-
-
-.. grep       Print lines matching a pattern
-.. show       Show various types of objects
-.. bisect     Find by binary search the change that introduced a bug
-
-
-.. {{{ --- FIN ----------------------------------------------------------------
-
-.. slide::
-    :level: 2
-
-    .. container:: centered
-
-        Thank You!
-
-        .. image:: _static/avatar.jpg
-            :align: center
-            :class: avatar
-
-        Questions?
-
-    * |home| http://michel.albert.lu
-    * |github| exhuma
-    * |gplus| MichelAlbert
-
-.. }}}
+.. include:: ../../common/finish.rst
 
 .. vim: set foldmethod=marker :
