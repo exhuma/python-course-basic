@@ -1,3 +1,5 @@
+.. include:: ../../common/rst_defs.rst
+
 Python Basic Recap
 ==================
 
@@ -65,10 +67,10 @@ Variadic functions
 
 .. slide:: Exercise
 
-    Write a function that takes any number of arguments, *and* any number of
-    keyword arguments. It should return the sum of the arguments (positional
-    and keyword). Use the *values* of the keyword arguments to calculate the
-    sum::
+    Write a function ``msum`` that takes any number of arguments, *and* any
+    number of keyword arguments. It should return the sum of the arguments
+    (positional and keyword). Use the *values* of the keyword arguments to
+    calculate the sum::
 
         assert(msum(10) == 10)
         assert(msum(a=10) == 10)
@@ -98,15 +100,69 @@ It is possible to call it in the following ways::
     The second example shows that the arguments can be mixed.
 
 
-Example use-case: Delegator Function
-------------------------------------
+Exercise: Delegator Function
+----------------------------
 
+Write a function ``mylog`` which takes one fixed argument: username. It should
+also take any number of positional and keyword arguments.
+
+Use this function to print the username, and then delegate the rest of the
+arguments to :py:func:`logging.warning`.
+
+The following call should work::
+
+    mylog('malbert', 'This is the log message', exc_info=True)
+
+
+Relative Imports
+----------------
+
+See also `PEP 328 <https://www.python.org/dev/peps/pep-0328/>`_
+
+*Example*
+
+.. code-block:: text
+    :class: smaller
+
+    myapp
+    ├── __init__.py
+    ├── sub1
+    │   ├── __init__.py
+    │   └── sub2
+    │       ├── __init__.py
+    │       ├── somemodule.py
+    │       └── sys.py
+    └── types.py
+
+.. code-block:: python
+    :caption: somemodule.py
+
+    from .sys import hello_world
+    from ...types import goodbye_world
+
+
+.. rst-class:: smaller-slide
+
+Running Modules with Relative Imports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
-    from snmp import walk
+    # python myapp/sub1/sub2/somemodule.py
 
-    def send_snmp_command(username, *args, **kwargs):
-        LOG.info('%s is executing SNMP-Walk: walk(*%r, **%r)',
-            username, args, kwargs)
-        walk(*args, **kwargs)
+    Traceback (most recent call last):
+    File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+        "__main__", fname, loader, pkg_name)
+    File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+        exec code in run_globals
+    File "/tmp/myapp/sub1/sub2/somemodule.py", line 1, in <module>
+        from .sys import hello_world
+    ValueError: Attempted relative import in non-package
+
+The following will work:
+
+.. code-block:: text
+
+    $ python -m myapp.sub1.sub2.somemodule
+
+For details, see `PEP 366 <https://www.python.org/dev/peps/pep-0366/>`_

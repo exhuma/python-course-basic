@@ -16,6 +16,9 @@ pre {
 
 DIV.highlight {
     background: rgba(255, 255, 255, 0.7);
+}
+
+DIV.highlight PRE {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
 }
 
@@ -185,6 +188,14 @@ H2 {
     font-size: smaller;
 }
 
+.highlight-python.tinycode {
+    font-size: 60%;
+}
+
+.highlight-python.tinycode PRE {
+    max-height: none;
+}
+
 DIV.smaller PRE {
     max-height: none;
 }
@@ -192,4 +203,16 @@ DIV.smaller PRE {
 /* For graphviz images */
 H2 + IMG {
     margin-top: 40px;
+}
+
+#mastertoc {
+    font-size: 80%;
+}
+
+#mastertoc A {
+    text-decoration: none;
+}
+
+ARTICLE.smaller-slide {
+    font-size: 90%;
 }

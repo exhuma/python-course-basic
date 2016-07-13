@@ -8,13 +8,15 @@ Topics
 
 .. toctree::
     :maxdepth: 1
+    :name: mastertoc
 
     catching_up
-    object_model
-    higher_order
 
     unittesting
     debugging
+
+    object_model
+    higher_order
 
     sqlalchemy
     parsing
@@ -22,16 +24,19 @@ Topics
     finish
     references
 
+.. include:: ../../common/introduction.rst
 .. include:: catching_up.rst
-.. include:: object_model.rst
-.. include:: higher_order.rst
+
 .. include:: unittesting.rst
 .. include:: debugging.rst
+
+.. include:: object_model.rst
+.. include:: higher_order.rst
 
 .. include:: sqlalchemy.rst
 .. include:: parsing.rst
 
-.. include:: finish.rst
+.. include:: ../../common/finish.rst
 .. include:: references.rst
 
 .. vim: set path=.,slides,,
