@@ -15,15 +15,6 @@
 .. role:: strike
     :class: strike
 
-.. |home| image:: _static/icons/home.png
-    :class: midline
-
-.. |github| image:: _static/icons/github-circle.png
-    :class: midline
-
-.. |gplus| image:: _static/icons/google-plus.png
-    :class: midline
-
 
 Python
 ======
@@ -55,23 +46,9 @@ About This Course
     * Replace WikiWords with links.
 * Packaging
 
-About Me
---------
 
-* First program written in 1989.
-* Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python → ?
-* Degree in Computer Science (BSc CS AI).
-* Lead Software Developer in Post BackBone-OSS.
-* Semantics Nerd, Gamer, Geek.
+.. include:: ../../common/introduction.rst
 
-
-About You
----------
-
-* Your name
-* Your experience
-* *What do you expect from this course*
 
 
 Installation
@@ -1912,22 +1889,7 @@ Common Mistakes
     $ python -m timeit "'aaa' + 'bbb'"
 
 
-.. slide::
-    :level: 2
-
-    .. container:: centered
-
-        Thank You!
-
-        .. image:: _static/avatar.jpg
-            :align: center
-            :class: avatar
-
-        Questions?
-
-    * |home| http://michel.albert.lu
-    * |github| exhuma
-    * |gplus| MichelAlbert
+.. include:: ../../common/finish.rst
 
 References
 ----------
