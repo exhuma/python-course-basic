@@ -31,8 +31,8 @@ Closures
   exits).
 * In the previous example, the inner function ``fun`` keeps a reference to
   ``n`` even *after the call to multiplicator has returned*.
-* I the reference to the inner function is lost/removed (f.ex. ``times2``), the
-  closure is also lost.
+* If the reference to the inner function is lost/removed (f.ex. ``times2``),
+  the closure is also lost.
 
 
 Example: HTML Wrappers
@@ -55,14 +55,19 @@ Example: HTML Wrappers
     print(bold(emphasize('Hello')))
 
 
-.. nextslide::
+Summary
+~~~~~~~
 
-.. hint::
+* Higher order functions let you dynamically create or modify functions.
+* Useful to refactor multiple *very* similar pieces of code, which would
+  otherwise not be possible to refactor.
 
-    * The ``multiplicator`` and ``wrapper`` example are very simple!
-    * They can also be solved differently without difficulty.
-    * The idea to take home is that you can write functions that create
-      functions. *Even at runtime!*
+**Note:**
+
+* The ``multiplicator`` and ``wrapper`` example are very simple!
+* They can also be solved differently without difficulty.
+* The idea to take home is that you can write functions that
+  create functions. *Even at runtime!*
 
 
 Example: Timing Functions
@@ -70,6 +75,7 @@ Example: Timing Functions
 
 .. code-block:: python
     :class: smaller
+    :emphasize-lines: 7
 
     from datetime import datetime
 
@@ -93,6 +99,19 @@ Example: Timing Functions
 
     hello()
     timed_hello()
+
+
+.. nextslide::
+    :increment:
+
+**Some details to note:**
+
+* The "timed" function takes another function ``f`` as argument.
+* It defines a new function with variadic arguments (remember the earlier
+  slides).
+* Inside that function, it calls ``f`` by delegating all arguments to it.
+* This can be used to do |ell| "stuff" before and/or after calling ``f``.
+* |ell| and/or modify arguments.
 
 But there's a problem
 ---------------------
@@ -139,11 +158,22 @@ Decorators
 
 With the ``@``-syntax, the previous code can be rewritten as:
 
+
 .. code-block:: python
+    :class: smaller
 
     @timed
     def hello():
         print("Hello World!")
+
+Is equivalent with:
+
+.. code-block:: python
+    :class: smaller
+
+    def hello():
+        print("Hello World!")
+    hello = timed(hello)
 
 
 Parametrized Decorators
@@ -163,6 +193,14 @@ decorator.
                 pass  # Implement the decorator
             return fun
         return decorator
+
+
+Exercise: Parametrized Decorator
+--------------------------------
+
+* Take the ``timed`` decorator from the earlier slides.
+* Change it so that the *decorator* takes a "prefix" argument.
+* Each time you print the timing info, prefix it with that argument.
 
 
 Lambda Expressions in Python
