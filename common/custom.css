@@ -9,6 +9,9 @@ pre {
     box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 2px;
+    max-height: 30em;
+    overflow: auto;
+    font-size: 0.6em;
 }
 
 code.docutils.literal {
@@ -18,6 +21,10 @@ code.docutils.literal {
 }
 
 DIV.highlight {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+DIV.highlight PRE {
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
 }
@@ -57,6 +64,10 @@ H1 {
 
 .admonition.warning {
     background: hsla(40, 100%, 80%, 0.8);
+}
+
+.sidebar {
+    background-color: rgba(255, 255, 237, 0.8) !important;
 }
 
 .sidebar + DIV {
@@ -178,4 +189,75 @@ table.docutils td, table.docutils th {
     padding: 1px 8px 1px 5px;
     border: 1px solid rgb(224, 224, 224);
     vertical-align: middle;
+}
+
+H2 {
+    margin-top: 1em;
+}
+
+.rightcode {
+    float: right;
+    min-width: 45%;
+    max-width: 48%;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+DIV.smaller PRE {
+    max-height: none;
+}
+
+.highlight-python.tinycode {
+    font-size: 60%;
+}
+
+.highlight-python.tinycode PRE {
+    max-height: none;
+}
+
+DT {
+    font-weight: bold;
+}
+
+#mastertoc {
+    font-size: 80%;
+}
+
+#mastertoc A {
+    text-decoration: none;
+}
+
+H2 + IMG,
+H3 + IMG {
+    margin-top: 40px;
+}
+
+H3 + .image-reference {
+    display: block;
+    margin-top: 3em;
+}
+
+.small {
+    font-size: 60%;
+    color: #AAA;
+    vertical-align: middle;
+}
+
+DIV.figure {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
+    background: hsla(0, 0%, 100%, 0.5);
+}
+
+DIV.figure P.caption {
+    position: relative;
+    border-top: 1px solid #ccc;
+    padding: 0.3em 1em 0 1em;
+    line-height: 0.9em;
+}
+
+ARTICLE.smaller-slide {
+    font-size: 90%;
 }
