@@ -781,7 +781,7 @@ Exercise – A Wiki Page
 ----------------------
 
 .. code-block:: python
-    :caption: **Filename:** wiki / model.py
+    :caption: **Filename:** wiki/model.py
 
     class WikiPage:
 
@@ -833,7 +833,7 @@ Storing documents on Disk
     * Defining classes
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / disk.py
+    :caption: **Filename:** wiki/storage/disk.py
     :name: diskstorage1
 
     from os import listdir
@@ -862,9 +862,10 @@ Storing documents on Disk
 
     * Opening files
     * ``with`` statement
+    * String concatenation
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / disk.py
+    :caption: **Filename:** wiki/storage/disk.py
     :name: diskstorage2
 
     def save(self, document):
@@ -898,7 +899,7 @@ Storing documents on Disk
     * Variable unpacking
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / disk.py
+    :caption: **Filename:** wiki/storage/disk.py
     :name: diskstorage3
 
     def list(self):
@@ -1139,7 +1140,7 @@ Our first Web Page
 
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui1
 
     from flask import Flask
@@ -1179,7 +1180,7 @@ Imports:
 
 .. code-block:: python
     :emphasize-lines: 1
-    :caption: wiki / webui.py
+    :caption: wiki/webui.py
     :name: webui2
 
     from flask import Flask, g
@@ -1221,7 +1222,7 @@ HTML Output (via templating) in Flask
 
 .. code-block:: python
     :emphasize-lines: 1, 8
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui4
 
     from flask import Flask, g, render_template
@@ -1260,7 +1261,7 @@ Loading and Displaying a Page
 -----------------------------
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui5
     :emphasize-lines: 3
 
@@ -1300,7 +1301,7 @@ Creating Pages
 --------------
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui7
     :emphasize-lines: 1-2, 7-11, 14-20
 
@@ -1355,7 +1356,7 @@ Creating an Index Page
 page.
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui8
     :emphasize-lines: 5
 
@@ -1397,7 +1398,7 @@ Custom Template Filter
 ----------------------
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui10
 
     import re
@@ -1476,7 +1477,7 @@ mini templating language.
     :level: 2
 
     .. code-block:: python
-        :caption: **Filename:** wiki / webui.py
+        :caption: **Filename:** wiki/webui.py
         :name: webui11
 
         import re
@@ -1592,7 +1593,7 @@ Creating distributions
 
 
 .. code-block:: bash
-    :caption: Uploading / Publishing
+    :caption: Uploading/Publishing
 
     $ python setup.py register
     $ twine upload dist/*
@@ -1620,12 +1621,12 @@ Apache httpd
 ------------
 
 .. code-block:: python
-    :caption: / var / www / mywiki / wsgi / myapp.wsgi
+    :caption: /var/www/mywiki/wsgi/myapp.wsgi
 
     from wiki.webui import APP as application
 
 .. code-block:: apache
-    :caption: / etc / apache2 / site-available / mywiki.conf
+    :caption: /etc/apache2/site-available/mywiki.conf
 
     <VirtualHost 1.2.3.4:80>
         ServerName mywiki.example.com
@@ -1702,7 +1703,7 @@ A new Storage class
 -------------------
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / sqlite.py
+    :caption: **Filename:** wiki/storage/sqlite.py
     :name: sqlitestorage2
 
     import sqlite3
@@ -1719,7 +1720,7 @@ A new Storage class
     :increment:
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / sqlite.py
+    :caption: **Filename:** wiki/storage/sqlite.py
     :name: sqlitestorage3
 
         def init(self):
@@ -1741,7 +1742,7 @@ A new Storage class
     :increment:
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / sqlite.py
+    :caption: **Filename:** wiki/storage/sqlite.py
     :name: sqlitestorage4
 
         def save(self, document):
@@ -1765,7 +1766,7 @@ A new Storage class
     :increment:
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / sqlite.py
+    :caption: **Filename:** wiki/storage/sqlite.py
     :name: sqlitestorage5
 
         def load(self, title):
@@ -1785,7 +1786,7 @@ A new Storage class
     :increment:
 
 .. code-block:: python
-    :caption: **Filename:** wiki / storage / sqlite.py
+    :caption: **Filename:** wiki/storage/sqlite.py
     :name: sqlitestorage6
 
         def list(self):
@@ -1810,7 +1811,7 @@ Out with the old, in with the new
     `source code (step 7) <_static/wiki-0.7.tar.gz>`_ (`zip <_static/wiki-0.7.zip>`_)
 
 .. code-block:: python
-    :caption: **Filename:** wiki / webui.py
+    :caption: **Filename:** wiki/webui.py
     :name: webui12
 
     from wiki.storage.sqlite import SQLiteStorage
