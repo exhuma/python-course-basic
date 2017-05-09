@@ -328,8 +328,12 @@ Saving your code
 * Python files are called *modules*.
 * Folders can be used to organise your code into *packages*.
 * Folders with modules should contain a file with the name ``__init__.py``.
-  This special file marks a folder as *package*.
+  This special file marks a folder as *package* (See PEP-420_ for an
+  alternative).
 * Execute files with
+
+
+.. _pep-420: https://www.python.org/dev/peps/pep-0420/
 
 .. code-block:: bash
 
@@ -644,8 +648,8 @@ Variadic Functions and Default Arguments
 
 .. tip::
 
-    ``args`` and ``kwargs`` are only conventional names. Sometimes it may be
-    useful to use other names.
+    ``args`` and ``kwargs`` are only conventional names. Sometimes (but rarely)
+    it may be useful to use other names.
 
 
 Functions as Objects
@@ -686,7 +690,8 @@ Documenting Code
   "docstrings".
 * No standard formatting.
 * Sphinx (http://www.sphinx-doc.org)
-* Accessible via the special variable ``__doc__``.
+* Accessible via the special variable ``__doc__``. This is also what ``help()``
+  uses.
 
 .. sidebar:: Takeaways
 
@@ -703,8 +708,8 @@ Documenting Code
     >>> print(noop.__doc__)
 
 
-Exercise: "Falsy" Values
-------------------------
+Exercise: "Falsy/Truthy" Values
+-------------------------------
 
 .. sidebar:: Takeaways
 
@@ -1487,14 +1492,6 @@ each match.
 .. nextslide::
     :increment:
 
-The following function is created to be used in ``re.sub``. It takes a
-``match`` object, and returns a replacement string.
-
-This is needed so we can use ``url_for`` to generate the correct URLs.
-
-Python string formatting can be done using C-Style ``%`` escapes, *or* using a
-mini templating language.
-
 .. code-block:: python
 
     def make_page_url(match):
@@ -1503,6 +1500,15 @@ mini templating language.
         return '<a href="{url}">{title}</a>'.format(
             url=url_for('display', name=title),
             title=title)
+
+This function is created to be used in ``re.sub``. It takes a ``match`` object,
+and returns a replacement string.
+
+This is needed so we can use ``url_for`` to generate the correct URLs.
+
+Python string formatting can be done using C-Style ``%`` escapes, *or* using a
+mini templating language.
+
 
 .. slide:: That *thing* again
     :level: 2
