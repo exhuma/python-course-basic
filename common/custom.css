@@ -20,13 +20,10 @@ code.docutils.literal {
     border-radius: 2px;
 }
 
-DIV.highlight {
-    background: rgba(255, 255, 255, 0.7);
-}
-
 DIV.highlight PRE {
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .4);
+    overflow: hidden;
 }
 
 H1 {
@@ -118,8 +115,8 @@ div.code-block-caption {
     z-index: -1;
 }
 
-.hll {
-    background-color: rgba(255, 255, 255, 0.7) !important;
+.hll {  /* emphasized line in highlight block */
+    background-color: rgba(156, 142, 36, 0.19) !important;
     display: block !important;
     margin-left: -1em !important;
     padding-left: 1em !important;
@@ -207,6 +204,10 @@ H2 {
 
 DIV.smaller PRE {
     max-height: none;
+}
+
+.highlight-python.smallcode {
+    font-size: 90%;
 }
 
 .highlight-python.tinycode {
