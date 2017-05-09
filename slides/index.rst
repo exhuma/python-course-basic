@@ -135,7 +135,7 @@ Birds-Eye View
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
 * Large community. #5 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
-  (Java on #1, PHP on #6). Based on result of May 2016
+  (Java on #1, PHP on #6). Based on result of April 2017
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
@@ -186,12 +186,11 @@ Python 2 vs Python 3
     This course is based on **Python 3.5** as it comes bundled with ``pip`` and
     ``pyvenv``.
 
-* Start at Python 3.3+ (current version is 3.5).
+* Start at Python 3.3+ (current version is 3.6).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
 * No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
   backports exist).
-* Python 3 is slower than Python 2 though (at the moment).
 * *BUT:* Legacy platforms may only support Python 2.
 
 
