@@ -1343,6 +1343,7 @@ Creating Pages
     :caption: **Filename:** wiki/webui.py
     :name: webui7
     :emphasize-lines: 1-2, 7-11, 14-20
+    :class: smallcode
 
     from flask import ..., redirect, url_for, request
     from wiki.model import WikiPage
@@ -1469,8 +1470,8 @@ Let's pick this apart
 .. sidebar:: "Raw" Strings
     :class: overlapping
 
-    A string prefixed with an `r` is a raw string. This means that no escaping
-    is done. For example, ``\n`` will not be replaced by a newline.
+    A string prefixed with an ``r`` is a raw string. This means that no
+    escaping is done. For example, ``\n`` will not be replaced by a newline.
 
 .. code-block:: python
 
@@ -1478,7 +1479,8 @@ Let's pick this apart
 
     # pre-compile the regular expression
     P_WIKIWORD = re.compile(
-        r'\b((?:[A-Z][a-z0-9]+){2,})\b')
+        r'\b((?:[A-Z][a-z0-9]+){2,})\b'
+    )
 
     # Assigns a new filter. Filters can be used in the template to "modify"
     # values (see also the ``safe`` filter we used earlier.
