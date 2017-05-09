@@ -733,6 +733,11 @@ Exercise: "Falsy" Values
     >>> trueish([1, 2, 3])
 
 
+.. note::
+    How an object behaves in a boolean context can be customised by overriding
+    the ``__bool__`` magic function.
+
+
 Classes – Basics
 ----------------
 
@@ -766,6 +771,21 @@ Classes – Basic Example
 
         def myinstancemethod(self, arg1, arg2):
             print(self, arg1, arg2)
+
+
+.. note::
+
+    * ``__init__`` is the class initialisor. For a real constructor, look at
+      ``__new__``. But that should only be used if you *really* need it!
+    * Static methods are methods bound to the namespace of the class. They work
+      just like regular functions except that they live in a different
+      namespace.
+    * Class methods methods receive the instance of the *class* they were
+      called on as first argument. This can be useful in subclassing scenarios.
+    * Instance methods *exclicitly* take a reference to the instance as first
+      argument. By *convention* this is called ``self`` but can take any other
+      name. This is equivalent the the ``this`` keyword existing in other
+      languages.
 
 
 Our Project
@@ -824,6 +844,10 @@ Storing documents on Disk
     * JSON as format.
     * No checks for FS injections.
     * Page titles are valid filenames.
+
+.. note:: Notes
+
+    * ``from wiki.model import WikiPage`` could be written as ``from ..model imprt WikiPage``.
 
 .. sidebar:: Takeaways
     :class: overlapping
@@ -1127,6 +1151,14 @@ Linking the package for development:
 
 Our first Web Page
 ------------------
+
+.. note::
+
+    The ``if __name__ == '__main__'`` block is a quick-and-easy way to define
+    an entry point. I recommend going the extra length though an look into
+    "Entry Points" in ``setup.py``. See `the packaging guide`_ for details.
+
+.. _the packaging guide: https://packaging.python.org/distributing/#entry-points
 
 .. sidebar:: Takeaways
     :class: overlapping
