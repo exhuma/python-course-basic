@@ -762,6 +762,8 @@ Classes – Basic Example
 
     class MyClass(AParentClass, AMixinClass):
 
+        CLASS_VARIABLE = 'hello world'
+
         def __init__(self, a, b):
             super()
             self.a = a
