@@ -752,6 +752,7 @@ Classes – Basics
 * **Instance methods get the instance as first parameter.** Conventional name: ``self``
 * **Class methods get the class as first parameter.** Conventional name: ``cls``
 * Static methods are merely syntactic sugar.
+* Abstract classes are checked for compliance *at runtime*!
 
 
 Classes – Basic Example
