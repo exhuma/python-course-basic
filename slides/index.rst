@@ -1509,6 +1509,22 @@ each match.
 .. nextslide::
     :increment:
 
+.. sidebar:: Takeaways
+
+    In Python, functions can be passed as arguments to other functions. Just
+    like any other variable.
+
+.. rst-class:: justify
+
+The function below is created to be used in ``re.sub``. It takes a ``match``
+object, and returns a replacement string.
+
+This is needed so we can use ``url_for`` to generate the correct URLs.
+
+Python string formatting can be done using C-Style ``%`` escapes, *or* using a
+mini templating language.
+
+
 .. code-block:: python
 
     def make_page_url(match):
@@ -1517,15 +1533,6 @@ each match.
         return '<a href="{url}">{title}</a>'.format(
             url=url_for('display', name=title),
             title=title)
-
-This function is created to be used in ``re.sub``. It takes a ``match`` object,
-and returns a replacement string.
-
-This is needed so we can use ``url_for`` to generate the correct URLs.
-
-Python string formatting can be done using C-Style ``%`` escapes, *or* using a
-mini templating language.
-
 
 .. slide:: That *thing* again
     :level: 2
