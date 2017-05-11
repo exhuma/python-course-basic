@@ -1656,7 +1656,6 @@ Creating distributions
 .. code-block:: bash
     :caption: Uploading/Publishing
 
-    $ python setup.py register
     $ twine upload dist/*
 
 See: https://packaging.python.org
