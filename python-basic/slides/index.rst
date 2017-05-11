@@ -1467,6 +1467,18 @@ Custom Template Filter
 Let's pick this apart
 ---------------------
 
+.. code-block:: text
+    :caption: Regluar Expression for Wiki Words
+
+    \b((?:[A-Z][a-z0-9]+){2,})\b
+
+.. image:: _static/re_wikiword.svg
+    :align: center
+    :width: 100%
+
+.. nextslide::
+    :increment:
+
 .. sidebar:: "Raw" Strings
     :class: overlapping
 
