@@ -73,7 +73,7 @@ H1 {
 }
 
 .sidebar {
-    margin-top: 40px !important;
+    margin-top: 1.5em !important;
     font-size: 60% !important;
     line-height: 1.5 !important;
     padding: 0.5em 0.8em !important;
@@ -261,4 +261,8 @@ DIV.figure P.caption {
 
 ARTICLE.smaller-slide {
     font-size: 90%;
+}
+
+.justify {
+    text-align: justify;
 }
