@@ -10,6 +10,14 @@
 .. |gplus| image:: ../../common/_static/google-plus.png
     :class: midline
 
+.. |smile| image:: ../../common/_static/smiling_face.png
+    :class: midline
+    :width: 1em
+
+.. |disappointed| image:: ../../common/_static/disappointed_face.png
+    :class: midline
+    :width: 1em
+
 .. |ell| raw:: html
 
    …

@@ -1,3 +1,5 @@
+.. include:: ../../common/rst_defs.rst
+
 .. |br| raw:: html
 
    <br />
@@ -1586,14 +1588,14 @@ String Formatting
     >>> print('|%-20s|%20s|' % (fname, lname))
 
 
-================ =========================
- C-Style           Mini-Language
-================ =========================
- faster            slower
- less readable     more readable
- less verbose      more verbose
- less powerful     more powerful
-================ =========================
+============================== ===============================
+ C-Style                         Mini-Language
+============================== ===============================
+ |smile| faster                  |disappointed| slower
+ |smile| less verbose            |disappointed| more verbose
+ |disappointed| less readable    |smile| more readable
+ |disappointed| less powerful    |smile| more powerful
+============================== ===============================
 
 
 Wiki Functionality
