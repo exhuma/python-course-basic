@@ -1575,6 +1575,12 @@ mini templating language.
 String Formatting
 -----------------
 
+
+.. sidebar:: New in Python 3.6
+    :class: overlapping
+
+    * f-strings:  ``f'Hello {varname}!'``
+
 .. code-block:: python
 
     >>> fname = 'John'
