@@ -330,12 +330,10 @@ Saving your code
 * Python files are called *modules*.
 * Folders can be used to organise your code into *packages*.
 * Folders with modules should contain a file with the name ``__init__.py``.
-  This special file marks a folder as *package* (See PEP-420_ for an
+  This special file marks a folder as *package* (See :pep:`0420` for an
   alternative).
 * Execute files with
 
-
-.. _pep-420: https://www.python.org/dev/peps/pep-0420/
 
 .. code-block:: bash
 
