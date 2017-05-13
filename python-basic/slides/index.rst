@@ -1579,7 +1579,7 @@ String Formatting
 .. sidebar:: New in Python 3.6
     :class: overlapping
 
-    * f-strings:  ``f'Hello {varname}!'``
+    * f-strings:  ``f'Hello {varname}!'`` (See :pep:`0498`)
 
 .. code-block:: python
 
