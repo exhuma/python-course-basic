@@ -1156,6 +1156,10 @@ Linking the package for development:
 
     $ ./env/bin/pip install -e .
 
+.. sidebar:: PyCharm
+
+    * Tools > Run setup.py task > develop
+
 
 Our first Web Page
 ------------------
