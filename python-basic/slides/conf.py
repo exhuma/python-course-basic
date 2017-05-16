@@ -293,4 +293,7 @@ slide_link_html_to_slides = True
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/3/': None}
+intersphinx_mapping = {
+    'https://docs.python.org/3/': None,
+    'http://flask.pocoo.org/docs/0.12/': None,
+}

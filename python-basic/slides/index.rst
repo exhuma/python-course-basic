@@ -1434,7 +1434,7 @@ Planning the Filter
 * Filters are functions that take a string and return a modified string.
 * **Input:** ``'Foo HelloWorld bar'`` |br|
   **Output:** ``'Foo <a href="http://localhost:5000/HelloWorld"> HelloWorld</a> bar'``
-* **Challenge:** Use ``url_for`` to create proper URLs.
+* **Challenge:** Use :py:func:`flask.url_for` to create proper URLs.
 * *How?*
 
 
@@ -1520,10 +1520,11 @@ each match.
 
 .. rst-class:: justify
 
-The function below is created to be used in ``re.sub``. It takes a ``match``
-object, and returns a replacement string.
+The function below is created to be used in :py:func:`re.sub`. It takes a
+``match`` object (See :py:mod:`re`), and returns a replacement string.
 
-This is needed so we can use ``url_for`` to generate the correct URLs.
+This is needed so we can use :py:func:`flask.url_for` to generate the correct
+URLs.
 
 Python string formatting can be done using C-Style ``%`` escapes, *or* using a
 mini templating language.
