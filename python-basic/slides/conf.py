@@ -287,6 +287,7 @@ slide_theme_options = {
 
 slide_link_to_html = True
 slide_link_html_to_slides = True
+slide_numbers = True
 
 # ----------------------------------------------
 
