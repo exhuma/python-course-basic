@@ -10,6 +10,14 @@
 .. |gplus| image:: ../../common/_static/google-plus.png
     :class: midline
 
+.. |OK| raw:: html
+
+   ✓
+
+.. |XX| raw:: html
+
+   ✗
+
 .. |ell| raw:: html
 
    …

@@ -56,9 +56,10 @@ Centralised (Client/Server)
 
 .. sidebar:: Summary
 
-    * One place to apply access rights.
-    * Single point of failure.
-    * Network access required.
+    * |OK| One place to apply access rights.
+    * |OK| Reduced number of merge conflicts.
+    * |XX| Single point of failure.
+    * |XX| Network access required.
 
 
 Distributed
@@ -72,11 +73,12 @@ Distributed
 
 .. sidebar:: Summary
 
-    * Supports larger teams (infinite scale).
-    * Access control works like a "Web of Trust".
-    * No connection to server required (working off-line).
-    * Can support very complex workflows (f.ex.: code-review, "tenured"
+    * |OK| Supports larger teams (infinite scale).
+    * |OK| Access control works like a "Web of Trust".
+    * |OK| No connection to server required (working off-line).
+    * |OK| Can support very complex workflows (f.ex.: code-review, "tenured"
       repositories, …).
+    * |XX| Increased risk of merge conflicts.
 
 .. }}}
 
