@@ -26,7 +26,8 @@ def build_slides():
 def build_html():
     fab.execute(fetch_common_files)
     fab.local('cp -v ../common/htmlstyle.css slides/_static/htmlstyle.css')
-    fab.local('make html')
+    with fab.lcd('slides'):
+        fab.local('make html')
 
 
 @fab.task
