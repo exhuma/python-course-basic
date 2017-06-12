@@ -531,7 +531,7 @@ Partial (patch) committing
 * Also works for:
 
     * ``git stash save -p``
-    * ``git checkout -p <revision> -- <filename>``
+    * ``git checkout -p <revision> [-- <filename>]``
     * ``git commit -p``
 
 .. }}}
