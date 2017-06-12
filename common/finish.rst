@@ -11,6 +11,6 @@
 
         Questions?
 
-    * |home| http://michel.albert.lu
-    * |github| exhuma
-    * |gplus| MichelAlbert
+    * |home| https://michel.albert.lu
+    * |github| `exhuma <https://github.com/exhuma>`_
+    * |sover| `exhuma <https://stackoverflow.com/users/160665/exhuma>`_

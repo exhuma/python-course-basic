@@ -1,3 +1,9 @@
 env
 _build
 *.pyc
+/git/slides/_static/custom.css
+/git/slides/_static/htmlstyle.css
+/python-advanced/slides/_static/custom.css
+/python-advanced/slides/_static/htmlstyle.css
+/python-basic/slides/_static/custom.css
+/python-basic/slides/_static/htmlstyle.css

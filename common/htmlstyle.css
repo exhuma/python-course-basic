@@ -1,0 +1,45 @@
+IMG.midline {
+    vertical-align: middle;
+}
+
+DIV.admonition {
+    padding: 2em !important;
+    clear: both;
+}
+
+DIV.admonition .admonition-title {
+    background-color: inherit;
+}
+
+DIV.highlight {
+    margin-right: 1em;
+}
+
+.overlapping {
+    position: relative !important;
+    right: 0 !important;
+    top: 0 !important;
+}
+
+H1 {
+    margin-top: 1em !important;
+    border-bottom: 1px solid #00aaaa !important;
+    clear: both;
+}
+
+H2, H3, H4 {
+    clear: both;
+}
+
+TABLE {
+    width: 100%;
+}
+
+TABLE TH {
+    height: 3em;
+}
+
+TABLE TD {
+    height: 2em;
+}
+

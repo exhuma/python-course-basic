@@ -7,8 +7,17 @@
 .. |github| image:: ../../common/_static/github-circle.png
     :class: midline
 
-.. |gplus| image:: ../../common/_static/google-plus.png
+.. |sover| image:: ../../common/_static/stackoverflow.png
     :class: midline
+    :height: 36px
+
+.. |smile| image:: ../../common/_static/smiling_face.png
+    :class: midline
+    :width: 1em
+
+.. |disappointed| image:: ../../common/_static/disappointed_face.png
+    :class: midline
+    :width: 1em
 
 .. |OK| raw:: html
 
