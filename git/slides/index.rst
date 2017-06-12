@@ -276,8 +276,8 @@ Version Numbers
 
 .. {{{ hands-on
 
-Hand-on git
-===========
+Hands-on git
+============
 
 .. {{{ Configuration
 
