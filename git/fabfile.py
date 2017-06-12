@@ -6,7 +6,9 @@ INSTANCE = '2016'
 
 @fab.task
 def build_slides():
-    fab.local('make slides')
+    fab.execute(fetch_common_files)
+    with fab.lcd('slides'):
+        fab.local('make slides')
 
 
 @fab.task
