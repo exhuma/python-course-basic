@@ -78,7 +78,6 @@ Distributed
     * |OK| No connection to server required (working off-line).
     * |OK| Can support very complex workflows (f.ex.: code-review, "tenured"
       repositories, …).
-    * |XX| Increased risk of merge conflicts.
 
 .. }}}
 
