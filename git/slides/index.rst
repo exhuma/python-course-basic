@@ -300,6 +300,8 @@ Configuration
     [alias]
     st = status -s
 
+My personal example: `github.com/exhuma <https://github.com/exhuma/dotfiles/blob/master/.gitconfig>`_.
+
 .. nextslide::
     :increment:
 
