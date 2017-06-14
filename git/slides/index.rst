@@ -300,6 +300,8 @@ Configuration
     [alias]
     st = status -s
 
+.. rst-class:: small
+
 My personal example: `github.com/exhuma <https://github.com/exhuma/dotfiles/blob/master/.gitconfig>`_.
 
 .. nextslide::
@@ -1112,6 +1114,8 @@ https://www.bitbucket.org
 .. }}}
 
 .. {{{ Best practices
+
+.. rst-class:: smaller-slide
 
 General Best Practices
 ----------------------
