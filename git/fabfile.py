@@ -1,6 +1,6 @@
 import fabric.api as fab
 
-fab.env.roledefs['www'] = ['exhuma@michel.albert.lu']
+fab.env.roledefs['www'] = ['michel.albert.lu']
 INSTANCE = '2017'
 
 
@@ -70,8 +70,8 @@ def serve_linked():
 @fab.task
 @fab.roles('www')
 def publish():
-    remote_folder = '/var/www/html/shelf/python-advanced-%s' % INSTANCE
-    latest_folder = '/var/www/html/shelf/python-advanced-latest'
+    remote_folder = '/var/www/html/shelf/git-%s' % INSTANCE
+    latest_folder = '/var/www/html/shelf/git-latest'
     fab.execute(build_html)
     fab.execute(build_slides)
     fab.run('mkdir -p %s' % remote_folder)
