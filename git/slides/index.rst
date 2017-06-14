@@ -660,6 +660,9 @@ Intermediate Commands
     Takes a single commit (from any branch) and applies it to the current
     branch. The old commit still remains.
 
+``git reflog``
+    Shows the movement history of *local* references.
+
 .. }}}
 
 .. {{{ Branching
