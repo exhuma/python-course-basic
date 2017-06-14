@@ -56,9 +56,10 @@ Centralised (Client/Server)
 
 .. sidebar:: Summary
 
-    * One place to apply access rights.
-    * Single point of failure.
-    * Network access required.
+    * |OK| One place to apply access rights.
+    * |OK| Reduced number of merge conflicts.
+    * |XX| Single point of failure.
+    * |XX| Network access required.
 
 
 Distributed
@@ -72,10 +73,10 @@ Distributed
 
 .. sidebar:: Summary
 
-    * Supports larger teams (infinite scale).
-    * Access control works like a "Web of Trust".
-    * No connection to server required (working off-line).
-    * Can support very complex workflows (f.ex.: code-review, "tenured"
+    * |OK| Supports larger teams (infinite scale).
+    * |OK| Access control works like a "Web of Trust".
+    * |OK| No connection to server required (working off-line).
+    * |OK| Can support very complex workflows (f.ex.: code-review, "tenured"
       repositories, …).
 
 .. }}}
@@ -274,8 +275,8 @@ Version Numbers
 
 .. {{{ hands-on
 
-Hand-on git
-===========
+Hands-on git
+============
 
 .. {{{ Configuration
 
@@ -298,6 +299,10 @@ Configuration
 
     [alias]
     st = status -s
+
+.. rst-class:: small
+
+My personal example: `github.com/exhuma <https://github.com/exhuma/dotfiles/blob/master/.gitconfig>`_.
 
 .. nextslide::
     :increment:
@@ -529,7 +534,7 @@ Partial (patch) committing
 * Also works for:
 
     * ``git stash save -p``
-    * ``git checkout -p <revision> -- <filename>``
+    * ``git checkout -p <revision> [-- <filename>]``
     * ``git commit -p``
 
 .. }}}
@@ -656,6 +661,9 @@ Intermediate Commands
 ``git cherry-pick``
     Takes a single commit (from any branch) and applies it to the current
     branch. The old commit still remains.
+
+``git reflog``
+    Shows the movement history of *local* references.
 
 .. }}}
 
@@ -1107,10 +1115,10 @@ https://www.bitbucket.org
 
 .. {{{ Best practices
 
+.. rst-class:: smaller-slide
+
 General Best Practices
 ----------------------
-.. TODO   !!! Never add derived files (binary, minified, ...)
-
 * Avoid publishing broken commits.
 * Avoid changing the **published** history (``git commit --amend``, ``git
   rebase``, ``git reset``, …).
@@ -1119,6 +1127,9 @@ General Best Practices
 * Use the index to prepare coherent commits (``git add -p`` is your friend).
 * Commit often. Avoid working for a week and commit all that work in one go.
   This avoids hairy conflicts.
+* Avoid adding derived files (compiled binaries, minified sources, ...)
+* Use an empty ``.gitkeep`` file to ensure directories are added to
+  repositories.
 
 .. }}}
 

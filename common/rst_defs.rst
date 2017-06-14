@@ -19,6 +19,14 @@
     :class: midline
     :width: 1em
 
+.. |OK| raw:: html
+
+   ✓
+
+.. |XX| raw:: html
+
+   ✗
+
 .. |ell| raw:: html
 
    …
