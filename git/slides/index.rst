@@ -1115,8 +1115,6 @@ https://www.bitbucket.org
 
 General Best Practices
 ----------------------
-.. TODO   !!! Never add derived files (binary, minified, ...)
-
 * Avoid publishing broken commits.
 * Avoid changing the **published** history (``git commit --amend``, ``git
   rebase``, ``git reset``, …).
@@ -1125,6 +1123,9 @@ General Best Practices
 * Use the index to prepare coherent commits (``git add -p`` is your friend).
 * Commit often. Avoid working for a week and commit all that work in one go.
   This avoids hairy conflicts.
+* Avoid adding derived files (compiled binaries, minified sources, ...)
+* Use an empty ``.gitkeep`` file to ensure directories are added to
+  repositories.
 
 .. }}}
 
