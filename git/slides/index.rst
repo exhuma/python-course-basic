@@ -1040,6 +1040,11 @@ Hooks (server-side)
 .. TODO      manual merging
 
 
+.. TODO useful commands
+..      git lga --stat
+..      git log --stat
+..      git log -p
+
 
 .. TODO grep       Print lines matching a pattern
 .. TODO show       Show various types of objects
