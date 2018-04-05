@@ -655,8 +655,12 @@ Variadic Functions and Default Arguments
 
 .. code-block:: python
 
-    def say_hello(name, n=10, *args, **kwargs):
-        from pprint import pprint
+    from pprint import pprint
+
+    def default_arg(name='<unknown>'):
+        print('Hello %s' % name)
+
+    def variadic_args(*args, **kwargs):
         pprint(locals())
 
 
