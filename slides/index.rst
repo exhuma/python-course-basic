@@ -341,6 +341,18 @@ Saving your code
 
 
 
+Hello World!
+------------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    print('Hello World!')
+
+* Save this to a file called ``hello.py``
+* Run it with ``python hello.py``
+
+
 Common Data Types
 -----------------
 
