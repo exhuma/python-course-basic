@@ -674,13 +674,19 @@ Functions as Objects
 --------------------
 
 Because functions are objects, they can be assigned to variables. For example
-as values in a dictionary::
+as values in a dictionary:
+
+.. code-block:: python
+    :class: smallcode
 
     def case_1():
         print("Hello 1")
 
     def case_2():
         print("Hello 2")
+
+    def default():
+        print("unknown case")
 
     cases = {
         1: case_1,
@@ -689,7 +695,7 @@ as values in a dictionary::
 
     user_selection = int(input('Type a number: '))
 
-    function = cases.get(user_selection, lambda: print("unknown case"))
+    function = cases.get(user_selection, default)
     function()
 
 .. note::
