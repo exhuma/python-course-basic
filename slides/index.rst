@@ -371,6 +371,8 @@ Common Data Types
 * Bytes (0-255 sequence)
 * Numbers
 
+See https://docs.python.org/3/library/stdtypes.html
+
 .. note::
 
     Useful standard modules when working with numbers:
