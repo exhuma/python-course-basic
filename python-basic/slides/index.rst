@@ -1051,6 +1051,31 @@ The "``in``" Operator
     >>> 'foo' in {'foo', 'bar'}
 
 
+Looping over dictionaries
+-------------------------
+
+``for … in`` can be used to loop over various objects. A very common use-case
+is looping over dictionaries. By default, Python will loop over the dictionary
+*keys* (not values). There are helper methods for other loops.
+
+.. code-block:: python
+
+    >>> mydict = {'first': 1, 'second': 2}
+    >>> for name in mydict:
+    >>>     print(name)
+    first
+    second
+    >>> for x in mydict.values():
+    >>>    print(x)
+    1
+    2
+    >>> for key, value in mydict.items():
+    >>>     print(key, value)
+    first 1
+    second 2
+
+
+
 ``for … in … else``
 -------------------
 
