@@ -1005,6 +1005,8 @@ Using the DiskStorage Class
     :checkpoint:`$ python3 runner.py`
 
 
+.. rst-class:: smaller-slide
+
 Imports
 -------
 
