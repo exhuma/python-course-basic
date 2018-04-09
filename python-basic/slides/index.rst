@@ -1668,6 +1668,26 @@ String Formatting
 ============================== ===============================
 
 
+.. nextslide::
+    :increment:
+
+
+**Python 3.6+**
+
+.. code-block:: python
+
+    name = 'John'
+    age = 12
+    print(f'Hello, my name is {name} and I am {age} years old!')
+
+
+"f-strings" have access to all variables from the current scope and they can
+easily be accessed using the template-string notation. It also allows for the
+same formatting options as ``str.format``.
+
+
+
+
 Wiki Functionality
 ------------------
 
