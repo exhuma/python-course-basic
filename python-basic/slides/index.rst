@@ -1040,11 +1040,9 @@ The "``in``" Operator
 
 .. code-block:: python
 
-    >>> element = 'Whoops'
-    >>> for element in [1, 2, 3]:
+    >>> mylist = [1, 2, 3]
+    >>> for element in mylist:
     >>>     print(element)
-    >>>
-    >>> print(element)  # Caution! Keep this in mind!
 
     >>> 2 in [1, 2, 3]
 
@@ -1078,6 +1076,18 @@ The "``in``" Operator
             break
     else:
         print('foo was not found in the file!')
+
+
+``for`` loop gotcha
+-------------------
+
+.. code-block:: python
+
+    >>> element = 'Whoops'
+    >>> for element in [1, 2, 3]:
+    >>>     print(element)
+    >>>
+    >>> print(element)  # Caution! Keep this in mind!
 
 
 The "``with``" Statement
