@@ -679,18 +679,18 @@ as values in a dictionary:
 .. code-block:: python
     :class: smallcode
 
-    def case_1():
+    def first_case():
         print("Hello 1")
 
-    def case_2():
+    def another_function():
         print("Hello 2")
 
     def default():
         print("unknown case")
 
     cases = {
-        1: case_1,
-        2: case_2,
+        1: first_case,
+        2: another_function,
     }
 
     user_selection = int(input('Type a number: '))
