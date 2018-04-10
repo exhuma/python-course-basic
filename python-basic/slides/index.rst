@@ -203,6 +203,12 @@ Python 2 vs Python 3
     prefix was removed in 3.0 and made porting very difficult.
 
 
+Python 2 - End of Life: 2020
+----------------------------
+
+Pro Tip: **Update NOW**
+
+
 Editors
 -------
 
@@ -227,6 +233,8 @@ Duck Typing
 
     -- James Whitcomb Riley
 
+
+.. rst-class:: smaller-slide
 
 Typing Comparison
 -----------------
@@ -672,6 +680,19 @@ Variadic Functions and Default Arguments
     it may be useful to use other names.
 
 
+.. slide:: Exercise
+
+    Write a function ``msum`` that takes any number of arguments, *and* any
+    number of keyword arguments. It should return the sum of the arguments
+    (positional and keyword). Use the *values* of the keyword arguments to
+    calculate the sum::
+
+        assert(msum(10) == 10)
+        assert(msum(a=10) == 10)
+        assert(msum() == 0)
+        assert(msum(10, 30, a=11, b=12) == 63)
+
+
 Functions as Objects
 --------------------
 
@@ -1027,6 +1048,60 @@ Imports
     code will be executed on import and is very hard to test with unit-tests!
 
 
+Relative Imports
+----------------
+
+See also `PEP 328 <https://www.python.org/dev/peps/pep-0328/>`_
+
+*Example*
+
+.. code-block:: text
+    :class: smaller
+
+    myapp
+    ├── __init__.py
+    ├── sub1
+    │   ├── __init__.py
+    │   └── sub2
+    │       ├── __init__.py
+    │       ├── somemodule.py
+    │       └── sys.py
+    └── types.py
+
+.. code-block:: python
+    :caption: somemodule.py
+
+    from .sys import hello_world
+    from ...types import goodbye_world
+
+
+.. rst-class:: smaller-slide
+
+Running Modules with Relative Imports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # python myapp/sub1/sub2/somemodule.py
+
+    Traceback (most recent call last):
+    File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+        "__main__", fname, loader, pkg_name)
+    File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+        exec code in run_globals
+    File "/tmp/myapp/sub1/sub2/somemodule.py", line 1, in <module>
+        from .sys import hello_world
+    ValueError: Attempted relative import in non-package
+
+The following will work:
+
+.. code-block:: text
+
+    $ python -m myapp.sub1.sub2.somemodule
+
+For details, see `PEP 366 <https://www.python.org/dev/peps/pep-0366/>`_
+
+
 The "``in``" Operator
 ---------------------
 
@@ -1159,6 +1234,46 @@ Variable Unpacking
 
     >>> # Is this safe?
     >>> a, b = {1, 2}
+
+
+.. nextslide::
+    :increment:
+
+
+Consider the following::
+
+    def hello(a, b, c=0):
+        pass
+
+It is possible to call it in the following ways::
+
+    data = [1, 2, 3]
+    hello(*data)  # Equivalent to: hello(1, 2, 3)
+
+    data2 = {'b': 10, 'c': 20}
+    hello(1, **data2)  # Equivalent to: hello(1, c=20, b=10)
+
+
+Exercise: Delegator Function
+----------------------------
+
+.. sidebar:: Note
+
+    This function does not make sense in the real world! It is used to show how
+    variadic functions can be used in combination with variable/argument
+    unpacking to conveniently write delegators. It also confronts you with the
+    ``logging`` package and the ever so useful ``exc_info`` argument ;)
+
+Write a function ``mylog`` which takes one fixed argument: username. It should
+also take any number of positional and keyword arguments.
+
+Use this function to print the username, and then delegate the rest of the
+arguments to :py:func:`logging.warning`.
+
+The following call should work::
+
+    mylog('malbert', 'This is the log message', exc_info=True)
+
 
 
 Third Party Modules & virtualenv
