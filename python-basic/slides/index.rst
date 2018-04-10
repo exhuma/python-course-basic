@@ -1046,6 +1046,60 @@ Imports
     code will be executed on import and is very hard to test with unit-tests!
 
 
+Relative Imports
+----------------
+
+See also `PEP 328 <https://www.python.org/dev/peps/pep-0328/>`_
+
+*Example*
+
+.. code-block:: text
+    :class: smaller
+
+    myapp
+    ├── __init__.py
+    ├── sub1
+    │   ├── __init__.py
+    │   └── sub2
+    │       ├── __init__.py
+    │       ├── somemodule.py
+    │       └── sys.py
+    └── types.py
+
+.. code-block:: python
+    :caption: somemodule.py
+
+    from .sys import hello_world
+    from ...types import goodbye_world
+
+
+.. rst-class:: smaller-slide
+
+Running Modules with Relative Imports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # python myapp/sub1/sub2/somemodule.py
+
+    Traceback (most recent call last):
+    File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+        "__main__", fname, loader, pkg_name)
+    File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+        exec code in run_globals
+    File "/tmp/myapp/sub1/sub2/somemodule.py", line 1, in <module>
+        from .sys import hello_world
+    ValueError: Attempted relative import in non-package
+
+The following will work:
+
+.. code-block:: text
+
+    $ python -m myapp.sub1.sub2.somemodule
+
+For details, see `PEP 366 <https://www.python.org/dev/peps/pep-0366/>`_
+
+
 The "``in``" Operator
 ---------------------
 
