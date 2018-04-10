@@ -40,7 +40,9 @@ About This Course
         to give some context.
 
 * Introduction to Python
-* Playing with the REPL and Python basics.
+    * The REPL
+    * Python compared to other Languages
+    * Standard Data Types & Typing
 * Wiki
     * List pages.
     * Load & display a page.
@@ -136,8 +138,8 @@ Birds-Eye View
 
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
-* Large community. #5 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
-  (Java on #1, PHP on #6). Based on result of April 2017
+* Large community. #4 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
+  (Java on #1, even surpassing C#). Based on result of April 2018
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
@@ -341,6 +343,18 @@ Saving your code
 
 
 
+Hello World!
+------------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    print('Hello World!')
+
+* Save this to a file called ``hello.py``
+* Run it with ``python hello.py``
+
+
 Common Data Types
 -----------------
 
@@ -358,6 +372,8 @@ Common Data Types
 * String (unicode sequence)
 * Bytes (0-255 sequence)
 * Numbers
+
+See https://docs.python.org/3/library/stdtypes.html
 
 .. note::
 
@@ -641,8 +657,12 @@ Variadic Functions and Default Arguments
 
 .. code-block:: python
 
-    def say_hello(name, n=10, *args, **kwargs):
-        from pprint import pprint
+    from pprint import pprint
+
+    def default_arg(name='<unknown>'):
+        print('Hello %s' % name)
+
+    def variadic_args(*args, **kwargs):
         pprint(locals())
 
 
@@ -656,22 +676,28 @@ Functions as Objects
 --------------------
 
 Because functions are objects, they can be assigned to variables. For example
-as values in a dictionary::
+as values in a dictionary:
 
-    def case_1():
+.. code-block:: python
+    :class: smallcode
+
+    def first_case():
         print("Hello 1")
 
-    def case_2():
+    def another_function():
         print("Hello 2")
 
+    def default():
+        print("unknown case")
+
     cases = {
-        1: case_1,
-        2: case_2,
+        1: first_case,
+        2: another_function,
     }
 
     user_selection = int(input('Type a number: '))
 
-    function = cases.get(user_selection, lambda: print("unknown case"))
+    function = cases.get(user_selection, default)
     function()
 
 .. note::
@@ -981,6 +1007,8 @@ Using the DiskStorage Class
     :checkpoint:`$ python3 runner.py`
 
 
+.. rst-class:: smaller-slide
+
 Imports
 -------
 
@@ -1014,17 +1042,40 @@ The "``in``" Operator
 
 .. code-block:: python
 
-    >>> element = 'Whoops'
-    >>> for element in [1, 2, 3]:
+    >>> mylist = [1, 2, 3]
+    >>> for element in mylist:
     >>>     print(element)
-    >>>
-    >>> print(element)  # Caution! Keep this in mind!
 
     >>> 2 in [1, 2, 3]
 
     >>> 'foo' in {'foo': 10, 'bar': 20}
 
     >>> 'foo' in {'foo', 'bar'}
+
+
+Looping over dictionaries
+-------------------------
+
+``for … in`` can be used to loop over various objects. A very common use-case
+is looping over dictionaries. By default, Python will loop over the dictionary
+*keys* (not values). There are helper methods for other loops.
+
+.. code-block:: python
+
+    >>> mydict = {'first': 1, 'second': 2}
+    >>> for name in mydict:
+    >>>     print(name)
+    first
+    second
+    >>> for x in mydict.values():
+    >>>    print(x)
+    1
+    2
+    >>> for key, value in mydict.items():
+    >>>     print(key, value)
+    first 1
+    second 2
+
 
 
 ``for … in … else``
@@ -1052,6 +1103,18 @@ The "``in``" Operator
             break
     else:
         print('foo was not found in the file!')
+
+
+``for`` loop gotcha
+-------------------
+
+.. code-block:: python
+
+    >>> element = 'Whoops'
+    >>> for element in [1, 2, 3]:
+    >>>     print(element)
+    >>>
+    >>> print(element)  # Caution! Keep this in mind!
 
 
 The "``with``" Statement
@@ -1215,6 +1278,8 @@ Our first Web Page
     :checkpoint:`http://localhost:5000`
 
 
+
+.. rst-class:: smaller-slide
 
 Using our DiskStorage class
 ---------------------------
@@ -1605,6 +1670,26 @@ String Formatting
  |disappointed| less readable    |smile| more readable
  |disappointed| less powerful    |smile| more powerful
 ============================== ===============================
+
+
+.. nextslide::
+    :increment:
+
+
+**Python 3.6+**
+
+.. code-block:: python
+
+    name = 'John'
+    age = 12
+    print(f'Hello, my name is {name} and I am {age} years old!')
+
+
+"f-strings" have access to all variables from the current scope and they can
+easily be accessed using the template-string notation. It also allows for the
+same formatting options as ``str.format``.
+
+
 
 
 Wiki Functionality
