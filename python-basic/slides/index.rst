@@ -1257,7 +1257,7 @@ It is possible to call it in the following ways::
 Exercise: Delegator Function
 ----------------------------
 
-.. sidebar::
+.. sidebar:: Note
 
     This function does not make sense in the real world! It is used to show how
     variadic functions can be used in combination with variable/argument
