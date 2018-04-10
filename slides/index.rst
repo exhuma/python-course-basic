@@ -203,6 +203,12 @@ Python 2 vs Python 3
     prefix was removed in 3.0 and made porting very difficult.
 
 
+Python 2 - End of Life: 2020
+----------------------------
+
+Pro Tip: **Update NOW**
+
+
 Editors
 -------
 
