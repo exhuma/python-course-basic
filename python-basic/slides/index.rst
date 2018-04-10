@@ -1277,6 +1277,8 @@ Our first Web Page
 
 
 
+.. rst-class:: smaller-slide
+
 Using our DiskStorage class
 ---------------------------
 
