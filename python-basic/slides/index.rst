@@ -40,7 +40,9 @@ About This Course
         to give some context.
 
 * Introduction to Python
-* Playing with the REPL and Python basics.
+    * The REPL
+    * Python compared to other Languages
+    * Standard Data Types & Typing
 * Wiki
     * List pages.
     * Load & display a page.
