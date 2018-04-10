@@ -234,6 +234,8 @@ Duck Typing
     -- James Whitcomb Riley
 
 
+.. rst-class:: smaller-slide
+
 Typing Comparison
 -----------------
 
