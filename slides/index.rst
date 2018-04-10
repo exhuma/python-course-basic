@@ -678,6 +678,19 @@ Variadic Functions and Default Arguments
     it may be useful to use other names.
 
 
+.. slide:: Exercise
+
+    Write a function ``msum`` that takes any number of arguments, *and* any
+    number of keyword arguments. It should return the sum of the arguments
+    (positional and keyword). Use the *values* of the keyword arguments to
+    calculate the sum::
+
+        assert(msum(10) == 10)
+        assert(msum(a=10) == 10)
+        assert(msum() == 0)
+        assert(msum(10, 30, a=11, b=12) == 63)
+
+
 Functions as Objects
 --------------------
 
@@ -1165,6 +1178,46 @@ Variable Unpacking
 
     >>> # Is this safe?
     >>> a, b = {1, 2}
+
+
+.. nextslide::
+    :increment:
+
+
+Consider the following::
+
+    def hello(a, b, c=0):
+        pass
+
+It is possible to call it in the following ways::
+
+    data = [1, 2, 3]
+    hello(*data)  # Equivalent to: hello(1, 2, 3)
+
+    data2 = {'b': 10, 'c': 20}
+    hello(1, **data2)  # Equivalent to: hello(1, c=20, b=10)
+
+
+Exercise: Delegator Function
+----------------------------
+
+.. sidebar::
+
+    This function does not make sense in the real world! It is used to show how
+    variadic functions can be used in combination with variable/argument
+    unpacking to conveniently write delegators. It also confronts you with the
+    ``logging`` package and the ever so useful ``exc_info`` argument ;)
+
+Write a function ``mylog`` which takes one fixed argument: username. It should
+also take any number of positional and keyword arguments.
+
+Use this function to print the username, and then delegate the rest of the
+arguments to :py:func:`logging.warning`.
+
+The following call should work::
+
+    mylog('malbert', 'This is the log message', exc_info=True)
+
 
 
 Third Party Modules & virtualenv
