@@ -1,4 +1,4 @@
-.. include:: ../../common/rst_defs.rst
+.. include:: ../common/rst_defs.rst
 
 .. |br| raw:: html
 
@@ -51,7 +51,7 @@ About This Course
 * Packaging
 
 
-.. include:: ../../common/introduction.rst
+.. include:: ../common/introduction.rst
 
 
 
@@ -2161,7 +2161,7 @@ Common Mistakes
     $ python -m timeit "'aaa' + 'bbb'"
 
 
-.. include:: ../../common/finish.rst
+.. include:: ../common/finish.rst
 
 References
 ----------
