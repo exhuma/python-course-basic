@@ -105,3 +105,12 @@ def publish(ctx):
     ctx.run('tar czf %s.tar.gz %s' % (pack_folder, pack_folder))
     ctx.run('rm -rf %s' % pack_folder)
     www.put('%s.tar.gz' % pack_folder, remote_folder)
+
+
+@task
+def autobuild(ctx):
+    '''
+    Monitor files for changes and automacally build
+    '''
+    ctx.run('find slides -name "*.rst" | entr -c sh -c "fab build-linked"',
+            replace_env=False)
