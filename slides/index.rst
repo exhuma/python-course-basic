@@ -278,6 +278,12 @@ Implementations
 * Stackless (microthreads).
 * …
 
+.. note::
+
+   "CPython" is recommended because it implements everything in the official
+   documentation. Other implementations may be incomplete, but may still be
+   useful if there are special requirements.
+
 
 Strings & Bytes in Python 2 & 3
 -------------------------------
@@ -312,7 +318,7 @@ Python 2 vs Python 3
     This course is based on **Python 3.5** as it comes bundled with ``pip`` and
     ``pyvenv``.
 
-* Start at Python 3.3+ (current version is 3.6).
+* Start at Python 3.3+ (current version is 3.7).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere.
 * No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
@@ -328,7 +334,7 @@ Python 2 vs Python 3
 Python 2 - End of Life: 2020
 ----------------------------
 
-Pro Tip: **Update NOW**
+**Update NOW**
 
 
 Editors
@@ -430,6 +436,7 @@ Getting Help
 
 * Type ``pydoc`` in the shell.
 
+  * Like man-pages for Python. Example: ``pydoc str``
   * Same as ``help()`` in the REPL.
   * Use ``pydoc -b`` (``python -m pydoc -b`` on Windows) to run a local
     web-server on a random port. This is useful if you have no internet
