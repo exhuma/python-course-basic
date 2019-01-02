@@ -285,70 +285,6 @@ Implementations
    useful if there are special requirements.
 
 
-Hello World!
-------------
-
-.. code-block:: python
-    :caption: **Filename:** hello.py
-
-    print('Hello World!')
-
-* Save this to a file called ``hello.py``
-* Run it with ``python hello.py``
-
-
-Strings & Bytes in Python 2 & 3
--------------------------------
-
-====================  ==========  ==========
- Literal               Py2 Type    Py3 Type
-====================  ==========  ==========
- ``'Hello World'``     bytes       unicode
- ``u'Hello World'``    unicode     unicode
- ``b'Hello World'``    bytes       bytes
-====================  ==========  ==========
-
-.. warning::
-
-    * *Always* prefix text with ``u`` in **Python 2**. *Unless* you know
-      *exactly* that you want bytes!
-    * *Never* use ``encode`` on bytes.
-    * *Never* use ``decode`` on strings.
-
-.. note::
-
-    Technically, the type of ``''`` is ``str`` in Python2. However, in Python2,
-    ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
-    and ``id(bytes)`` in both Python2 and Python3.
-
-
-Python 2 vs Python 3
---------------------
-
-.. sidebar:: Python 3.5
-
-    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
-    ``pyvenv``.
-
-* Start at Python 3.3+ (current version is 3.7).
-* Improved Unicode support. (bytes ≠ text, developer in full control).
-* Iterators everywhere.
-* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
-  backports exist).
-* *BUT:* Legacy platforms may only support Python 2.
-
-
-.. note::
-    Python 3.3 reintroduced unicode strings (strings with a ``u`` prefix). This
-    prefix was removed in 3.0 and made porting very difficult.
-
-
-Python 2 - End of Life: 2020
-----------------------------
-
-**Update NOW**
-
-
 Editors
 -------
 
@@ -363,6 +299,47 @@ Editors
     * notepad++
     * sublime
     * …
+
+
+Hello World!
+------------
+
+* Open PyCharm
+* Create a new Project in PyCharm
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    print('Hello World!')
+
+* Save this to a file called ``hello.py``
+* Run the code example.
+
+
+Simple Operations
+-----------------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    print('Hello ' + 'World!')
+    print(10 + 3)
+    print(10 / 3)
+
+
+Variables
+---------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    a = 'Hello'
+    b = 'World!'
+    print(a + b)
+
+    a = 10
+    b = 3
+    print(a * b)
 
 
 Duck Typing
@@ -416,6 +393,58 @@ Typing Comparison
     ``20 + "22" -> ?``
 
 
+Python 2 vs Python 3
+--------------------
+
+.. sidebar:: Python 3.5
+
+    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
+    ``pyvenv``.
+
+* Start at Python 3.3+ (current version is 3.7).
+* Improved Unicode support. (bytes ≠ text, developer in full control).
+* Iterators everywhere (:py:func:`map`, :py:func:`filter`, |ell|).
+* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
+  backports exist).
+* *BUT:* Legacy platforms may only support Python 2.
+
+
+.. note::
+    Python 3.3 reintroduced unicode strings (strings with a ``u`` prefix). This
+    prefix was removed in 3.0 and made porting very difficult.
+
+
+Python 2 - End of Life: 2020
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Update NOW**
+
+
+Strings & Bytes in Python 2 & 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+====================  ==========  ==========
+ Literal               Py2 Type    Py3 Type
+====================  ==========  ==========
+ ``'Hello World'``     bytes       unicode
+ ``u'Hello World'``    unicode     unicode
+ ``b'Hello World'``    bytes       bytes
+====================  ==========  ==========
+
+.. warning::
+
+    * *Always* prefix text with ``u`` in **Python 2**. *Unless* you know
+      *exactly* that you want bytes!
+    * *Never* use ``encode`` on bytes.
+    * *Never* use ``decode`` on strings.
+
+.. note::
+
+    Technically, the type of ``''`` is ``str`` in Python2. However, in Python2,
+    ``str`` and ``bytes`` are equivalent. Try running ``id(str)``,
+    and ``id(bytes)`` in both Python2 and Python3.
+
+
 The Python Shell (REPL)
 -----------------------
 
@@ -462,7 +491,6 @@ Diving in
 
     "Explore" blocks show a few simple things for you to try out yourself.
 
-* Saving and running the code.
 * Data types and primitives.
 * Functions and classes.
 
