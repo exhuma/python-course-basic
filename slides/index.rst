@@ -259,8 +259,9 @@ Birds-Eye View
 
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
-* Large community. #4 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
-  (Java on #1, even surpassing C#). Based on result of April 2018
+* Large community.
+* #3 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
+  (After Java at #1 and C on #2). Based on result of December 2018.
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
