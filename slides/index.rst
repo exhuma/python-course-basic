@@ -340,11 +340,11 @@ Python 2 - End of Life: 2020
 Editors
 -------
 
-* PyCharm — *https://www.jetbrains.com/pycharm/*
+* PyCharm — https://www.jetbrains.com/pycharm/
 * IDLE
-* Komodo IDE — *http://komodoide.com/*
-* Eclipse (with PyDev) — *https://eclipse.org*
-* Netbeans (with Python plugin) — *https://netbeans.org*
+* Komodo IDE — http://komodoide.com/
+* Eclipse (with PyDev) — https://eclipse.org
+* Netbeans (with Python plugin) — https://netbeans.org
 * Any text-editor
     * vim
     * emacs
