@@ -75,14 +75,16 @@ Topics
    +-----------------------------------+-------+------+---------+
    | Description                       | Level | Docs | Example |
    +===================================+=======+======+=========+
-   | data types -> Boolean, String     | ★☆☆   | ✓    |         |
+   | data types -> Boolean, String     | ★☆☆   |      |         |
    | (&literals), Bytes, Numbers,      |       |      |         |
    | Lists, Tuples, Dictionaries,      |       |      |         |
    | Sets, ``None``                    |       |      |         |
    +-----------------------------------+-------+------+---------+
+   | Looping                           | ★☆☆   | ✓    | ✓       |
+   +-----------------------------------+-------+------+---------+
    | Falsy values                      | ★☆☆   |      |         |
    +-----------------------------------+-------+------+---------+
-   | defining functions                | ★☆☆   |      |         |
+   | defining functions                | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
    | defining classes                  | ★☆☆   |      |         |
    +-----------------------------------+-------+------+---------+
@@ -92,7 +94,7 @@ Topics
    +-----------------------------------+-------+------+---------+
    | Variable Unpacking                | ★★☆   |      |         |
    +-----------------------------------+-------+------+---------+
-   | imports                           | ★☆☆   |      |         |
+   | imports                           | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
    | raising and catching exceptions   | ★☆☆   |      |         |
    +-----------------------------------+-------+------+---------+
@@ -487,6 +489,125 @@ Getting Help
 Diving in
 =========
 
+.. rst-class:: smaller-slide
+
+Basics
+------
+
+* The variable type is implicit (dynamic typing)
+* Variables are assigned with the ``=`` operator
+* Line-comments start with a ``#`` character. Block comments don't exist.
+* Lines do **not** need to end with a semicolon (``;``)
+* Blocks are defined by indentation. The line starting a block ends with a
+  colon (``:``).
+
+.. literalinclude:: ../code/basics/app.py
+   :caption: basics/app.py
+
+.. note::
+
+   * Common practice for indentation is to use 4 spaces. See :pep:`8` for more
+     details on code-style.
+   * The condition in the ``if`` statement is by convention not surrounded by
+     parentheses (See :pep:`8`).
+
+
+Working with Files
+------------------
+
+* :py:func:`open` is used to access files on the disk (for reading and
+  writing).
+* By default files are opened as "text".
+* Using a ``for`` loop on file objects will iterate line-by-line.
+* :py:mod:`pathlib` and :py:mod:`os.path` contain useful functions for working
+  with files.
+
+
+.. literalinclude:: ../code/working-with-files/app.py
+   :caption: working-with-files/app.py
+
+
+Looping
+-------
+
+.. literalinclude:: ../code/loops/app.py
+   :caption: loops/app.py
+
+
+Reading Files
+-------------
+
+.. literalinclude:: ../code/csv1/app.py
+   :caption: csv1/app.py
+
+
+Organising Code - Functions
+---------------------------
+
+* Functions are introduced using the ``def`` keyword
+* A function *always* returns a value in Python. If no ``return`` statement is
+  present, the return-value will be ``None``.
+
+.. nextslide::
+   :increment:
+
+.. literalinclude:: ../code/functions/app.py
+   :caption: functions/app.py
+
+
+Organising Code - Modules
+-------------------------
+
+* Every Python file can be called a "module" and can be imported in other
+  Python scripts.
+* Modules which are meant to be imported *should* only contain definitions of
+  functions, classes and variables. They should *not* "run" anything.
+* The Python process must be able to find the modules. Keeping them in the same
+  folder makes this easy. More complex projects can be collected in "packages".
+
+.. nextslide::
+   :increment:
+
+.. literalinclude:: ../code/modules/util.py
+   :caption: modules/util.py
+
+
+.. nextslide::
+    :increment:
+
+.. literalinclude:: ../code/modules/app.py
+   :caption: modules/app.py
+
+
+.. rst-class:: smaller-slide
+
+Exercise
+--------
+
+* In a file ``util.py`` write a function ``read_file`` which:
+
+  * Takes two arguments: A **filename** and a **separator**
+  * Reads the file line-by line, splits each line using the given *separator* 
+  * It should return a list where each element is another list with only the
+    first and second column of the input file
+
+* Write a second file ``app.py``:
+
+  * This file should import ``util.py`` ...
+  * ... and call ``read_file`` with an appropriate file-name and separator.
+  * Loop over the return value of ``read_file`` and print the row.
+
+
+Old Course
+==========
+
+Pages after this one are only here for reference. They should be removed after
+the course is rewritten
+
+
+Diving in
+=========
+
 .. sidebar:: Explore
 
     "Explore" blocks show a few simple things for you to try out yourself.
@@ -748,13 +869,13 @@ Exercise: primitives
     * Difference between ``mytext.find`` and ``mytext.index``?
     * Difference between ``mytext`` and ``mybytes``?
 
+* Store the value ``"Hello World``" in a variable.
+* Split the value on the character ``o`` (using :py:func:`str.split`).
+* Print the first element of the result.
+* Find and print the position of the character ``W`` using :py:func:`str.find`.
+
 
 .. code-block:: python
-
-    >>> mytext = 'Hello World!'
-    >>> mytext.split()
-    >>> mytext[0:5]
-    >>> mytext.find('o')
 
     >>> mybytes = b'Hello World!'
 
