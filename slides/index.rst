@@ -598,6 +598,138 @@ Exercise
   * Loop over the return value of ``read_file`` and print the row.
 
 
+Basic Data Types
+----------------
+
+See https://docs.python.org/3/library/stdtypes.html
+
+
+
+None (NULL)
+~~~~~~~~~~~
+
+* Default return value of functions
+* Is seen as "false" in a boolean context
+* Immutable
+* Special instance of the :py:class:`NoneType` class.
+* Singleton.
+
+.. rst-class:: smaller-slide
+Strings
+~~~~~~~
+
+* Instances of class :py:class:`str`.
+* Delimited by one of ``'``, ``"``, ``'''``, ``"""``
+* Unicode objects, sequence of unicode code-points (in Python3).
+* Many useful methods
+
+  * :py:meth:`str.split`, :py:meth:`str.partition`, :py:meth:`str.strip`
+  * :py:meth:`str.startswith`
+  * :py:meth:`str.encode`
+  * :py:meth:`str.find`
+  * :py:meth:`str.isnumeric`
+  * …
+
+
+.. rst-class:: smaller-slide
+.. nextslide::
+   :increment:
+
+String Literals
+
+* Simple Quotes (``'`` and ``"``)
+* Triple Quotes / Multiline Strings (``'''`` and ``"""``)
+* String-Liteal Prefixes
+
+  * ``r`` raw-string: All backslash-escapes are ignored. Useful for regular
+    expressions.
+  * ``f`` format-string: Allows embedding of variables
+  * ``u`` unicode (Backwards compatibility for Python 2)
+
+::
+
+   mytext = u"Hello World!"
+   unescaped = r"This does *not* \n contain a new-line!"
+   formatted = f'The variable "mytext" contains the value {mytext}'
+
+
+.. rst-class:: smaller-slide
+.. nextslide::
+   :increment:
+
+* Supports different string-formatting styles:
+
+  * "printf"-style formatting: ``"Hello %20s %s" % (a, b)``
+  * Formatting "mini-language": ``"Hello {} {}".format(a, b)``
+  * f-Strings: ``f"Hello {a} {b}"``
+
+See `RealPython <https://realpython.com/python-string-formatting/>`_,
+`printf-style formatting
+<https://docs.python.org/3/library/stdtypes.html#old-string-formatting>`_ and
+`format-language <https://docs.python.org/3/library/string.html>`_ for more
+information.
+
+
+More on this later …
+
+
+Numbers
+~~~~~~~
+
+* Builtin types: :py:class:`int` and :py:class:`float`
+* No difference between "long" and "short" integers (handled internally by
+  Python). There is also no "double precision" type.
+* Support for precise decimal operations (:py:mod:`fractions`,
+  :py:mod:`decimal`).
+* Noteworthy modules: :py:mod:`statistics`, :py:mod:`math` and :py:mod:`cmath`.
+
+
+Boolean
+~~~~~~~
+
+* Two reserved words: ``True`` and ``False``. The names are capitalised because
+  they are object instances, subclasses of ``int``.
+
+
+.. rst-class:: smaller-slide
+Lists
+~~~~~
+
+* Surrounded by square brackets::
+
+   mylist = [1, 2, 3, 4, 5, 6, 7]
+
+* Very similar to arrays in other languages. Real arrays are in the
+  :py:mod:`array` module.
+* Heterogenuous
+* Indexable from both left (``mylist[3]``) and right (``mylist[-3]``).
+* Slicing: ``mylist[3:7]``
+* Mutable::
+
+    mylist[2] = new_value
+    mylist.append(10)
+
+
+Exercise - Simple Data Types
+----------------------------
+
+
+* Open the file ``sampledata.csv``
+* Loop through each line and do the following:
+
+  * Skip the first line (header)
+  * Split each line into a list
+  * Convert each numerical column into an appropriate type
+  * If a cell contains the string "null", convert it to the value `None`
+  * Add a new column at the end which contains the ``MD5`` hex-digest of the
+    whole line (see :py:func:`hashlib.md5`).
+  * Split the column "hobbies" into a list of strings.
+  * Print the resulting list to the console
+
+.. literalinclude:: ../code/csv2/app.py
+   :caption: csv2/app.py
+
+
 Old Course
 ==========
 
