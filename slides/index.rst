@@ -776,34 +776,8 @@ Saving your code
 Common Data Types
 -----------------
 
-.. sidebar:: Explore
-
-    * ``help(str)`` (skip special methods named  ``__<word>__``)
-    * ``help(int)``, ``help(123)``
-    * ``help(bytes)``, ``help(b'')``
-    * ``type(123)``
-    * ``help(None)``
-    * ``help(bool)``, ``help(True)``
-
-* None (like ``null``)
 * Boolean
-* String (unicode sequence)
 * Bytes (0-255 sequence)
-* Numbers
-
-See https://docs.python.org/3/library/stdtypes.html
-
-.. note::
-
-    Useful standard modules when working with numbers:
-
-    - :py:mod:`fractions`
-    - :py:mod:`math`
-    - :py:mod:`cmath`
-    - :py:mod:`statistics` (new in 3.4)
-
-.. nextslide::
-    :increment:
 
 .. code-block:: python
 
@@ -818,14 +792,6 @@ See https://docs.python.org/3/library/stdtypes.html
     mybytes = b'H\xc3\xa9llo World!'
     myint = 123
 
-
-.. nextslide::
-    :increment:
-
-.. sidebar:: Explore
-
-    * ``help(list)``, ``help([])``
-    * ``help(tuple)``, ``help((1,2))``
 
     **Note**:
 
@@ -859,22 +825,6 @@ See https://docs.python.org/3/library/stdtypes.html
 
     This can lead to subtle bugs when not careful.
 
-* Lists
-
-  - can hold objects of any type, heterogenous
-  - slicing
-  - appending, inserting
-  - popping (queue, stack)
-
-* Tuples (see also: :py:func:`~collections.namedtuple`)
-
-  - Immutable lists
-  - Cannot be changed
-  - but can be hashed
-
-.. nextslide::
-    :increment:
-
 .. code-block:: python
 
     mylist = [1, 2, 3]
@@ -893,14 +843,6 @@ See https://docs.python.org/3/library/stdtypes.html
         mylist,
     )
 
-.. nextslide::
-    :increment:
-
-.. sidebar:: Explore
-
-    * ``help(dict)``, ``help({})``
-    * ``help(set)``
-
 * Dictionaries
 
   - a.k.a. a HashTable
@@ -913,9 +855,6 @@ See https://docs.python.org/3/library/stdtypes.html
   - values must be hashable.
   - only the *first* element is kept. Adding new identical items has no effect.
 
-
-.. nextslide::
-    :increment:
 
 .. code-block:: python
 
