@@ -353,7 +353,7 @@ Duck Typing
     -- James Whitcomb Riley
 
 
-.. rst-class:: smaller-slide
+.. rst-class:: smallest-slide
 
 Typing Comparison
 -----------------
@@ -494,7 +494,7 @@ Diving in
 Basics
 ------
 
-* The variable type is implicit (dynamic typing)
+* The variable type is implicit, but strong (dynamic typing)
 * Variables are assigned with the ``=`` operator
 * Line-comments start with a ``#`` character. Block comments don't exist.
 * Lines do **not** need to end with a semicolon (``;``)
@@ -506,6 +506,8 @@ Basics
 
 .. note::
 
+   * Once a variable is assigned a type, the type of that variable can no
+     longer change. But the same name can later refer to a new object.
    * Common practice for indentation is to use 4 spaces. See :pep:`8` for more
      details on code-style.
    * The condition in the ``if`` statement is by convention not surrounded by
