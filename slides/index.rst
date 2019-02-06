@@ -600,6 +600,36 @@ Exercise
   * Loop over the return value of ``read_file`` and print the row.
 
 
+The Standard Library
+--------------------
+
+Python comes with "batteries included".
+
+The standard library of Python comes with *many* useful features. This makes it
+possible to write many useful applications without third-party (external)
+libraries.
+
+* Standard Library modules are also imported using the ``import`` statement.
+* Standard Library modules take precedence in imports (Use relative imports on
+  name-conflicts). See :pep:`328`.
+
+
+Using the ``csv`` module
+------------------------
+
+The :py:mod:`csv` module makes it easy to read delimited data. It also deals
+with:
+
+* quoted values
+* multiline values
+* escaped characters
+
+Let's use this for our example:
+
+.. literalinclude:: ../code/csv2/app.py
+   :caption: csv2/app.py
+
+
 Basic Data Types
 ----------------
 
