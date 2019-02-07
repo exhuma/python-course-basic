@@ -562,10 +562,10 @@ Organising Code - Modules
 
 * Every Python file can be called a "module" and can be imported in other
   Python scripts.
-* Modules which are meant to be imported *should* only contain definitions of
-  functions, classes and variables. They should *not* "run" anything.
-* The Python process must be able to find the modules. Keeping them in the same
-  folder makes this easy. More complex projects can be collected in "packages".
+* The code inside a module is executed on first import.
+
+  * They *should* not "run" anything
+  * They *should* contain definitions only (functions, classes, variables, …)
 
 .. nextslide::
    :increment:
@@ -573,12 +573,70 @@ Organising Code - Modules
 .. literalinclude:: ../code/modules/util.py
    :caption: modules/util.py
 
-
 .. nextslide::
     :increment:
 
 .. literalinclude:: ../code/modules/app.py
    :caption: modules/app.py
+
+.. nextslide::
+    :increment:
+
+* Importing will cause ``.pyc`` files to be created (inside the ``__pycache__``
+  folder).
+* Imports are cached. The code inside a module is only interpreted on first
+  import.
+* Therefore, modules can be abused as global variable storage & singletons
+  (with all the risks this implies).
+
+
+.. rst-class:: small-slide
+Organising Code - Packages
+--------------------------
+
+* Use packages to organise your project into sub-folders.
+* A ``__init__.py`` file marks a folder as package (can be empty).
+* The term "package" is ambiguous in Python. It can mean:
+
+  * A third-party *package* you get from the Internet or write yourself (in
+    other words: a "library").
+  * Any folder with ``.py`` files and a ``__init__.py`` file.
+
+
+.. code-block:: python
+
+    myproject
+    ├── myapp.py
+    ├── subpackage1
+    │   ├── __init__.py
+    │   └── util.py
+    └── subpackage2
+        ├── __init__.py
+        ├── evendeeper
+        │   ├── __init__.py
+        │   └── dbmodel.py
+        └── util.py
+
+.. nextslide::
+   :increment:
+
+* Relative vs Absolute imports. See :pep:`328`::
+
+      # Files:
+      #
+      #    mypackage
+      #    ├── __init__.py    <--- Marks folder as package
+      #    ├── localmodule.py
+      #    └── app.py         <--- code below is in this file
+
+      # Relative import (recommended, but only works in packages)
+      from .localmodule import func
+
+      # Absolute import (recommended, but only works in packages)
+      from mypackage.localmodule import func
+
+      # Ambiguous import (not recommended)
+      from localmodule import func
 
 
 .. rst-class:: smaller-slide
