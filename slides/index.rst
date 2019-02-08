@@ -704,6 +704,12 @@ None (NULL)
 * Special instance of the :py:class:`NoneType` class.
 * Singleton.
 
+
+.. code-block:: python
+
+   myvariable = None
+
+
 .. rst-class:: smaller-slide
 Strings
 ~~~~~~~
@@ -719,6 +725,10 @@ Strings
   * :py:meth:`str.find`
   * :py:meth:`str.isnumeric`
   * …
+
+.. code-block:: python
+
+   mystring = 'Hello World!'
 
 
 .. rst-class:: smaller-slide
@@ -773,12 +783,27 @@ Numbers
   :py:mod:`decimal`).
 * Noteworthy modules: :py:mod:`statistics`, :py:mod:`math` and :py:mod:`cmath`.
 
+.. code-block:: python
+
+   myint = 1
+   myfloat = 3.5
+   myfloat2 = .3
+   sci_notation = 1.3E5
+   bin_notation = 0b10101
+   hex_notation = 0xc0ffee
+   octal_notation = 0o10
+
 
 Boolean
 ~~~~~~~
 
 * Two reserved words: ``True`` and ``False``. The names are capitalised because
   they are object instances, subclasses of ``int``.
+
+.. code-block:: python
+
+   my_boolean_a = True
+   my_boolean_b = False
 
 
 .. rst-class:: smaller-slide
@@ -787,7 +812,7 @@ Lists
 
 * Surrounded by square brackets::
 
-   mylist = [1, 2, 3, 4, 5, 6, 7]
+   mylist = [1, 2, 3, 'hello', 5, 6, True]
 
 * Very similar to arrays in other languages. Real arrays are in the
   :py:mod:`array` module.
