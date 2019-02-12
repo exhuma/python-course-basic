@@ -825,21 +825,39 @@ Lists
     mylist.append(10)
 
 
-Exercise - Simple Data Types
-----------------------------
+.. rst-class:: small-slide
+Exercise - Simple Data Types & StdLib
+-------------------------------------
 
 
-* Open the file ``sampledata.csv``
+Write a new function *read_data* that takes a filename as argument and does the
+following:
+
+* Open the file with the given filename
+* Initialise a new variable named ``output`` as empty list.
+* Create a CSV reader with the opened file object
 * Loop through each line and do the following:
 
-  * Skip the first line (header)
-  * Split each line into a list
-  * Convert each numerical column into an appropriate type
-  * If a cell contains the string "null", convert it to the value `None`
-  * Add a new column at the end which contains the ``MD5`` hex-digest of the
-    whole line (see :py:func:`hashlib.md5`).
-  * Split the column "hobbies" into a list of strings.
-  * Print the resulting list to the console
+  * Convert each numerical column into an appropriate type (f.ex.: use
+    :py:class:`decimal.Decimal` for monetary values).
+  * Split the 7 :sup:`th` column (index 6) into a list of strings.
+  * **(optional)** Add a new column at the end which contains the ``MD5``
+    hex-digest of the whole line (see :py:func:`hashlib.md5`).
+
+    * MD5 sums can only be calculated on bytes (not strings)
+
+  * Append the new columns to the ``output`` list
+
+* After the loop, return the list ``output``
+
+
+.. rst-class:: small-slide
+.. nextslide::
+   :increment:
+
+.. literalinclude:: ../code/csv3/app.py
+   :caption: csv3/app.py
+
 
 .. literalinclude:: ../code/csv2/app.py
    :caption: csv2/app.py
