@@ -746,7 +746,7 @@ String Literals
   * ``f`` format-string: Allows embedding of variables
   * ``u`` unicode (Backwards compatibility for Python 2)
 
-::
+.. code-block:: python
 
    mytext = u"Hello World!"
    unescaped = r"This does *not* \n contain a new-line!"
