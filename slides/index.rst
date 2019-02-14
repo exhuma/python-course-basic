@@ -564,8 +564,21 @@ Organising Code - Modules
   Python scripts.
 * The code inside a module is executed on first import.
 
-  * They *should* not "run" anything
+  * They *should* not "run" anything outside of classes & functions.
   * They *should* contain definitions only (functions, classes, variables, …)
+
+
+.. note::
+
+   Any code that is written outside a function or class (at the top-level) of a
+   module is executed when that module is *first* imported. This can be
+   intentional if you want to ensure that a certain piece of code is excuted
+   only once in an application. But it can also lead to unexpected
+   side-effects and makes testing harder.
+
+   Some advanced use-cases can make use of such code for "metaprogramming".
+
+   As a rule of thumb: Don't put *business logic* on the top-level of a module.
 
 .. nextslide::
    :increment:
