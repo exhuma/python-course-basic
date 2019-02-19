@@ -843,6 +843,94 @@ Lists
     mylist.append(10)
 
 
+Exceptions
+----------
+
+* Exceptions are Python's error-handling mechanism.
+* They can be triggered internally by Python, or manually by self-written code.
+* They can be caught/handled using a ``try/except`` block.
+* Unhandled exceptions will crash the application.
+
+An example exception:
+
+.. code-block:: python
+
+    >>> from example_exception import foo
+    >>> foo()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/path/example_exception.py", line 3, in foo
+        return a['z']
+    KeyError: 'z'
+
+
+.. note::
+
+    From bottom to top:
+
+    **KeyError**
+        The kind of the exception which was thrown.
+
+    ``return a['z']``
+        The line which caused the error.
+
+    **File "..."**
+        The finlename that caused the error.
+
+    **line 3**
+        The line in the file.
+
+    **in foo**
+        The function-name in which the error was thrown.
+
+    Moving up the "stack", the lines have the same format. The further you move
+    "up", the closer you get to the entry-point of the application.
+
+
+.. nextslide::
+   :increment:
+
+* By default, Python will raise an exception of one of the `builtin types
+  <https://docs.python.org/3/library/exceptions.html#exception-hierarchy>`_.
+* You can create your own exceptions by subclassing.
+* Raising (triggering/throwing) exceptions is done using the ``raise``
+  keyword::
+
+      class MyException(Exception):
+         pass
+
+      if user_input > 4096:
+         raise ValueError('user_input must be smaller than 4096')
+      raise MyException('Hello World!')
+
+
+
+.. nextslide::
+   :increment:
+
+* If not handled, exceptions will crash the application and print a traceback
+  on ``stderr``.
+* They can be handled using a ``try/except`` block:
+
+.. code-block:: python
+
+
+   from example_exception import foo
+
+   try:
+      foo()
+   except KeyError as the_exception:
+      # Something bad happened :(
+      print(the_exception)
+
+.. rst-class:: smaller
+.. tip::
+
+   Always log the traceback of an exception using either
+   ``logging.debug(the_exception, exc_info=True)`` or
+   ``logging.exception('Simple description')``
+
+
 .. rst-class:: small-slide
 Exercise - Simple Data Types & StdLib
 -------------------------------------
@@ -1040,46 +1128,6 @@ Python vs other Languages
     and ``0`` were used. Those literals were introduced in Python 2.2.1. The
     boolean type was introduced in 2.3. The values are *constant* for backwards
     compatibility with older versions.
-
-
-Exceptions
-----------
-
-An example exception:
-
-.. code-block:: python
-
-    >>> from example_exception import foo
-    >>> foo()
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-      File "/path/example_exception.py", line 3, in foo
-        return a['z']
-    KeyError: 'z'
-
-
-.. note::
-
-    From bottom to top:
-
-    **KeyError**
-        The kind of the exception which was thrown.
-
-    ``return a['z']``
-        The line which caused the error.
-
-    **File "..."**
-        The finlename that caused the error.
-
-    **line 3**
-        The line in the file.
-
-    **in foo**
-        The function-name in which the error was thrown.
-
-    Moving up the "stack", the lines have the same format. The further you move
-    "up", the closer you get to the entry-point of the application.
-
 
 
 Exercise: primitives
