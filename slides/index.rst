@@ -1017,6 +1017,114 @@ In combination with *variable unpacking* loops can be written as:
 
 
 
+Basic Data Types (continued)
+----------------------------
+
+Also on https://docs.python.org/3/library/stdtypes.html
+
+
+Bytes
+~~~~~
+
+* Builtin type: :py:class:`bytes`.
+* byte-literals look just like strings, but with a ``b`` prefix::
+
+   b"Hello World"
+
+* Immutable (for byte-operations see :py:class:`bytearray`).
+* Almost identical API to strings. The key differences are:
+
+  * Bytes almost always come "from the outside world" (hard-disk, network, …)
+  * Strings are almost always meant to be read by a human (bytes not so much).
+  * Bytes can only be "decoded" from strings
+  * Strings can only be "encoded" into bytes
+
+
+Tuples
+~~~~~~
+
+See also: :py:func:`~collections.namedtuple`
+
+* Surrounded by parentheses::
+
+   mytuple = (1, 2, 3, 4, 5, 6, 7)
+
+* Like lists, but immutable.
+* Hashable
+* Recommended alternative (:py:func:`collections.namedtuple`)
+
+
+.. ifslides::
+
+    **Note**:
+
+    Tuple of one element: ``(1,)``
+
+.. note::
+
+    In python, using ``(1)`` is the same as simply writing ``1``. The following
+    two statements are equivalent::
+
+        >>> x = (1)
+        >>> x = 1
+
+    Parens can be used to group multiple statements, and to split long lines.
+
+    But tuples use parens to write tuples too. So writing a tuple of one
+    element introduces an ambiguity in syntax: When writing ``(1)``, do you
+    mean the tuple with one element, or do you mean the integer value ``1``?
+
+    In order to remove this ambiguity, a 1-element tuple must be written with a
+    trailing comma: ``(1, )``
+
+    Additionally, in the same way that ``1`` ≡ ``(1)``, there is also: ``(1,)``
+    ≡ ``1,`` (as long as it is syntactically correct)!.
+
+    As such, the following lines are also equivalent (similar to the first
+    paragraph)::
+
+        >>> x = 1,
+        >>> x = (1, )
+
+    This can lead to subtle bugs when not careful.
+
+
+.. rst-class:: smaller-slide
+
+Dictionaries
+~~~~~~~~~~~~
+
+* Surrounded by curly braces, using colons to separate key from value::
+
+   mydict = {"a": 1, "b": 2}
+
+* Key/Value stores (Like HashTables in *Java* or *C#*)
+* Looping over key/values is easy using::
+
+   for key, value in mydict.items():
+      ...
+
+* Starting from Python 3.7, ordering of keys is retained.
+
+
+.. rst-class:: small
+.. warning::
+
+   **Do not rely on ordering behaviour if your application runs in an older
+   Python environment!**
+
+
+Sets
+~~~~
+
+* Surrounded by curly braces (looks like dictionaries but without the colons)::
+
+   myset = {1, 2, 3, 4, 5}
+
+* Unsorted collection of items where each item exists only once.
+* Like "Bags" in *Java*
+* Values must be hashable
+
 
 
 
@@ -1082,38 +1190,6 @@ Common Data Types
     mybytes = b'H\xc3\xa9llo World!'
     myint = 123
 
-
-    **Note**:
-
-    Tuple of one element: ``(1,)``
-
-.. note::
-
-    In python, using ``(1)`` is the same as simply writing ``1``. The following
-    two statements are equivalent::
-
-        >>> x = (1)
-        >>> x = 1
-
-    Parens can be used to group multiple statements, and to split long lines.
-
-    But tuples use parens to write tuples too. So writing a tuple of one
-    element introduces an ambiguity in syntax: When writing ``(1)``, do you
-    mean the tuple with one element, or do you mean the integer value ``1``?
-
-    In order to remove this ambiguity, a 1-element tuple must be written with a
-    trailing comma: ``(1, )``
-
-    Additionally, in the same way that ``1`` ≡ ``(1)``, there is also: ``(1,)``
-    ≡ ``1,`` (as long as it is syntactically correct)!.
-
-    As such, the following lines are also equivalent (similar to the first
-    paragraph)::
-
-        >>> x = 1,
-        >>> x = (1, )
-
-    This can lead to subtle bugs when not careful.
 
 .. code-block:: python
 
