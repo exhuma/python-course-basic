@@ -815,8 +815,8 @@ Numbers
 Boolean
 ~~~~~~~
 
-* Two reserved words: ``True`` and ``False``. The names are capitalised because
-  they are object instances, subclasses of ``int``.
+* Two reserved words: ``True`` and ``False``. They are object instances,
+  subclasses of ``int``.
 
 .. code-block:: python
 
