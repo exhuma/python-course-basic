@@ -962,6 +962,7 @@ following:
 
     * MD5 sums can only be calculated on bytes (not strings)
 
+  * Any conversion error should be printed out, avoiding crashes.
   * Append the new columns to the ``output`` list
 
 * After the loop, return the list ``output``
