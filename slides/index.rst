@@ -843,6 +843,16 @@ Lists
     mylist.append(10)
 
 
+.. note::
+
+   When accessing a slice, the first index is *inclusive* and the second index
+   is *exclusive*. For example::
+
+      >>> mylist = ['a', 'b', 'c', 'd', 'e']
+      >>> mylist[1:3]
+      ['b', 'c']
+
+
 Exceptions
 ----------
 
