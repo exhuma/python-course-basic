@@ -72,6 +72,7 @@ Topics
    ..                                       │       │      │
    ..                                       │       │      │
    ..                                       │       │      │
+
    +-----------------------------------+-------+------+---------+
    | Description                       | Level | Docs | Example |
    +===================================+=======+======+=========+
@@ -604,6 +605,7 @@ Organising Code - Modules
 
 
 .. rst-class:: small-slide
+
 Organising Code - Packages
 --------------------------
 
