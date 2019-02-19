@@ -798,13 +798,14 @@ Numbers
 
 .. code-block:: python
 
-   myint = 1
-   myfloat = 3.5
-   myfloat2 = .3
-   sci_notation = 1.3E5
-   bin_notation = 0b10101
-   hex_notation = 0xc0ffee
-   octal_notation = 0o10
+   myint = 1               # type: int
+   bin_notation = 0b10101  # type: int, value: 21
+   hex_notation = 0xc0ffee # type: int, value: 12648430
+   octal_notation = 0o10   # type: int, value: 8
+
+   myfloat = 3.5           # type: float
+   myfloat2 = .3           # type: float
+   sci_notation = 1.3E5    # type: float, value: 130000.0
 
 
 Boolean
