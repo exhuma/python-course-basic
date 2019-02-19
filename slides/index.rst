@@ -968,16 +968,34 @@ following:
 * After the loop, return the list ``output``
 
 
-.. rst-class:: small-slide
-.. nextslide::
-   :increment:
+Variable Unpacking
+------------------
 
-.. literalinclude:: ../code/csv3/app.py
-   :caption: csv3/app.py
+Python can assign more than one value in one statement:
 
 
-.. literalinclude:: ../code/csv2/app.py
-   :caption: csv2/app.py
+.. code-block:: python
+
+   # Assign 13 to variable_a, and 'Hello' to variable_b
+   variable_a, variable_b = 13, 'Hello'
+
+This work in every place where values are assigned:
+
+.. code-block:: python
+   :emphasize-lines: 8
+
+   mylist = [
+      [1, 2],
+      [11, 22]
+   ]
+
+   # Each item in the list is another list of two elements each.
+   # They can be "unpacked" directly in the loop.
+   for variable_a, variable_b in mylist:
+      print(variable_a, variable_b)
+
+
+
 
 
 Old Course
