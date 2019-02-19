@@ -995,6 +995,28 @@ This work in every place where values are assigned:
       print(variable_a, variable_b)
 
 
+Enumerating Loops (access the current loop index)
+-------------------------------------------------
+
+Keeping a reference to the current iteration number is easy by using the
+:py:func:`enumerate` function.
+
+In combination with *variable unpacking* loops can be written as:
+
+.. code-block:: python
+
+   for i, item in enumerate(mylist):
+      print('Item at index %d is: %r' % (i, item))
+
+
+.. tip::
+
+   Python makes it relatively easy to avoid accessing items by index.
+   Enumerating lists like this only needed in rare cases (calculating progress,
+   logging the current line during text-file processing, …).
+
+
+
 
 
 
