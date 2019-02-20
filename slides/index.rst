@@ -1042,6 +1042,29 @@ Bytes
   * Strings can only be "encoded" into bytes
 
 
+.. rst-class:: smaller-slide
+.. nextslide::
+   :increment:
+
+* Bytes are (generally) used to talk to machines:
+
+  * Write data to files
+  * Send data over a network socket
+
+* String are used to be displayed to a human user:
+
+  * Text on a button label
+  * CLI output, HTML content
+  * …
+
+.. admonition:: Rule of Thumb
+
+   For *text*, as long as the value remains held by variables, use normal
+   string-literals (unicode objects). As soon as the value crosses the
+   memory/io boundary (network, disk) it needs to be encoded to bytes or
+   decoded to string.
+
+
 Tuples
 ~~~~~~
 
@@ -1052,8 +1075,8 @@ See also: :py:func:`~collections.namedtuple`
    mytuple = (1, 2, 3, 4, 5, 6, 7)
 
 * Like lists, but immutable.
-* Hashable
-* Recommended alternative (:py:func:`collections.namedtuple`)
+* Hashable (if contents are hashable)
+* Recommended alternative: :py:func:`collections.namedtuple`
 
 
 .. ifslides::
@@ -1116,6 +1139,13 @@ Dictionaries
    Python environment!**
 
 
+.. note::
+
+   The retention of dictionary key order was an implementation detail prior to
+   Python 3.7. Starting from Python 3.7, this is now baked in the language
+   specification and needs to be followed by implementations.
+
+
 Sets
 ~~~~
 
@@ -1123,10 +1153,11 @@ Sets
 
    myset = {1, 2, 3, 4, 5}
 
-* Unsorted collection of items where each item exists only once.
-* Like "Bags" in *Java*
-* Values must be hashable
+* :py:class:`set` can be used to convert any iterable to a set (dropping
+  duplicates).
+* Useful methods like :py:meth:`set.union`, :py:meth:`set.intersection`, …
 
+* Values must be hashable
 
 
 
