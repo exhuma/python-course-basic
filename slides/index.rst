@@ -790,6 +790,8 @@ information.
 More on this later …
 
 
+.. rst-class:: small-slide
+
 Numbers
 ~~~~~~~
 
