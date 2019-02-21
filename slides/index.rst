@@ -711,7 +711,6 @@ Basic Data Types
 See https://docs.python.org/3/library/stdtypes.html
 
 
-
 None (NULL)
 ~~~~~~~~~~~
 
@@ -728,6 +727,7 @@ None (NULL)
 
 
 .. rst-class:: smaller-slide
+
 Strings
 ~~~~~~~
 
@@ -827,6 +827,7 @@ Boolean
 
 
 .. rst-class:: smaller-slide
+
 Lists
 ~~~~~
 
@@ -944,9 +945,9 @@ An example exception:
 
 
 .. rst-class:: small-slide
+
 Exercise - Simple Data Types & StdLib
 -------------------------------------
-
 
 Write a new function *read_data* that takes a filename as argument and does the
 following:
@@ -1024,6 +1025,8 @@ Basic Data Types (continued)
 
 Also on https://docs.python.org/3/library/stdtypes.html
 
+
+.. rst-class:: smaller-slide
 
 Bytes
 ~~~~~
