@@ -1160,6 +1160,50 @@ Sets
 * Values must be hashable
 
 
+Exercise: Bytes & Collection Types
+----------------------------------
+
+Using the files :download:`customers_latin1.csv <_static/customers_latin1.csv>`
+and :download:`cities_utf8.csv <_static/cities_utf8.csv>`, write a function
+which merges the two files.
+
+The two input files should be combined into one output file containing all the
+columns. The output file should be ``utf-8`` encoded.
+
+The column ``city_id`` should be used to look up the city information in
+``cities_utf8.csv``.
+
+When the program is finished joining the files, it should print out all
+"hobbies" in the file. Each hobby should appear only once and the list should
+be sorted alphabetically.
+
+
+.. rst-class:: smaller-slide
+
+Exercise: Bytes & Collection Types 2
+------------------------------------
+
+Using the files :download:`data_latin1.csv <_static/data_latin1.csv>` and
+:download:`data_utf8.csv <_static/data_utf8.csv>`, write a function which
+diffs the two files.
+
+Both lists represent the same data from two different sources. It can be
+assumed that each line is unique in each file.
+
+The program should print:
+
+* Which lines are missing in the first file
+* Which lines are missing in the second file
+
+Tips:
+
+* Ensure the encoding is correct
+* A combination of :py:class:`tuple` and :py:class:`set` can make this very
+  easy
+* Upper/Lower case should not matter
+
+
+
 
 Old Course
 ==========
