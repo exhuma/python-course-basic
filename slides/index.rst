@@ -552,6 +552,8 @@ Organising Code - Functions
 ---------------------------
 
 * Functions are introduced using the ``def`` keyword
+* *(advanced)* Functions are objects in Python (they can be passed around as
+  values).
 * A function *always* returns a value in Python. If no ``return`` statement is
   present, the return-value will be ``None``.
 
@@ -1161,7 +1163,7 @@ Sets
 * :py:class:`set` can be used to convert any iterable to a set (dropping
   duplicates).
 * Useful methods like :py:meth:`set.union`, :py:meth:`set.intersection`, …
-
+* If a value is already in the set, adding it again will have no effect.
 * Values must be hashable
 
 
@@ -1217,107 +1219,6 @@ Pages after this one are only here for reference. They should be removed after
 the course is rewritten
 
 
-Diving in
-=========
-
-.. sidebar:: Explore
-
-    "Explore" blocks show a few simple things for you to try out yourself.
-
-* Data types and primitives.
-* Functions and classes.
-
-
-Saving your code
-----------------
-
-.. sidebar:: Linux, MacOS
-
-    On \*nix systems, you can make the file executable with a shebang. For
-    example::
-
-        #!/usr/bin/python
-
-* File extension: ``.py``
-* Python files are called *modules*.
-* Folders can be used to organise your code into *packages*.
-* Folders with modules should contain a file with the name ``__init__.py``.
-  This special file marks a folder as *package* (See :pep:`0420` for an
-  alternative).
-* Execute files with
-
-
-.. code-block:: bash
-
-    $ python filename.py
-
-
-
-Common Data Types
------------------
-
-* Boolean
-* Bytes (0-255 sequence)
-
-.. code-block:: python
-
-    mybool = False
-    nothing = None
-    mystring = 'hello world'
-    mystring2 = "hello w\u00f0rld"  # Python2 needs "u" prefix
-    mystring3 = '''John's "world"'''
-    mystring4 = """
-        Mary's "world"
-    """
-    mybytes = b'H\xc3\xa9llo World!'
-    myint = 123
-
-
-.. code-block:: python
-
-    mylist = [1, 2, 3]
-    mylist_2 = [
-        1,
-        'foo',
-        int,
-        mylist,
-    ]
-
-    mytuple = (1, 2, 3)
-    mytuple_2 = (
-        1,
-        'foo',
-        int,
-        mylist,
-    )
-
-* Dictionaries
-
-  - a.k.a. a HashTable
-  - keys can be anything that can be hashed.
-  - values can be anything.
-
-* Sets
-
-  - a.k.a. a Bag
-  - values must be hashable.
-  - only the *first* element is kept. Adding new identical items has no effect.
-
-
-.. code-block:: python
-
-    mydict = {
-        'hello': 'world',
-        42: 'everything',
-    }
-    mydict2 = dict(
-        foo='world',
-        bar='hello',
-    )
-
-    myset = {"hello", "hello", "world"}
-    myset2 = set(["hello", "hello", "world"])
-
 Python vs other Languages
 -------------------------
 
@@ -1325,93 +1226,8 @@ Python vs other Languages
 * Blocks defined by indentation
 * "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, ``None``,
   …)
-* ``True`` ≡ ``1``
-* ``False`` ≡ ``0``
-* Variable unpacking (f.ex.: ``a, b = 1, 2``).
 * "lambda" expressions.
 * :pep:`8`
-
-.. note::
-
-    Historically, ``True`` and ``False`` did not exist in Python. Instead ``1``
-    and ``0`` were used. Those literals were introduced in Python 2.2.1. The
-    boolean type was introduced in 2.3. The values are *constant* for backwards
-    compatibility with older versions.
-
-
-Exercise: primitives
---------------------
-
-.. sidebar:: Explore
-
-    * Run ``help`` on your variables (f.ex.: ``help(str)``)
-    * Difference between ``mytext.find`` and ``mytext.index``?
-    * Difference between ``mytext`` and ``mybytes``?
-
-* Store the value ``"Hello World``" in a variable.
-* Split the value on the character ``o`` (using :py:func:`str.split`).
-* Print the first element of the result.
-* Find and print the position of the character ``W`` using :py:func:`str.find`.
-
-
-.. code-block:: python
-
-    >>> mybytes = b'Hello World!'
-
-    >>> myint = 10
-    >>> int('101010', 2)
-
-    >>> mybool = True
-    >>> bool('hello')
-    >>> bool('')
-
-
-Exercise: collections
----------------------
-
-.. sidebar:: Explore
-    :class: overlapping
-
-    * Try other types of values (``int``, ``list``, ``tuple``, …) as keys for
-      the ``dict``.
-    * Try the ``list`` example with a ``tuple``.
-    * Run ``help`` on both ``mylist`` and ``mydict``.
-
-
-.. code-block:: python
-
-    >>> # dictionary
-    >>> mydict = {}
-    >>> mydict['foo'] = 10
-    >>> mydict['foo']
-    >>> mydict['bar']
-    >>> mydict.get('bar', 'mydefault')
-
-    >>> # list
-    >>> mylist = [1, 2, 3]
-    >>> mylist
-    >>> mylist[1:3]  # 1=included, 3=excluded
-    >>> mylist[0]
-    >>> mylist[10]
-    >>> mylist[2] = 10
-    >>> mylist.append(4)
-
-
-Functions
----------
-
-* Defined using the ``def`` keyword.
-* Always return a value. If no value is specified, it will return ``None``
-* In Python they are "First-Class Functions" (i.e.: funtions are objects too).
-* Function definition is executed *at runtime* (usually during ``import``)!
-
-Example::
-
-    def say_hello(name):
-        '''
-        Prints "Hello <name>" to stdout.
-        '''
-        print('Hello ' + name)
 
 
 Variadic Functions and Default Arguments
