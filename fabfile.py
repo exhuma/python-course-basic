@@ -112,5 +112,6 @@ def autobuild(ctx):
     '''
     Monitor files for changes and automacally build
     '''
-    ctx.run('find slides -name "*.rst" | entr -c sh -c "fab build-linked"',
+    ctx.run('find slides common -name "*.rst" -or -name "*.css" | '
+            'entr -c sh -c "fab build-linked"',
             replace_env=False)
