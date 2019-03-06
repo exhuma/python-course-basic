@@ -1167,6 +1167,28 @@ Sets
 * Values must be hashable
 
 
+Exercise: Collection Types
+--------------------------
+
+For this exercise we will be using the file :download:`collections.csv
+<_static/collections.csv>`.
+
+In this file, each entry is split into two lines (Line 1 and line 2 are the
+headers).
+
+Loop over the entries, joining each couple together into one record (Tip: look
+at :py:meth:`list.extend`, and remember :py:func:`enumerate`). Print the
+entries nicely formatted to standard output.
+
+At the end of the script, print out each hobby only once sorted alphabetically
+(See :py:func:`sorted`).
+
+.. rst-class:: smaller
+**Advanced:** Use the :py:mod:`itertools` module (f.ex.
+:py:func:`~itertools.islice` and :py:func:`~itertools.tee`) to rewrite this in
+a functional style. What are the advantages of this method?
+
+
 Exercise: Bytes & Collection Types
 ----------------------------------
 
