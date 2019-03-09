@@ -41,6 +41,7 @@ def build_html(ctx):
 @task
 def build_linked(ctx):
     fetch_common_files(ctx)
+    ctx.run('cp -v common/htmlstyle.css slides/_static/htmlstyle.css')
     with ctx.cd('slides'):
         ctx.run('make slides html', env=CUSTOM_ENV)
 
