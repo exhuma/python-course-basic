@@ -1213,22 +1213,20 @@ At the end of the script, print out each hobby only once sorted alphabetically
 a functional style. What are the advantages of this method?
 
 
-Exercise: Bytes & Collection Types
-----------------------------------
+Exercise: Data Lookup
+---------------------
 
-Using the files :download:`customers_latin1.csv <_static/customers_latin1.csv>`
-and :download:`cities_utf8.csv <_static/cities_utf8.csv>`, write a function
-which merges the two files.
+Using the files :download:`customers.csv <_static/customers.csv>` and
+:download:`cities.csv <_static/cities.csv>`, write a function which merges the
+two files.
 
 The two input files should be combined into one output file containing all the
-columns. The output file should be ``utf-8`` encoded.
+columns.
 
 The column ``city_id`` should be used to look up the city information in
-``cities_utf8.csv``.
+``cities.csv``.
 
-When the program is finished joining the files, it should print out all
-"hobbies" in the file. Each hobby should appear only once and the list should
-be sorted alphabetically.
+.. TODO Write example code
 
 
 .. rst-class:: smaller-slide
@@ -1255,6 +1253,8 @@ Tips:
   easy
 * Upper/Lower case should not matter
 
+
+.. TODO write example code
 
 
 
