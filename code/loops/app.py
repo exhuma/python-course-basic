@@ -1,3 +1,8 @@
+# Simple loop
+mydata = [1, 2, 3, 4]
+for item in mydata:
+    print(item)
+
 # Loop over each item in a list with an index
 mydata = [1, 2, 3, 4]
 for i, item in enumerate(mydata):
