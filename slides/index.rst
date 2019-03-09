@@ -570,6 +570,24 @@ Organising Code - Functions
    :caption: functions/app.py
 
 
+Organising Code - Classes
+-------------------------
+
+* Classes are introduced using the ``class`` keyword.
+* *(advanced)* Just like functions, classes are objects in Python too (of type
+  ``type``).
+* Classes can inherit from multiple other classes.
+* There are no interfaces.
+* Classes offer advanced programming techniques not covered in this course
+  (static-methods, class-methods, properties, descriptors)
+
+.. nextslide::
+   :increment:
+
+.. literalinclude:: ../code/classes/app.py
+   :caption: classes/app.py
+
+
 Organising Code - Modules
 -------------------------
 
