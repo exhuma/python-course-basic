@@ -648,7 +648,7 @@ Organising Code - Packages
   * Any folder with ``.py`` files and a ``__init__.py`` file.
 
 
-.. code-block:: python
+.. code-block::
 
     myproject
     ├── myapp.py
@@ -833,9 +833,9 @@ Numbers
 .. code-block:: python
 
    myint = 1               # type: int
-   bin_notation = 0b10101  # type: int, value: 21
-   hex_notation = 0xc0ffee # type: int, value: 12648430
-   octal_notation = 0o10   # type: int, value: 8
+   bin_notation = 0b10101  # type: int, base: 2, value (base 10): 21
+   hex_notation = 0xc0ffee # type: int, base: 16, value (base 10): 12648430
+   octal_notation = 0o10   # type: int, base: 8, value (base 10): 8
 
    myfloat = 3.5           # type: float
    myfloat2 = .3           # type: float
