@@ -210,7 +210,7 @@ Linux
 
 .. note::
 
-    For this course we will use ``Python-3.5.1.tgz``.
+    For this course we will use Python-3.7
 
     In order to successfully compile with all features for this course, you
     need the required libraries and system packages. For debian derivates these
@@ -221,7 +221,7 @@ Linux
 
     Once the requirements are available run::
 
-        ./configure --prefix=/opt/python3.5
+        ./configure --prefix=/opt/python3.7
         make
         sudo make install
 
@@ -242,7 +242,7 @@ Mac OS X
 Windows
 -------
 
-* Download the ``python-3.5.x.msi`` file and install.
+* Download the ``python-3.7.x.msi`` file and install.
 
 
 Introduction
@@ -408,11 +408,6 @@ Typing Comparison
 
 Python 2 vs Python 3
 --------------------
-
-.. sidebar:: Python 3.5
-
-    This course is based on **Python 3.5** as it comes bundled with ``pip`` and
-    ``pyvenv``.
 
 * Start at Python 3.3+ (current version is 3.7).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
@@ -1915,7 +1910,7 @@ Third Party Modules & virtualenv
 
 .. code-block:: bash
 
-    $ /opt/python3.5/bin/pyvenv env
+    $ /opt/python3.7/bin/pyvenv env
     $ ./env/bin/pip install flask
 
 
