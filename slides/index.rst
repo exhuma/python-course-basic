@@ -1210,20 +1210,47 @@ At the end of the script, print out each hobby only once sorted alphabetically
 a functional style. What are the advantages of this method?
 
 
+.. rst-class:: small-slide
+
 Exercise: Data Lookup
 ---------------------
 
-Using the files :download:`customers.csv <_static/customers.csv>` and
-:download:`cities.csv <_static/cities.csv>`, write a function which merges the
-two files.
+Sample Data Files: :download:`opendata.lu-sample-2019-03-09.zip
+<_static/data/opendata.lu-sample-2019-03-09.zip>`.
 
-The two input files should be combined into one output file containing all the
-columns.
+* The file ``caclr/TR.DICACOLO.RUCP`` contains location names in position
+  120-160 and ZIP codes in position 200-204. The file uses the ``cp1252``
+  encoding
+* The file ``rnrpp-code-postal.csv`` contains the number of inhabitants per ZIP
+  code.
 
-The column ``city_id`` should be used to look up the city information in
-``cities.csv``.
+Write a program which:
 
-.. TODO Write example code
+* Reads the data from both files
+* For each ZIP-code per location, look up the number of inhabitants and
+  calculate the sum
+* Sort the list by descending number of inhabitants
+* Print out the location name and number of inhabitants of the top 10 items
+  using 30 characters for the location, right aligned.
+
+  Sample output is on the following slide
+
+.. nextslide::
+    :increment:
+
+.. code-block:: text
+
+                     Luxembourg 120547
+               Esch-sur-Alzette 35635
+                      Dudelange 21087
+                    Differdange 16348
+                    Schifflange 11184
+                       Strassen 10503
+                        Pétange 9506
+                      Bertrange 9491
+                    Bettembourg 8995
+                        Belvaux 8129
+
 
 
 .. rst-class:: smaller-slide
