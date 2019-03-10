@@ -1258,8 +1258,8 @@ Write a program which:
 Exercise: Bytes & Collection Types 2
 ------------------------------------
 
-Using the files :download:`data_latin1.csv <_static/data_latin1.csv>` and
-:download:`data_utf8.csv <_static/data_utf8.csv>`, write a function which
+Using the files :download:`data_latin1.csv <_static/data/data_latin1.csv>` and
+:download:`data_utf8.csv <_static/data/data_utf8.csv>`, write a function which
 diffs the two files.
 
 Both lists represent the same data from two different sources. It can be
@@ -1275,11 +1275,6 @@ Tips:
 * Ensure the encoding is correct
 * A combination of :py:class:`tuple` and :py:class:`set` can make this very
   easy
-* Upper/Lower case should not matter
-
-
-.. TODO write example code
-
 
 
 Old Course
