@@ -579,6 +579,8 @@ Organising Code - Classes
 .. nextslide::
    :increment:
 
+.. rst-class:: smaller
+
 .. literalinclude:: ../code/classes/app.py
    :caption: classes/app.py
 
@@ -1064,7 +1066,7 @@ Bytes
 
   * Bytes almost always come "from the outside world" (hard-disk, network, …)
   * Strings are almost always meant to be read by a human (bytes not so much).
-  * Bytes can only be "decoded" from strings
+  * Bytes can only be "decoded" into strings
   * Strings can only be "encoded" into bytes
 
 

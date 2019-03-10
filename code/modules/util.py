@@ -13,3 +13,7 @@ def read_file(filename):
         stripped_line = line.strip()
         columns = stripped_line.split(';')
         print(repr(columns))
+
+
+# Don't do this! This "print" will be exectued on first import
+print('This is an import side-effect')
