@@ -1515,6 +1515,156 @@ This can be combined with other arguments:
         assert(msum(10, 30, a=11, b=12) == 63)
 
 
+Classes Revisited
+=================
+
+Constructor vs Initialisor
+--------------------------
+
+* The constructor ``__new__`` create a new instance of a class and returns is
+* The initialisor ``__init__`` gets an empty instance of the class and can
+  modify it.
+* **Always prefer to use __init__ over __new__**.
+* Defining an initialisor or constructor is optional.
+
+
+.. note::
+
+    The constructor ``__new__`` allows for some powerful (and dangerous)
+    techniques like returning an instance *of another type*. This can be very
+    useful is implemented correctly. But can lead to very confusing bugs if
+    not implemented correctly. To avoid this risk, always use ``__init__``
+    unless you *really* know what you are doing and if it is impossible to do
+    with ``__init__``.
+
+
+Instance Methods
+----------------
+
+When simply defining a method in a function inside a function it becomes an
+instance method. Contrary to many other languages, **an instance method
+received a reference to the instance as first argument**.
+
+This argument is - by convention - called ``self`` in Python. It serves the
+same purpose as ``this`` in languages like Java.
+
+.. code-block:: python
+
+    class MyClass:
+
+        def my_method(self):
+            print(self)  # Prints the string representaion of the current instance
+
+        def my_broken_method():
+            # This method will never be callable. Python automatically passes
+            # in the instance reference. But because this method does not take
+            # any arguments, this will fail.
+            pass
+
+
+Class Methods
+-------------
+
+Class methods are prefixed with ``@classmethod``
+
+Class methods are something fairly unique to Python. They also get a default
+argument. But compared to instance methods, this argument will have a reference
+to the *class*! This is particularly useful when subclassing.
+
+By convention this argument is called ``cls``.
+
+
+.. code-block:: python
+
+    class MyClass:
+
+        @classmethod
+        def my_method(cls):
+            print(cls)  # Prints the string representaion of the current class
+
+
+Static Methods
+--------------
+
+Static methods are prefixed with ``@staticmethod``
+
+Static methods are unaware of their instance or class. They do not receive an
+additional argument by default.
+
+They are useful to organise code.
+
+
+.. code-block:: python
+
+    class MyClass:
+
+        @staticmethod
+        def my_method():
+            return 1
+
+    print(MyClass.my_method())
+
+
+Abstract Methods
+----------------
+
+The standard module :py:mod:`abc` (abstract base classes) can be used to define
+abstract classes.
+
+They differ in a fundamental way from abstract classes in other (static)
+languages: **They are not checked at compile-time**. They are checked at
+runtime.
+
+.. code-block:: python
+
+    from abc import ABCMeta, abstractmethod
+
+    class MyAbstractClass(metaclass=ABCMeta):
+
+        @abstractmethod
+        def mymethod(self):
+            raise NotImplementedError('Not yet implemented')
+
+
+Classes – Basic Example
+-----------------------
+
+.. code-block:: python
+
+    class MyClass(AParentClass, AMixinClass):
+
+        CLASS_VARIABLE = 'hello world'
+
+        def __init__(self, a, b):
+            super()
+            self.a = a
+            self.b = b
+
+        @staticmethod
+        def mystaticmethod(arg1, arg2):
+            print(arg1, arg2)
+
+        @classmethod
+        def myclassmethod(cls, arg1, arg2):
+            print(cls, arg1, arg2)
+
+        def myinstancemethod(self, arg1, arg2):
+            print(self, arg1, arg2)
+
+
+.. note::
+
+    * ``__init__`` is the class initialisor. For a real constructor, look at
+      ``__new__``. But that should only be used if you *really* need it!
+    * Static methods are methods bound to the namespace of the class. They work
+      just like regular functions except that they live in a different
+      namespace.
+    * Class methods methods receive the instance of the *class* they were
+      called on as first argument. This can be useful in subclassing scenarios.
+    * Instance methods *exclicitly* take a reference to the instance as first
+      argument. By *convention* this is called ``self`` but can take any other
+      name. This is equivalent the the ``this`` keyword existing in other
+      languages.
 
 
 
@@ -1585,94 +1735,6 @@ Documenting Code
     ...     pass
 
     >>> print(noop.__doc__)
-
-
-Exercise: "Falsy/Truthy" Values
--------------------------------
-
-.. sidebar:: Takeaways
-
-    * Blocks identified by indentation
-
-.. code-block:: python
-    :emphasize-lines: 2
-
-    >>> def trueish(true_enough):
-    >>>     if true_enough:
-    >>>         print('yes.')
-    >>>     else:
-    >>>         print('no.')
-
-    >>> # Text
-    >>> trueish('')
-    >>> trueish('hello world')
-
-    >>> # Numbers
-    >>> trueish(123)
-    >>> trueish(0)
-    >>> trueish(-100)
-
-    >>> # Lists
-    >>> trueish([])
-    >>> trueish([1, 2, 3])
-
-
-.. note::
-    How an object behaves in a boolean context can be customised by overriding
-    the ``__bool__`` magic function.
-
-
-Classes – Basics
-----------------
-
-* Definition happens at runtime (like with functions).
-* Support multiple inheritance.
-* No interfaces (Duck Typing).
-* **Instance methods get the instance as first parameter.** Conventional name: ``self``
-* **Class methods get the class as first parameter.** Conventional name: ``cls``
-* Static methods are merely syntactic sugar.
-* Abstract classes are checked for compliance *at runtime*!
-
-
-Classes – Basic Example
------------------------
-
-.. code-block:: python
-
-    class MyClass(AParentClass, AMixinClass):
-
-        CLASS_VARIABLE = 'hello world'
-
-        def __init__(self, a, b):
-            super()
-            self.a = a
-            self.b = b
-
-        @staticmethod
-        def mystaticmethod(arg1, arg2):
-            print(arg1, arg2)
-
-        @classmethod
-        def myclassmethod(cls, arg1, arg2):
-            print(cls, arg1, arg2)
-
-        def myinstancemethod(self, arg1, arg2):
-            print(self, arg1, arg2)
-
-
-.. note::
-
-    * ``__init__`` is the class initialisor. For a real constructor, look at
-      ``__new__``. But that should only be used if you *really* need it!
-    * Static methods are methods bound to the namespace of the class. They work
-      just like regular functions except that they live in a different
-      namespace.
-    * Class methods methods receive the instance of the *class* they were
-      called on as first argument. This can be useful in subclassing scenarios.
-    * Instance methods *exclicitly* take a reference to the instance as first
-      argument. By *convention* this is called ``self`` but can take any other
-      name. This is equivalent the the ``this`` keyword existing in other
-      languages.
 
 
 Our Project
