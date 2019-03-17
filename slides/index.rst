@@ -524,6 +524,8 @@ Language Syntax
 Builtin Functions and Working with Files
 ----------------------------------------
 
+* Python has a few `builtin functions
+  <https://docs.python.org/3/library/functions.html>`_ which are very useful.
 * :py:func:`open` is used to access files on the disk (for reading and
   writing).
 * By default files are opened as "text".
@@ -1038,11 +1040,14 @@ In combination with *variable unpacking* loops can be written as:
       print('Item at index %d is: %r' % (i, item))
 
 
+.. rst-class:: smaller
+
 .. tip::
 
-   Python makes it relatively easy to avoid accessing items by index.
-   Enumerating lists like this only needed in rare cases (calculating progress,
-   logging the current line during text-file processing, …).
+   Python makes it relatively easy to avoid accessing items by index (see for
+   example :py:func:`zip`). Enumerating lists like this only needed in rare
+   cases (calculating progress, logging the current line during text-file
+   processing, …).
 
 
 
