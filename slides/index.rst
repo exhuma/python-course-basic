@@ -1308,6 +1308,51 @@ In such locations, the following values are considered as ``False``:
 * Any custom object overriding the special ``__bool__`` method.
 
 
+Exercise: Pwned Passwords
+-------------------------
+
+**Goal:** Find out if a password was ever leaked by an attack without sending
+the password to a remote API.
+
+.. rst-class:: smaller
+
+API docs: https://haveibeenpwned.com/API/v2#PwnedPasswords
+
+Challenges/Tips:
+
+.. rst-class:: smaller
+
+* Find out how to get a SHA-1 hash from a string
+* Use the module :mod:`getpass` to prompt the user for a password
+* Try with incorrect URLs and add appropriat error-handling
+
+.. tip::
+
+    In production we would use the third-party module ``requests``. The example
+    below shows how to do this with the standard library so we don't have to
+    deal with external modules just yet.
+
+.. nextslide::
+    :increment:
+
+Code to fetch data from a URL:
+
+.. code-block:: python
+
+    from urllib.request import Request, urlopen
+
+    def http_get(url):
+        '''
+        Fetch the contents of *url* using a HTTP GET call
+        '''
+        # Headers must be set, otherwirse we get a "403 Forbidden" error
+        headers = {'User-Agent': 'pythontraining/pwdchecker'}
+        request = Request(url, headers=headers, method='GET')
+        response = urlopen(request)
+        data = response.read()
+        return data
+
+
 Old Course
 ==========
 
