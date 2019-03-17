@@ -493,13 +493,13 @@ Getting Help
     connection.
 
 
-Diving in
-=========
+Basics
+======
 
 .. rst-class:: smaller-slide
 
-Basics
-------
+Language Syntax
+---------------
 
 * The variable type is implicit, but strong (dynamic typing)
 * Variables are assigned with the ``=`` operator
@@ -521,8 +521,8 @@ Basics
      parentheses (See :pep:`8`).
 
 
-Working with Files
-------------------
+Builtin Functions and Working with Files
+----------------------------------------
 
 * :py:func:`open` is used to access files on the disk (for reading and
   writing).
