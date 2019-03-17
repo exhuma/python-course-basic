@@ -319,6 +319,7 @@ Hello World!
 
 * Open PyCharm
 * Create a new Project in PyCharm
+* Right click the project and select "New Python File" and name it "hello.py"
 
 .. code-block:: python
     :caption: **Filename:** hello.py
@@ -326,7 +327,7 @@ Hello World!
     print('Hello World!')
 
 * Save this to a file called ``hello.py``
-* Run the code example.
+* Run the code example: Right click the file and select "Run 'hello'"
 
 
 Simple Operations
