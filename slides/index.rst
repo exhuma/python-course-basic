@@ -87,11 +87,11 @@ Topics
    +-----------------------------------+-------+------+---------+
    | defining functions                | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | positional & keyword arguments    | ★☆☆   |      |         |
+   | default arguments                 | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | keyword only arguments            | ★☆☆   |      |         |
+   | keyword only arguments            | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | variadic functions                | ★☆☆   |      |         |
+   | variadic functions                | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
    | defining classes                  | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
@@ -1359,36 +1359,123 @@ Code to fetch data from a URL:
         return data
 
 
-Old Course
-==========
+Functions Revisited
+===================
 
-Pages after this one are only here for reference. They should be removed after
-the course is rewritten
-
-
-Python vs other Languages
--------------------------
-
-* Everything is an Object. Even functions.
-* Blocks defined by indentation
-* "Falsy" values (``''``, ``[]``, ``()``, ``{}``, ``0``, ``False``, ``None``,
-  …)
-* "lambda" expressions.
-* :pep:`8`
+Until now we have only seen very simple function definitions. This small
+chapter discusses a few more advanced techniques which are very useful in most
+applications.
 
 
-Variadic Functions and Default Arguments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Default Arguments
+-----------------
 
-* Default arguments.
-* ``*args`` and ``**kwargs`` allow for variadic functions.
+* Functions can have default arguments.
+* When the function is called, and those arguments are not specified, the
+  default value is used:
+
+.. code-block:: python
+
+    def hello(name="John"):
+        print("Hello %s" % name
+
+    hello("Jane")  # Prints "Hello Jane"
+    hello()  # Prints "Hello John"
+
+.. nextslide::
+    :increment:
+
+Normal arguments can be combined with default arguments, but the default
+arguments must come *after* the normal ("positional") arguments:
+
+.. code-block:: python
+
+    def say(name, question, prefix="Hello"):
+        print("%s %s, %s" % (prefix, name, question))
+
+.. nextslide::
+    :increment:
+
+.. warning::
+    Never use mutable objects (lists, sets, dictionaries, custom objects, ...)
+    as default values on arguments.
+
+    The value (and instance) will be bound to the function when the function
+    definition is *parsed*.
+
+    **Don't do this:**
+
+    .. code-block:: python
+
+        def myfunction(names=[]):
+            ...
+
+    Do this instead:
+
+    .. code-block:: python
+
+        def myfunction(names=None):
+            names = names or []
+
+
+Passing values into functions
+-----------------------------
+
+Providing arguments to functions can be done in two ways: *positional* and *by
+keywords*. Consider this function signature:
+
+.. code-block:: python
+
+    def hello(name, prefix="Hello"): ...
+
+This can be called in the following ways:
+
+.. code-block:: python
+
+    hello("John")  # by position, using defaults
+    hello(name="John") # by keyword, using defaults
+    hello("John", "Goodbye")  # by position
+    hello(name="John", prefix="Goodbye")  # by keyword
+    hello(prefix="Goodbye", name="John")  # by keyword (changing order)
+
+
+Keyword Only Arguments
+----------------------
+
+It is possible to *force* keywords being passed by keyword by adding a single
+"*" in the arguments:
+
+.. code-block:: python
+
+    def hello(name, *, prefix="Hello"): ...
+
+
+    hello("John", prefix="Goodbye")  # OK
+    hello("John", "Goodbye")  # Error
+
+It is also possible to add a star in the beginning, forcing all arguments to be
+passed as keyword arguments:
+
+.. code-block:: python
+
+    def hello(*, name, prefix="Hello"): ...
+
+
+.. rst-class:: smaller-slide
+
+Variadic Functions
+------------------
+
+"Variadic Functions" are functions that can take any number of arguments.
+Python splits these in two categories: *positional* and *keyword*.
+
+* For positional arguments, the argument name is prefixed with a ``*``, and
+  keyword arguments are prefixed with ``**``. The names "args" and "kwargs" are
+  commonly used.
 
 .. code-block:: python
 
     from pprint import pprint
-
-    def default_arg(name='<unknown>'):
-        print('Hello %s' % name)
 
     def variadic_args(*args, **kwargs):
         pprint(locals())
@@ -1398,6 +1485,21 @@ Variadic Functions and Default Arguments
 
     ``args`` and ``kwargs`` are only conventional names. Sometimes (but rarely)
     it may be useful to use other names.
+
+
+.. nextslide::
+    :increment:
+
+Inside a variadic function, the values of ``*args`` will be available in a
+*tuple* named ``args``, and the keyword arguments will be available in a
+*dictionary* called ``kwargs`` (unless you used different names).
+
+This can be combined with other arguments:
+
+.. code-block:: python
+
+    def foo(first, second, *more, prefix=None, suffix=None, **config):
+        ...
 
 
 .. slide:: Exercise
@@ -1411,6 +1513,16 @@ Variadic Functions and Default Arguments
         assert(msum(a=10) == 10)
         assert(msum() == 0)
         assert(msum(10, 30, a=11, b=12) == 63)
+
+
+
+
+
+Old Course
+==========
+
+Pages after this one are only here for reference. They should be removed after
+the course is rewritten
 
 
 Functions as Objects
