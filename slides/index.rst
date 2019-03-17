@@ -1097,8 +1097,6 @@ Bytes
 Tuples
 ~~~~~~
 
-See also: :py:func:`~collections.namedtuple`
-
 * Surrounded by parentheses::
 
    mytuple = (1, 2, 3, 4, 5, 6, 7)

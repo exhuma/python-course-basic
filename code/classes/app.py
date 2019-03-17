@@ -24,4 +24,4 @@ class MyReader:
 
 
 the_instance = MyReader('data.csv')
-the_instance.read_file()
+the_instance.read()
