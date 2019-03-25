@@ -633,14 +633,12 @@ Organising Code - Modules
     :increment:
 
 * Importing will cause ``.pyc`` files to be created (inside the ``__pycache__``
-  folder).
+  folder). They are auto-generated and don't belong into revision control.
 * Imports are cached. The code inside a module is only interpreted on first
   import.
 * Therefore, modules can be abused as global variable storage & singletons
   (with all the risks this implies).
 
-
-.. rst-class:: small-slide
 
 Organising Code - Packages
 --------------------------
@@ -649,9 +647,14 @@ Organising Code - Packages
 * A ``__init__.py`` file marks a folder as package (can be empty).
 * The term "package" is ambiguous in Python. It can mean:
 
-  * A third-party *package* you get from the Internet or write yourself (in
+  * A "distributed" *package* you get from the Internet or write yourself (in
     other words: a "library").
   * Any folder with ``.py`` files and a ``__init__.py`` file.
+
+A module ``util.py`` inside package ``subpackage1`` can be imported with::
+
+    from subpackage1 import util  # Import only this name
+    import subpackage1.util  # Import the whole package name
 
 
 .. code-block::
@@ -680,10 +683,10 @@ Organising Code - Packages
       #    ├── localmodule.py
       #    └── app.py         <--- code below is in this file
 
-      # Relative import (recommended, but only works in packages)
+      # Relative import (recommended, but only works in distributed packages)
       from .localmodule import func
 
-      # Absolute import (recommended, but only works in packages)
+      # Absolute import (recommended, but only works in distributed packages)
       from mypackage.localmodule import func
 
       # Ambiguous import (not recommended)
