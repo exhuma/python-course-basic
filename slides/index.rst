@@ -709,6 +709,26 @@ Exercise
   * Loop over the return value of ``read_file`` and print the row.
 
 
+Exercise - Multiline CSV
+------------------------
+
+For this exercise we will be using the file :download:`multiline.csv
+<_static/multiline.csv>`.
+
+*This is primarily a thought-experiment. Don't worry if you don't manage to
+implement this*
+
+* Try to design a function which loops over each *entry* (not *line*) in
+  ``multiline.csv``.
+* What challenges can you identify?
+* How would you approach this?
+
+.. tip::
+
+    IETF Standard for ``text/csv``: `RFC-4180
+    <https://tools.ietf.org/html/rfc4180>`_
+
+
 The Standard Library
 --------------------
 
