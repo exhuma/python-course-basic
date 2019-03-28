@@ -397,20 +397,10 @@ Typing Comparison
 +--------------+-----------+---------------------+
 
 
-.. note:: Explore
-
-    Go to http://repl.it/ and try to execute ``20 + "22"`` in some languages.
-    What are the results? What does this tell you?
-
-    Make sure to test Python, PHP and JavaScript. They have a very simple REPL
-    and show a good example of coercion problems that may arise.
-
 .. admonition:: Definition
 
     Coercion
         Implicit Type Conversion.
-
-    ``20 + "22" -> ?``
 
 
 Python 2 vs Python 3
@@ -938,6 +928,60 @@ Lists
       >>> mylist = ['a', 'b', 'c', 'd', 'e']
       >>> mylist[1:3]
       ['b', 'c']
+
+
+Implicit & Explicit Type Conversions
+------------------------------------
+
+As we have seen, Python has dynamic typing but fairly strict coercion rules. In
+English: the same variable can change it's type over time. But two values of
+different types cannot be easily combined.
+
+In Python some types are compatible for some operations (``int`` and ``float``)
+while others are not (``str`` and ``int`` for addition).
+
+
+Explicit Conversions
+~~~~~~~~~~~~~~~~~~~~
+
+When a user enters numeric values from the keyboard (or if read from a CSV
+file), they are seen as strings and must be converted to numeric values:
+
+.. code-block:: python
+
+    value_str = input('Please enter a number:')
+    value_int = int(value_str)
+    print(value_int + 10)
+
+Probably the most common conversions you will encounter are: :py:class:`int`,
+:py:class:`str`, :py:class:`float`, :py:class:`bytes`.
+
+
+Implicit Conversions
+~~~~~~~~~~~~~~~~~~~~
+
+Some values are compatible for some operations. The resulting type depends on
+the operation:
+
+.. code-block:: python
+
+    >>> type(10 * 3.14)
+    <class 'float'>
+    >>> type('a' * 3)
+    <class 'str'>
+    >>> type(['a'] * 3)
+    <class 'list'>
+
+
+Exercise: Comparison with Other Languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Go to http://repl.it/ and try to execute ``20 + "22"`` in Python, PHP and
+JavaScript.
+
+* What are the results?
+* What does this tell you?
+* What are the advantages & disadvantages of strict/lenient coercion?
 
 
 Basics #2
