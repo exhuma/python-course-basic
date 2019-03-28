@@ -763,13 +763,13 @@ Let's use this for our example:
 
 
 Basic Data Types
-----------------
+================
 
 See https://docs.python.org/3/library/stdtypes.html
 
 
 None (NULL)
-~~~~~~~~~~~
+-----------
 
 * Default return value of functions
 * Is seen as "false" in a boolean context
@@ -786,7 +786,7 @@ None (NULL)
 .. rst-class:: smaller-slide
 
 Strings
-~~~~~~~
+-------
 
 * Instances of class :py:class:`str`.
 * Delimited by one of ``'``, ``"``, ``'''``, ``"""``
@@ -850,7 +850,7 @@ More on this later …
 .. rst-class:: small-slide
 
 Numbers
-~~~~~~~
+-------
 
 * Builtin types: :py:class:`int` and :py:class:`float`
 * No difference between "long" and "short" integers (handled internally by
@@ -872,7 +872,7 @@ Numbers
 
 
 Boolean
-~~~~~~~
+-------
 
 * Two reserved words: ``True`` and ``False``. They are object instances,
   subclasses of ``int``.
@@ -886,7 +886,7 @@ Boolean
 .. rst-class:: smaller-slide
 
 Lists
-~~~~~
+-----
 
 * Surrounded by square brackets::
 
@@ -912,6 +912,9 @@ Lists
       >>> mylist[1:3]
       ['b', 'c']
 
+
+Basics #2
+=========
 
 Exceptions
 ----------
@@ -1081,7 +1084,7 @@ In combination with *variable unpacking* loops can be written as:
 
 
 Basic Data Types (continued)
-----------------------------
+============================
 
 Also on https://docs.python.org/3/library/stdtypes.html
 
@@ -1089,7 +1092,7 @@ Also on https://docs.python.org/3/library/stdtypes.html
 .. rst-class:: smaller-slide
 
 Bytes
-~~~~~
+-----
 
 * Builtin type: :py:class:`bytes`.
 * byte-literals look just like strings, but with a ``b`` prefix::
@@ -1129,7 +1132,7 @@ Bytes
 
 
 Tuples
-~~~~~~
+------
 
 * Surrounded by parentheses::
 
@@ -1178,7 +1181,7 @@ Tuples
 .. rst-class:: smaller-slide
 
 Dictionaries
-~~~~~~~~~~~~
+------------
 
 * Surrounded by curly braces, using colons to separate key from value::
 
@@ -1208,7 +1211,7 @@ Dictionaries
 
 
 Sets
-~~~~
+----
 
 * Surrounded by curly braces (looks like dictionaries but without the colons)::
 
@@ -1241,6 +1244,10 @@ At the end of the script, print out each hobby only once sorted alphabetically
 **Advanced:** Use the :py:mod:`itertools` module (f.ex.
 :py:func:`~itertools.islice` and :py:func:`~itertools.tee`) to rewrite this in
 a functional style. What are the advantages of this method?
+
+
+Exercises
+=========
 
 
 .. rst-class:: small-slide
