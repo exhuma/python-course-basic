@@ -883,6 +883,33 @@ Boolean
    my_boolean_b = False
 
 
+Testing for Truth & Falsy Values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Python many value are considered as ``False`` without converting to ``bool``
+when they are used in a place where a boolean value is expected. The most
+common places are ``if`` and ``while`` blocks:
+
+.. code-block:: python
+
+    if <here>:
+        pass
+
+    while <here>:
+        pass
+
+.. nextslide::
+    :increment:
+
+In such locations, the following values are considered as ``False``:
+
+* ``None``
+* The numbers ``0``, ``0.0``, ``Decimal('0.0')``
+* The empty string ``""``
+* Empty structures ``[]``, ``{}``, ``set()``
+* Any custom object overriding the special ``__bool__`` method.
+
+
 .. rst-class:: smaller-slide
 
 Lists
@@ -1315,33 +1342,6 @@ Tips:
 * Ensure the encoding is correct
 * A combination of :py:class:`tuple` and :py:class:`set` can make this very
   easy
-
-
-Testing for Truth & Falsy Values
---------------------------------
-
-In Python many value are considered as ``False`` without converting to ``bool``
-when they are used in a place where a boolean value is expected. The most
-common places are ``if`` and ``while`` blocks:
-
-.. code-block:: python
-
-    if <here>:
-        pass
-
-    while <here>:
-        pass
-
-.. nextslide::
-    :increment:
-
-In such locations, the following values are considered as ``False``:
-
-* ``None``
-* The numbers ``0``, ``0.0``, ``Decimal('0.0')``
-* The empty string ``""``
-* Empty structures ``[]``, ``{}``, ``set()``
-* Any custom object overriding the special ``__bool__`` method.
 
 
 Exercise: Pwned Passwords
