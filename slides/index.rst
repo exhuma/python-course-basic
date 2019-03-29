@@ -1115,6 +1115,16 @@ crash. Instead, log an error message using the :py:mod:`logging` module:
 Edit the CSV file manually to trigger errors.
 
 
+Side-Note: logging
+------------------
+
+* Use :py:func:`print` **only** if you display text to a user in a CLI
+  application or if you write to a file.
+* **For all other cases use the logging module**
+* When logging inside an exception use the ``exc_info=True`` argument. This
+  cases the traceback to be logged and can be invaluable when debugging::
+
+    logging.debug('The error message', exc_info=True)
 
 
 
