@@ -1539,82 +1539,6 @@ This can be called in the following ways:
     hello(prefix="Goodbye", name="John")  # by keyword (changing order)
 
 
-Keyword Only Arguments
-----------------------
-
-It is possible to *force* keywords being passed by keyword by adding a single
-"*" in the arguments:
-
-.. code-block:: python
-
-    def hello(name, *, prefix="Hello"): ...
-
-
-    hello("John", prefix="Goodbye")  # OK
-    hello("John", "Goodbye")  # Error
-
-It is also possible to add a star in the beginning, forcing all arguments to be
-passed as keyword arguments:
-
-.. code-block:: python
-
-    def hello(*, name, prefix="Hello"): ...
-
-
-.. rst-class:: smaller-slide
-
-Variadic Functions
-------------------
-
-"Variadic Functions" are functions that can take any number of arguments.
-Python splits these in two categories: *positional* and *keyword*.
-
-* For positional arguments, the argument name is prefixed with a ``*``, and
-  keyword arguments are prefixed with ``**``. The names "args" and "kwargs" are
-  commonly used.
-
-.. code-block:: python
-
-    from pprint import pprint
-
-    def variadic_args(*args, **kwargs):
-        pprint(locals())
-
-
-.. tip::
-
-    ``args`` and ``kwargs`` are only conventional names. Sometimes (but rarely)
-    it may be useful to use other names.
-
-
-.. nextslide::
-    :increment:
-
-Inside a variadic function, the values of ``*args`` will be available in a
-*tuple* named ``args``, and the keyword arguments will be available in a
-*dictionary* called ``kwargs`` (unless you used different names).
-
-This can be combined with other arguments:
-
-.. code-block:: python
-
-    def foo(first, second, *more, prefix=None, suffix=None, **config):
-        ...
-
-
-.. slide:: Exercise
-
-    Write a function ``msum`` that takes any number of arguments, *and* any
-    number of keyword arguments. It should return the sum of the arguments
-    (positional and keyword). Use the *values* of the keyword arguments to
-    calculate the sum::
-
-        assert(msum(10) == 10)
-        assert(msum(a=10) == 10)
-        assert(msum() == 0)
-        assert(msum(10, 30, a=11, b=12) == 63)
-
-
 Classes Revisited
 =================
 
@@ -1765,6 +1689,85 @@ Classes – Basic Example
       argument. By *convention* this is called ``self`` but can take any other
       name. This is equivalent the the ``this`` keyword existing in other
       languages.
+
+
+Python - Advanced
+=================
+
+Keyword Only Arguments
+----------------------
+
+It is possible to *force* keywords being passed by keyword by adding a single
+"*" in the arguments:
+
+.. code-block:: python
+
+    def hello(name, *, prefix="Hello"): ...
+
+
+    hello("John", prefix="Goodbye")  # OK
+    hello("John", "Goodbye")  # Error
+
+It is also possible to add a star in the beginning, forcing all arguments to be
+passed as keyword arguments:
+
+.. code-block:: python
+
+    def hello(*, name, prefix="Hello"): ...
+
+
+.. rst-class:: smaller-slide
+
+Variadic Functions
+------------------
+
+"Variadic Functions" are functions that can take any number of arguments.
+Python splits these in two categories: *positional* and *keyword*.
+
+* For positional arguments, the argument name is prefixed with a ``*``, and
+  keyword arguments are prefixed with ``**``. The names "args" and "kwargs" are
+  commonly used.
+
+.. code-block:: python
+
+    from pprint import pprint
+
+    def variadic_args(*args, **kwargs):
+        pprint(locals())
+
+
+.. tip::
+
+    ``args`` and ``kwargs`` are only conventional names. Sometimes (but rarely)
+    it may be useful to use other names.
+
+
+.. nextslide::
+    :increment:
+
+Inside a variadic function, the values of ``*args`` will be available in a
+*tuple* named ``args``, and the keyword arguments will be available in a
+*dictionary* called ``kwargs`` (unless you used different names).
+
+This can be combined with other arguments:
+
+.. code-block:: python
+
+    def foo(first, second, *more, prefix=None, suffix=None, **config):
+        ...
+
+
+.. slide:: Exercise
+
+    Write a function ``msum`` that takes any number of arguments, *and* any
+    number of keyword arguments. It should return the sum of the arguments
+    (positional and keyword). Use the *values* of the keyword arguments to
+    calculate the sum::
+
+        assert(msum(10) == 10)
+        assert(msum(a=10) == 10)
+        assert(msum() == 0)
+        assert(msum(10, 30, a=11, b=12) == 63)
 
 
 
