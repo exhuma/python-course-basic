@@ -1942,17 +1942,6 @@ The "``with``" Statement
 
 
 
-Variable Unpacking
-------------------
-
-.. sidebar:: Throwaway Variable
-
-    The underscore "``_``" is a perfectly valid identifier in Python. By
-    *convention* it is used whenever you must store a value but don't need it.
-
-    This is most commonly used with variable unpacking.
-
-
 Third Party Modules & virtualenv
 --------------------------------
 
