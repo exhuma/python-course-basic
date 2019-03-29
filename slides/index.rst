@@ -1340,7 +1340,7 @@ At the end of the script, print out each hobby only once sorted alphabetically
 .. rst-class:: smaller
 **Advanced:** Use the :py:mod:`itertools` module (f.ex.
 :py:func:`~itertools.islice` and :py:func:`~itertools.tee`) to rewrite this in
-a functional style. What are the advantages of this method?
+a functional style. What are the advantages and disadvantages of this method?
 
 
 Exercises
