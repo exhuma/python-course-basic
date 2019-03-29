@@ -984,6 +984,32 @@ JavaScript.
 * What are the advantages & disadvantages of strict/lenient coercion?
 
 
+.. rst-class:: small-slide
+
+Exercise - Simple Data Types & StdLib
+-------------------------------------
+
+Write a new function *read_data* that takes a filename as argument and does the
+following:
+
+* Open the file with the given filename
+* Initialise a new variable named ``output`` as empty list.
+* Create a CSV reader with the opened file object
+* Loop through each line and do the following:
+
+  * Convert each numerical column into an appropriate type (f.ex.: use
+    :py:class:`decimal.Decimal` for monetary values).
+  * Split the 7 :sup:`th` column (index 6) into a list of strings.
+  * **(optional)** Add a new column at the end which contains the ``MD5``
+    hex-digest of the whole line (see :py:func:`hashlib.md5`).
+
+    * MD5 sums can only be calculated on bytes (not strings)
+
+  * Append the new columns to the ``output`` list
+
+* After the loop, return the list ``output``
+
+
 Basics #2
 =========
 
@@ -1074,32 +1100,22 @@ An example exception:
    ``logging.debug(the_exception, exc_info=True)`` or
    ``logging.exception('Simple description')``
 
+Exercise - Catching Exceptions
+------------------------------
 
-.. rst-class:: small-slide
+Modify the previous exercise so that no type conversion make the application
+crash. Instead, log an error message using the :py:mod:`logging` module:
 
-Exercise - Simple Data Types & StdLib
--------------------------------------
+.. code-block:: python
 
-Write a new function *read_data* that takes a filename as argument and does the
-following:
+    import logging
+    logging.error('Something went wrong')
 
-* Open the file with the given filename
-* Initialise a new variable named ``output`` as empty list.
-* Create a CSV reader with the opened file object
-* Loop through each line and do the following:
 
-  * Convert each numerical column into an appropriate type (f.ex.: use
-    :py:class:`decimal.Decimal` for monetary values).
-  * Split the 7 :sup:`th` column (index 6) into a list of strings.
-  * **(optional)** Add a new column at the end which contains the ``MD5``
-    hex-digest of the whole line (see :py:func:`hashlib.md5`).
+Edit the CSV file manually to trigger errors.
 
-    * MD5 sums can only be calculated on bytes (not strings)
 
-  * Any conversion error should be printed out, avoiding crashes.
-  * Append the new columns to the ``output`` list
 
-* After the loop, return the list ``output``
 
 
 Variable Unpacking
