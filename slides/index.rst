@@ -1058,7 +1058,7 @@ An example exception:
         The line which caused the error.
 
     **File "..."**
-        The finlename that caused the error.
+        The filename that caused the error.
 
     **line 3**
         The line in the file.
