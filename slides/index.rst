@@ -54,6 +54,19 @@ About This Course
 .. include:: ../common/introduction.rst
 
 
+Code examples in these slides
+-----------------------------
+
+There are 3 ways, this course shows code examples:
+
+* Examples from the Python REPL. These are marked with leading ``>>>``
+  characters which is the default REPL promp.
+* Blocks with filename header. These are meant to be in the filename seen in
+  the header. The filename is always relative to the project folder.
+* Blocks without filename header. These are "throwaway" examples which can be
+  saved anywhere. Or run directly in the REPL.
+
+
 Topics
 ------
 
@@ -165,8 +178,8 @@ Topics
 
 .. ifnotslides::
 
-   Topics - Not Covered
-   ~~~~~~~~~~~~~~~~~~~~
+   Topics - Removed from Old Course
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    ..                                         code example ┐
    ..                                 Documentation ┐      │
@@ -255,26 +268,13 @@ Windows
 * Download the ``python-3.7.x.msi`` file and install.
 
 
-Introduction
+About Python
 ============
 
 * High-level overview of the language.
 * Implementations
 * Editors
 * Language features
-
-
-Code examples in these slides
------------------------------
-
-There are 3 ways, this course shows code examples:
-
-* Examples from the Python REPL. These are marked with leading ``>>>``
-  characters which is the default REPL promp.
-* Blocks with filename header. These are meant to be in the filename seen in
-  the header. The filename is always relative to the project folder.
-* Blocks without filename header. These are "throwaway" examples which can be
-  saved anywhere. Or run directly in the REPL.
 
 
 Birds-Eye View
@@ -324,8 +324,8 @@ Editors
     * …
 
 
-Hello World!
-------------
+Exercise - Hello World!
+-----------------------
 
 * Open PyCharm
 * Create a new Project in PyCharm
@@ -338,32 +338,6 @@ Hello World!
 
 * Save this to a file called ``hello.py``
 * Run the code example: Right click the file and select "Run 'hello'"
-
-
-Simple Operations
------------------
-
-.. code-block:: python
-    :caption: **Filename:** hello.py
-
-    print('Hello ' + 'World!')
-    print(10 + 3)
-    print(10 / 3)
-
-
-Variables
----------
-
-.. code-block:: python
-    :caption: **Filename:** hello.py
-
-    a = 'Hello'
-    b = 'World!'
-    print(a + b)
-
-    a = 10
-    b = 3
-    print(a * b)
 
 
 Duck Typing
@@ -496,6 +470,7 @@ Getting Help
 Basics
 ======
 
+
 .. rst-class:: smaller-slide
 
 Language Syntax
@@ -519,6 +494,32 @@ Language Syntax
      details on code-style.
    * The condition in the ``if`` statement is by convention not surrounded by
      parentheses (See :pep:`8`).
+
+
+Simple Operations
+-----------------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    print('Hello ' + 'World!')
+    print(10 + 3)
+    print(10 / 3)
+
+
+Variables
+---------
+
+.. code-block:: python
+    :caption: **Filename:** hello.py
+
+    a = 'Hello'
+    b = 'World!'
+    print(a + b)
+
+    a = 10
+    b = 3
+    print(a * b)
 
 
 Builtin Functions and Working with Files
@@ -552,8 +553,11 @@ Reading Files
    :caption: csv1/app.py
 
 
-Organising Code - Functions
----------------------------
+Organising Code
+===============
+
+Functions
+---------
 
 * Functions are introduced using the ``def`` keyword
 * *(advanced)* Functions are objects in Python (they can be passed around as
@@ -568,8 +572,8 @@ Organising Code - Functions
    :caption: functions/app.py
 
 
-Organising Code - Classes
--------------------------
+Classes
+-------
 
 * Classes are introduced using the ``class`` keyword.
 * *(advanced)* Just like functions, classes are objects in Python too (of type
@@ -588,8 +592,8 @@ Organising Code - Classes
    :caption: classes/app.py
 
 
-Organising Code - Modules
--------------------------
+Modules
+-------
 
 * Every Python file can be called a "module" and can be imported in other
   Python scripts.
@@ -634,8 +638,8 @@ Organising Code - Modules
   (with all the risks this implies).
 
 
-Organising Code - Packages
---------------------------
+Packages
+--------
 
 * Use packages to organise your project into sub-folders.
 * A ``__init__.py`` file marks a folder as package (can be empty).
@@ -687,10 +691,14 @@ A module ``util.py`` inside package ``subpackage1`` can be imported with::
       from localmodule import func
 
 
+Exercises
+=========
+
+
 .. rst-class:: smaller-slide
 
-Exercise
---------
+Organising Code
+---------------
 
 * In a file ``util.py`` write a function ``read_file`` which:
 
@@ -706,8 +714,8 @@ Exercise
   * Loop over the return value of ``read_file`` and print the row.
 
 
-Exercise - Multiline CSV
-------------------------
+Multiline CSV
+-------------
 
 For this exercise we will be using the file :download:`multiline.csv
 <_static/multiline.csv>`.
@@ -726,38 +734,8 @@ implement this*
     <https://tools.ietf.org/html/rfc4180>`_
 
 
-The Standard Library
---------------------
-
-Python comes with "batteries included".
-
-The standard library of Python comes with *many* useful features. This makes it
-possible to write many useful applications without third-party (external)
-libraries.
-
-* Standard Library modules are also imported using the ``import`` statement.
-* Standard Library modules take precedence in imports (Use relative imports on
-  name-conflicts). See :pep:`328`.
-
-
-Using the ``csv`` module
-------------------------
-
-The :py:mod:`csv` module makes it easy to read delimited data. It also deals
-with:
-
-* quoted values
-* multiline values
-* escaped characters
-
-Let's use this for our example:
-
-.. literalinclude:: ../code/csv2/app.py
-   :caption: csv2/app.py
-
-
-Basic Data Types
-================
+Basic Data Types - Scalars
+==========================
 
 See https://docs.python.org/3/library/stdtypes.html
 
@@ -904,36 +882,6 @@ In such locations, the following values are considered as ``False``:
 * Any custom object overriding the special ``__bool__`` method.
 
 
-.. rst-class:: smaller-slide
-
-Lists
------
-
-* Surrounded by square brackets::
-
-   mylist = [1, 2, 3, 'hello', 5, 6, True]
-
-* Very similar to arrays in other languages. Real arrays are in the
-  :py:mod:`array` module.
-* Heterogenuous
-* Indexable from both left (``mylist[3]``) and right (``mylist[-3]``).
-* Slicing: ``mylist[3:7]``
-* Mutable::
-
-    mylist[2] = new_value
-    mylist.append(10)
-
-
-.. note::
-
-   When accessing a slice, the first index is *inclusive* and the second index
-   is *exclusive*. For example::
-
-      >>> mylist = ['a', 'b', 'c', 'd', 'e']
-      >>> mylist[1:3]
-      ['b', 'c']
-
-
 Implicit & Explicit Type Conversions
 ------------------------------------
 
@@ -986,6 +934,35 @@ JavaScript.
 * What are the results?
 * What does this tell you?
 * What are the advantages & disadvantages of strict/lenient coercion?
+
+The Standard Library
+====================
+
+Python comes with "batteries included".
+
+The `standard library <https://docs.python.org/3/library/>`_ of Python comes
+with *many* useful features. This makes it possible to write many useful
+applications without third-party (external) libraries.
+
+* Standard Library modules are also imported using the ``import`` statement.
+* Standard Library modules take precedence in imports (Use relative imports on
+  name-conflicts). See :pep:`328`.
+
+
+Example - The ``csv`` module
+----------------------------
+
+The :py:mod:`csv` module makes it easy to read delimited data. It also deals
+with:
+
+* quoted values
+* multiline values
+* escaped characters
+
+Let's use this for our example:
+
+.. literalinclude:: ../code/csv2/app.py
+   :caption: csv2/app.py
 
 
 .. rst-class:: small-slide
@@ -1184,10 +1161,40 @@ In combination with *variable unpacking* loops can be written as:
 
 
 
-Basic Data Types (continued)
-============================
+Basic Data Types #2 - Collections
+=================================
 
 Also on https://docs.python.org/3/library/stdtypes.html
+
+
+.. rst-class:: smaller-slide
+
+Lists
+-----
+
+* Surrounded by square brackets::
+
+   mylist = [1, 2, 3, 'hello', 5, 6, True]
+
+* Very similar to arrays in other languages. Real arrays are in the
+  :py:mod:`array` module.
+* Heterogenuous
+* Indexable from both left (``mylist[3]``) and right (``mylist[-3]``).
+* Slicing: ``mylist[3:7]``
+* Mutable::
+
+    mylist[2] = new_value
+    mylist.append(10)
+
+
+.. note::
+
+   When accessing a slice, the first index is *inclusive* and the second index
+   is *exclusive*. For example::
+
+      >>> mylist = ['a', 'b', 'c', 'd', 'e']
+      >>> mylist[1:3]
+      ['b', 'c']
 
 
 .. rst-class:: smaller-slide
@@ -1418,8 +1425,8 @@ Tips:
   easy
 
 
-Exercise: Pwned Passwords
--------------------------
+Exercise - Pwned Passwords
+--------------------------
 
 **Goal:** Find out if a password was ever leaked by an attack without sending
 the password to a remote API.
@@ -1693,6 +1700,8 @@ Classes – Basic Example
       argument. By *convention* this is called ``self`` but can take any other
       name. This is equivalent the the ``this`` keyword existing in other
       languages.
+
+
 
 
 Python - Advanced
