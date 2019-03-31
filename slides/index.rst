@@ -449,6 +449,15 @@ By convention, lines with ``>>>`` represent a REPL prompt.
     Hello World!
 
 
+.. nextslide::
+    :increment:
+
+* The default REPL can be customized using a Python script and setting
+  ``PYTHONSTARTUP`` o that file. For example: `exhuma/dotfiles/.pystartup
+  <https://github.com/exhuma/dotfiles/blob/master/.pystartup>`_
+* Alternative Python Shell: https://ipython.org/
+
+
 Getting Help
 ------------
 
