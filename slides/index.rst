@@ -39,16 +39,13 @@ About This Course
         been cut into pieces. In that case, each block has a "filename" caption
         to give some context.
 
-* Introduction to Python
-    * The REPL
-    * Python compared to other Languages
-    * Standard Data Types & Typing
-* Wiki
-    * List pages.
-    * Load & display a page.
-    * Save a page (create or update).
-    * Replace WikiWords with links.
-* Packaging
+This course covers the basics to be able to write simple Python applications:
+
+* Installation
+* Running Python code
+* Basic syntax & data types
+* Code organisation
+* Standard Library
 
 
 .. include:: ../common/introduction.rst
