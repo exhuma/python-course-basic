@@ -112,8 +112,6 @@ Topics
    +-----------------------------------+-------+------+---------+
    | defining packages                 | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | ``in`` operator                   | ★☆☆   |      |         |
-   +-----------------------------------+-------+------+---------+
    | String formatting                 | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
    | Variable Unpacking                | ★★☆   | ✓    | ✓       |
@@ -124,15 +122,12 @@ Topics
    +-----------------------------------+-------+------+---------+
    | raising exceptions                | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | Essential modules: os, sys, ...   | ★★☆   |      |         |
+   | Essential modules: os, sys, ...   | ★★☆   | ✓    | ø       |
    | (sys.stderr, out, in)             |       |      |         |
    +-----------------------------------+-------+------+---------+
-   | comprehensions (list, set & dict) | ★★☆   |      |         |
-   | , generator expressions           |       |      |         |
+   | Docstrings                        | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
-   | Slicing                           | ★☆☆   |      |         |
-   +-----------------------------------+-------+------+---------+
-   | Docstrings                        | ★☆☆   |      |         |
+   | Slicing                           | ★☆☆   | ✓    | ✓       |
    +-----------------------------------+-------+------+---------+
 
 
@@ -151,6 +146,11 @@ Topics
    +-----------------------------------+-------+------+---------+
    | Description                       | Level | Docs | Example |
    +===================================+=======+======+=========+
+   | ``in`` operator                   | ★☆☆   |      |         |
+   +-----------------------------------+-------+------+---------+
+   | comprehensions (list, set & dict) | ★★☆   |      |         |
+   | , generator expressions           |       |      |         |
+   +-----------------------------------+-------+------+---------+
    | logging                           | ★☆☆   |      |         |
    +-----------------------------------+-------+------+---------+
    | Variadic Functions                | ★★☆   |      |         |
@@ -479,6 +479,9 @@ Getting Help
 Basics
 ======
 
+This chapter covers the minimum you need to know to write simple Python
+scripts.
+
 
 .. rst-class:: smaller-slide
 
@@ -488,6 +491,7 @@ Language Syntax
 * The variable type is implicit, but strong (dynamic typing)
 * Variables are assigned with the ``=`` operator
 * Line-comments start with a ``#`` character. Block comments don't exist.
+  *Please don't use multiline strings as comments*.
 * Lines do **not** need to end with a semicolon (``;``)
 * Blocks are defined by indentation. The line starting a block ends with a
   colon (``:``).
@@ -511,17 +515,12 @@ Simple Operations
 .. code-block:: python
     :caption: **Filename:** hello.py
 
+    # Calling the builtin function "print"
     print('Hello ' + 'World!')
     print(10 + 3)
     print(10 / 3)
 
-
-Variables
----------
-
-.. code-block:: python
-    :caption: **Filename:** hello.py
-
+    # Setting variables
     a = 'Hello'
     b = 'World!'
     print(a + b)
@@ -543,6 +542,8 @@ Builtin Functions and Working with Files
 * :py:mod:`pathlib` and :py:mod:`os.path` contain useful functions for working
   with files.
 
+.. nextslide::
+    :increment:
 
 .. literalinclude:: ../code/working-with-files/app.py
    :caption: working-with-files/app.py
@@ -551,6 +552,18 @@ Builtin Functions and Working with Files
 Looping
 -------
 
+Executing code on a collection of items (looping) can be done in several ways
+in Python:
+
+* A ``for ... in ...`` loop
+* A ``while ...`` loop
+* A comprehension expression (not covered in this course)
+* Functional aproach using :py:func:`map`, :py:func:`filter` and
+  :py:func:`functools.reduce` (not covered in this course).
+
+.. nextslide::
+    :increment:
+
 .. literalinclude:: ../code/loops/app.py
    :caption: loops/app.py
 
@@ -558,21 +571,59 @@ Looping
 Reading Files
 -------------
 
+Reading and writing files is done using the builtin function :py:func:`open`.
+This function will return a "file-like object" which has low-level methods like
+:py:meth:`~io.RawIOBase.read` and :py:meth:`~io.RawIOBase.write`.
+
+.. tip::
+    *Not neccessary for this course, but interesting*
+
+    :py:mod:`io` contains all the low-level details.
+
+.. nextslide::
+    :increment:
+
 .. literalinclude:: ../code/csv1/app.py
    :caption: csv1/app.py
+
+.. nextslide::
+    :increment:
+
+File should *always* be closed. Even in the case of an error. Especially when
+writing into files.
+
+Python can ensure that this is done correctly by using the ``with`` statement:
+
+.. code-block:: python
+
+    with open('data.csv') as infile:
+        do_something_with(infile)
+        print(infile.closed)  # Will print "False"
+
+    # Variables created in the "with" block will remain accessible, but cleanup
+    # has taken place. In this case, the file will be closed now.
+    print(infile.closed)  # Will print "True"
+
 
 
 Organising Code
 ===============
 
+This chapter covers how code can be structured into reusable pieces.
+
 Functions
 ---------
 
 * Functions are introduced using the ``def`` keyword
-* *(advanced)* Functions are objects in Python (they can be passed around as
-  values).
 * A function *always* returns a value in Python. If no ``return`` statement is
   present, the return-value will be ``None``.
+
+.. tip:: **Advanced:** Functions are objects!
+
+    Functions are objects in Python (of type ``function``). As soon as a
+    function is defined, that function can also be assigned to variables and
+    passed into functions.  Useful for dynamic dispatch, callbacks,
+    dependency-injection, …
 
 .. nextslide::
    :increment:
@@ -585,12 +636,14 @@ Classes
 -------
 
 * Classes are introduced using the ``class`` keyword.
-* *(advanced)* Just like functions, classes are objects in Python too (of type
-  ``type``).
 * Classes can inherit from multiple other classes.
 * There are no interfaces.
 * Classes offer advanced programming techniques not covered in this course
   (static-methods, class-methods, properties, descriptors)
+
+.. tip:: **Advanced** Classes are objects
+
+    Just like functions, classes are objects in Python too (of type ``type``).
 
 .. nextslide::
    :increment:
@@ -610,6 +663,11 @@ Modules
 
   * They *should* not "run" anything outside of classes & functions.
   * They *should* contain definitions only (functions, classes, variables, …)
+
+.. tip:: **Advanced** Modules are objects
+
+    Just like functions and classes, modules are objects in Python too (of type
+    ``module``).
 
 
 .. note::
@@ -664,7 +722,10 @@ A module ``util.py`` inside package ``subpackage1`` can be imported with::
     import subpackage1.util  # Import the whole package name
 
 
-.. code-block::
+.. nextslide::
+    :increment:
+
+Example tree::
 
     myproject
     ├── myapp.py
@@ -711,10 +772,11 @@ Organising Code
 
 * In a file ``util.py`` write a function ``read_file`` which:
 
-  * Takes two arguments: A **filename** and a **separator**
-  * Reads the file line-by line, splits each line using the given *separator* 
-  * It should return a list where each element is another list with only the
-    first and second column of the input file
+  * Takes the argument **filename**
+  * Creates a new empty list (``output = []``)
+  * Reads the file line-by line and appends each line to a list (making it a
+    list of strings). Use ``output.append(...)``.
+  * It should return the list after it is done reading the file.
 
 * Write a second file ``app.py``:
 
@@ -741,6 +803,86 @@ implement this*
 
     IETF Standard for ``text/csv``: `RFC-4180
     <https://tools.ietf.org/html/rfc4180>`_
+
+
+Writing Documentation
+=====================
+
+For the following objects, Python considers the first string inside that object
+as documentation (this is called a "docstring"):
+
+* Functions
+* Classes
+* Modules
+* Packages (inside the ``__init__.py`` file)
+
+These strings will be extracted by the :py:func:`help` function and can also be
+extracted by external tools like pydoc_, epydoc_ or sphinx_.
+
+.. _pydoc: https://docs.python.org/3/library/pydoc.html
+.. _epydoc: http://epydoc.sourceforge.net/
+.. _sphinx: http://www.sphinx-doc.org/en/master/
+
+
+Functions
+---------
+
+.. code-block:: python
+
+    def myfunction():
+        """
+        This is the documentation of the function
+        """
+
+
+Classes
+-------
+
+.. code-block:: python
+
+    class MyClass:
+        """
+        This is the documentation of the class
+        """
+
+
+Modules
+-------
+
+.. code-block:: python
+    :caption: filename: hello.py
+
+    """
+    This is the documentation of the function
+    """
+
+    def first_function_in_module():
+        "..."
+        ...
+
+
+Packages
+--------
+
+Packages use the module docstring of ``__init__.py``.
+
+
+Module Data
+-----------
+
+Top-level variables have no predefined standard for documentation. ``Sphinx``
+will extract comments starting with ``#:`` as documetnation:
+
+.. code-block:: python
+    :caption: filename: example.py
+
+    """
+    This is the module docstring
+    """
+    # This is a simple comment, ignored by Sphinx
+
+    #: This is the documentation for the variable below
+    MY_VARIABLE = 1
 
 
 Basic Data Types - Scalars
@@ -934,8 +1076,8 @@ the operation:
     <class 'list'>
 
 
-Exercise: Comparison with Other Languages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise - Comparison with Other Languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Go to http://repl.it/ and try to execute ``20 + "22"`` in Python, PHP and
 JavaScript.
@@ -961,6 +1103,8 @@ applications without third-party (external) libraries.
 Essential Modules
 -----------------
 
+* :py:mod:`os`: Operating System details.
+* :py:mod:`os.path`: Helper functions to deal with filenames.
 * :py:mod:`logging`: Fully featured logging system.
 * :py:mod:`json` for parsing and creating JSON documents.
 * :py:mod:`datetime` & :py:mod:`time` for date/time processing. **Important**:
@@ -1002,8 +1146,9 @@ Let's use this for our example:
 Exercise - Simple Data Types & StdLib
 -------------------------------------
 
-Write a new function *read_data* that takes a filename as argument and does the
-following:
+Write a new function *read_data* that takes a filename as argument. The file
+:download:`csv3.csv <_static/data/csv3.csv>` can be used as example. The
+function should do the following:
 
 * Open the file with the given filename
 * Initialise a new variable named ``output`` as empty list.
@@ -1025,6 +1170,10 @@ following:
 
 Basics #2
 =========
+
+This chapter covers a few topics beyond the fundamental basics, but which
+should nonetheless be understood when developing Python applications.
+
 
 Exceptions
 ----------
@@ -1198,12 +1347,16 @@ Basic Data Types #2 - Collections
 
 Also on https://docs.python.org/3/library/stdtypes.html
 
+So far we've only covered "scalar" values. This chapter covers the most
+commonly used "collection" types in Python.
+
 
 .. rst-class:: smaller-slide
 
 Lists
 -----
 
+* Used for collections with variable length and which have a specific ordering.
 * Surrounded by square brackets::
 
    mylist = [1, 2, 3, 'hello', 5, 6, True]
@@ -1274,6 +1427,7 @@ Bytes
 Tuples
 ------
 
+* Used for collections of fixed length where each item has a specific meaning.
 * Surrounded by parentheses::
 
    mytuple = (1, 2, 3, 4, 5, 6, 7)
@@ -1323,6 +1477,7 @@ Tuples
 Dictionaries
 ------------
 
+* Used to map from one value to another.
 * Surrounded by curly braces, using colons to separate key from value::
 
    mydict = {"a": 1, "b": 2}
@@ -1353,6 +1508,8 @@ Dictionaries
 Sets
 ----
 
+* Used for collections of variable size with unique values and with no
+  particular ordering.
 * Surrounded by curly braces (looks like dictionaries but without the colons)::
 
    myset = {1, 2, 3, 4, 5}
@@ -1364,8 +1521,12 @@ Sets
 * Values must be hashable
 
 
-Exercise: Collection Types
---------------------------
+Exercises
+=========
+
+
+Exercise - Collection Types
+---------------------------
 
 For this exercise we will be using the file :download:`collections.csv
 <_static/collections.csv>`.
@@ -1386,14 +1547,10 @@ At the end of the script, print out each hobby only once sorted alphabetically
 a functional style. What are the advantages and disadvantages of this method?
 
 
-Exercises
-=========
-
-
 .. rst-class:: small-slide
 
-Exercise: Data Lookup
----------------------
+Exercise - Data Lookup
+----------------------
 
 Sample Data Files: :download:`opendata.lu-sample-2019-03-09.zip
 <_static/data/opendata.lu-sample-2019-03-09.zip>`.
@@ -1435,8 +1592,8 @@ Write a program which:
 
 .. rst-class:: smaller-slide
 
-Exercise: Bytes & Collection Types 2
-------------------------------------
+Exercise - Bytes & Collection Types 2
+-------------------------------------
 
 Using the files :download:`data_latin1.csv <_static/data/data_latin1.csv>` and
 :download:`data_utf8.csv <_static/data/data_utf8.csv>`, write a function which
@@ -1513,7 +1670,7 @@ applications.
 Default Arguments
 -----------------
 
-* Functions can have default arguments.
+* Functions can have default values for arguments.
 * When the function is called, and those arguments are not specified, the
   default value is used:
 
