@@ -949,6 +949,29 @@ applications without third-party (external) libraries.
   name-conflicts). See :pep:`328`.
 
 
+Essential Modules
+-----------------
+
+* :py:mod:`logging`: Fully featured logging system.
+* :py:mod:`json` for parsing and creating JSON documents.
+* :py:mod:`datetime` & :py:mod:`time` for date/time processing. **Important**:
+  Timezone data is kept *outside* of the stdlib in the module :py:mod:`pytz`.
+  This allows faster updates than the normal release cycle of Python.
+
+Notable Modules
+---------------
+
+* :py:mod:`argparse` for CLI argument handling (successor of both
+* :py:mod:`optparse` and :py:mod:`getopt`).
+* :py:mod:`gettext` for decoupling text translations from source-code using the
+  well-known GNU gettext system.
+* :py:mod:`pathlib` & :py:mod:`os.path` for handling file-system paths.
+* :py:mod:`tempfile` for creating temporary files securely.
+* :py:mod:`sqlite3` for structured persistent data storage without a DB server.
+* :py:mod:`configparser` for working with ``.ini`` files.
+* :py:mod:`hashlib` for calculating common hashes (``md5``, ``sha1``, …)
+
+
 Example - The ``csv`` module
 ----------------------------
 
