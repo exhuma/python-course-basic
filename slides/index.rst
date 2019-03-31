@@ -393,8 +393,8 @@ Python 2 vs Python 3
 
 
 .. note::
-    Python 3.3 reintroduced unicode strings (strings with a ``u`` prefix). This
-    prefix was removed in 3.0 and made porting very difficult.
+    Python 3.3 reintroduced unicode strings (strings with a ``u`` prefix) which
+    was removed in 3.0 and made porting very difficult.
 
 
 Python 2 - End of Life: 2020
