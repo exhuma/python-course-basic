@@ -404,8 +404,8 @@ Python 2 vs Python 3
 * Don't use 3.0, 3.1 or 3.2 when migrating from Python 2 (unicode literals).
 * Improved Unicode support. (bytes ≠ text, developer in full control).
 * Iterators everywhere (:py:func:`map`, :py:func:`filter`, |ell|).
-* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`, but
-  backports exist).
+* No new features are added to Python 2 (f.ex.: :py:mod:`asyncio`,
+  "f-strings").
 * *BUT:* Legacy platforms may only support Python 2.
 
 
