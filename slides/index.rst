@@ -48,7 +48,21 @@ This course covers the basics to be able to write simple Python applications:
 * Standard Library
 
 
+Course Organisation
+-------------------
+
+* The course is **fast-paced**. We have 6 hourse to cover the basics which
+  allow you to write Python applications.
+* Basic (language-neutral) programming topics are skipped. We will not explain
+  what variables, loops, branches, classes, … are.
+* This course aims to get at something practical (reading data from text files)
+  *fast*. The first examples will be basic and will be improved step-by-step.
+* Hands-on exercises are limited due to time-constraints.
+* Slides contain links to the important references.
+
+
 .. include:: ../common/introduction.rst
+
 
 
 Code examples in these slides
