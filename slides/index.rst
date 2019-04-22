@@ -222,11 +222,11 @@ Linux
 -----
 
 * Available by default on most Unix platforms.
-* Packaged default may either be Python 2 (Debian, Red-Hat, Ubuntu < 16.04), or
-  Python 3 (Arch, Ubuntu ≥ 16.04).
 * Python 2 and 3 can both happily live on the same system without interfering
   with each other (f.ex. the ``python`` and ``python3`` packages on debian and
   derivates).
+* **On most systems, running "python" will launch Python 2.** Use ``python3``
+  to start Python 3!
 
 .. note::
 
