@@ -280,13 +280,24 @@ Birds-Eye View
 * Runs on all major platforms.
 * JIT Compiled (into bytecode).
 * Large community.
-* #3 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
-  (After Java at #1 and C on #2). Based on result of December 2018.
 * Strict Syntax (indentation matters)!
 * *Large* Standard Library ("Batteries Included").
 * Global Interpreter Lock (the GIL)
 * Slow
 
+
+Python in the Developer Community
+---------------------------------
+
+* Fastest growing language in 2019 [SO2019_].
+* 2nd most loved language by developers [SO2019_].
+* Most wanted language by developers since 2016 [SO2019_].
+* In the top 10 tags on StackOverflow.
+* #4 on `TIOBE Index <http://www.tiobe.com/tiobe_index>`_
+  (After Java, C and C++). Based on result of April 2019.
+
+
+.. _SO2019: https://insights.stackoverflow.com/survey/2019
 
 Implementations
 ---------------
