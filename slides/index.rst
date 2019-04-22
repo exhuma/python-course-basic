@@ -348,8 +348,17 @@ Exercise - Hello World!
 * Run the code example: Right click the file and select "Run 'hello'"
 
 
-Duck Typing
------------
+Basics
+======
+
+This chapter covers the minimum you need to know to write simple Python
+scripts.
+
+
+Typing & Duck Typing
+--------------------
+
+Python is "dynamically typed". It is often quoted as "duck typing".
 
     When I see a bird that walks like a duck and swims like a duck and quacks
     like a duck, I call that bird a duck.
@@ -482,13 +491,6 @@ Getting Help
   * Use ``pydoc -b`` (``python -m pydoc -b`` on Windows) to run a local
     web-server on a random port. This is useful if you have no internet
     connection.
-
-
-Basics
-======
-
-This chapter covers the minimum you need to know to write simple Python
-scripts.
 
 
 .. rst-class:: smaller-slide
