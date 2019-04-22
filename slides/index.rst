@@ -552,15 +552,29 @@ Builtin Functions and Working with Files
 * :py:func:`open` is used to access files on the disk (for reading and
   writing).
 * By default files are opened as "text".
-* Using a ``for`` loop on file objects will iterate line-by-line.
+* Using a ``for`` loop on file objects will iterate line-by-line. Newlines are
+  not removed.
 * :py:mod:`pathlib` and :py:mod:`os.path` contain useful functions for working
   with files.
 
 .. nextslide::
     :increment:
 
-.. literalinclude:: ../code/working-with-files/app.py
+.. literalinclude:: _static/code/working-with-files/app.py
    :caption: working-with-files/app.py
+
+For this exercise we will be using the file :download:`hello.txt
+<_static/code/working-with-files/data/hello.txt>`.
+
+
+.. note::
+
+    When reading files in text-mode, Python recognises all of the three common
+    line terminators (``\n``, ``\r\n`` and ``\r``). See `universal newlines`_
+    for details
+
+.. _universal newlines: https://docs.python.org/3/glossary.html#term-universal-newlines
+
 
 
 Looping
