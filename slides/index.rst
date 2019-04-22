@@ -57,7 +57,8 @@ Course Organisation
   what variables, loops, branches, classes, … are.
 * This course aims to get at something practical (reading data from text files)
   *fast*. The first examples will be basic and will be improved step-by-step.
-* Hands-on exercises are limited due to time-constraints.
+* Hands-on exercises are limited due to time-constraints. **Try the provided
+  code-sample and read them attentively.**
 * Slides contain links to the important references.
 
 
@@ -625,7 +626,11 @@ This function will return a "file-like object" which has low-level methods like
 .. nextslide::
     :increment:
 
-.. literalinclude:: ../code/csv1/app.py
+.. rst-class:: smaller
+
+Data file: :download:`data.csv <_static/code/csv1/data.csv>`.
+
+.. literalinclude:: _static/code/csv1/app.py
    :caption: csv1/app.py
 
 .. nextslide::
@@ -679,7 +684,6 @@ Classes
 
 * Classes are introduced using the ``class`` keyword.
 * Classes can inherit from multiple other classes.
-* There are no interfaces.
 * Classes offer advanced programming techniques not covered in this course
   (static-methods, class-methods, properties, descriptors)
 
@@ -742,7 +746,7 @@ Modules
 * Importing will cause ``.pyc`` files to be created (inside the ``__pycache__``
   folder). They are auto-generated and don't belong into revision control.
 * Imports are cached. The code inside a module is only interpreted on first
-  import.
+  import. (Advanced: The cached modules are available in ``sys.modules``).
 * Therefore, modules can be abused as global variable storage & singletons
   (with all the risks this implies).
 
@@ -791,7 +795,11 @@ Example tree::
       #    mypackage
       #    ├── __init__.py    <--- Marks folder as package
       #    ├── localmodule.py
-      #    └── app.py         <--- code below is in this file
+      #    └── app.py
+
+
+.. code-block:: python
+    :caption: mypackage/app.py
 
       # Relative import (recommended, but only works in distributed packages)
       from .localmodule import func
@@ -1051,9 +1059,12 @@ Boolean
 Testing for Truth & Falsy Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Python many value are considered as ``False`` without converting to ``bool``
-when they are used in a place where a boolean value is expected. The most
-common places are ``if`` and ``while`` blocks:
+In Python many values are considered as ``False`` without converting to
+``bool`` when they are used in a place where a boolean value is expected. The
+most common places are ``if`` and ``while`` blocks.
+
+The value "seen" by Python can be tested by converting it to a boolean using
+``bool(value)``. But this conversion is not necessary in production code.
 
 .. code-block:: python
 
@@ -1122,11 +1133,26 @@ Exercise - Comparison with Other Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Go to http://repl.it/ and try to execute ``20 + "22"`` in Python, PHP and
-JavaScript.
+JavaScript (Links to interpreters are at the bottom of the page).
 
 * What are the results?
 * What does this tell you?
 * What are the advantages & disadvantages of strict/lenient coercion?
+
+
+.. note::
+
+    PHP Code::
+
+        echo(20 + "22");
+
+    Python Code::
+
+        print(20 + "22")
+
+    JavaScript Code::
+
+        20 + "22";
 
 The Standard Library
 ====================
@@ -1201,7 +1227,7 @@ function should do the following:
     :py:class:`decimal.Decimal` for monetary values).
   * Split the 7 :sup:`th` column (index 6) into a list of strings.
   * **(optional)** Add a new column at the end which contains the ``MD5``
-    hex-digest of the whole line (see :py:func:`hashlib.md5`).
+    hex-digest of the whole line, values only (see :py:func:`hashlib.md5`).
 
     * MD5 sums can only be calculated on bytes (not strings)
 
@@ -1319,8 +1345,8 @@ crash. Instead, log an error message using the :py:mod:`logging` module:
 Edit the CSV file manually to trigger errors.
 
 
-Side-Note: logging
-------------------
+Logging
+-------
 
 * Use :py:func:`print` **only** if you display text to a user in a CLI
   application or if you write to a file.
