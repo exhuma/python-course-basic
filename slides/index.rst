@@ -472,7 +472,11 @@ By convention, lines with ``>>>`` represent a REPL prompt.
 * The default REPL can be customized using a Python script and setting
   ``PYTHONSTARTUP`` o that file. For example: `exhuma/dotfiles/.pystartup
   <https://github.com/exhuma/dotfiles/blob/master/.pystartup>`_
-* Alternative Python Shell: https://ipython.org/
+* Alternative Python Shell: https://ipython.org/::
+
+    $ pip install --user ipython
+    $ source /path/to/env/bin/activate  # if needed
+    $ ipython
 
 
 Getting Help
