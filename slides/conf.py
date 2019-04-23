@@ -297,4 +297,6 @@ slide_numbers = True
 intersphinx_mapping = {
     'https://docs.python.org/3/': None,
     'http://flask.pocoo.org/docs/0.12/': None,
+    'http://flask.pocoo.org/docs/0.12/': None,
+    'http://pytz.sourceforge.net/': None,
 }
