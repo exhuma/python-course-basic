@@ -3,13 +3,22 @@ from os.path import abspath
 
 from fabric.connection import Connection
 from invoke import task
+from patchwork.transfers import rsync as rsync_
 
-www = Connection('michel.albert.lu')
+www = Connection('ec2-user@michel.albert.lu')
 
-INSTANCE = '2018'
+INSTANCE = '2019'
 VIRTUAL_ENV = abspath('./env')
 ENVPATH = '%s/bin:%s' % (VIRTUAL_ENV, environ['PATH'])
 CUSTOM_ENV = {'PATH': ENVPATH, 'VIRTUAL_ENV': VIRTUAL_ENV}
+
+
+def rsync(ctx, *args, **kwargs):  # type: ignore
+    """Ugly workaround for https://github.com/fabric/patchwork/issues/16."""
+    ssh_agent = environ.get('SSH_AUTH_SOCK', None)
+    if ssh_agent:
+        ctx.config['run']['env']['SSH_AUTH_SOCK'] = ssh_agent
+    return rsync_(ctx, *args, **kwargs)
 
 
 @task
@@ -92,8 +101,8 @@ def publish(ctx):
     build_html(ctx)
     build_slides(ctx)
     www.run('mkdir -p %s' % remote_folder)
-    www.put('slides/_build/html', remote_folder)
-    www.put('slides/_build/slides', remote_folder)
+    rsync(www, 'slides/_build/html', remote_folder)
+    rsync(www, 'slides/_build/slides', remote_folder)
     try:
         www.run('test -h {0} && rm {0}'.format(latest_folder))
     except Exception as exc:
