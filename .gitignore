@@ -1,0 +1,3 @@
+*.pyc
+slides/_build
+slides/_static
