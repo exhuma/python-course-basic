@@ -48,10 +48,7 @@ def publish(ctx):
     www.run('ln -s %s %s' % (remote_folder, latest_folder))
 
     pack_folder = 'python-basic-%s' % INSTANCE
-    ctx.run('mkdir -p %s' % pack_folder)
-    ctx.run('cp -r reveal.js %s' % pack_folder)
-    ctx.run('rm -rf %s/reveal.js/node_modules' % pack_folder)
-    ctx.run('tar czf %s.tar.gz %s' % (pack_folder, pack_folder))
-    ctx.run('rm -rf %s' % pack_folder)
-    www.put('%s.tar.gz' % pack_folder, remote_folder)
-    ctx.run('rm -f %s.tar.gz' % pack_folder)
+    with www.cd(remote_folder):
+        www.run("cp -r slides %s" % pack_folder)
+        www.run('tar czf %s.tar.gz %s' % (pack_folder, pack_folder))
+        www.run('rm -rf %s' % pack_folder)
