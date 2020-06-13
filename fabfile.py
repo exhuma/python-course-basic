@@ -29,6 +29,17 @@ def publish(ctx):
     www.run('mkdir -p %s' % remote_folder)
     rsync(www, 'reveal.js', remote_folder, delete=True, exclude=[
         "node_modules",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "README.md",
+        "css",
+        "demo.html",
+        "examples",
+        "gulpfile.js",
+        "js",
+        "package-lock.json",
+        "package.json",
+        "test",
     ])
     try:
         www.run('test -h {0} && rm {0}'.format(latest_folder))
