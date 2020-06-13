@@ -314,7 +314,7 @@ myset = {1, 2, 3, 4, 5}
 #### Simple List Processing
 
 For this demo we will be using the file
-[collections.csv](/data/collections.csv).
+[collections.csv](data/collections.csv).
 
 In this file, each entry is split into two lines (Line 1 and line 2 are the
 headers).
@@ -331,7 +331,7 @@ alphabetically.
 
 #### Data Lookup
 
-Sample Data Files: [data.public.lu-sample-2019-03-09.zip](/data/data.public.lu-sample-2019-03-09.zip)
+Sample Data Files: [data.public.lu-sample-2019-03-09.zip](data/data.public.lu-sample-2019-03-09.zip)
 
 * The file `caclr/TR.DICACOLO.RUCP` contains location names in position 120-160
   and ZIP codes in position 200-204. The file uses the `cp1252` encoding

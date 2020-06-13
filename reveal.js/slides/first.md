@@ -753,8 +753,8 @@ The "de-facto" standard for documentation markup is ["reStructuredText"][rst].
 It is most of the time processed by [Sphinx][sphinx] to generate HTML
 documentation.
 
-<img src="/images/sphinxheader.png" />
-<img src="/images/rst.png" />
+<img src="images/sphinxheader.png" />
+<img src="images/rst.png" />
 
 [rst]: https://docutils.sourceforge.io/rst.html
 [sphinx]: https://www.sphinx-doc.org/
