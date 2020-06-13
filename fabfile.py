@@ -27,7 +27,7 @@ def publish(ctx):
     remote_folder = '%s/python-basic-%s' % (remote_root, INSTANCE)
     latest_folder = '%s/python-basic-latest' % remote_root
     www.run('mkdir -p %s' % remote_folder)
-    rsync(www, 'reveal.js', remote_folder, delete=True, exclude=[
+    rsync(www, 'slides', remote_folder, delete=True, exclude=[
         "node_modules",
         "CONTRIBUTING.md",
         "LICENSE",
