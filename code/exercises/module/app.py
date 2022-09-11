@@ -1,5 +1,5 @@
 import util
 
 
-for row in util.read_file('data.csv', ';'):
+for row in util.read_file("data.csv", ";"):
     print(row)

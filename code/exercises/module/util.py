@@ -11,5 +11,5 @@ def read_file(filename, separator):
     for line in infile:
         stripped_line = line.strip()
         columns = stripped_line.split(separator)
-        output.append([columns[0], columns[1])
+        output.append([columns[0], columns[1]])
     return output

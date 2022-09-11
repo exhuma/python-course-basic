@@ -14,6 +14,7 @@ This exercises demonstrates:
 """
 import csv
 
+
 def merge(cities_file, people_file):
     """
     This function takes a file of people and a file of cities and returns a
@@ -50,9 +51,9 @@ def merge(cities_file, people_file):
 
 
 # This will start the application, opeb both files and run the merge operation
-if __name__ == '__main__':
-    with open('city_lookup_cities.csv') as infile_cities:
-        with open('city_lookup_people.csv') as infile_people:
+if __name__ == "__main__":
+    with open("city_lookup_cities.csv") as infile_cities:
+        with open("city_lookup_people.csv") as infile_people:
             output = merge(infile_cities, infile_people)
             for row in output:
                 print(row)

@@ -23,13 +23,13 @@ def print_record(record):
     """
     This function takes a record from the file and prints is to the console.
     """
-    print('First Name: %s' % record[0])
-    print('Last Name: %s' % record[1])
-    print('Hobbies: %s' % record[2])
-    print('Phone: %s' % record[3])
-    print('E-Mail: %s' % record[4])
-    print('Address:\n%s' % record[5])
-    print(80 * '-')
+    print("First Name: %s" % record[0])
+    print("Last Name: %s" % record[1])
+    print("Hobbies: %s" % record[2])
+    print("Phone: %s" % record[3])
+    print("E-Mail: %s" % record[4])
+    print("Address:\n%s" % record[5])
+    print(80 * "-")
 
 
 def traditional(reader):
@@ -66,7 +66,7 @@ def traditional(reader):
             # If he do *not* have an even row, we know that we hit the
             # beginning of a new record and everything we collected in
             # "current_record" needs to printed out and eptied.
-            hobbies |= set(current_record[2].split(','))
+            hobbies |= set(current_record[2].split(","))
             # We can finally print the row...
             print_record(current_record)
             # We can also remove anything in the currently collected columns
@@ -123,22 +123,21 @@ def pythonic(reader):
 
         # ... and us a binary "or" operator to combine the two sets. This is
         # the same as calling the function hobbies = hobbies.union(...)
-        hobbies = hobbies | set(line1[2].split(','))
+        hobbies = hobbies | set(line1[2].split(","))
     return hobbies
 
 
-with open('collections.csv') as infile:
+with open("collections.csv") as infile:
     reader = csv.reader(infile)
-    variant = input(
-        'Which code do you want to execute [traditional|advanced]? ')
-    if variant.strip().lower() == 'traditional':
+    variant = input("Which code do you want to execute [traditional|advanced]? ")
+    if variant.strip().lower() == "traditional":
         hobbies = traditional(reader)
-    elif variant.strip().lower() == 'advanced':
+    elif variant.strip().lower() == "advanced":
         hobbies = pythonic(reader)
     else:
-        print('Unknown variant')
+        print("Unknown variant")
         hobbies = set()
 
-    print('All hobbies:')
+    print("All hobbies:")
     for hobby in sorted(hobbies):
         print(hobby)

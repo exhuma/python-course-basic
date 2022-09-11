@@ -14,8 +14,8 @@ def http_get(url):
     Fetch the contents of *url* using a HTTP GET call
     """
     # Headers must be set, otherwirse we get a "403 Forbidden" error
-    headers = {'User-Agent': 'pythontraining/pwdchecker'}
-    request = Request(url, headers=headers, method='GET')
+    headers = {"User-Agent": "pythontraining/pwdchecker"}
+    request = Request(url, headers=headers, method="GET")
 
     try:
         response = urlopen(request)
@@ -27,7 +27,7 @@ def http_get(url):
         print(exc, file=sys.stderr)
         # After showing the erro to the user we return a "default" value: An
         # empty "bytes" object
-        return b''
+        return b""
 
     # We check the "code" of the response. In HTTP the 200 code means that
     # everything is OK. If it is anything else the API did not return what we
@@ -35,9 +35,9 @@ def http_get(url):
     # went wrong. We show this to the user and return a default empty-bytes
     # object again
     if response.code != 200:
-        msg = '%d %r' % (response.code, response.read())
+        msg = "%d %r" % (response.code, response.read())
         print(msg, file=sys.stderr)
-        return b''
+        return b""
 
     # If we reached this point (if we have not "returned from the function yet)
     # we should have no error (code was 200 and we had no exception). We can
@@ -52,7 +52,7 @@ def get_password_parts():
     following, remaining characters as two separate values.
     """
     try:
-        passwd = getpass('Enter your password: ')
+        passwd = getpass("Enter your password: ")
     except KeyboardInterrupt:
         # The "KeyboardInterrupt" is a special exception which is thrown/raised
         # when the user presses "CTRL-C" on the keyboard. We catch this and
@@ -74,7 +74,7 @@ def get_password_parts():
 
     # Now we can convert the password to a hexadecimal representation of a
     # SHA-1 hash., split it into the two parts and return the values.
-    encoded_password = passwd.encode('utf8')
+    encoded_password = passwd.encode("utf8")
     hsh = sha1(encoded_password).hexdigest()
     head, tail = hsh[:5], hsh[5:]
     return head, tail
@@ -85,14 +85,14 @@ def fetch_group(group):
     Calls a remote API to fetch all hashes from a given group.
     """
     # Make the HTTP call to fetch the data
-    url = 'https://api.pwnedpasswords.com/range/' + group
+    url = "https://api.pwnedpasswords.com/range/" + group
     data = http_get(url)
     # The data will be returnedas bytes and we need to decode it. It is up to
     # the you, the developer to make sure that you use the correct encoding.
     # This is either documented fo the "content-type" of the HTTP response (for
     # example "application/json" is always UTF-8. If it is not possible to
     # determine it from the content-type, it should be documented on the API.
-    text = data.decode('ascii')
+    text = data.decode("ascii")
     return text
 
 
@@ -113,7 +113,7 @@ def parse_results(data):
         # occurrence of the separator, the separator and the remaining part.
         # In Python, by convention the variable "_" can be used for values that
         # you want to ignore.
-        tmp, _, num_hits = line.partition(':')
+        tmp, _, num_hits = line.partition(":")
         num_hits = int(num_hits)
         hits[tmp] = num_hits
     return hits
@@ -135,7 +135,7 @@ def main():
         # value (in this case: 0) which will be returned if the key does not
         # exist in the dictionary.
         hits = hits_map.get(tail.upper(), 0)
-        print('Password was hit %d times' % hits)
+        print("Password was hit %d times" % hits)
 
         # Ask the user one-more time for a password to continue the loop
         head, tail = get_password_parts()
@@ -143,5 +143,5 @@ def main():
 
 # This "if" line, is not strictly necessary, but it is good programming
 # practice for console scripts.
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

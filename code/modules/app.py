@@ -3,4 +3,4 @@
 # name-space clean.
 from util import read_file
 
-read_file('data.csv')
+read_file("data.csv")

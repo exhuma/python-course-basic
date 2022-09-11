@@ -9,6 +9,6 @@ for i, item in enumerate(mydata):
     print(i, item)
 
 # Loop until the user wants to quit
-response = 'y'
-while response != 'n':
-    response = input('Do you want to continue [y/n]?')
+response = "y"
+while response != "n":
+    response = input("Do you want to continue [y/n]?")

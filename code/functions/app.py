@@ -9,8 +9,8 @@ def read_file(filename):
 
     for line in infile:
         stripped_line = line.strip()
-        columns = stripped_line.split(';')
+        columns = stripped_line.split(";")
         print(repr(columns))
 
 
-read_file('data.csv')
+read_file("data.csv")

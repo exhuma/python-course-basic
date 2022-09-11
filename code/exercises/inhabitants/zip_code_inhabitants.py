@@ -1,13 +1,13 @@
-'''
+"""
 Merges data from multiple files
-'''
+"""
 
 import csv
 
 
 def location_to_zips():
     output = {}
-    with open('caclr/TR.DICACOLO.RUCP', encoding='cp1252') as infile:
+    with open("caclr/TR.DICACOLO.RUCP", encoding="cp1252") as infile:
         for row in infile:
             location = row[120:160].strip()
             zipcode = row[200:204].strip()
@@ -20,7 +20,7 @@ def location_to_zips():
 
 def zip_to_inhabitants():
     output = {}
-    with open('rnrpp-code-postal.csv') as infile:
+    with open("rnrpp-code-postal.csv") as infile:
         reader = csv.reader(infile)
         next(reader)
         for code, inhabitants in reader:
@@ -44,7 +44,7 @@ def main():
     data = merge_data()
     final_output = sorted(data, key=lambda item: -item[1])
     for row in final_output[:10]:
-        print('%30s %d' % row)
+        print("%30s %d" % row)
 
 
 main()
