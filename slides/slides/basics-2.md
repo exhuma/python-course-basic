@@ -405,7 +405,7 @@ def http_get(url):
     '''
     Fetch the contents of *url* using a HTTP GET call
     '''
-    # Headers must be set, otherwirse we get a "403 Forbidden" error
+    # Headers must be set, otherwise we get a "403 Forbidden" error
     headers = {'User-Agent': 'pythontraining/pwdchecker'}
     request = Request(url, headers=headers, method='GET')
     response = urlopen(request)
