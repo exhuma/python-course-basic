@@ -110,14 +110,15 @@ for more information.
 ^
 
 ```py
-myint = 42              # type: int
-bin_notation = 0b101010 # type: int, base: 2
-hex_notation = 0x2a     # type: int, base: 16
-octal_notation = 0o52   # type: int, base: 8
+myint = 42                  # type: int
+for_readability = 1_000_000 # type: int, value: 1000000
+bin_notation = 0b101010     # type: int, base: 2
+hex_notation = 0x2a         # type: int, base: 16
+octal_notation = 0o52       # type: int, base: 8
 
-myfloat = 3.5           # type: float
-myfloat2 = .3           # type: float
-sci_notation = 1.3E5    # type: float, value: 130000.0
+myfloat = 3.5               # type: float
+myfloat2 = .3               # type: float
+sci_notation = 1.3E5        # type: float, value: 130000.0
 ```
 
 ^
@@ -199,10 +200,10 @@ The value “seen” by Python can be tested by converting it to a boolean using
 <!-- .element: class="prose" -->
 
 ```py
-if <here>:
+if &lt;here&gt;:
     pass
 
-while <here>:
+while &lt;here&gt;:
     pass
 ```
 
@@ -433,7 +434,7 @@ for row in reader:
 
 <!-- .slide: class="prose smaller" -->
 
-#### Demo
+## Demo
 
 We will write a new function `read_data` that takes a filename as argument. The
 file [csv3.csv](data/csv3.csv) can be used as example. The function will do

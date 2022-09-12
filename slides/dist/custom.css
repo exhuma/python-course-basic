@@ -1,3 +1,8 @@
+* {
+    --code-border-color: rgba(223, 153, 24, 0.4);
+    --code-background-color: rgba(0, 0, 0, 0.1);
+}
+
 .admonition {
     border: 1px solid green !important;
 }
@@ -23,10 +28,10 @@
 }
 
 CODE {
-    border: 1px solid #ccc;
+    border: 1px solid var(--code-border-color);
     padding: 0 0.2em 0.1em 0.2em;
     border-radius: 2px;
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--code-background-color);
     color: #444;
 }
 
@@ -75,4 +80,16 @@ IMG.avatar {
 IMG.midline {
     vertical-align: middle;
     margin: 0;
+}
+
+PRE[data-caption]:after {
+    content: attr(data-caption);
+    display: block;
+    border-bottom: 1px solid var(--code-border-color);
+    border-left: 1px solid var(--code-border-color);
+    border-right: 1px solid var(--code-border-color);
+    background-color: var(--code-background-color);
+    margin: 0;
+    padding: 0.05em 0.5em;
+    font-size: 70%;
 }
