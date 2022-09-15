@@ -1,6 +1,5 @@
 """
-This file contains two solutions for the exercise about "collection types"
-(slide 91).
+This file contains two solutions for the exercise about "collection types".
 
 This contains two solutions. The first uses a very traditionaly way of
 programming, while the second "pythonic" method makes use of some useful Python
@@ -129,7 +128,9 @@ def pythonic(reader):
 
 with open("collections.csv") as infile:
     reader = csv.reader(infile)
-    variant = input("Which code do you want to execute [traditional|advanced]? ")
+    variant = input(
+        "Which code do you want to execute [traditional|advanced]? "
+    )
     if variant.strip().lower() == "traditional":
         hobbies = traditional(reader)
     elif variant.strip().lower() == "advanced":

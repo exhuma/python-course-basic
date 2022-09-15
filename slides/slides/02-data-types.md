@@ -291,7 +291,7 @@ libraries.
 
 ^
 
-#### Essential Modules
+## Essential Modules
 
 ^
 
@@ -356,7 +356,7 @@ Helpers for date/time processing.
 
 ---
 
-#### Notable Modules
+## Notable Modules
 
 ^
 
@@ -364,15 +364,6 @@ Helpers for date/time processing.
 
 Allows creating simple to complex parsers for CLI argument handling (successor
 of both `optparse` and `getopt`).
-<!-- .element: class="prose" -->
-
-^
-
-`gettext`
-
-Support for multilingual translations with decoupled translations from
-source-code using the well-known GNU
-[gettext](https://www.gnu.org/software/gettext/) system.
 <!-- .element: class="prose" -->
 
 ^
@@ -424,17 +415,21 @@ The csv module makes it easy to read delimited data. It also deals with:
 import csv
 
 
-infile = open('data.csv')
+infile = open('data/basics.csv')
 reader = csv.reader(infile, delimiter=';')
 for row in reader:
     print(row)
 ```
+<!-- .element: data-caption="code/read-csv.py" -->
 
 ^
 
 <!-- .slide: class="prose smaller" -->
 
 ## Demo
+
+See <code>code/read-csv-demo.py</code>
+<!-- .element: style="font-size: 50%" -->
 
 We will write a new function `read_data` that takes a filename as argument. The
 file [csv3.csv](data/csv3.csv) can be used as example. The function will do

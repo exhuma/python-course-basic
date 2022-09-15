@@ -90,6 +90,9 @@ logging.debug('The error message', exc_info=True)
 
 ### Demo
 
+See <code>code/read-csv-demo-handling-exceptions.py</code>
+<!-- .element: style="font-size: 50%" -->
+
 * Adding error-handling to the previous CSV code for type-conversions
 * Add logging for errors
 
