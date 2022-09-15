@@ -9,17 +9,18 @@ This chapter covers the minimum you need to know to write simple Python scripts.
 ```py
 print("Hello, World!")
 ```
+
 ^
 
 ## Variable Types
 
 Python is “dynamically typed”. It is often quoted as “duck typing”.
 
-  > When I see a bird that walks like a duck and swims like a duck and quacks
-  > like a duck, I call that bird a duck.
-  >
-  > -- James Whitcomb Riley
-^
+> When I see a bird that walks like a duck and swims like a duck and quacks
+> like a duck, I call that bird a duck.
+>
+> -- James Whitcomb Riley
+> ^
 
 ## Typing Comparison
 
@@ -65,21 +66,21 @@ Python is “dynamically typed”. It is often quoted as “duck typing”.
 
 ## Python 2 vs Python 3
 
-* Improved Unicode support. (bytes ≠ text, developer in full control).
-* Iterators everywhere ([map()][map], [filter()][filter], …).
-* No new features are added to Python 2 (f.ex.: [asyncio][asyncio], “f-strings”).
-* *BUT:* Legacy platforms may only support Python 2.
+- Improved Unicode support. (bytes ≠ text, developer in full control).
+- Iterators everywhere ([map()][map], [filter()][filter], …).
+- No new features are added to Python 2 (f.ex.: [asyncio][asyncio], “f-strings”).
+- _BUT:_ Legacy platforms may only support Python 2.
 
 [map]: https://docs.python.org/3/library/functions.html#map
 [filter]: https://docs.python.org/3/library/functions.html#filter
 [asyncio]: https://docs.python.org/3/library/asyncio.html#module-asyncio
+
 ^
 
 ### Python 2 - End of Life: 2020
 
 There is no longer an excuse to use Python 2!
 ^
-
 
 ## Strings & Bytes in Python 2 & 3
 
@@ -118,7 +119,7 @@ There is no longer an excuse to use Python 2!
 
 ### Warning for Python 2
 
-* Always prefix text with u in Python 2. Unless you know exactly that you
-* want bytes!
-* Never use encode on bytes.
-* Never use decode on strings.
+- Always prefix text with u in Python 2. Unless you know exactly that you
+- want bytes!
+- Never use encode on bytes.
+- Never use decode on strings.

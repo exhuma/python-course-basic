@@ -2,6 +2,7 @@
 
 This chapter covers a few topics beyond the fundamental basics, but which
 should nonetheless be understood when developing Python applications.
+
 <!-- .element: class="smaller prose" -->
 
 ---
@@ -10,11 +11,11 @@ should nonetheless be understood when developing Python applications.
 
 <!-- .slide: class="prose" -->
 
-* Python’s error-handling mechanism.
-* Triggered automatically by Python
-* Triggered manually by using `raise`
-* Can be caught/handled using a `try/except` block.
-* Unhandled exceptions will crash the application.
+- Python’s error-handling mechanism.
+- Triggered automatically by Python
+- Triggered manually by using `raise`
+- Can be caught/handled using a `try/except` block.
+- Unhandled exceptions will crash the application.
 
 ^
 
@@ -34,10 +35,10 @@ KeyError: 'z'
 
 ### Manually raising an exception
 
-* By default, Python will raise an exception of one of the [builtin
+- By default, Python will raise an exception of one of the [builtin
   types](https://docs.python.org/3/library/exceptions.html#exception-hierarchy).
-* You can create your own exceptions by subclassing.
-* Raising (triggering/throwing) exceptions is done using the `raise` keyword:
+- You can create your own exceptions by subclassing.
+- Raising (triggering/throwing) exceptions is done using the `raise` keyword:
 
 ```py
 class MyException(Exception):
@@ -52,10 +53,9 @@ raise MyException('Hello World!')
 
 ### Handling Exceptions
 
-
-* If not handled, exceptions will crash the application and print a traceback
+- If not handled, exceptions will crash the application and print a traceback
   on `stderr`.
-* They can be handled using a `try/except` block:
+- They can be handled using a `try/except` block:
 
 ```py
 from example_exception import foo
@@ -68,18 +68,18 @@ except KeyError as the_exception:
 ```
 
 Always log the traceback of an exception using either
-`logging.debug(the_exception, exc_info=True)` or `logging.exception('Simple
-description')`.
+`logging.debug(the_exception, exc_info=True)` or `logging.exception('Simple description')`.
+
 <!-- .element: class="admonition tip smaller" -->
 
 ---
 
 ### Logging
 
-* Use `print()` only if you display text to a user in a CLI application or if
+- Use `print()` only if you display text to a user in a CLI application or if
   you write to a file.
-* **For all other cases use the logging module**
-* When logging inside an exception use the `exc_info=True` argument. This cases
+- **For all other cases use the logging module**
+- When logging inside an exception use the `exc_info=True` argument. This cases
   the traceback to be logged and can be invaluable when debugging:
 
 ```py
@@ -91,10 +91,11 @@ logging.debug('The error message', exc_info=True)
 ### Demo
 
 See <code>code/read-csv-demo-handling-exceptions.py</code>
+
 <!-- .element: style="font-size: 50%" -->
 
-* Adding error-handling to the previous CSV code for type-conversions
-* Add logging for errors
+- Adding error-handling to the previous CSV code for type-conversions
+- Add logging for errors
 
 ---
 
@@ -142,8 +143,8 @@ Python makes it relatively easy to avoid accessing items by index (see for
 example `zip()`). Enumerating lists like this only needed in rare cases
 (calculating progress, logging the current line during text-file processing,
 …).
-<!-- .element: class="admonition tip smaller" -->
 
+<!-- .element: class="admonition tip smaller" -->
 
 ---
 
@@ -152,10 +153,12 @@ example `zip()`). Enumerating lists like this only needed in rare cases
 #### Collections
 
 Also on https://docs.python.org/3/library/stdtypes.html
+
 <!-- .element: class="prose smaller" -->
 
 So far we’ve only covered “scalar” values. This chapter covers the most
 commonly used “collection” types in Python.
+
 <!-- .element: class="prose smaller" -->
 
 ---
@@ -170,13 +173,13 @@ mylist.append('one more value')
 
 ^
 
-* Used for collections with variable length and which have a specific ordering.
-* Square brackets `[...]`
-* Very similar to arrays in other languages.
-* Heterogenuous
-* Indexable from both left (`mylist[3]`) and right (`mylist[-3]`).
-* Slicing: `mylist[3:7]`
-* Mutable:
+- Used for collections with variable length and which have a specific ordering.
+- Square brackets `[...]`
+- Very similar to arrays in other languages.
+- Heterogenuous
+- Indexable from both left (`mylist[3]`) and right (`mylist[-3]`).
+- Slicing: `mylist[3:7]`
+- Mutable:
 
 ```py
 mylist[2] = new_value
@@ -190,35 +193,36 @@ mylist.append(10)
 ```py
 data = b'H\xc3\xa9llo World'
 ```
+
 ^
 
-* Builtin type: `bytes`.
-* byte-literals look just like strings, but with a `b` prefix:
-* Immutable (for byte-operations see `bytearray`).
+- Builtin type: `bytes`.
+- byte-literals look just like strings, but with a `b` prefix:
+- Immutable (for byte-operations see `bytearray`).
 
 ^
 
 Almost identical API to strings. The key differences are:
 
-* Bytes almost always come “from the outside world” (hard-disk, network, …)
-* Strings are almost always meant to be read by a human (bytes not so much).
-* Bytes can only be “decoded” into strings
-* Strings can only be “encoded” into bytes
+- Bytes almost always come “from the outside world” (hard-disk, network, …)
+- Strings are almost always meant to be read by a human (bytes not so much).
+- Bytes can only be “decoded” into strings
+- Strings can only be “encoded” into bytes
 
 ^
 
 Bytes are (generally) used to talk to machines:
 
-  * Write data to files
-  * Send data over a network socket
+- Write data to files
+- Send data over a network socket
 
 ^
 
 String are used to be displayed to a human user:
 
-  * Text on a button label
-  * CLI output, HTML content
-  * …
+- Text on a button label
+- CLI output, HTML content
+- …
 
 ^
 
@@ -239,11 +243,11 @@ mytuple[3] == 4
 
 ^
 
-* For collections where *position* means something
-* Parentheses `()`
-* Like lists, but immutable.
-* Hashable (if contents are hashable)
-* Recommended alternative: `collections.namedtuple()`
+- For collections where _position_ means something
+- Parentheses `()`
+- Like lists, but immutable.
+- Hashable (if contents are hashable)
+- Recommended alternative: `collections.namedtuple()`
 
 ^
 
@@ -266,15 +270,15 @@ mydict["a"] == 1
 
 ^
 
-* Used to map from one value to another.
-* Curly braces `{}` and colons `:`
-* Key/Value stores (Like `HashTables` in Java or C#)
-* Looping over key/values is easy using:
+- Used to map from one value to another.
+- Curly braces `{}` and colons `:`
+- Key/Value stores (Like `HashTables` in Java or C#)
+- Looping over key/values is easy using:
   ```py
   for key, value in mydict.items():
      ...
   ```
-* Starting from Python 3.7, ordering of keys is retained.
+- Starting from Python 3.7, ordering of keys is retained.
 
 ^
 
@@ -282,8 +286,8 @@ mydict["a"] == 1
 
 Do not rely on ordering behaviour if your application runs in an older Python
 environment!
-<!-- .element: class="admonition warning" -->
 
+<!-- .element: class="admonition warning" -->
 
 ---
 
@@ -295,16 +299,16 @@ myset = {1, 2, 3, 4, 5}
 
 ^
 
-* Used for collections of variable size with unique values and with no
+- Used for collections of variable size with unique values and with no
   particular ordering.
-* curly braces `{}`
-* [set()](https://docs.python.org/3/library/stdtypes.html#set) can be used to
+- curly braces `{}`
+- [set()](https://docs.python.org/3/library/stdtypes.html#set) can be used to
   convert any iterable to a set (dropping duplicates).
-* Useful methods like
+- Useful methods like
   [set.union()](https://docs.python.org/3/library/stdtypes.html#frozenset.union),
   [set.intersection()](https://docs.python.org/3/library/stdtypes.html#frozenset.intersection), …
-* If a value is already in the set, adding it again will have no effect.
-* Values must be hashable
+- If a value is already in the set, adding it again will have no effect.
+- Values must be hashable
 
 ---
 
@@ -336,18 +340,18 @@ alphabetically.
 
 Sample Data Files: [data.public.lu-sample-2019-03-09.zip](data/data.public.lu-sample-2019-03-09.zip)
 
-* The file `caclr/TR.DICACOLO.RUCP` contains location names in position 120-160
+- The file `caclr/TR.DICACOLO.RUCP` contains location names in position 120-160
   and ZIP codes in position 200-204. The file uses the `cp1252` encoding
-* The file `rnrpp-code-postal.csv` contains the number of inhabitants per ZIP
+- The file `rnrpp-code-postal.csv` contains the number of inhabitants per ZIP
   code.
 
 We will write a program which:
 
-* Reads the data from both files
-* For each ZIP-code per location, look up the number of inhabitants and calculate the sum
-* Sort the list by descending number of inhabitants
-* Print out the location name and number of inhabitants of the top 10 items using 30 characters for the location, right aligned.
-* Sample output is on the following slide
+- Reads the data from both files
+- For each ZIP-code per location, look up the number of inhabitants and calculate the sum
+- Sort the list by descending number of inhabitants
+- Print out the location name and number of inhabitants of the top 10 items using 30 characters for the location, right aligned.
+- Sample output is on the following slide
 
 ^
 
@@ -369,6 +373,7 @@ Esch-sur-Alzette 35635
 ---
 
 #### Bytes \& Collections
+
 <!-- .slide: class="prose" -->
 
 Using the files [data_latin1.csv](data/data_latin1.csv) and
@@ -380,8 +385,8 @@ assumed that each line is unique in each file.
 
 The program will print:
 
-* Which lines are missing in the first file
-* Which lines are missing in the second file
+- Which lines are missing in the first file
+- Which lines are missing in the second file
 
 ---
 
@@ -423,14 +428,15 @@ def http_get(url):
 Until now we have only seen very simple function definitions. This small
 chapter discusses a few more advanced techniques which are very useful in most
 applications.
+
 <!-- .element: class="prose smaller" -->
 
 ---
 
 ### Default Arguments
 
-* Functions can have default values for arguments.
-* When the function is called, and those arguments are not specified, the
+- Functions can have default values for arguments.
+- When the function is called, and those arguments are not specified, the
   default value is used:
 
 ```py
@@ -521,6 +527,7 @@ class MyClass:
 ^
 
 ### Static Methods
+
 <!-- .slide: class="prose" -->
 
 Static methods are prefixed with `@staticmethod`
@@ -543,6 +550,7 @@ print(MyClass.my_method())
 ^
 
 ### Class Methods
+
 <!-- .slide: class="prose" -->
 
 Class methods are prefixed with `@classmethod`
@@ -567,6 +575,7 @@ class MyClass:
 ^
 
 ### Abstract Methods
+
 <!-- .slide: class="smaller prose" -->
 
 The standard module

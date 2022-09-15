@@ -10,15 +10,16 @@ print("Hello World!")
 
 This course covers the basics to be able to write simple Python applications:
 
-* Installation
-* Running Python code
-* Basic syntax & data types
-* Code organisation
-* Standard Library
+- Installation
+- Running Python code
+- Basic syntax & data types
+- Code organisation
+- Standard Library
 
 ---
 
 ## Course Organisation
+
 ^
 
 ### Fast Paced!
@@ -46,12 +47,12 @@ code-sample and read them attentively.
 
 ## About Me
 
-* First program written in 1989.
-* Professional Software Developer since 1998.
-* GFA-Basic → Delphi → PHP → Java → Python → ?
-* Degree in Computer Science (BSc CS AI).
-* Lead Software Developer in Post BackBone-OSS.
-* Semantics Nerd, Gamer, Geek.
+- First program written in 1989.
+- Professional Software Developer since 1998.
+- GFA-Basic → Delphi → PHP → Java → Python → ?
+- Degree in Computer Science (BSc CS AI).
+- Lead Software Developer in Post BackBone-OSS.
+- Semantics Nerd, Gamer, Geek.
 
 ---
 

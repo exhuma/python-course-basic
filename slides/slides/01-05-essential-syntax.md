@@ -2,11 +2,11 @@
 
 ^
 
-* The variable type is implicit, but strong (dynamic typing)
-* Variables are assigned with the `=` operator
-* Line-comments start with a `#` character. Block comments don’t exist.
-* Lines do not need to end with a semicolon (`;`)
-* Blocks are defined by indentation. `:` starts a new block (like `begin` or
+- The variable type is implicit, but strong (dynamic typing)
+- Variables are assigned with the `=` operator
+- Line-comments start with a `#` character. Block comments don’t exist.
+- Lines do not need to end with a semicolon (`;`)
+- Blocks are defined by indentation. `:` starts a new block (like `begin` or
   `{`)
 
 ^
@@ -19,6 +19,7 @@ my_variable = 10
 if my_variable >= 10:
     print("Yes")
 ```
+
 ^
 
 ### Simple Operations
@@ -39,21 +40,21 @@ b = 3
 print(a * b)
 ```
 
-
 ---
 
 ### Builtin Functions and Working with Files
 
-* Python has a few [builtin functions][builtins] which are very useful.
-* [open()][open] is used to access files on the disk (for reading and writing).
-* By default files are opened as “text”.
-* Using a for loop on file objects will iterate line-by-line. Newlines are not removed.
-* [pathlib][pathlib] and [os.path][path] contain useful functions for working with files.
+- Python has a few [builtin functions][builtins] which are very useful.
+- [open()][open] is used to access files on the disk (for reading and writing).
+- By default files are opened as “text”.
+- Using a for loop on file objects will iterate line-by-line. Newlines are not removed.
+- [pathlib][pathlib] and [os.path][path] contain useful functions for working with files.
 
 [builtins]: https://docs.python.org/3/library/functions.html
 [open]: https://docs.python.org/3/library/functions.html#open
 [pathlib]: https://docs.python.org/3/library/pathlib.html#module-pathlib
 [path]: https://docs.python.org/3/library/os.path.html#module-os.path
+
 ^
 
 ### Reading a File
@@ -65,6 +66,7 @@ input_file = open('data/hello.txt')
 for row in input_file:
     print(row)
 ```
+
 <!-- .element: data-caption="code/reading-a-file.py" -->
 
 ```txt
@@ -72,6 +74,7 @@ This is the first line
 
 This is line #3
 ```
+
 <!-- .element: data-caption="code/data/reading-a-file.txt" -->
 
 ---
@@ -81,15 +84,16 @@ This is line #3
 Executing code on a collection of items (looping) can be done in several ways
 in Python:
 
-* A `for ... in` ... loop
-* A `while ...` loop
-* A comprehension expression (not covered in this course)
-* Functional aproach using [map()][map], [filter()][filter] and
+- A `for ... in` ... loop
+- A `while ...` loop
+- A comprehension expression (not covered in this course)
+- Functional aproach using [map()][map], [filter()][filter] and
   [functools.reduce()][reduce] (not covered in this course).
 
 [map]: https://docs.python.org/3/library/functions.html#map
 [filter]: https://docs.python.org/3/library/functions.html#filter
 [reduce]: https://docs.python.org/3/library/functools.html#functools.reduce
+
 ^
 
 ### Example
@@ -110,8 +114,8 @@ response = 'y'
 while response != 'n':
     response = input('Do you want to continue [y/n]?')
 ```
-<!-- .element: data-caption="code/looping.py" -->
 
+<!-- .element: data-caption="code/looping.py" -->
 
 ---
 
@@ -124,9 +128,11 @@ This function will return a “file-like object” which has low-level methods l
 [read]: https://docs.python.org/3/library/io.html#io.RawIOBase.read
 [write]: https://docs.python.org/3/library/io.html#io.RawIOBase.write
 [open]: https://docs.python.org/3/library/functions.html#open
+
 ^
 
 ### Example
+
 ```py
 # Open a file in default ("read") mode
 infile = open('data/basics.csv')
@@ -147,6 +153,7 @@ for line in infile:
     # includes the proper quotes (and escapes).
     print(repr(columns))
 ```
+
 <!-- .element: class="smallcode" data-caption="code/read-csv.py" -->
 
 ^
@@ -158,6 +165,7 @@ name;first_name;phone;email
 Doe;John;12345;jdoe@exampe.com
 Dane;John;12345;jdoe@exampe.com
 ```
+
 <!-- .element: class="smallcode" data-caption="code/data/basics.csv" -->
 
 ^
