@@ -4,35 +4,56 @@
 
 ## The Python Shell (REPL)
 
-- read-eval-print loop.
-- Interactive shell.
-- Extremely helpful tool to test out ideas, play with code before implementing it.
-  ^
+- read-eval-print loop
+- Interactive shell
+- Experiment with simple code
 
-Simply run `python3` on the console to start it.
+Note:
 
-By convention, lines with `>>>` represent a REPL prompt.
+The REPL is extremely helpful tool to test out ideas and play with code before
+implementing it.
+
+Or even import your own code and test if it behaves correctly.
+
+^
+
+Run `python` without arguments to start
 
 ```py
 >>> 1 + 1
 2
-
 >>> print("Hello World!")
 Hello World!
 ```
 
+<!-- .element: data-caption="Example REPL session" -->
+
+Note:
+
+By convention, lines with `>>>` represent a REPL prompt.
+
 ^
 
-The default REPL can be customized using a Python script and setting
-`PYTHONSTARTUP` o that file. For example: [exhuma/dotfiles/.pystartup][pystartup]
+## REPL Customisation
+
+- `PYSTARTUP` environment variable <p class="smallnote">(example: [exhuma/dotfiles/.pystartup][pystartup])</p>
+- Alternative: [`ipython`][ipython]
 
 [pystartup]: https://github.com/exhuma/dotfiles/blob/master/.pystartup
+[ipython]: https://ipython.org/
 
-Alternative Python Shell: https://ipython.org/:
+Note:
+
+The `PYTHONSTARTUP` environment variable can point to any Python file. It is
+executed every time a new Python REPL is opened.
+
+Optionally, the alternative [ipython](https://ipython.org/) shell can be used
+which has many more advanced features. But setting it up for each project (with
+related dependencies) is more cumbersome.
 
 ```bash
-pip install --user ipython
 source /path/to/env/bin/activate  # if needed
+pip install ipython
 ipython
 ```
 
@@ -41,14 +62,22 @@ ipython
 ## Getting Help
 
 - On the web: http://docs.python.org
-- Type `help()` in the REPL. This can be used on any object:
+- The `help()` function
+- `pydoc` (like MAN-pages)
 
-  ```py
-  >>> myvar = 1
-  >>> help(myvar)  # This will open the help for "ints"
-  ```
+Note:
 
-- Type `python -m pydoc` in the shell.
-  - Like man-pages for Python.
-  - Same as `help()` in the REPL.
-  - Served via HTTP: `python -m pydoc -b`
+When in the REPL, calling `help()` on any variable will open the appropriate
+documentation:
+
+```py
+>>> myvar = 1
+>>> help(myvar)  # This will open the help for "ints"
+```
+
+Additionally, documentation of all object in the current environment (standard
+library & installed third-party modules) is available by running `python -m pydoc` in the shell:
+
+- Like man-pages for Python.
+- Same as `help()` in the REPL.
+- Served via HTTP: `python -m pydoc -b`

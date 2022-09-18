@@ -6,13 +6,30 @@ This chapter covers how code can be structured into reusable pieces.
 
 ## Functions
 
+- Defined with the `def` keyword
+- Always return values
+
+```py
+def my_function():
+    print("Hello World!")
+    return 10
+```
+
+<!-- .element: data-caption="Function Example" -->
+
+Note:
+
 - Functions are introduced using the `def` keyword
 - A function _always_ returns a value in Python. If no return statement is
   present, the return-value will be `None`.
 
 ^
 
-## Pro Tip: Functions are objects
+## Pro Tip
+
+_Functions are objects_
+
+Note:
 
 - Hand functions over to other functions
 - Store functions in variables
@@ -23,6 +40,16 @@ This chapter covers how code can be structured into reusable pieces.
 - callbacks
 - dependency-injection
 - …
+
+```py
+def my_function():
+    return 10
+def my_other_function(my_argument):
+  my_argument()
+my_other_function(my_function)
+```
+
+<!-- .element: data-caption="(advanced): Higher-Order Function" -->
 
 ^
 
@@ -48,20 +75,20 @@ def read_file(filename):
 read_file('data.csv')
 ```
 
-<!-- .element: class="stretch smallcode" -->
+<!-- .element: class="smallcode" -->
 
 ---
 
 ## Classes
 
-- Classes are introduced using the `class` keyword.
-- Classes can inherit from multiple other classes.
-- Classes offer advanced programming techniques not covered in this course
-  (static-methods, class-methods, properties, descriptors)
+- Introduced using the `class` keyword
+- Can inherit from multiple other classes.
 
 ^
 
-## Pro Tip: Classes are objects
+## Pro Tip
+
+_Classes are objects_
 
 Just like functions, classes are objects in Python too.
 
@@ -107,15 +134,21 @@ the_instance.read()
 
 ## Modules
 
-- Every Python file can be called a “module” and can be imported in other
-  Python scripts.
+- A `.py` file is “a module”
+- Can be "imported" in other modules
+
+Note:
+
 - The code inside a module is executed on first import.
+
   - They _should_ not “run” anything outside of classes & functions.
   - They _should_ contain definitions only (functions, classes, variables, …)
 
 ^
 
-## Pro Tip: Modules are objects
+## Pro Tip
+
+_Modules are objects_
 
 Just like functions and classes, modules are objects in Python too. And the same
 notes apply.
@@ -146,34 +179,54 @@ def read_file(filename):
 print('This is an import side-effect')
 ```
 
-<!-- .element: class="stretch" data-caption="code/module-example.py" -->
+<!-- .element: class="smallcode" data-caption="code/module-example.py" -->
 
 ^
 
 ### Using Code from Modules
 
-<p class="prose">
 The <code>import</code> statement can be used to access code from other
-<code>.py</code> files:
-</p>
+<code>.py</code> files
 
 ```py
 from util import read_file
 read_file('data.csv')
 ```
 
+<!-- .element: data-caption="Import a function from a module" -->
+
 ```py
 import util
 util.read_file('data.csv')
 ```
 
+<!-- .element: data-caption="Import a complete module" -->
+
+Note:
+
+There is no performance benefit by only importing a single function. It is
+purely syntactical preference.
+
+However, the `.` operator (for example when typing `mymodule.myfunction`) is
+rather expensive in Python. By rewriting imports, the necessity for the `.`
+operator can be reduced.
+
 ---
 
 ## Packages
 
-- Use packages to organise your project into sub-folders.
-- A `__init__.py` file marks a folder as package (can be empty).
+- Organise code in folders
+- Folders with a `__init__.py` file
+
+Note:
+
+It is also possible to create packages _without_ `__init__.py` file. Those are
+so-called "namespace" packages and are useful in more advanced architectures.
+Especially to provide pluggable functionality. This is an advanced topic.
+
+- A `__init__.py` file marks a folder as package (that file can be empty).
 - The term “package” is ambiguous in Python. It can mean:
+
   - A “distributed” _package_ you get from the Internet or write yourself (in
     other words: a “library”).
   - Any folder with `.py` files and a `__init__.py` file.
@@ -182,16 +235,15 @@ util.read_file('data.csv')
 
 ### Importing from Packages
 
-- Packages are like folders
-- The separator in code is `.`
-- A module util.py inside package subpackage1 can be imported with:
+- The separator in code is a `.`
+- A module `util.py` inside package `subpackage1` can be imported with:
 
 ```py
-from subpackage1 import util  # Import only this name
-```
+# Import only a single name
+from subpackage1 import util
 
-```py
-import subpackage1.util  # Import the whole package name
+# Import the whole package name
+import subpackage1.util
 ```
 
 ^
@@ -296,10 +348,6 @@ This is the module docstring
 
 ### Module Data
 
-Top-level variables have no predefined standard for documentation. `Sphinx` will
-extract comments starting with `#:` as documetnation. Alternatively, it is
-possible to put a string right after the variable:
-
 ```py [6,10]
 """
 This is the module docstring
@@ -312,3 +360,13 @@ MY_VARIABLE = 1
 MY_OTHER_VARIABLE = 2
 "Another docstring, picked up by other tools"
 ```
+
+Note:
+
+Top-level variables have no predefined standard for documentation. `Sphinx` will
+extract comments starting with `#:` as documenation. Alternatively, it is
+possible to put a string right after the variable.
+
+Unfortunately, because there is no well-defined standards, some tools only
+support one or the other format. While the Sphinx-style comment looks nicer, the
+follow-up string is more widely supported.

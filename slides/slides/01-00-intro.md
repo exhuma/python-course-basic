@@ -16,7 +16,7 @@ print("Hello World!")
 
 Note:
 
-This course covers the basics to be able to write simple Python applications:
+This course covers the basics to be able to write simple Python applications.
 
 ---
 
@@ -24,26 +24,20 @@ This course covers the basics to be able to write simple Python applications:
 
 ^
 
-### Fast Paced!
+- Fast Paced!
+- No Hands-On Exercises
+- Basic Programming Required
+- Simple, Practical Examples
 
-6 hours to cover the basics is challenging.
-^
+Note:
 
-### Basic Programming Required
+6 hours to cover the basics is challenging and it makes it impossible to use
+hands-on exercises. Try the provided code-sample and read them attentively.
 
 This course assumes basic programming knowledge (loops, branches, ...)
-^
 
-### Incremental Practical Examples
-
-This course aims to get at something practical (reading data from text files)
-fast. The first examples will be basic and will be improved step-by-step.
-^
-
-### Limited Hands-On Exercises
-
-Hands-on exercises are limited due to time-constraints. Try the provided
-code-sample and read them attentively.
+The course also aims to get at something practical fast like reading data from
+text files.
 
 ---
 
@@ -52,11 +46,11 @@ code-sample and read them attentively.
 - First program written in 1989.
 - Professional Software Developer since 1998.
 - GFA-Basic → Delphi → PHP → Java → Python → ?
-- Degree in Computer Science (BSc CS AI).
-- Lead Software Developer in Post BackBone-OSS.
+- Degree in Computer Science (BSc CS AI / 2005).
+- Lead Software Developer at Post "Connectivity-OSS".
 - Semantics Nerd, Gamer, Geek.
 
-<!-- .element: style="font-size: 70%;" -->
+<!-- .element: style="font-size: 75%;" -->
 
 ---
 

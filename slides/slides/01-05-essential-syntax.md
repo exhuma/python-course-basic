@@ -2,15 +2,6 @@
 
 ^
 
-- The variable type is implicit, but strong (dynamic typing)
-- Variables are assigned with the `=` operator
-- Line-comments start with a `#` character. Block comments don’t exist.
-- Lines do not need to end with a semicolon (`;`)
-- Blocks are defined by indentation. `:` starts a new block (like `begin` or
-  `{`)
-
-^
-
 ```py
 # Variable Assignment
 my_variable = 10
@@ -19,6 +10,15 @@ my_variable = 10
 if my_variable >= 10:
     print("Yes")
 ```
+
+Note:
+
+- The variable type is implicit, but strong (dynamic typing)
+- Variables are assigned with the `=` operator
+- Line-comments start with a `#` character. Block comments don’t exist.
+- Lines do not need to end with a semicolon (`;`)
+- Blocks are defined by indentation. `:` starts a new block (like `begin` or
+  `{`)
 
 ^
 
@@ -44,10 +44,30 @@ print(a * b)
 
 ### Builtin Functions and Working with Files
 
+```py
+input_file = open('data/hello.txt')
+
+# "for … in …" knows how to loop over many things
+for row in input_file:
+    print(row)
+```
+
+<!-- .element: data-filename="code/reading-a-file.py" -->
+
+```txt
+This is the first line
+
+This is line #3
+```
+
+<!-- .element: data-filename="code/data/reading-a-file.txt" -->
+
+Note:
+
 - Python has a few [builtin functions][builtins] which are very useful.
 - [open()][open] is used to access files on the disk (for reading and writing).
 - By default files are opened as “text”.
-- Using a for loop on file objects will iterate line-by-line. Newlines are not removed.
+- Using a for loop on _file objects_ will iterate line-by-line. Newlines are not removed.
 - [pathlib][pathlib] and [os.path][path] contain useful functions for working with files.
 
 [builtins]: https://docs.python.org/3/library/functions.html
@@ -59,44 +79,9 @@ print(a * b)
 
 ### Reading a File
 
-```py
-input_file = open('data/hello.txt')
-
-# "for … in …" knows how to loop over many things
-for row in input_file:
-    print(row)
-```
-
-<!-- .element: data-caption="code/reading-a-file.py" -->
-
-```txt
-This is the first line
-
-This is line #3
-```
-
-<!-- .element: data-caption="code/data/reading-a-file.txt" -->
-
 ---
 
 ## Looping
-
-Executing code on a collection of items (looping) can be done in several ways
-in Python:
-
-- A `for ... in` ... loop
-- A `while ...` loop
-- A comprehension expression (not covered in this course)
-- Functional aproach using [map()][map], [filter()][filter] and
-  [functools.reduce()][reduce] (not covered in this course).
-
-[map]: https://docs.python.org/3/library/functions.html#map
-[filter]: https://docs.python.org/3/library/functions.html#filter
-[reduce]: https://docs.python.org/3/library/functools.html#functools.reduce
-
-^
-
-### Example
 
 ```py
 # Simple loop
@@ -115,23 +100,26 @@ while response != 'n':
     response = input('Do you want to continue [y/n]?')
 ```
 
-<!-- .element: data-caption="code/looping.py" -->
+<!-- .element: data-filename="code/looping.py" -->
+
+Note:
+
+Executing code on a collection of items (looping) can be done in several ways
+in Python:
+
+- A `for ... in` ... loop
+- A `while ...` loop
+- A comprehension expression (not covered in this course)
+- Functional aproach using [map()][map], [filter()][filter] and
+  [functools.reduce()][reduce] (not covered in this course).
+
+[map]: https://docs.python.org/3/library/functions.html#map
+[filter]: https://docs.python.org/3/library/functions.html#filter
+[reduce]: https://docs.python.org/3/library/functools.html#functools.reduce
 
 ---
 
 ## Reading Files
-
-Reading and writing files is done using the builtin function [open()][open].
-This function will return a “file-like object” which has low-level methods like
-[read()][read] and [write()][write].
-
-[read]: https://docs.python.org/3/library/io.html#io.RawIOBase.read
-[write]: https://docs.python.org/3/library/io.html#io.RawIOBase.write
-[open]: https://docs.python.org/3/library/functions.html#open
-
-^
-
-### Example
 
 ```py
 # Open a file in default ("read") mode
@@ -154,11 +142,7 @@ for line in infile:
     print(repr(columns))
 ```
 
-<!-- .element: class="smallcode" data-caption="code/read-csv.py" -->
-
-^
-
-### CSV File Contents
+<!-- .element: class="smallcode" data-filename="code/read-csv.py" -->
 
 ```txt
 name;first_name;phone;email
@@ -166,16 +150,21 @@ Doe;John;12345;jdoe@exampe.com
 Dane;John;12345;jdoe@exampe.com
 ```
 
-<!-- .element: class="smallcode" data-caption="code/data/basics.csv" -->
+<!-- .element: class="smallcode" data-filename="code/data/basics.csv" -->
+
+Note:
+
+Reading and writing files is done using the builtin function [open()][open].
+This function will return a “file-like object” which has low-level methods like
+[read()][read] and [write()][write].
+
+[read]: https://docs.python.org/3/library/io.html#io.RawIOBase.read
+[write]: https://docs.python.org/3/library/io.html#io.RawIOBase.write
+[open]: https://docs.python.org/3/library/functions.html#open
 
 ^
 
 ### Closing Resources
-
-Files, database-/network-connections and similar resources should always be
-closed.
-
-Python can ensure that this is done correctly by using the `with` statement:
 
 ```py
 with open('data.csv') as infile:
@@ -187,3 +176,10 @@ with open('data.csv') as infile:
 # closed now.
 print(infile.closed)  # Will print "True"
 ```
+
+Note:
+
+Files, database-/network-connections and similar resources should always be
+closed.
+
+Python can ensure that this is done correctly by using the `with` statement:

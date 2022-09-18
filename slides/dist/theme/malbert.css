@@ -43,6 +43,7 @@ section.has-light-background h6 {
   --r-link-color-hover: #8dcffc;
   --r-selection-background-color: #bee4fd;
   --r-selection-color: #fff;
+  --code-block-border: #444;
 }
 
 .reveal-viewport {
@@ -216,7 +217,7 @@ section.has-light-background h6 {
   width: 90%;
   margin: var(--r-block-margin) auto;
   text-align: left;
-  font-size: 0.55em;
+  font-size: 0.65em;
   font-family: var(--r-code-font);
   line-height: 1.2em;
   word-wrap: break-word;
@@ -383,7 +384,7 @@ LI:nth-child(1) {
 
 .reveal code {
   font-size: 70%;
-  border: 1px solid #444;
+  border: 1px solid var(--code-block-border);
   border-radius: 3px;
   padding: 0 0.3em;
   background: #252525;
@@ -458,14 +459,28 @@ IMG+EM::before {
   margin-right: 0.3em;
 }
 
-PRE[data-caption]:after {
-  content: attr(data-caption);
+PRE[data-filename]:before {
+  content: attr(data-filename);
   display: block;
-  border-bottom: 1px solid #440;
-  border-left: 1px solid #440;
-  border-right: 1px solid #440;
+  border-top: 1px solid var(--code-block-border);
+  border-left: 1px solid var(--code-block-border);
+  border-right: 1px solid var(--code-block-border);
   margin: 0;
-  padding: 0.5em 1em;
+  padding: 0.1em 0.5em;
+}
+
+PRE[data-caption]:after {
+  font: var(--r-main-font);
+  text-align: center;
+  font-style: italic;
+  content: attr(data-caption);
+  font-size: 75%;
+  display: block;
+  border-bottom: 1px solid var(--code-block-border);
+  border-left: 1px solid var(--code-block-border);
+  border-right: 1px solid var(--code-block-border);
+  margin: 0;
+  padding: 0.1em 0.5em;
 }
 
 P.admonition,
@@ -477,12 +492,14 @@ DIV.admonition {
   font-size: 80%;
 }
 
+P.note,
 DIV.note {
   border: 1px solid rgba(100, 100, 255, 1.0);
   border-left: 10px solid rgba(100, 100, 255, 1.0);
   background: rgba(100, 100, 255, 0.1);
 }
 
+P.note:before,
 DIV.note:before {
   content: 'Note';
   display: block;
@@ -491,12 +508,14 @@ DIV.note:before {
   font-weight: bold;
 }
 
+P.warning,
 DIV.warning {
   border: 1px solid hsla(45, 100%, 50%, 1.0);
   border-left: 10px solid hsla(45, 100%, 50%, 1.0);
   background: hsla(45, 100%, 50%, 0.1);
 }
 
+P.warning:before,
 DIV.warning:before {
   content: 'Warning';
   display: block;
@@ -505,12 +524,14 @@ DIV.warning:before {
   font-weight: bold;
 }
 
+P.info,
 DIV.info {
   border: 1px solid rgba(100, 100, 0, 1);
   border-left: 10px solid rgba(100, 100, 0, 1);
   background-color: rgba(100, 100, 0, 0.1);
 }
 
+P.info:before,
 DIV.info:before {
   content: 'Info';
   display: block;
@@ -542,4 +563,24 @@ DIV.tip:before {
   top: 1em;
   left: 1em;
   height: 70px;
+}
+
+TABLE.grid TD {
+  font-size: 75%;
+}
+
+TABLE.grid,
+TABLE.grid TD,
+TABLE.grid TH {
+  border: 1px solid;
+  border-color: #555;
+  vertical-align: middle;
+}
+
+P.smallnote {
+  font-size: 40%;
+}
+
+PRE.smallcode {
+  font-size: 40%;
 }

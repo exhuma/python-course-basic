@@ -24,7 +24,7 @@ Python is “dynamically typed”. It is often quoted as “duck typing”.
 
 ## Typing Comparison
 
-<table border="0" id="TypingTable">
+<table border="0" class="grid" style="font-size: 75%;">
   <colgroup>
     <col width="25%">
     <col width="20%">
@@ -66,14 +66,29 @@ Python is “dynamically typed”. It is often quoted as “duck typing”.
 
 ## Python 2 vs Python 3
 
-- Improved Unicode support. (bytes ≠ text, developer in full control).
-- Iterators everywhere ([map()][map], [filter()][filter], …).
-- No new features are added to Python 2 (f.ex.: [asyncio][asyncio], “f-strings”).
-- _BUT:_ Legacy platforms may only support Python 2.
+- Improved Unicode support
+- Iterators everywhere
+- No new features are added to Python 2
+
+Note:
+
+Python 3 forces the developer to explicitly make the difference between "text"
+and "bytes". The developer is in full control and it reduces the risk of
+byte-level bugs.
+
+Additionally, Python 3 makes increased use of "iterators", for example in the
+functions [map()][map] and [filter()][filter].
+
+Finally, new features like [asyncio][asyncio] and “f-strings” will only be
+introduced in Python 3.
 
 [map]: https://docs.python.org/3/library/functions.html#map
 [filter]: https://docs.python.org/3/library/functions.html#filter
 [asyncio]: https://docs.python.org/3/library/asyncio.html#module-asyncio
+
+Legacy platforms may only support Python 2.
+
+<!-- .element: class="admonition note" -->
 
 ^
 
@@ -82,9 +97,9 @@ Python is “dynamically typed”. It is often quoted as “duck typing”.
 There is no longer an excuse to use Python 2!
 ^
 
-## Strings & Bytes in Python 2 & 3
+## Strings & Bytes
 
-<table class="docutils" border="1">
+<table class="grid" border="1">
   <colgroup>
     <col width="50%">
     <col width="25%">
@@ -119,7 +134,6 @@ There is no longer an excuse to use Python 2!
 
 ### Warning for Python 2
 
-- Always prefix text with u in Python 2. Unless you know exactly that you
-- want bytes!
-- Never use encode on bytes.
-- Never use decode on strings.
+- Always prefix text with `u` in Python 2. <p class="smallnote">Unless you know exactly that you want bytes!</p>
+- Never use `encode` on bytes.
+- Never use `decode` on strings.

@@ -23,34 +23,29 @@
 
 ## Python in the Community
 
-- Fastest growing language in 2019 [[SO2019][so2019]]
-- 2nd most loved language by developers [[SO2019][so2019]]
-- Most wanted language by developers since 2016 [[SO2019][so2019]]
-- In the top 10 tags on StackOverflow.
-- #4 on [TIOBE Index][tbe] (After Java, C and C++). Based on result of April 2019.
+- One of the most popular languages [SO2022][so2022]
+- In the top 3 [tags on StackOverflow][so-tags]
+- #1 on [TIOBE Index][tbe] (Before Java, C and C++)
 
-[so2019]: https://insights.stackoverflow.com/survey/2019
-[tbe]: http://www.tiobe.com/tiobe_index
+[so-tags]: https://stackoverflow.com/tags
+[so2022]: https://survey.stackoverflow.co/2022/#technology
+[tbe]: https://www.tiobe.com/tiobe-index/
+
+Based on result of April 2022.
+
+<!-- .element: style="font-size: 30%" -->
+
+Note:
+
+Over the past 10 years, popularity of Python has steadily increased. Python is a
+very easy to learn language with a clean syntax but it still offers everything
+you would expect from a mature, professional language. Python is usable in many
+different domains. This makes it a very useful skill to have.
 
 ^
 
-## Implementations
-
-- CPython (the default - recommended, ≠ cython).
-- Jython (runs in Java VM).
-- IronPython (runs in dotNET CLR).
-- PyPy (faster).
-- Stackless (microthreads).
-- …
-  ^
-
 ## Editors
 
-- PyCharm — https://www.jetbrains.com/pycharm/
-- Visual Studio Code — https://code.visualstudio.com/
-- Any text-editor
-- vim
-- emacs
-- notepad++
-- sublime
-- …
+- PyCharm <p class="smallnote">https://www.jetbrains.com/pycharm/</p>
+- Visual Studio Code <p class="smallnote">https://code.visualstudio.com/</p>
+- Any text-editor <p class="smallnote">(vim, emacs, notepad++, sublime, …)</p>

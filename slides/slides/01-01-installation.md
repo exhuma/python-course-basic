@@ -17,7 +17,14 @@ Python has become a very important of most Linux distributions. Many
 system-tools are written in Python. This is why it comes preinstalled on most
 systems.
 
-^
+Some systems still ship with Python 2 by default. It is end of life and no
+longer receives security patches.
+
+Make sure you are running Python 3 (Python 2 is end of life) by typing `python --version`.
+
+<!-- .element: class="admonition warning" -->
+
+---
 
 ### MacOS
 

@@ -9,7 +9,19 @@ should nonetheless be understood when developing Python applications.
 
 ## Exceptions
 
-<!-- .slide: class="prose" -->
+```py
+>>> from example_exception import foo
+>>> foo()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in &lt;module&gt
+  File "/path/example_exception.py", line 3, in foo
+    return a['z']
+KeyError: 'z'
+```
+
+<!-- .element: data-caption="Example Exception Output" -->
+
+Note:
 
 - Python’s error-handling mechanism.
 - Triggered automatically by Python
@@ -19,43 +31,30 @@ should nonetheless be understood when developing Python applications.
 
 ^
 
-An example exception:
-
-```py
->>> from example_exception import foo
->>> foo()
-Traceback (most recent call last):
-  File "&lt;stdin&gt", line 1, in &lt;module&gt
-  File "/path/example_exception.py", line 3, in foo
-    return a['z']
-KeyError: 'z'
-```
-
-^
-
 ### Manually raising an exception
-
-- By default, Python will raise an exception of one of the [builtin
-  types](https://docs.python.org/3/library/exceptions.html#exception-hierarchy).
-- You can create your own exceptions by subclassing.
-- Raising (triggering/throwing) exceptions is done using the `raise` keyword:
 
 ```py
 class MyException(Exception):
    pass
 
 if user_input > 4096:
-   raise ValueError('user_input must be smaller than 4096')
-raise MyException('Hello World!')
+   raise ValueError("user_input must be smaller than 4096")
+
+raise MyException("Hello World!")
 ```
+
+<!-- .element: data-caption="Code Sample" -->
+
+Note:
+
+- By default, Python will raise an exception of one of the [builtin
+  types](https://docs.python.org/3/library/exceptions.html#exception-hierarchy).
+- You can create your own exceptions by subclassing.
+- Raising (triggering/throwing) exceptions is done using the `raise` keyword:
 
 ^
 
 ### Handling Exceptions
-
-- If not handled, exceptions will crash the application and print a traceback
-  on `stderr`.
-- They can be handled using a `try/except` block:
 
 ```py
 from example_exception import foo
@@ -67,30 +66,34 @@ except KeyError as the_exception:
    print(the_exception)
 ```
 
-Always log the traceback of an exception using either
-`logging.debug(the_exception, exc_info=True)` or `logging.exception('Simple description')`.
+<!-- .element: data-caption="Code Sample" -->
 
-<!-- .element: class="admonition tip smaller" -->
+Note:
 
----
+- If not handled, exceptions will crash the application and print a traceback
+  on `stderr`.
+- They can be handled using a `try/except` block:
 
-### Logging
-
-- Use `print()` only if you display text to a user in a CLI application or if
-  you write to a file.
-- **For all other cases use the logging module**
-- When logging inside an exception use the `exc_info=True` argument. This cases
-  the traceback to be logged and can be invaluable when debugging:
+When logging, always include the traceback of the exception:
 
 ```py
-logging.debug('The error message', exc_info=True)
+# Manual inclusion of the traceback info
+logging.debug(the_exception, exc_info=True)
+# Automatic inclusion (log-level will be "critical")
+logging.exception('Simple description')
 ```
+
+The above code-example will include the exception information in the logging
+_object_ that is passed to the log _handler_. It is up to the handler to decide
+what to do with that object. This means: If the exception information is
+included but it does not show up in the logs, it might be the handler who is
+ignorning the object.
 
 ^
 
 ### Demo
 
-See <code>code/read-csv-demo-handling-exceptions.py</code>
+See <code>code/read-csv-demo-handling-errors.py</code>
 
 <!-- .element: style="font-size: 50%" -->
 
@@ -99,14 +102,52 @@ See <code>code/read-csv-demo-handling-exceptions.py</code>
 
 ---
 
+### Logging
+
+```py
+import logging
+logging.debug("The log message")
+logging.info("The log message")
+logging.warning("The log message")
+logging.error("The log message")
+logging.critical("The log message")
+```
+
+<!-- .element: data-caption="Code Sample" -->
+
+Note:
+
+The "logging" module provides extremely powerful configuration to deal with
+messages throughout your application. You can have multiple loggers and route
+messages to various destinations (files, console, network, ...). Each
+destination can be configured with different rules (log-level, logger-name, ...)
+
+- Avoid `print()` whenever possible.
+- Use `logging` instead
+
+`print()` should only be used when you display text to a user in a CLI
+application or when you write to a file.
+
+**For all other cases use the logging module**
+
+When logging inside an exception use the `exc_info=True` argument. This causes
+the traceback to be logged for most log-handers. This information is invaluable
+when debugging.
+
+---
+
 ### Variable Unpacking
 
-Python can assign more than one value in one statement:
+^
+
+Assign more than one variable in one statement
 
 ```py
 # Assign 13 to variable_a, and 'Hello' to variable_b
 variable_a, variable_b = 13, 'Hello'
 ```
+
+^
 
 This work in every place where values are assigned:
 
@@ -126,21 +167,23 @@ for variable_a, variable_b in mylist:
 
 ### Enumerating Loops
 
-<!-- .slide: class="prose" -->
-
-Keeping a reference to the current iteration number is easy by using the
-[enumerate()](https://docs.python.org/3/library/functions.html#enumerate)
-function.
-
-In combination with variable unpacking loops can be written as:
-
 ```py
 for i, item in enumerate(mylist):
    print('Item at index %d is: %r' % (i, item))
 ```
 
+<!-- .element: data-caption="Code Sample" -->
+
+Note:
+
+Keeping a reference to the current iteration number is easy by using the
+[enumerate()](https://docs.python.org/3/library/functions.html#enumerate)
+function.
+
+Works well in combination with variable unpacking.
+
 Python makes it relatively easy to avoid accessing items by index (see for
-example `zip()`). Enumerating lists like this only needed in rare cases
+example `zip()`). Enumerating lists like this is only needed in rare cases
 (calculating progress, logging the current line during text-file processing,
 …).
 
@@ -148,18 +191,21 @@ example `zip()`). Enumerating lists like this only needed in rare cases
 
 ---
 
-### Basic Data Types - 2
+# Basic Data Types - 2
 
-#### Collections
+---
+
+## Collections
 
 Also on https://docs.python.org/3/library/stdtypes.html
-
-<!-- .element: class="prose smaller" -->
 
 So far we’ve only covered “scalar” values. This chapter covers the most
 commonly used “collection” types in Python.
 
-<!-- .element: class="prose smaller" -->
+Note:
+
+- A _scalar_ type only contains a single value
+- A _collection_ type only contains many values
 
 ---
 
@@ -171,7 +217,7 @@ mylist[3] == 'hello'
 mylist.append('one more value')
 ```
 
-^
+Note:
 
 - Used for collections with variable length and which have a specific ordering.
 - Square brackets `[...]`
@@ -188,52 +234,6 @@ mylist.append(10)
 
 ---
 
-### Bytes
-
-```py
-data = b'H\xc3\xa9llo World'
-```
-
-^
-
-- Builtin type: `bytes`.
-- byte-literals look just like strings, but with a `b` prefix:
-- Immutable (for byte-operations see `bytearray`).
-
-^
-
-Almost identical API to strings. The key differences are:
-
-- Bytes almost always come “from the outside world” (hard-disk, network, …)
-- Strings are almost always meant to be read by a human (bytes not so much).
-- Bytes can only be “decoded” into strings
-- Strings can only be “encoded” into bytes
-
-^
-
-Bytes are (generally) used to talk to machines:
-
-- Write data to files
-- Send data over a network socket
-
-^
-
-String are used to be displayed to a human user:
-
-- Text on a button label
-- CLI output, HTML content
-- …
-
-^
-
-#### Rule of Thumb
-
-For text, as long as the value remains held by variables, use normal
-string-literals (unicode objects). As soon as the value crosses the memory/io
-boundary (network, disk) it needs to be encoded to bytes or decoded to string.
-
----
-
 ### Tuples
 
 ```py
@@ -241,23 +241,27 @@ mytuple = (1, 2, 3, 4, 5, 6, 7)
 mytuple[3] == 4
 ```
 
-^
+Note:
 
-- For collections where _position_ means something
-- Parentheses `()`
+- For collections where _position_ means something. For example 2D-Points.
+- Parentheses `()`.
 - Like lists, but immutable.
 - Hashable (if contents are hashable)
 - Recommended alternative: `collections.namedtuple()`
 
-^
+<div class="admonition warning">
+Tuple of one element is written as `(value,)`.
 
-#### Note
+Notice the trailing comma. This is a syntax limitation of Python.
 
-Tuple of one element
+A line ending with a comma is also interpreted as tuple!
 
 ```py
-myvalue = (1,)
+this_is_a_tuple = (1,)
+this_is_also_a_tuple = 1,
 ```
+
+</div>
 
 ---
 
@@ -268,21 +272,17 @@ mydict = {"a": 1, "b": 2}
 mydict["a"] == 1
 ```
 
-^
+Note:
 
-- Used to map from one value to another.
-- Curly braces `{}` and colons `:`
-- Key/Value stores (Like `HashTables` in Java or C#)
-- Looping over key/values is easy using:
+- Dictionaries map from one value to another.
+- The syntax uses curly braces `{}` and colons `:`
+- The behave like Key/Value stores (like `HashTables` in Java or C#)
+- Looping over key/values is easy using the `.items()` method:
   ```py
   for key, value in mydict.items():
      ...
   ```
 - Starting from Python 3.7, ordering of keys is retained.
-
-^
-
-#### Warning
 
 Do not rely on ordering behaviour if your application runs in an older Python
 environment!
@@ -295,9 +295,16 @@ environment!
 
 ```py
 myset = {1, 2, 3, 4, 5}
+my_other_set = {4, 5, 6}
+
+print(myset.intersection(my_other_set))
+print(myset.difference(my_other_set))
+print(my_other_set.difference(myset))
 ```
 
-^
+<!-- .element: data-caption="Code Sample" -->
+
+Note:
 
 - Used for collections of variable size with unique values and with no
   particular ordering.
@@ -311,12 +318,6 @@ myset = {1, 2, 3, 4, 5}
 - Values must be hashable
 
 ---
-
-# Demo
-
----
-
-<!-- .slide: class="prose" -->
 
 #### Simple List Processing
 
@@ -374,8 +375,6 @@ Esch-sur-Alzette 35635
 
 #### Bytes \& Collections
 
-<!-- .slide: class="prose" -->
-
 Using the files [data_latin1.csv](data/data_latin1.csv) and
 [data_utf8.csv](data/data_utf8.csv), we will write a function which diffs the
 two files.
@@ -391,8 +390,6 @@ The program will print:
 ---
 
 #### Pwned Passwords
-
-<!-- .slide: class="prose" -->
 
 **Goal:** Find out if a password was ever leaked by an attack without sending
 the password to a remote API.
@@ -428,8 +425,6 @@ def http_get(url):
 Until now we have only seen very simple function definitions. This small
 chapter discusses a few more advanced techniques which are very useful in most
 applications.
-
-<!-- .element: class="prose smaller" -->
 
 ---
 
@@ -502,8 +497,6 @@ hello(prefix="Goodbye", name="John")  # different order
 
 ### Instance Methods
 
-<!-- .slide: class="prose" -->
-
 When simply defining a method in a function inside a function it becomes an
 instance method. Contrary to many other languages, **an instance method receives
 a reference to the instance as first argument.**
@@ -528,8 +521,6 @@ class MyClass:
 
 ### Static Methods
 
-<!-- .slide: class="prose" -->
-
 Static methods are prefixed with `@staticmethod`
 
 Static methods are unaware of their instance or class. They do not receive an
@@ -550,8 +541,6 @@ print(MyClass.my_method())
 ^
 
 ### Class Methods
-
-<!-- .slide: class="prose" -->
 
 Class methods are prefixed with `@classmethod`
 
