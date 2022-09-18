@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Introduction to Python</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/malbert.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+
+  <body id="Fileview">
+    <img id="Logo" src="images/python-logo-generic.svg" />
+    <div id="FileviewContent">
+      <p id="FileHeader">File: <a id="FileLink"></a></p>
+      <pre id="FileContent"></pre>
+    </div>
+    <script>
+      function setLink(filename) {
+        let link = document.getElementById("FileLink");
+        console.log(link);
+        if (!link) {
+          return;
+        }
+        link.href = filename;
+        link.appendChild(document.createTextNode(filename));
+      }
+      function setPreContent(filename) {
+        let content = document.getElementById("FileContent");
+        if (content) {
+          // content.innerHTML = "foobar";
+          let children = content.children;
+          for (let i = 0; i < children.length; i++) {
+            content.removeChild(children[i]);
+          }
+          fetch(filename).then((response) => {
+            if (!response.ok) {
+              console.error(response);
+              return;
+            }
+            response.text().then((filedata) => {
+              content.appendChild(document.createTextNode(filedata));
+            });
+          });
+        }
+      }
+      const params = new URLSearchParams(window.location.search);
+      let filename = params.get("filename");
+      setPreContent(filename);
+      setLink(filename);
+    </script>
+  </body>
+</html>

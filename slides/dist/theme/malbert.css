@@ -584,3 +584,31 @@ P.smallnote {
 PRE.smallcode {
   font-size: 40%;
 }
+
+#Fileview {
+  color: var(--r-main-color);
+  font-family: var(--r-main-font);
+  font-size: var(--r-main-font-size);
+  background-color: var(--r-background-color);
+  background: var(--r-background-color);
+}
+
+#FileviewContent {
+  margin: 130px 2em;
+}
+
+#FileContent {
+  font-family: var(--r-code-font);
+  font-size: 70%;
+  border: 1px solid var(--code-block-border);
+  border-radius: 3px;
+  padding: 0.4em 0.7em;
+  background: #252525;
+}
+
+#FileHeader {
+  font-size: 70%;
+  border: 1px solid var(--code-block-border);
+  border-radius: 3px;
+  padding: 0.1em 0.7em;
+}
