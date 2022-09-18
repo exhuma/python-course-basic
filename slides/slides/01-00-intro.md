@@ -8,13 +8,15 @@ print("Hello World!")
 
 ## About This Course
 
-This course covers the basics to be able to write simple Python applications:
-
 - Installation
 - Running Python code
 - Basic syntax & data types
 - Code organisation
 - Standard Library
+
+Note:
+
+This course covers the basics to be able to write simple Python applications:
 
 ---
 
@@ -53,6 +55,8 @@ code-sample and read them attentively.
 - Degree in Computer Science (BSc CS AI).
 - Lead Software Developer in Post BackBone-OSS.
 - Semantics Nerd, Gamer, Geek.
+
+<!-- .element: style="font-size: 70%;" -->
 
 ---
 

@@ -6,7 +6,8 @@
 - Implementations
 - Editors
 - Language features
-  ^
+
+^
 
 ## Birds-Eye View
 
@@ -15,9 +16,10 @@
 - Large community.
 - Strict Syntax (indentation matters)!
 - Large Standard Library (“Batteries Included”).
-- Global Interpreter Lock (the GIL)
-- Slow
-  ^
+
+<!-- .element: style="font-size: 70%;" -->
+
+^
 
 ## Python in the Community
 

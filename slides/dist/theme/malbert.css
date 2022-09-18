@@ -468,6 +468,7 @@ PRE[data-caption]:after {
   padding: 0.5em 1em;
 }
 
+P.admonition,
 DIV.admonition {
   padding: 0.5em;
   padding-left: 1em;
@@ -519,12 +520,14 @@ DIV.info:before {
 }
 
 
+P.tip,
 DIV.tip {
   border: 1px solid hsla(120, 50%, 40%, 1.0);
   border-left: 10px solid hsla(120, 50%, 40%, 1.0);
   background: hsla(120, 50%, 40%, 0.1);
 }
 
+P.tip:before,
 DIV.tip:before {
   content: 'Tip';
   display: block;

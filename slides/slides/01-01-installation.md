@@ -7,17 +7,27 @@ Go to https://www.python.org/downloads
 
 ### Linux
 
-- Available by default on most Unix platforms.
-- Python 2 and 3 can both happily live on the same system without interfering
-  with each other (f.ex. the `python` and `python3` packages on debian and
-  derivates).
-- On most systems, running “python” will launch Python 2. Use `python3` to
-  s tart Python 3!
-  ^
+- Part of Linux
+- Required by system-tools
+- Preinstalled
+
+Note:
+
+Python has become a very important of most Linux distributions. Many
+system-tools are written in Python. This is why it comes preinstalled on most
+systems.
+
+^
 
 ### MacOS
 
-- Download the `pkg` file and install.
+<!-- .element: style="text-transform: none" -->
+
+- [Download][dwld] the `pkg` file and install.
+
+[dwld]: https://www.python.org/downloads/macos/
+
+Note:
 
 By default, Python 2.7 is installed. Installing from the official package will
 not overwrite the existing installation. They will live side-by-side.
@@ -28,4 +38,12 @@ not overwrite the existing installation. They will live side-by-side.
 
 ### Windows
 
-Download the `python-3.7.x.msi` file and install.
+[Download][dwld] the `msi` file and install.
+
+[dwld]: https://www.python.org/downloads/windows/
+
+Note:
+
+As of Windows 10, Python3 is also available in the Windows store.
+
+<!-- .element: class="admonition tip" -->
