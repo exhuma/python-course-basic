@@ -329,7 +329,6 @@ Note:
 
 For this demo we will be using the file
 [collections.csv](fileview.html?filename=data/collections.csv)
-([download](data/collections.csv))
 
 In this file, each entry is split into two lines (Line 1 and line 2 are the
 headers).

@@ -51,7 +51,8 @@ section.has-light-background h6 {
   background-color: var(--r-background-color);
 }
 
-.reveal {
+.reveal,
+.fileview {
   font-family: var(--r-main-font);
   font-size: var(--r-main-font-size);
   font-weight: normal;
@@ -306,13 +307,15 @@ section.has-light-background h6 {
 /*********************************************
  * LINKS
  *********************************************/
-.reveal a {
+.reveal a,
+.fileview a {
   color: var(--r-link-color);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
-.reveal a:hover {
+.reveal a:hover,
+.fileview a:hover {
   color: var(--r-link-color-hover);
   text-shadow: none;
   border: none;

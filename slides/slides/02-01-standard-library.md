@@ -304,7 +304,7 @@ Note:
 <!-- .element: style="font-size: 50%" -->
 
 We will write a new function `read_data` that takes a filename as argument. The
-file [csv3.csv](data/csv3.csv) can be used as example. The function will do
+file [csv3.csv](/fileview.html?filename=data/csv3.csv) can be used as example. The function will do
 the following:
 
 - Open the file with the given filename
