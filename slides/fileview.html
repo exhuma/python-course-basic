@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
     <link rel="stylesheet" href="dist/theme/malbert.css" id="theme" />
+    <!--
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    -->
 
     <!-- Theme used for syntax highlighted code -->
     <link
@@ -27,10 +32,10 @@
       <p id="FileHeader">File: <a id="FileLink"></a></p>
       <pre id="FileContent"></pre>
     </div>
-    <script>
+    <script type="module">
+      import hljs from "/slides/plugin/highlight/highlight.esm.js";
       function setLink(filename) {
         let link = document.getElementById("FileLink");
-        console.log(link);
         if (!link) {
           return;
         }
@@ -40,7 +45,6 @@
       function setPreContent(filename) {
         let content = document.getElementById("FileContent");
         if (content) {
-          // content.innerHTML = "foobar";
           let children = content.children;
           for (let i = 0; i < children.length; i++) {
             content.removeChild(children[i]);
@@ -52,6 +56,10 @@
             }
             response.text().then((filedata) => {
               content.appendChild(document.createTextNode(filedata));
+              let fileinfo = filename.split(".");
+              let extension = fileinfo[fileinfo.length - 1];
+              content.classList.add(`language-${extension}`);
+              hljs().hljs.highlightElement(content);
             });
           });
         }

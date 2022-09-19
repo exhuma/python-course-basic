@@ -321,8 +321,15 @@ Note:
 
 #### Simple List Processing
 
+- First "real world" program
+- Basic Statements & Structures
+- Importing & Standatd Library
+
+Note:
+
 For this demo we will be using the file
 [collections.csv](fileview.html?filename=data/collections.csv)
+([download](data/collections.csv))
 
 In this file, each entry is split into two lines (Line 1 and line 2 are the
 headers).
@@ -332,6 +339,8 @@ Print the entries nicely formatted to standard output.
 
 At the end of the script, we print out each hobby only once sorted
 alphabetically.
+
+[Solution](fileview.html?filename=code/read-csv-demo.py)
 
 ---
 
