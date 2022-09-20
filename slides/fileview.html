@@ -36,27 +36,33 @@
         link.appendChild(document.createTextNode(filename));
       }
       function setPreContent(filename) {
+        let fileinfo = filename.split(".");
+        let extension = fileinfo[fileinfo.length - 1];
         let content = document.getElementById("FileContent");
-        if (content) {
-          let children = content.children;
-          for (let i = 0; i < children.length; i++) {
-            content.removeChild(children[i]);
-          }
-          fetch(filename).then((response) => {
-            if (!response.ok) {
-              let msg = `${filename}: (${response.status}) ${response.statusText}`;
-              content.appendChild(document.createTextNode(msg));
-              return;
-            }
-            response.text().then((filedata) => {
-              content.appendChild(document.createTextNode(filedata));
-              let fileinfo = filename.split(".");
-              let extension = fileinfo[fileinfo.length - 1];
-              content.classList.add(`language-${extension}`);
-              hljs().hljs.highlightElement(content);
-            });
-          });
+        if (!content) {
+          return;
         }
+        if (extension !== "csv" || extension !== "py") {
+          let msg = `${filename}: Unsupported filetype!`;
+          content.appendChild(document.createTextNode(msg));
+          return;
+        }
+        let children = content.children;
+        for (let i = 0; i < children.length; i++) {
+          content.removeChild(children[i]);
+        }
+        fetch(filename).then((response) => {
+          if (!response.ok) {
+            let msg = `${filename}: (${response.status}) ${response.statusText}`;
+            content.appendChild(document.createTextNode(msg));
+            return;
+          }
+          response.text().then((filedata) => {
+            content.appendChild(document.createTextNode(filedata));
+            content.classList.add(`language-${extension}`);
+            hljs().hljs.highlightElement(content);
+          });
+        });
       }
       const params = new URLSearchParams(window.location.search);
       let filename = params.get("filename");
