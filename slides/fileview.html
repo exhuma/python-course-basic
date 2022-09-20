@@ -44,7 +44,8 @@
           }
           fetch(filename).then((response) => {
             if (!response.ok) {
-              console.error(response);
+              let msg = `${filename}: (${response.status}) ${response.statusText}`;
+              content.appendChild(document.createTextNode(msg));
               return;
             }
             response.text().then((filedata) => {
