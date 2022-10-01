@@ -42,7 +42,7 @@
         if (!content) {
           return;
         }
-        if (extension !== "csv" || extension !== "py") {
+        if (extension !== "csv" && extension !== "py") {
           let msg = `${filename}: Unsupported filetype!`;
           content.appendChild(document.createTextNode(msg));
           return;

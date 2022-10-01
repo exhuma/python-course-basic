@@ -11,6 +11,8 @@ def location_to_zips():
         for row in infile:
             location = row[120:160].strip()
             zipcode = row[200:204].strip()
+            # Using "in/not in" on dictionaries checks for the presence of a
+            # *key*
             if location not in output:
                 output[location] = {zipcode}
             else:
@@ -22,6 +24,8 @@ def zip_to_inhabitants():
     output = {}
     with open("rnrpp-code-postal.csv") as infile:
         reader = csv.reader(infile)
+        # next() advances any iterator by one iteration. Here we use this to
+        # skip the header.
         next(reader)
         for code, inhabitants in reader:
             output[code] = int(inhabitants)
@@ -42,9 +46,10 @@ def merge_data():
 
 def main():
     data = merge_data()
+    # ADVANCED: A "lambda" is an anonymous function with only one statment
     final_output = sorted(data, key=lambda item: -item[1])
-    for row in final_output[:10]:
-        print("%30s %d" % row)
+    for location, count in final_output[:10]:
+        print(f"{location:30s} {count}")
 
 
 main()

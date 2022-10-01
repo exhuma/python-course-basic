@@ -319,7 +319,7 @@ Note:
 
 ---
 
-#### Simple List Processing
+## Simple List Processing
 
 - First "real world" program
 - Basic Statements & Structures
@@ -345,22 +345,31 @@ alphabetically.
 
 <!-- .slide: class="smaller prose" -->
 
-#### Data Lookup
+## Data Lookup
 
-Sample Data Files: [data.public.lu-sample-2019-03-09.zip](data/data.public.lu-sample-2019-03-09.zip)
+- Dictionaries & Lookups
+- Sorting
+- Text encoding
+- String Operations & Formatting
 
-- The file `caclr/TR.DICACOLO.RUCP` contains location names in position 120-160
-  and ZIP codes in position 200-204. The file uses the `cp1252` encoding
-- The file `rnrpp-code-postal.csv` contains the number of inhabitants per ZIP
+Note:
+
+Sample Data Files: [data.public.lu-sample-2019-03-09.zip](fileview.html?filename=data/data.public.lu-sample-2019-03-09.zip)
+
+- `caclr/TR.DICACOLO.RUCP`: location names in position 120-160,
+  ZIP codes in position 200-204. The file uses the `cp1252` encoding
+- `rnrpp-code-postal.csv`: contains the number of inhabitants per ZIP
   code.
 
 We will write a program which:
 
 - Reads the data from both files
-- For each ZIP-code per location, look up the number of inhabitants and calculate the sum
-- Sort the list by descending number of inhabitants
-- Print out the location name and number of inhabitants of the top 10 items using 30 characters for the location, right aligned.
+- Look up the total number of inhabitants for each zip-code
+- Sort the list
+- Print out a simple table woth location and number of inhabitants
 - Sample output is on the following slide
+
+Solution: [zip_code_inhabitants.py](fileview.html?filename=code/zip_code_inhabitants.py)
 
 ^
 

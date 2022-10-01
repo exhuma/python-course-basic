@@ -401,6 +401,7 @@ H2 {
   color: #bbb8b4;
   background: #111;
   border-left: 4px solid black;
+  overflow-x: hidden;
 }
 
 .reveal .speaker-notes::before {
