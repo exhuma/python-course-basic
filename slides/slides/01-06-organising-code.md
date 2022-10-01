@@ -53,7 +53,7 @@ my_other_function(my_function)
 
 ^
 
-### Example Function
+## Example Function
 
 ```py
 def read_file(filename):
@@ -75,8 +75,6 @@ def read_file(filename):
 read_file('data.csv')
 ```
 
-<!-- .element: class="smallcode" -->
-
 ---
 
 ## Classes
@@ -96,7 +94,7 @@ The same notes as for functions apply.
 
 ^
 
-### Example Class
+## Example Class
 
 ```py
 class MyReader:
@@ -128,7 +126,7 @@ the_instance = MyReader('data.csv')
 the_instance.read()
 ```
 
-<!-- .element: class="stretch smallcode" -->
+<!-- .element: class="stretch" style="font-size:52%;" -->
 
 ---
 
@@ -179,7 +177,7 @@ def read_file(filename):
 print('This is an import side-effect')
 ```
 
-<!-- .element: class="smallcode" data-caption="code/module-example.py" -->
+<!-- .element: data-caption="code/module-example.py" -->
 
 ^
 

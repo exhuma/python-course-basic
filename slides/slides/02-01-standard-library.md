@@ -297,7 +297,7 @@ def read_data(filename):
 print(read_data("data.csv"))
 ```
 
-<!-- .element: class="stretch smallcode" -->
+<!-- .element: class="stretch" style="font-size: 50%;" -->
 
 Note:
 

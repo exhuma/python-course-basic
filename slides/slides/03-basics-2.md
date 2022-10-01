@@ -93,7 +93,7 @@ ignorning the object.
 
 ### Demo
 
-See <code>code/read-csv-demo-handling-errors.py</code>
+See [collections.csv](fileview.html?filename=code/read-csv-demo-handling-errors.py)
 
 <!-- .element: style="font-size: 50%" -->
 
@@ -390,11 +390,17 @@ Esch-sur-Alzette 35635
 
 ---
 
-#### Bytes \& Collections
+## Bytes \& Collections
 
-Using the files [data_latin1.csv](data/data_latin1.csv) and
-[data_utf8.csv](data/data_utf8.csv), we will write a function which diffs the
-two files.
+- Raw Bytes
+- Text Encoding
+- Set Operations
+
+Note:
+
+Using the files [data_latin1.csv](fileview.html?filename=code/diff/data_latin1.csv)
+and [data_utf8.csv](fileview.html?filename=code/diff/data_utf8.csv), we will write a
+function which diffs the two files.
 
 Both lists represent the same data from two different sources. It can be
 assumed that each line is unique in each file.
@@ -404,21 +410,34 @@ The program will print:
 - Which lines are missing in the first file
 - Which lines are missing in the second file
 
+Solution: [diff.py](fileview.html?filename=code/diff/app.py), we will write a
+
 ---
 
-#### Pwned Passwords
+## Pwned Passwords
 
-**Goal:** Find out if a password was ever leaked by an attack without sending
-the password to a remote API.
+- HTTP API
+- Find password leaks
+- Don't send password to cloud service
 
-API docs: https://haveibeenpwned.com/API/v2#PwnedPasswords
+Note:
+
+In this demo we use a simple _HTTP API_. The API provides a service to find out
+if a password was leaked.
+
+To make this safe, we first "hash" the password and then only send a small part
+of that has to the remote service. We then receive a list of all _hashes_ that
+contain that part. We can then compare our original (full) hash with that
+result.
+
+Note that the hash is _already fairly safe_ to submit. By sending only a small
+fragment, it is _even safer_.
+
+API documentation: https://haveibeenpwned.com/API/v2#PwnedPasswords
 
 ^
 
 #### Boilerplate
-
-NB: We could also use the third-party library `requests` to simplify
-this.
 
 ```py
 from urllib.request import Request, urlopen
@@ -434,6 +453,28 @@ def http_get(url):
     data = response.read()
     return data
 ```
+
+Solution: [pwned_passwords.py](fileview.html?filename=code/solutions/pwned_passwords.py)
+
+Note:
+
+We could also use the third-party library
+[`requests`](https://pypi.org/project/requests/) to simplify this.
+
+We use "pure Python" in this example to avoid complexities with packaging &
+third-party library dependencies in this "basic" course.
+
+Instead, we provide this simple function to make a simple "HTTP GET" request.
+
+When using _external libraries_ one has to be careful to avoid incompatbilities
+between multiple projects. To solve this issue, Python offers [virtual
+environments](https://docs.python.org/3/library/venv.html). This makes it
+possible to keep the dependencies isolated for each project.
+
+For a more detailed documentation see [Installing
+Packages](https://packaging.python.org/en/latest/tutorials/installing-packages/)
+in the official documentation. This also explains how to keep your library
+requirements in separate files.
 
 ---
 
@@ -461,13 +502,7 @@ hello()  # Prints "Hello John"
 
 ^
 
-#### Warning
-
-Never use mutable objects (lists, sets, dictionaries, custom objects, …) as
-default values on arguments.
-
-The value (and instance) will be bound to the function when the function
-definition is parsed.
+## Warning
 
 **Don’t do this**
 
@@ -483,12 +518,30 @@ def myfunction(names=None):
     names = names or []
 ```
 
+Note:
+
+Never use mutable objects (lists, sets, dictionaries, custom objects, …) as
+default values on arguments.
+
+The value (and instance) will be bound to the function when the function
+definition is parsed.
+
+## Technical Explanation
+
+Python is an interpreted language. When the code is interpreted (first import),
+the default-value for the function arguments is evaluated immediately, and _the
+reference to that value is bound to the enclosing scope_.
+
+In this example, the enclosing scope is the module-/file-scope. It is _not_
+bound to the inner-scope of the function. Therefore, the value is _not
+re-evaluated on each function call!_
+
+In other words: The value is evaluated at function _definition_ time. Not at
+function _call_ time.
+
 ^
 
 ### Passing values into functions
-
-Providing arguments to functions can be done in two ways: positional and by
-keywords. Consider this function signature:
 
 ```py
 def hello(name, prefix="Hello"): ...
@@ -504,22 +557,26 @@ hello(name="John", prefix="Goodbye")  # by keyword
 hello(prefix="Goodbye", name="John")  # different order
 ```
 
+Note:
+
+Providing arguments to functions can be done in two ways:
+
+- positional
+- by keywords
+
 ---
 
 ### Classes Revisited
 
-"Instance Methods", "Class Methods" and "Static Methods"
+- Instance Methods
+- Class Methods
+- Static Methods
 
 ^
 
 ### Instance Methods
 
-When simply defining a method in a function inside a function it becomes an
-instance method. Contrary to many other languages, **an instance method receives
-a reference to the instance as first argument.**
-
-This argument is - by convention - called `self` in Python. It serves the same
-purpose as `this` in languages like Java.
+Bound to an _instance_/_object_
 
 ```py
 class MyClass:
@@ -534,16 +591,20 @@ class MyClass:
         pass
 ```
 
+Note:
+
+When simply defining a method in a function inside a function it becomes an
+instance method. Contrary to many other languages, **an instance method receives
+a reference to the instance as first argument.**
+
+This argument is - by convention - called `self` in Python. It serves the same
+purpose as `this` in languages like Java.
+
 ^
 
 ### Static Methods
 
-Static methods are prefixed with `@staticmethod`
-
-Static methods are unaware of their instance or class. They do not receive an
-additional argument by default.
-
-They are useful to organise code.
+Bound to a _class_
 
 ```py
 class MyClass:
@@ -555,9 +616,36 @@ class MyClass:
 print(MyClass.my_method())
 ```
 
+Note:
+
+Static methods are prefixed with `@staticmethod`
+
+Static methods are unaware of their instance or class. They do not receive an
+additional argument by default.
+
+They are useful to organise code.
+
 ^
 
 ### Class Methods
+
+Bound to a _class_
+
+```py
+class MyClass:
+
+    @classmethod
+    def my_method(cls):
+        print(cls)  # Prints the string representaion of the current class
+
+class MySubclass(MyClass):
+    pass
+
+print(MyClass.my_method())
+print(MySubclass.my_method())
+```
+
+Note:
 
 Class methods are prefixed with `@classmethod`
 
@@ -570,19 +658,25 @@ called. Static methods don't.
 
 By convention this argument is called `cls`.
 
-```py
-class MyClass:
-
-    @classmethod
-    def my_method(cls):
-        print(cls)  # Prints the string representaion of the current class
-```
-
 ^
 
 ### Abstract Methods
 
-<!-- .slide: class="smaller prose" -->
+```py
+from abc import ABC, abstractmethod
+
+class MyAbstractClass(ABC):
+
+    @abstractmethod
+    def mymethod(self):
+        raise NotImplementedError('Not yet implemented')
+
+
+class MyConcreteClass(MyAbstractClass):
+    pass
+```
+
+Note:
 
 The standard module
 [abc](https://docs.python.org/3/library/abc.html#module-abc) (abstract base
@@ -591,13 +685,3 @@ classes) can be used to define abstract classes.
 They differ in a fundamental way from abstract classes in other (static)
 languages: **They are not checked at compile-time. They are checked at
 runtime.**
-
-```py
-from abc import ABCMeta, abstractmethod
-
-class MyAbstractClass(metaclass=ABCMeta):
-
-    @abstractmethod
-    def mymethod(self):
-        raise NotImplementedError('Not yet implemented')
-```

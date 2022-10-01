@@ -43,8 +43,8 @@ text files.
 
 ## About Me
 
-- First program written in 1989.
-- Professional Software Developer since 1998.
+- First program written at the age of 9
+- Earning money with programming since age 18
 - GFA-Basic → Delphi → PHP → Java → Python → ?
 - Degree in Computer Science (BSc CS AI / 2005).
 - Lead Software Developer at Post "Connectivity-OSS".
@@ -55,3 +55,13 @@ text files.
 ---
 
 # Let's get started
+
+^
+
+Large code-samples used in this course:
+
+- [Reading CSV files](fileview.html?filename=code/read-csv-demo.py)
+- [Handling Errors](fileview.html?filename=code/read-csv-demo-handling-errors.py)
+- [Merging Data](fileview.html?filename=code/zip_code_inhabitants.py)
+- [Diffing Files](fileview.html?filename=code/diff/app.py)
+- [Use HTTP API](fileview.html?filename=code/solutions/pwned_passwords.py)

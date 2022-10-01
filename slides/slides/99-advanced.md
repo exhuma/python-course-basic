@@ -1,6 +1,14 @@
 # Advanced Topics & Notes
 
+^
+
 ## Imports & Caching
+
+- `.pyc` files and `__pycache__`
+- Code executed on fist import
+- Can be abused (Singleton pattern)
+
+Note:
 
 - Importing will cause .pyc files to be created (inside the `__pycache__`
   folder). They are auto-generated and don’t belong into revision control.
