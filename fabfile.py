@@ -5,8 +5,6 @@ from fabric.connection import Connection
 from invoke import task
 from patchwork.transfers import rsync as rsync_
 
-www = Connection("ec2-user@michel.albert.lu")
-
 INSTANCE = "2022"
 VIRTUAL_ENV = abspath("./env")
 ENVPATH = "%s/bin:%s" % (VIRTUAL_ENV, environ["PATH"])
@@ -23,6 +21,12 @@ def rsync(ctx, *args, **kwargs):  # type: ignore
 
 @task
 def publish(ctx):
+    www = Connection(
+        "ec2-user@michel.albert.lu",
+        connect_kwargs={
+            "disabled_algorithms": {"pubkeys": ["rsa-sha2-256", "rsa-sha2-512"]}
+        },
+    )
     remote_root = "/var/www/html/shelf"
     remote_folder = "%s/python-basic-%s" % (remote_root, INSTANCE)
     latest_folder = "%s/python-basic-latest" % remote_root
