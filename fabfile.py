@@ -7,7 +7,7 @@ from patchwork.transfers import rsync as rsync_
 
 www = Connection("ec2-user@michel.albert.lu")
 
-INSTANCE = "2020"
+INSTANCE = "2022"
 VIRTUAL_ENV = abspath("./env")
 ENVPATH = "%s/bin:%s" % (VIRTUAL_ENV, environ["PATH"])
 CUSTOM_ENV = {"PATH": ENVPATH, "VIRTUAL_ENV": VIRTUAL_ENV}
