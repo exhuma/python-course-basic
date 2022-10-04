@@ -20,13 +20,13 @@
   </head>
 
   <body id="Fileview" class="fileview">
-    <img id="Logo" src="images/python-logo-generic.svg" />
+    <img id="Logo" alt="Logo" src="images/python-logo-generic.svg" />
     <div id="FileviewContent">
       <p id="FileHeader">File: <a id="FileLink"></a></p>
       <pre id="FileContent"></pre>
     </div>
     <script type="module">
-      import hljs from "/plugin/highlight/highlight.esm.js";
+      import hljs from "/shelf/python-basic-2022/slides/plugin/highlight/highlight.esm.js";
       function setLink(filename) {
         let link = document.getElementById("FileLink");
         if (!link) {
