@@ -26,7 +26,26 @@
       <pre id="FileContent"></pre>
     </div>
     <script type="module">
-      import hljs from "/plugin/highlight/highlight.esm.js";
+      /**
+       * We need to make the import path relative to the current filename. The
+       * following is a quick & dirty solution.
+       */
+      function load_hljs() {
+        let here = new URL(window.location);
+        let base = here.pathname.split("/").slice(0, -1).join("/");
+        let hljs = null;
+        return import(`${base}/plugin/highlight/highlight.esm.js`).then(
+          (module) => {
+            return module.default;
+          }
+        );
+        return hljs;
+      }
+
+      let hljs = null;
+      load_hljs().then((result) => {
+        hljs = result;
+      });
       function setLink(filename) {
         let link = document.getElementById("FileLink");
         if (!link) {
@@ -60,7 +79,9 @@
           response.text().then((filedata) => {
             content.appendChild(document.createTextNode(filedata));
             content.classList.add(`language-${extension}`);
-            hljs().hljs.highlightElement(content);
+            if (hljs !== null) {
+              hljs().hljs.highlightElement(content);
+            }
           });
         });
       }
