@@ -26,6 +26,8 @@ name-conflicts). See [PEP 328][2].
 
 ## Essential Modules
 
+These modules prove useful in almost any application.
+
 ^
 
 # [`os`](https://docs.python.org/3/library/os.html)
@@ -46,6 +48,10 @@ Windows/Linux/MacOS like path \& folder separators.
 
 Also contains access to environment variables & general operating-system
 information.
+
+## Usage Examples
+
+- Read environment variables
 
 ^
 
@@ -71,6 +77,12 @@ manipulate filenames, converting them from/to absolute files, adding/removing
 path elements from names, e.t.c.
 
 `pathlib` was only introduced in Python 3.4
+
+## Usage Examples
+
+- Read and writing files
+- Loop over directory contents
+- Check existance of files
 
 ^
 
@@ -114,6 +126,13 @@ Note:
 
 Simple helpers for parsing and creating JSON documents.
 
+## Usage Examples
+
+- Exchange data with other systems
+- Format configuration files (other formats may be more suitable, but JSON
+  support comes out of the box)
+- Simple data persistence
+
 ^
 
 # [`datetime`][1] \& [`time`][2]
@@ -122,12 +141,14 @@ Simple helpers for parsing and creating JSON documents.
 [2]: https://docs.python.org/3/library/time.html
 
 ```py
-from datetime import datetime
+from datetime import datetime, timezone
+from time import sleep
+import random
 
-begin = datetime.now()
-user_response = input("Type your name: ")
-duration = datetime.now() - begin
-print(f"Your name is: {user_response}. Answered in {duration}")
+begin = datetime.now(tz=timezone.utc)
+sleep(random.randint(0, 10))
+duration = datetime.now(tz=timezone.utc) - begin
+print(f"Elapsed time: {duration}")
 ```
 
 Note:
@@ -138,11 +159,19 @@ Timezone information was not included in Python versions before 3.9 to allow
 faster updates. For Python older than 3.9, the official external module
 [pytz][1] can be used.
 
+**Always** set a timezone on your timestamps. A good default is to use UTC as
+in the example above. This will ensure that your data avoids daylight-savings
+problems and is comparable across different systems.
+
+<!-- .element: class="admonition warning" -->
+
 [1]: https://pypi.org/project/pytz/
 
 ---
 
 ## Notable Modules
+
+These modules are very useful in certain contexts.
 
 ^
 

@@ -1,5 +1,6 @@
 import csv
-from decimal import Decimal
+import logging
+from decimal import Decimal, InvalidOperation
 from hashlib import md5
 
 
@@ -20,7 +21,7 @@ def read_data(filename):
 
         try:
             income = Decimal(row[5])
-        except ValueError:
+        except (ValueError, InvalidOperation):
             logging.error("Invalid number: %r", row[5], exc_info=True)
             income = Decimal("0.0")
 

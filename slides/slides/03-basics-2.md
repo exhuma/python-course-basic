@@ -93,7 +93,7 @@ ignorning the object.
 
 ### Demo
 
-See [collections.csv](fileview.html?filename=code/read-csv-demo-handling-errors.py)
+See [read-csv-demo-handling-errors.py](fileview.html?filename=code/read-csv-demo-handling-errors.py)
 
 <!-- .element: style="font-size: 50%" -->
 
@@ -149,7 +149,7 @@ variable_a, variable_b = 13, 'Hello'
 
 ^
 
-This work in every place where values are assigned:
+This works in every place where values are assigned:
 
 ```py [1-9|8]
 mylist = [
@@ -261,6 +261,8 @@ this_is_a_tuple = (1,)
 this_is_also_a_tuple = 1,
 ```
 
+_Be careful when copy/pasting code!_
+
 </div>
 
 ---
@@ -315,7 +317,7 @@ Note:
   [set.union()](https://docs.python.org/3/library/stdtypes.html#frozenset.union),
   [set.intersection()](https://docs.python.org/3/library/stdtypes.html#frozenset.intersection), …
 - If a value is already in the set, adding it again will have no effect.
-- Values must be hashable
+- _Values must be hashable_
 
 ---
 
@@ -328,7 +330,7 @@ Note:
 Note:
 
 For this demo we will be using the file
-[collections.csv](fileview.html?filename=data/collections.csv)
+[collections.csv](fileview.html?filename=code/solutions/collections.csv)
 
 In this file, each entry is split into two lines (Line 1 and line 2 are the
 headers).
@@ -339,7 +341,7 @@ Print the entries nicely formatted to standard output.
 At the end of the script, we print out each hobby only once sorted
 alphabetically.
 
-[Solution](fileview.html?filename=code/read-csv-demo.py)
+[Solution](fileview.html?filename=code/solutions/collections_1.py)
 
 ---
 
@@ -410,7 +412,7 @@ The program will print:
 - Which lines are missing in the first file
 - Which lines are missing in the second file
 
-Solution: [diff.py](fileview.html?filename=code/diff/app.py), we will write a
+Solution: [diff.py](fileview.html?filename=code/diff/app.py)
 
 ---
 
@@ -443,12 +445,12 @@ API documentation: https://haveibeenpwned.com/API/v2#PwnedPasswords
 from urllib.request import Request, urlopen
 
 def http_get(url):
-    '''
+    """
     Fetch the contents of *url* using a HTTP GET call
-    '''
+    """
     # Headers must be set, otherwise we get a "403 Forbidden" error
-    headers = {'User-Agent': 'pythontraining/pwdchecker'}
-    request = Request(url, headers=headers, method='GET')
+    headers = {"User-Agent": "pythontraining/pwdchecker"}
+    request = Request(url, headers=headers, method="GET")
     response = urlopen(request)
     data = response.read()
     return data
