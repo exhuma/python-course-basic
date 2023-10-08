@@ -5,7 +5,7 @@ from fabric.connection import Connection
 from invoke import task
 from patchwork.transfers import rsync as rsync_
 
-INSTANCE = "2022"
+INSTANCE = "2023"
 VIRTUAL_ENV = abspath("./env")
 ENVPATH = "%s/bin:%s" % (VIRTUAL_ENV, environ["PATH"])
 CUSTOM_ENV = {"PATH": ENVPATH, "VIRTUAL_ENV": VIRTUAL_ENV}
